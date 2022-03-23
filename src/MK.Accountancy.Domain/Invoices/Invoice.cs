@@ -10,7 +10,7 @@
         public decimal SubTotal { get; set; }
         public decimal TaxAmount { get; set; }
         public decimal Netamount { get; set; }
-        public int ItemNumber { get; set; }
+        public int MovementNumber { get; set; }
         public Guid CurrentId { get; set; }
         public Guid? SpecialCodeOne { get; set; }
         public Guid? SpecialCodeTwo { get; set; }
