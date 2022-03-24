@@ -1,4 +1,6 @@
-﻿namespace MK.Accountancy.BankDepartments
+﻿using MK.Accountancy.BankAccounts;
+
+namespace MK.Accountancy.BankDepartments
 {
     public class BankDepartment : FullAuditedAggregateRoot<Guid>
     {
@@ -8,5 +10,6 @@
         public Guid? SpecialCodeTwo { get; set; }
         public string Description { get; set; }
         public bool Active { get; set; }
+        public ICollection<BankAccount> BankAccounts { get; set; }
     }
 }

@@ -1,4 +1,7 @@
-﻿namespace MK.Accountancy.SpecialCodes
+﻿using MK.Accountancy.BankAccounts;
+using MK.Accountancy.Banks;
+
+namespace MK.Accountancy.SpecialCodes
 {
     public class SpecialCode : FullAuditedAggregateRoot<Guid>
     {
@@ -8,5 +11,9 @@
         public CardType CardType { get; set; }
         public string Description { get; set; }
         public bool Active { get; set; }
+        public ICollection<BankAccount> SpecialCodeOneBankAccounts { get; set; }
+        public ICollection<BankAccount> SpecialCodeTwoBankAccounts { get; set; }
+        public ICollection<Bank> SpecialCodeOneBanks { get; set; }
+        public ICollection<Bank> SpecialCodeTwoBanks { get; set; }
     }
 }

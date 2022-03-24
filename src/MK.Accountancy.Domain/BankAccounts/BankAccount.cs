@@ -1,4 +1,8 @@
-﻿namespace MK.Accountancy.BankAccounts
+﻿using MK.Accountancy.BankDepartments;
+using MK.Accountancy.Departments;
+using MK.Accountancy.SpecialCodes;
+
+namespace MK.Accountancy.BankAccounts
 {
     public class BankAccount : FullAuditedAggregateRoot<Guid>
     {
@@ -8,10 +12,14 @@
         public string AccountId { get; set; }
         public string Iban { get; set; }
         public Guid BankDepartmentId { get; set; }
-        public Guid? SpecialCodeOne { get; set; }
-        public Guid? SpecialCodeTwo { get; set; }
+        public Guid? SpecialCodeOneId { get; set; }
+        public Guid? SpecialCodeTwoId { get; set; }
         public Guid DepartmentId { get; set; }
         public string Description { get; set; }
         public bool Active { get; set; }
+        public BankDepartment BankDepartment { get; set; }
+        public SpecialCode SpecialCodeOne { get; set; }
+        public SpecialCode SpecialCodeTwo { get; set; }
+        public Department Department { get; set; }
     }
 }
