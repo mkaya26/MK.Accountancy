@@ -1,4 +1,9 @@
-﻿namespace MK.Accountancy.Invoices
+﻿using MK.Accountancy.Expenses;
+using MK.Accountancy.Services;
+using MK.Accountancy.Stocks;
+using MK.Accountancy.Stores;
+
+namespace MK.Accountancy.Invoices
 {
     public class InvoiceDetail : FullAuditedEntity<Guid>
     {
@@ -17,5 +22,10 @@
         public decimal TaxTotal { get; set; }
         public decimal NetTotal { get; set; }
         public string Description { get; set; }
+        public Invoice Invoice { get; set; }
+        public Stock Stock { get; set; }
+        public Service Service { get; set; }
+        public Expense Expense { get; set; }
+        public Store Store { get; set; }
     }
 }

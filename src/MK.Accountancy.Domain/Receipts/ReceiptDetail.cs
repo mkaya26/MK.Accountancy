@@ -1,4 +1,9 @@
-﻿namespace MK.Accountancy.Receipts
+﻿using MK.Accountancy.BankAccounts;
+using MK.Accountancy.BankDepartments;
+using MK.Accountancy.Banks;
+using MK.Accountancy.Safes;
+
+namespace MK.Accountancy.Receipts
 {
     public class ReceiptDetail : FullAuditedEntity<Guid>
     {
@@ -10,7 +15,7 @@
         public string ChequeAccountNumber { get; set; }
         public string DocumentNo { get; set; }
         public DateTime ExpiryDate { get; set; }
-        public string PrincipalDebt { get; set; }
+        public string PrincipalDebtor { get; set; }
         public string Endorser { get; set; }
         public Guid? SafeId { get; set; }
         public Guid? BankAccountId { get; set; }
@@ -18,5 +23,10 @@
         public DocumentStatu DocumentStatu { get; set; }
         public bool MyDocument { get; set; }
         public string Description { get; set; }
+        public Receipt Receipt { get; set; }
+        public Bank ChequeBank { get; set; }
+        public BankDepartment ChequeBankDepartment { get; set; }
+        public Safe Safe { get; set; }
+        public BankAccount BankAccount { get; set; }
     }
 }

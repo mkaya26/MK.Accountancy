@@ -1,4 +1,8 @@
 ﻿using MK.Accountancy.BankAccounts;
+using MK.Accountancy.Invoices;
+using MK.Accountancy.Parameters;
+using MK.Accountancy.Receipts;
+using MK.Accountancy.Stores;
 
 namespace MK.Accountancy.Departments
 {
@@ -9,5 +13,9 @@ namespace MK.Accountancy.Departments
         public string Description { get; set; }
         public bool Active { get; set; }
         public ICollection<BankAccount> BankAccounts { get; set; }
+        public ICollection<Store> Stores { get; set; }
+        public ICollection<Invoice> Invoices { get; set; }
+        public ICollection<Receipt> Receipts { get; set; }
+        public ICollection<OrganizationParameter> OrganizationParameters { get; set; }
     }
 }

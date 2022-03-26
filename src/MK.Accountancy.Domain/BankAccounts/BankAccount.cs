@@ -1,5 +1,6 @@
 ﻿using MK.Accountancy.BankDepartments;
 using MK.Accountancy.Departments;
+using MK.Accountancy.Receipts;
 using MK.Accountancy.SpecialCodes;
 
 namespace MK.Accountancy.BankAccounts
@@ -21,5 +22,7 @@ namespace MK.Accountancy.BankAccounts
         public SpecialCode SpecialCodeOne { get; set; }
         public SpecialCode SpecialCodeTwo { get; set; }
         public Department Department { get; set; }
+        public ICollection<Receipt> Receipts { get; set; }
+        public ICollection<ReceiptDetail> ReceiptDetails { get; set; }
     }
 }
