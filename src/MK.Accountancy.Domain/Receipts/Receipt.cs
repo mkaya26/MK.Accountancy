@@ -7,7 +7,7 @@ using MK.Accountancy.Terms;
 
 namespace MK.Accountancy.Receipts
 {
-    public class Receipt : FullAuditedAggregateRoot<Receipt>
+    public class Receipt : FullAuditedAggregateRoot<Guid>
     {
         public ReceiptType ReceiptType { get; set; }
         public string ReceiptNumber { get; set; }

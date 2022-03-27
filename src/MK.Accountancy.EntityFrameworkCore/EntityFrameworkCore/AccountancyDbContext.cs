@@ -1,4 +1,21 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MK.Accountancy.BankAccounts;
+using MK.Accountancy.BankDepartments;
+using MK.Accountancy.Banks;
+using MK.Accountancy.Configurations;
+using MK.Accountancy.Currents;
+using MK.Accountancy.Departments;
+using MK.Accountancy.Expenses;
+using MK.Accountancy.Invoices;
+using MK.Accountancy.Parameters;
+using MK.Accountancy.Receipts;
+using MK.Accountancy.Safes;
+using MK.Accountancy.Services;
+using MK.Accountancy.SpecialCodes;
+using MK.Accountancy.Stocks;
+using MK.Accountancy.Stores;
+using MK.Accountancy.Terms;
+using MK.Accountancy.Units;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.Data;
@@ -52,6 +69,22 @@ public class AccountancyDbContext :
 
     #endregion
 
+    public DbSet<BankAccount> BankAccounts { get; set; }
+    public DbSet<BankDepartment> BankDepartments { get; set; }
+    public DbSet<Bank> Banks { get; set; }
+    public DbSet<Current> Currents { get; set; }
+    public DbSet<Department> Departments { get; set; }
+    public DbSet<Expense> Epenses { get; set; }
+    public DbSet<Invoice> Invoices { get; set; }
+    public DbSet<OrganizationParameter> OrganizationParameters { get; set; }
+    public DbSet<Receipt> Receipts { get; set; }
+    public DbSet<Safe> Saves { get; set; }
+    public DbSet<Service> Services { get; set; }
+    public DbSet<SpecialCode> SpecialCodes { get; set; }
+    public DbSet<Stock> Stocks { get; set; }
+    public DbSet<Store> Stores { get; set; }
+    public DbSet<Term> Terms { get; set; }
+    public DbSet<Unit> Units { get; set; }
     public AccountancyDbContext(DbContextOptions<AccountancyDbContext> options)
         : base(options)
     {
@@ -75,11 +108,23 @@ public class AccountancyDbContext :
 
         /* Configure your own tables/entities inside here */
 
-        //builder.Entity<YourEntity>(b =>
-        //{
-        //    b.ToTable(AccountancyConsts.DbTablePrefix + "YourEntities", AccountancyConsts.DbSchema);
-        //    b.ConfigureByConvention(); //auto configure for the base class props
-        //    //...
-        //});
+        builder.ConfigureBank();
+        builder.ConfigureBankDepartment();
+        builder.ConfigureBankAccount();
+        builder.ConfigureUnit();
+        builder.ConfigureCurrent();
+        builder.ConfigureStore();
+        builder.ConfigureTerm();
+        builder.ConfigureInvoice();
+        builder.ConfigureInvoiceDetail();
+        builder.ConfigureOrganizationParameter();
+        builder.ConfigureService();
+        builder.ConfigureSafe();
+        builder.ConfigureReceipt();
+        builder.ConfigureReceiptDetail();
+        builder.ConfigureExpense();
+        builder.ConfigureSpecialCode();
+        builder.ConfigureStock();
+        builder.ConfigureDepartment();
     }
 }

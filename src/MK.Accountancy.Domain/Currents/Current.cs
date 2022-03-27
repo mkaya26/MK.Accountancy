@@ -1,4 +1,6 @@
-﻿using MK.Accountancy.SpecialCodes;
+﻿using MK.Accountancy.Invoices;
+using MK.Accountancy.Receipts;
+using MK.Accountancy.SpecialCodes;
 
 namespace MK.Accountancy.Currents
 {
@@ -18,5 +20,6 @@ namespace MK.Accountancy.Currents
         public SpecialCode SpecialCodeTwo { get; set; }
         public ICollection<Current> Currents { get; set; }
         public ICollection<Receipt> Receipts { get; set; }
+        public ICollection<Invoice> Invoices { get; set; }
     }
 }
