@@ -2,5 +2,6 @@
 
 public static class AccountancyDomainErrorCodes
 {
-    /* You can add your business exception error codes here, as constants */
+    public const string DuplicateCode = "Exception:00001";
+    public const string CannotBeDeleted = "Exception:00002";
 }

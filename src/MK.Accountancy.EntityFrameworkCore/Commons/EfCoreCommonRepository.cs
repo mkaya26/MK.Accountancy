@@ -100,7 +100,7 @@ namespace MK.Accountancy.Commons
                 if (diffirence < 0)
                     diffirence = 0;
                 var newCode = code.Substring(0, diffirence);
-                newCode += number;
+                newCode += newNumber;
                 return newCode;
             }
             //
