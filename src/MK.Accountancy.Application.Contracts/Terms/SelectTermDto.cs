@@ -3,7 +3,7 @@ using Volo.Abp.Application.Dtos;
 
 namespace MK.Accountancy.Terms
 {
-    internal class SelectTermDto : EntityDto<Guid>
+    public class SelectTermDto : EntityDto<Guid>
     {
         public string Code { get; set; }
         public string Name { get; set; }

@@ -3,7 +3,7 @@ using Volo.Abp.Application.Dtos;
 
 namespace MK.Accountancy.Expenses
 {
-    public class UpdateExpenceDto : IEntityDto
+    public class UpdateExpenseDto : IEntityDto
     {
         public string Code { get; set; }
         public string Barcode { get; set; }

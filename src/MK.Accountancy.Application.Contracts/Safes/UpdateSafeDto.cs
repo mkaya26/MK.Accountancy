@@ -3,7 +3,7 @@ using Volo.Abp.Application.Dtos;
 
 namespace MK.Accountancy.Safes
 {
-    internal class UpdateSafeDto : IEntityDto
+    public class UpdateSafeDto : IEntityDto
     {
         public string Code { get; set; }
         public string Name { get; set; }
