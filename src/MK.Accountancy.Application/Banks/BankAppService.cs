@@ -10,14 +10,18 @@ namespace MK.Accountancy.Banks
     public class BankAppService : AccountancyAppService, IBankAppService
     {
         private readonly IBankRepository _bankRepository;
+        private readonly BankManager _bankManager;
 
-        public BankAppService(IBankRepository bankRepository)
+        public BankAppService(IBankRepository bankRepository, BankManager bankManager)
         {
             _bankRepository = bankRepository;
+            _bankManager = bankManager;
         }
 
         public virtual async Task<SelectBankDto> CreateAsync(CreateBankDto input)
         {
+            await _bankManager.CheckCreateAsync(input.Code, input.SpecialCodeOneId, input.SpecialCodeTwoId);
+            //
             var entity = ObjectMapper.Map<CreateBankDto, Bank>(input);
             await _bankRepository.InsertAsync(entity);
             return ObjectMapper.Map<Bank, SelectBankDto>(entity);
@@ -25,6 +29,7 @@ namespace MK.Accountancy.Banks
 
         public virtual async Task DeleteAsync(Guid id)
         {
+            await _bankManager.CheckDeleteAsync(id);
             await _bankRepository.DeleteAsync(id);
         }
 
@@ -51,6 +56,9 @@ namespace MK.Accountancy.Banks
         public virtual async Task<SelectBankDto> UpdateAsync(Guid id, UpdateBankDto input)
         {
             var entity = await _bankRepository.GetAsync(id, x => x.Id == id);
+            //
+            await _bankManager.CheckUpdateAsync(id, input.Code,entity, input.SpecialCodeOneId, input.SpecialCodeTwoId);
+            //
             var mappedEntity = ObjectMapper.Map(input, entity);
             await _bankRepository.UpdateAsync(mappedEntity);
             return ObjectMapper.Map<Bank, SelectBankDto>(mappedEntity);
