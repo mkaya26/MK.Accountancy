@@ -9,14 +9,18 @@ namespace MK.Accountancy.BankDepartments
     public class BankDepartmentAppService : AccountancyAppService, IBankDepartmentAppService
     {
         private readonly IBankDepartmentRepository _bankDepartmentRepository;
+        private readonly BankDepartmentManager _bankDepartmentManager;
 
-        public BankDepartmentAppService(IBankDepartmentRepository bankDepartmentRepository)
+        public BankDepartmentAppService(IBankDepartmentRepository bankDepartmentRepository, BankDepartmentManager bankDepartmentManager)
         {
             _bankDepartmentRepository = bankDepartmentRepository;
+            _bankDepartmentManager = bankDepartmentManager;
         }
 
         public virtual async Task<SelectBankDepartmentDto> CreateAsync(CreateBankDepartmentDto input)
         {
+            await _bankDepartmentManager.CheckCreateAsync(input.Code, input.BankId, input.SpecialCodeOneId, input.SpecialCodeTwoId);
+            //
             var entity = ObjectMapper.Map<CreateBankDepartmentDto, BankDepartment>(input);
             await _bankDepartmentRepository.InsertAsync(entity);
             return ObjectMapper.Map<BankDepartment, SelectBankDepartmentDto>(entity);
@@ -24,6 +28,8 @@ namespace MK.Accountancy.BankDepartments
 
         public virtual async Task DeleteAsync(Guid id)
         {
+            await _bankDepartmentManager.CheckDeleteAsync(id);
+            //
             await _bankDepartmentRepository.DeleteAsync(id);
         }
 
@@ -50,6 +56,9 @@ namespace MK.Accountancy.BankDepartments
         public virtual async Task<SelectBankDepartmentDto> UpdateAsync(Guid id, UpdateBankDepartmentDto input)
         {
             var entity = await _bankDepartmentRepository.GetAsync(id, x => x.Id == id);
+            //
+            await _bankDepartmentManager.CheckUpdateAsync(id, input.Code, entity, input.SpecialCodeOneId, input.SpecialCodeTwoId);
+            //
             var mappedEntity = ObjectMapper.Map(input, entity);
             await _bankDepartmentRepository.UpdateAsync(mappedEntity);
             return ObjectMapper.Map<BankDepartment, SelectBankDepartmentDto>(mappedEntity);
