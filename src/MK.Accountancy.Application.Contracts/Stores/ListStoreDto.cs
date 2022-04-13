@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MK.Accountancy.Invoices;
+using System;
+using System.Collections.Generic;
 using Volo.Abp.Application.Dtos;
 
 namespace MK.Accountancy.Stores
@@ -10,9 +12,10 @@ namespace MK.Accountancy.Stores
         public string SpecialCodeOneName { get; set; }
         public string SpecialCodeTwoName { get; set; }
         public string Description { get; set; }
-        public decimal AmountInput { get; set; }
-        public decimal OutputAmount { get; set; }
-        public decimal TheRemainingAmount => AmountInput - OutputAmount;
+        public decimal? AmountInput { get; set; }
+        public decimal? OutputAmount { get; set; }
+        public decimal? TheRemainingAmount => AmountInput - OutputAmount;
         public bool Active { get; set; }
+        public ICollection<SelectInvoiceDetailDto> InvoiceDetails { get; set; }
     }
 }

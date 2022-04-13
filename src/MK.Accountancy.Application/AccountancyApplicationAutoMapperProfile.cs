@@ -3,6 +3,7 @@ using MK.Accountancy.BankAccounts;
 using MK.Accountancy.BankDepartments;
 using MK.Accountancy.Banks;
 using MK.Accountancy.Currents;
+using MK.Accountancy.Stores;
 using MK.Accountancy.Units;
 
 namespace MK.Accountancy;
@@ -61,5 +62,14 @@ public class AccountancyApplicationAutoMapperProfile : Profile
             .ForMember(x => x.SpecialCodeTwoName, y => y.MapFrom(z => z.SpecialCodeTwo.Name));
         CreateMap<CreateCurrentDto, Current>();
         CreateMap<UpdateCurrentDto, Current>();
+        //
+        CreateMap<Store, SelectStoreDto>()
+            .ForMember(x => x.SpecialCodeOneName, y => y.MapFrom(z => z.SpecialCodeOne.Name))
+            .ForMember(x => x.SpecialCodeTwoName, y => y.MapFrom(z => z.SpecialCodeTwo.Name));
+        CreateMap<Store, ListStoreDto>()
+            .ForMember(x => x.SpecialCodeOneName, y => y.MapFrom(z => z.SpecialCodeOne.Name))
+            .ForMember(x => x.SpecialCodeTwoName, y => y.MapFrom(z => z.SpecialCodeTwo.Name));
+        CreateMap<CreateStoreDto, Store>();
+        CreateMap<UpdateStoreDto, Store>();
     }
 }
