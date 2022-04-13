@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MK.Accountancy.Invoices;
+using MK.Accountancy.Receipts;
+using System;
+using System.Collections.Generic;
 using Volo.Abp.Application.Dtos;
 
 namespace MK.Accountancy.Currents
@@ -19,5 +22,8 @@ namespace MK.Accountancy.Currents
         public decimal BalanceReceivable => Receivable - Debt > 0 ? Receivable - Debt : 0;
         public string Description { get; set; }
         public bool Active { get; set; }
+        public ICollection<SelectInvoiceDto> Invoices { get; set; }
+        public ICollection<SelectReceiptDto> Receipts { get; set; }
+
     }
 }
