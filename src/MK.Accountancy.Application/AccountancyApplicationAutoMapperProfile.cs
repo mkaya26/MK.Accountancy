@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MK.Accountancy.BankAccounts;
 using MK.Accountancy.BankDepartments;
 using MK.Accountancy.Banks;
 
@@ -27,5 +28,18 @@ public class AccountancyApplicationAutoMapperProfile : Profile
             .ForMember(x => x.SpecialCodeTwoName, y => y.MapFrom(z => z.SpecialCodeTwo.Name));
         CreateMap<CreateBankDepartmentDto, BankDepartment>();
         CreateMap<UpdateBankDepartmentDto, BankDepartment>();
+        //
+        CreateMap<BankAccount, SelectBankAccountDto>()
+            .ForMember(x => x.BankName, y => y.MapFrom(z => z.BankDepartment.Bank.Name))
+            .ForMember(x => x.BankDepartmentName, y => y.MapFrom(z => z.BankDepartment.Name))
+            .ForMember(x => x.SpecialCodeOneName, y => y.MapFrom(z => z.SpecialCodeOne.Name))
+            .ForMember(x => x.SpecialCodeTwoName, y => y.MapFrom(z => z.SpecialCodeTwo.Name));
+        CreateMap<BankAccount, ListBankAccountDto>()
+            .ForMember(x => x.BankName, y => y.MapFrom(z => z.BankDepartment.Bank.Name))
+            .ForMember(x => x.BankDepartmentName, y => y.MapFrom(z => z.BankDepartment.Name))
+            .ForMember(x => x.SpecialCodeOneName, y => y.MapFrom(z => z.SpecialCodeOne.Name))
+            .ForMember(x => x.SpecialCodeTwoName, y => y.MapFrom(z => z.SpecialCodeTwo.Name));
+        CreateMap<CreateBankAccountDto, BankAccount>();
+        CreateMap<UpdateBankAccountDto, BankAccount>();
     }
 }

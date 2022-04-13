@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MK.Accountancy.Receipts;
+using System;
+using System.Collections.Generic;
 using Volo.Abp.Application.Dtos;
 
 namespace MK.Accountancy.BankAccounts
@@ -22,5 +24,6 @@ namespace MK.Accountancy.BankAccounts
         public string DepartmentName { get; set; }
         public string Description { get; set; }
         public bool Active { get; set; }
+        public ICollection<SelectReceiptDetailDto> ReceiptDetails { get; set; }
     }
 }
