@@ -3,7 +3,9 @@ using MK.Accountancy.BankAccounts;
 using MK.Accountancy.BankDepartments;
 using MK.Accountancy.Banks;
 using MK.Accountancy.Currents;
+using MK.Accountancy.Invoices;
 using MK.Accountancy.Stores;
+using MK.Accountancy.Terms;
 using MK.Accountancy.Units;
 
 namespace MK.Accountancy;
@@ -71,5 +73,31 @@ public class AccountancyApplicationAutoMapperProfile : Profile
             .ForMember(x => x.SpecialCodeTwoName, y => y.MapFrom(z => z.SpecialCodeTwo.Name));
         CreateMap<CreateStoreDto, Store>();
         CreateMap<UpdateStoreDto, Store>();
+        //
+        CreateMap<Term, SelectTermDto>();
+        CreateMap<Term, ListTermDto>();
+        CreateMap<CreateTermDto, Term>();
+        CreateMap<UpdateTermDto, Term>();
+        //
+        CreateMap<Invoice, SelectInvoiceDto>()
+            .ForMember(x => x.CurrentName, y => y.MapFrom(z => z.Current.Name))
+            .ForMember(x => x.TaxOffice, y => y.MapFrom(z => z.Current.TaxDepartment))
+            .ForMember(x => x.TaxNumber, y => y.MapFrom(z => z.Current.TaxNumber))
+            .ForMember(x => x.Address, y => y.MapFrom(z => z.Current.Address))
+            .ForMember(x => x.Telephone, y => y.MapFrom(z => z.Current.Telephone))
+            .ForMember(x => x.SpecialCodeOneName, y => y.MapFrom(z => z.SpecialCodeOne.Name))
+            .ForMember(x => x.SpecialCodeTwoName, y => y.MapFrom(z => z.SpecialCodeTwo.Name));
+        CreateMap<Invoice, ListInvoiceDto>()
+            .ForMember(x => x.CurrentName, y => y.MapFrom(z => z.Current.Name))
+            .ForMember(x => x.SpecialCodeOneName, y => y.MapFrom(z => z.SpecialCodeOne.Name))
+            .ForMember(x => x.SpecialCodeTwoName, y => y.MapFrom(z => z.SpecialCodeTwo.Name));
+        CreateMap<CreateInvoiceDto, Invoice>();
+        CreateMap<UpdateInvoiceDto, Invoice>()
+            .ForMember(x => x.InvoiceDetails, y => y.Ignore());
+        //
+        CreateMap<InvoiceDetail, SelectInvoiceDetailDto>();
+        CreateMap<InvoiceDetail, ListInvoiceDetailDto>();
+        CreateMap<CreateInvoiceDetailDto, Term>();
+        CreateMap<UpdateTermDto, Term>();
     }
 }

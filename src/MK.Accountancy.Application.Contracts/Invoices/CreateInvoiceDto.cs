@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Volo.Abp.Application.Dtos;
 
 namespace MK.Accountancy.Invoices
@@ -21,5 +22,6 @@ namespace MK.Accountancy.Invoices
         public Guid? TermId { get; set; }
         public string Description { get; set; }
         public bool Active { get; set; }
+        public ICollection<InvoiceDetailDto> InvoiceDetails { get; set; }
     }
 }

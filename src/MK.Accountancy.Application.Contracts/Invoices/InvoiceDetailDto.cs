@@ -6,6 +6,7 @@ namespace MK.Accountancy.Invoices
     public class InvoiceDetailDto : EntityDto<Guid>
     {
         public InvoiceDetailType? InvoiceDetailType { get; set; }
+        public string InvoiceDetailName { get; set; }
         public Guid? StockId { get; set; }
         public Guid? ServiceId { get; set; }
         public Guid? ExpenseId { get; set; }
