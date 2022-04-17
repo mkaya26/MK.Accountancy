@@ -4,6 +4,8 @@ using MK.Accountancy.BankDepartments;
 using MK.Accountancy.Banks;
 using MK.Accountancy.Currents;
 using MK.Accountancy.Invoices;
+using MK.Accountancy.Receipts;
+using MK.Accountancy.Safes;
 using MK.Accountancy.Services;
 using MK.Accountancy.Stores;
 using MK.Accountancy.Terms;
@@ -145,5 +147,20 @@ public class AccountancyApplicationAutoMapperProfile : Profile
                                            .Sum(i => i.Quantity)));
         CreateMap<CreateServiceDto, Service>();
         CreateMap<UpdateServiceDto, Service>();
+        //
+        CreateMap<Safe, SelectSafeDto>()
+            .ForMember(x => x.SpecialCodeOneName, y => y.MapFrom(z => z.SpecialCodeOne.Name))
+            .ForMember(x => x.SpecialCodeTwoName, y => y.MapFrom(z => z.SpecialCodeTwo.Name));
+        CreateMap<Safe, ListSafeDto>()
+            .ForMember(x => x.SpecialCodeOneName, y => y.MapFrom(z => z.SpecialCodeOne.Name))
+            .ForMember(x => x.SpecialCodeTwoName, y => y.MapFrom(z => z.SpecialCodeTwo.Name))
+            .ForMember(x => x.Debt, y => y.MapFrom(x => x.ReceiptDetails
+                                           .Where(f => f.DocumentStatu == DocumentStatu.Collected)
+                                           .Sum(i => i.Price)))
+            .ForMember(x => x.Receivable, y => y.MapFrom(x => x.ReceiptDetails
+                                           .Where(f => f.DocumentStatu == DocumentStatu.Paid)
+                                           .Sum(i => i.Price)));
+        CreateMap<CreateSafeDto, Safe>();
+        CreateMap<UpdateSafeDto, Safe>();
     }
 }
