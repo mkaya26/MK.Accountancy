@@ -4,6 +4,7 @@ using MK.Accountancy.BankDepartments;
 using MK.Accountancy.Banks;
 using MK.Accountancy.Currents;
 using MK.Accountancy.Invoices;
+using MK.Accountancy.Services;
 using MK.Accountancy.Stores;
 using MK.Accountancy.Terms;
 using MK.Accountancy.Units;
@@ -127,5 +128,22 @@ public class AccountancyApplicationAutoMapperProfile : Profile
                             z.Expense != null ? z.Expense.Name :
                             null));
         CreateMap<InvoiceDetailDto, InvoiceDetail>();
+        //
+        CreateMap<Service, SelectServiceDto>()
+            .ForMember(x => x.SpecialCodeOneName, y => y.MapFrom(z => z.SpecialCodeOne.Name))
+            .ForMember(x => x.SpecialCodeTwoName, y => y.MapFrom(z => z.SpecialCodeTwo.Name))
+            .ForMember(x => x.UnitName, y => y.MapFrom(z => z.Unit.Name));
+        CreateMap<Service, ListServiceDto>()
+            .ForMember(x => x.SpecialCodeOneName, y => y.MapFrom(z => z.SpecialCodeOne.Name))
+            .ForMember(x => x.SpecialCodeTwoName, y => y.MapFrom(z => z.SpecialCodeTwo.Name))
+            .ForMember(x => x.UnitName, y => y.MapFrom(z => z.Unit.Name))
+            .ForMember(x => x.InService, y => y.MapFrom(x => x.InvoiceDetails
+                                           .Where(f => f.Invoice.InvoiceType == InvoiceType.Buy)
+                                           .Sum(i => i.Quantity)))
+            .ForMember(x => x.OutService, y => y.MapFrom(x => x.InvoiceDetails
+                                           .Where(f => f.Invoice.InvoiceType == InvoiceType.Sell)
+                                           .Sum(i => i.Quantity)));
+        CreateMap<CreateServiceDto, Service>();
+        CreateMap<UpdateServiceDto, Service>();
     }
 }

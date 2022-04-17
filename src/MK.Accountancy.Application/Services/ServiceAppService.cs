@@ -1,47 +1,71 @@
 ﻿using MK.Accountancy.CommonDtos;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
+using Volo.Abp.Domain.Repositories;
 
 namespace MK.Accountancy.Services
 {
     public class ServiceAppService : AccountancyAppService, IServiceAppService
     {
         private readonly IServiceRepository _serviceRepository;
+        private readonly ServiceManager _serviceManager;
 
-        public ServiceAppService(IServiceRepository serviceRepository)
+        public ServiceAppService(IServiceRepository serviceRepository, ServiceManager serviceManager)
         {
             _serviceRepository = serviceRepository;
+            _serviceManager = serviceManager;
         }
 
-        public Task<SelectServiceDto> CreateAsync(CreateServiceDto input)
+        public virtual async Task<SelectServiceDto> CreateAsync(CreateServiceDto input)
         {
-            throw new NotImplementedException();
+            await _serviceManager.CheckCreateAsync(input.Code, input.SpecialCodeOneId, input.SpecialCodeTwoId, input.UnitId);
+            //
+            var entity = ObjectMapper.Map<CreateServiceDto, Service>(input);
+            await _serviceRepository.InsertAsync(entity);
+            return ObjectMapper.Map<Service, SelectServiceDto>(entity);
         }
 
-        public Task DeleteAsync(Guid id)
+        public virtual async Task DeleteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            await _serviceManager.CheckDeleteAsync(id);
+            //
+            await _serviceRepository.DeleteAsync(id);
         }
 
-        public Task<SelectServiceDto> GetAsync(Guid id)
+        public virtual async Task<SelectServiceDto> GetAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var entity = await _serviceRepository.GetAsync(id, f => f.Id == id);
+            return ObjectMapper.Map<Service, SelectServiceDto>(entity);
         }
 
-        public Task<string> GetCodeAsync(CodeParameterDto input)
+        public virtual async Task<string> GetCodeAsync(CodeParameterDto input)
         {
-            throw new NotImplementedException();
+            return await _serviceRepository.GetCodeAsync(p => p.Code, f => f.Active == input.Active);
         }
 
-        public Task<PagedResultDto<ListServiceDto>> GetListAsync(ServiceListParameterDto input)
+        public virtual async Task<PagedResultDto<ListServiceDto>> GetListAsync(ServiceListParameterDto input)
         {
-            throw new NotImplementedException();
+            var entities = await _serviceRepository.GetPagedListAsync(
+                                                    input.SkipCount,
+                                                    input.MaxResultCount,
+                                                    f => f.Active == input.Active,
+                                                    o => o.Code);
+            var totalCount = await _serviceRepository.CountAsync(f => f.Active == input.Active);
+            //
+            return new PagedResultDto<ListServiceDto>(totalCount, ObjectMapper.Map<List<Service>, List<ListServiceDto>>(entities));
         }
 
-        public Task<SelectServiceDto> UpdateAsync(Guid id, UpdateServiceDto input)
+        public virtual async Task<SelectServiceDto> UpdateAsync(Guid id, UpdateServiceDto input)
         {
-            throw new NotImplementedException();
+            var entity = await _serviceRepository.GetAsync(id, f => f.Id == id);
+            //
+            await _serviceManager.CheckUpdateAsync(id, input.Code, entity, input.SpecialCodeOneId, input.SpecialCodeTwoId, input.UnitId);
+            //
+            var mappedEntity = ObjectMapper.Map(input, entity);
+            await _serviceRepository.UpdateAsync(mappedEntity);
+            return ObjectMapper.Map<Service, SelectServiceDto>(mappedEntity);
         }
     }
 }
