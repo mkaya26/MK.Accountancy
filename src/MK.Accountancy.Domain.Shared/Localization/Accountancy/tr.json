@@ -11,6 +11,9 @@
     "Enum:BankAccountType:3": "Kredi Hesabı",
     "Enum:BankAccountType:4": "Pos Bloke Hesabı",
     "Enum:BankAccountType:5": "Fon Hesabı",
-    "Enum:BankAccountType:6": "Yatırım Hesabı"
+    "Enum:BankAccountType:6": "Yatırım Hesabı",
+    "Enum:InvoiceDetailType:1": "Stok",
+    "Enum:InvoiceDetailType:2": "Hizmet",
+    "Enum:InvoiceDetailType:3": "Masraf"
   }
 }

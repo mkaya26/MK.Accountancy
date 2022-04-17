@@ -60,12 +60,6 @@ namespace MK.Accountancy.Stores
             //
             var mappedEntityDtos = ObjectMapper.Map<List<Store>,List<ListStoreDto>>(entities);
             //
-            mappedEntityDtos.ForEach(x =>
-            {
-                x.AmountInput = x.InvoiceDetails.Where(f => f.InvoiceDto.InvoiceType == InvoiceType.Buy).Sum(f => f.Quantity);
-                x.OutputAmount = x.InvoiceDetails.Where(f => f.InvoiceDto.InvoiceType == InvoiceType.Sell).Sum(f => f.Quantity);
-            });
-            //
             return new PagedResultDto<ListStoreDto>(totalCount, mappedEntityDtos);
         }
 

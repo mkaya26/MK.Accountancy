@@ -11,6 +11,9 @@
     "Enum:BankAccountType:3": "Credit Account",
     "Enum:BankAccountType:4": "Pos Blocked Account",
     "Enum:BankAccountType:5": "Fund Account",
-    "Enum:BankAccountType:6": "Investment Account"
+    "Enum:BankAccountType:6": "Investment Account",
+    "Enum:InvoiceDetailType:1": "Stock",
+    "Enum:InvoiceDetailType:2": "Service",
+    "Enum:InvoiceDetailType:3": "Expense"
   }
 }

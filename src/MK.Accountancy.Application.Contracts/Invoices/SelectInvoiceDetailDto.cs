@@ -33,6 +33,6 @@ namespace MK.Accountancy.Invoices
         public decimal? TaxTotal { get; set; }
         public decimal? NetTotal { get; set; }
         public string Description { get; set; }
-        public SelectInvoiceDto InvoiceDto { get; set; }
+        //public SelectInvoiceDto InvoiceDto { get; set; }
     }
 }

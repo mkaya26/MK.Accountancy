@@ -7,6 +7,7 @@ using MK.Accountancy.Invoices;
 using MK.Accountancy.Stores;
 using MK.Accountancy.Terms;
 using MK.Accountancy.Units;
+using System.Linq;
 
 namespace MK.Accountancy;
 
@@ -70,7 +71,13 @@ public class AccountancyApplicationAutoMapperProfile : Profile
             .ForMember(x => x.SpecialCodeTwoName, y => y.MapFrom(z => z.SpecialCodeTwo.Name));
         CreateMap<Store, ListStoreDto>()
             .ForMember(x => x.SpecialCodeOneName, y => y.MapFrom(z => z.SpecialCodeOne.Name))
-            .ForMember(x => x.SpecialCodeTwoName, y => y.MapFrom(z => z.SpecialCodeTwo.Name));
+            .ForMember(x => x.SpecialCodeTwoName, y => y.MapFrom(z => z.SpecialCodeTwo.Name))
+            .ForMember(x => x.AmountInput, y => y.MapFrom(x => x.InvoiceDetails
+                                           .Where(f => f.Invoice.InvoiceType == InvoiceType.Buy)
+                                           .Sum(i => i.Quantity)))
+            .ForMember(x => x.OutputAmount, y => y.MapFrom(x => x.InvoiceDetails
+                                           .Where(f => f.Invoice.InvoiceType == InvoiceType.Sell)
+                                           .Sum(i => i.Quantity)));
         CreateMap<CreateStoreDto, Store>();
         CreateMap<UpdateStoreDto, Store>();
         //
@@ -95,9 +102,30 @@ public class AccountancyApplicationAutoMapperProfile : Profile
         CreateMap<UpdateInvoiceDto, Invoice>()
             .ForMember(x => x.InvoiceDetails, y => y.Ignore());
         //
-        CreateMap<InvoiceDetail, SelectInvoiceDetailDto>();
-        CreateMap<InvoiceDetail, ListInvoiceDetailDto>();
-        CreateMap<CreateInvoiceDetailDto, Term>();
-        CreateMap<UpdateTermDto, Term>();
+        CreateMap<InvoiceDetail, SelectInvoiceDetailDto>()
+            .ForMember(x => x.StockCode, y => y.MapFrom(z => z.Stock.Code))
+            .ForMember(x => x.StockName, y => y.MapFrom(z => z.Stock.Name))
+            .ForMember(x => x.ServiceCode, y => y.MapFrom(z => z.Service.Code))
+            .ForMember(x => x.ServiceName, y => y.MapFrom(z => z.Service.Name))
+            .ForMember(x => x.ExpenceCode, y => y.MapFrom(z => z.Expense.Code))
+            .ForMember(x => x.ExpenceName, y => y.MapFrom(z => z.Expense.Name))
+            .ForMember(x => x.StoreCode, y => y.MapFrom(z => z.Store.Code))
+            .ForMember(x => x.StoreName, y => y.MapFrom(z => z.Store.Name))
+            .ForMember(x => x.UnitName, y => y.MapFrom(z =>
+                            z.Stock != null ? z.Stock.Unit.Name :
+                            z.Service != null ? z.Service.Unit.Name :
+                            z.Expense != null ? z.Expense.Unit.Name :
+                            null))
+            .ForMember(x => x.ItemCode, y => y.MapFrom(z =>
+                            z.Stock != null ? z.Stock.Code :
+                            z.Service != null ? z.Service.Code :
+                            z.Expense != null ? z.Expense.Code :
+                            null))
+            .ForMember(x => x.ItemName, y => y.MapFrom(z =>
+                            z.Stock != null ? z.Stock.Name :
+                            z.Service != null ? z.Service.Name :
+                            z.Expense != null ? z.Expense.Name :
+                            null));
+        CreateMap<InvoiceDetailDto, InvoiceDetail>();
     }
 }
