@@ -9,14 +9,18 @@ namespace MK.Accountancy.Safes
     public class SafeAppService : AccountancyAppService, ISafeAppService
     {
         private readonly ISafeRepository _safeRepository;
+        private readonly SafeManager _safeManager;
 
-        public SafeAppService(ISafeRepository safeRepository)
+        public SafeAppService(ISafeRepository safeRepository, SafeManager safeManager)
         {
             _safeRepository = safeRepository;
+            _safeManager = safeManager;
         }
 
         public async Task<SelectSafeDto> CreateAsync(CreateSafeDto input)
         {
+            await _safeManager.CheckCreateAsync(input.Code, input.SpecialCodeOneId, input.SpecialCodeTwoId, input.DepartmentId);
+            //
             var entity = ObjectMapper.Map<CreateSafeDto, Safe>(input);
             await _safeRepository.InsertAsync(entity);
             return ObjectMapper.Map<Safe, SelectSafeDto>(entity);
@@ -24,6 +28,8 @@ namespace MK.Accountancy.Safes
 
         public virtual async Task DeleteAsync(Guid id)
         {
+            await _safeManager.CheckDeleteAsync(id);
+            //
             await _safeRepository.DeleteAsync(id);
         }
 
@@ -59,6 +65,9 @@ namespace MK.Accountancy.Safes
         public virtual async Task<SelectSafeDto> UpdateAsync(Guid id, UpdateSafeDto input)
         {
             var entity = await _safeRepository.GetAsync(id, f => f.Id == id);
+            //
+            await _safeManager.CheckUpdateAsync(id, input.Code, entity, input.SpecialCodeOneId, input.SpecialCodeTwoId);
+            //
             var mappedEntity = ObjectMapper.Map(input,entity);
             await _safeRepository.UpdateAsync(mappedEntity);
             return ObjectMapper.Map<Safe, SelectSafeDto>(mappedEntity);
