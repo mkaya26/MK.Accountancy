@@ -14,6 +14,16 @@
     "Enum:BankAccountType:6": "Investment Account",
     "Enum:InvoiceDetailType:1": "Stock",
     "Enum:InvoiceDetailType:2": "Service",
-    "Enum:InvoiceDetailType:3": "Expense"
+    "Enum:InvoiceDetailType:3": "Expense",
+    "Enum:PaymentType:1": "Cheque",
+    "Enum:PaymentType:2": "Bill",
+    "Enum:PaymentType:3": "Cash",
+    "Enum:PaymentType:4": "Bank",
+    "Enum:PaymentType:5": "Pos",
+    "Enum:DocumentStatu:1": "InPortfolio",
+    "Enum:DocumentStatu:2": "Payable",
+    "Enum:DocumentStatu:3": "Endorsed",
+    "Enum:DocumentStatu:4": "Collected",
+    "Enum:DocumentStatu:5": "Paid"
   }
 }

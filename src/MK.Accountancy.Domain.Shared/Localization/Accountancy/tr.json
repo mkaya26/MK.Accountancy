@@ -14,6 +14,16 @@
     "Enum:BankAccountType:6": "Yatırım Hesabı",
     "Enum:InvoiceDetailType:1": "Stok",
     "Enum:InvoiceDetailType:2": "Hizmet",
-    "Enum:InvoiceDetailType:3": "Masraf"
+    "Enum:InvoiceDetailType:3": "Masraf",
+    "Enum:PaymentType:1": "Çek",
+    "Enum:PaymentType:2": "Senet",
+    "Enum:PaymentType:3": "Nakit",
+    "Enum:PaymentType:4": "Banka",
+    "Enum:PaymentType:5": "Pos",
+    "Enum:DocumentStatu:1": "Portföyde",
+    "Enum:DocumentStatu:2": "Ödenecek",
+    "Enum:DocumentStatu:3": "Ciro Edildi",
+    "Enum:DocumentStatu:4": "Tahsil Edildi",
+    "Enum:DocumentStatu:5": "Ödendi"
   }
 }

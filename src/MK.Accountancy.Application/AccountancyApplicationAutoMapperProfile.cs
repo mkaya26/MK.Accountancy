@@ -162,5 +162,30 @@ public class AccountancyApplicationAutoMapperProfile : Profile
                                            .Sum(i => i.Price)));
         CreateMap<CreateSafeDto, Safe>();
         CreateMap<UpdateSafeDto, Safe>();
+        //
+        CreateMap<Receipt, SelectReceiptDto>()
+            .ForMember(x => x.CurrentCode, y => y.MapFrom(z => z.Current.Code))
+            .ForMember(x => x.CurrentName, y => y.MapFrom(z => z.Current.Name))
+            .ForMember(x => x.SafeName, y => y.MapFrom(z => z.Safe.Name))
+            .ForMember(x => x.BankAccountName, y => y.MapFrom(z => z.BankAccount.Name))
+            .ForMember(x => x.DepartmentName, y => y.MapFrom(z => z.Department.Name))
+            .ForMember(x => x.SpecialCodeOneName, y => y.MapFrom(z => z.SpecialCodeOne.Name))
+            .ForMember(x => x.SpecialCodeTwoName, y => y.MapFrom(z => z.SpecialCodeTwo.Name));
+        CreateMap<Receipt, ListReceiptDto>()
+            .ForMember(x => x.CurrentName, y => y.MapFrom(z => z.Current.Name))
+            .ForMember(x => x.SafeName, y => y.MapFrom(z => z.Safe.Name))
+            .ForMember(x => x.BankAccountName, y => y.MapFrom(z => z.BankAccount.Name))
+            .ForMember(x => x.SpecialCodeOneName, y => y.MapFrom(z => z.SpecialCodeOne.Name))
+            .ForMember(x => x.SpecialCodeTwoName, y => y.MapFrom(z => z.SpecialCodeTwo.Name));
+        CreateMap<CreateReceiptDto, Receipt>();
+        CreateMap<UpdateReceiptDto, Receipt>()
+            .ForMember(x => x.ReceiptDetails, y => y.Ignore());
+        //
+        CreateMap<ReceiptDetail, SelectReceiptDetailDto>()
+            .ForMember(x => x.ChequeBankName, y => y.MapFrom(z => z.ChequeBank.Name))
+            .ForMember(x => x.ChequeBankDepartmentName, y => y.MapFrom(z =>                         z.ChequeBankDepartment.Name))
+            .ForMember(x => x.SafeName, y => y.MapFrom(z => z.Safe.Name))
+            .ForMember(x => x.BankAccountIdName, y => y.MapFrom(z => z.BankAccount.Name));
+        CreateMap<ReceiptDetailDto, ReceiptDetail>();
     }
 }

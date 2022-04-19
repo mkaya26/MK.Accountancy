@@ -7,6 +7,7 @@ namespace MK.Accountancy.Receipts
     {
         public Guid ReceiptId { get; set; }
         public PaymentType PaymentType { get; set; }
+        public string PaymentTypeName { get; set; }
         public string TrackingNumber { get; set; }
         public Guid? ChequeBankId { get; set; }
         public string ChequeBankName { get; set; }
