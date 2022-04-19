@@ -3,6 +3,7 @@ using MK.Accountancy.BankAccounts;
 using MK.Accountancy.BankDepartments;
 using MK.Accountancy.Banks;
 using MK.Accountancy.Currents;
+using MK.Accountancy.Expenses;
 using MK.Accountancy.Invoices;
 using MK.Accountancy.Receipts;
 using MK.Accountancy.Safes;
@@ -187,5 +188,22 @@ public class AccountancyApplicationAutoMapperProfile : Profile
             .ForMember(x => x.SafeName, y => y.MapFrom(z => z.Safe.Name))
             .ForMember(x => x.BankAccountIdName, y => y.MapFrom(z => z.BankAccount.Name));
         CreateMap<ReceiptDetailDto, ReceiptDetail>();
+        //
+        CreateMap<Expense, SelectExpenseDto>()
+            .ForMember(x => x.SpecialCodeOneName, y => y.MapFrom(z => z.SpecialCodeOne.Name))
+            .ForMember(x => x.SpecialCodeTwoName, y => y.MapFrom(z => z.SpecialCodeTwo.Name))
+            .ForMember(x => x.UnitName, y => y.MapFrom(z => z.Unit.Name));
+        CreateMap<Expense, ListExpenseDto>()
+            .ForMember(x => x.SpecialCodeOneName, y => y.MapFrom(z => z.SpecialCodeOne.Name))
+            .ForMember(x => x.SpecialCodeTwoName, y => y.MapFrom(z => z.SpecialCodeTwo.Name))
+            .ForMember(x => x.UnitName, y => y.MapFrom(z => z.Unit.Name))
+            .ForMember(x => x.AmountInput, y => y.MapFrom(x => x.InvoiceDetails
+                                           .Where(f => f.Invoice.InvoiceType == InvoiceType.Buy)
+                                           .Sum(i => i.Quantity)))
+            .ForMember(x => x.OutputAmount, y => y.MapFrom(x => x.InvoiceDetails
+                                           .Where(f => f.Invoice.InvoiceType == InvoiceType.Sell)
+                                           .Sum(i => i.Quantity)));
+        CreateMap<CreateExpenseDto, Expense>();
+        CreateMap<UpdateExpenseDto, Expense>();
     }
 }
