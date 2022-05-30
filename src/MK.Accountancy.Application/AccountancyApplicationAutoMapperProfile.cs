@@ -5,9 +5,12 @@ using MK.Accountancy.Banks;
 using MK.Accountancy.Currents;
 using MK.Accountancy.Expenses;
 using MK.Accountancy.Invoices;
+using MK.Accountancy.Parameters;
 using MK.Accountancy.Receipts;
 using MK.Accountancy.Safes;
 using MK.Accountancy.Services;
+using MK.Accountancy.SpecialCodes;
+using MK.Accountancy.Stocks;
 using MK.Accountancy.Stores;
 using MK.Accountancy.Terms;
 using MK.Accountancy.Units;
@@ -205,5 +208,34 @@ public class AccountancyApplicationAutoMapperProfile : Profile
                                            .Sum(i => i.Quantity)));
         CreateMap<CreateExpenseDto, Expense>();
         CreateMap<UpdateExpenseDto, Expense>();
+        //
+        CreateMap<SpecialCode, SelectSpecialCodeDto>();
+        CreateMap<SpecialCode, ListSpecialCodeDto>();
+        CreateMap<CreateSpecialCodeDto, SpecialCode>();
+        CreateMap<UpdateSpecialCodeDto, SpecialCode>();
+        //
+        CreateMap<OrganizationParameter, SelectOrganizationParameterDto>()
+    .ForMember(x => x.DepartmentName, y => y.MapFrom(z => z.Department.Name))
+    .ForMember(x => x.TermName, y => y.MapFrom(z => z.Term.Name))
+    .ForMember(x => x.StoryName, y => y.MapFrom(z => z.Store.Name));
+        CreateMap<CreateOrganizationParameterDto, OrganizationParameter>();
+        CreateMap<UpdateOrganizationParameterDto, OrganizationParameter>();
+        //
+        CreateMap<Stock, SelectStockDto>()
+            .ForMember(x => x.SpecialCodeOneName, y => y.MapFrom(z => z.SpecialCodeOne.Name))
+            .ForMember(x => x.SpecialCodeTwoName, y => y.MapFrom(z => z.SpecialCodeTwo.Name))
+            .ForMember(x => x.UnitName, y => y.MapFrom(z => z.Unit.Name));
+        CreateMap<Stock, ListStockDto>()
+            .ForMember(x => x.SpecialCodeOneName, y => y.MapFrom(z => z.SpecialCodeOne.Name))
+            .ForMember(x => x.SpecialCodeTwoName, y => y.MapFrom(z => z.SpecialCodeTwo.Name))
+            .ForMember(x => x.UnitName, y => y.MapFrom(z => z.Unit.Name))
+            .ForMember(x => x.InStock, y => y.MapFrom(x => x.InvoiceDetails
+                                           .Where(f => f.Invoice.InvoiceType == InvoiceType.Buy)
+                                           .Sum(i => i.Quantity)))
+            .ForMember(x => x.OutStock, y => y.MapFrom(x => x.InvoiceDetails
+                                           .Where(f => f.Invoice.InvoiceType == InvoiceType.Sell)
+                                           .Sum(i => i.Quantity)));
+        CreateMap<CreateStockDto, Stock>();
+        CreateMap<UpdateStockDto, Stock>();
     }
 }
