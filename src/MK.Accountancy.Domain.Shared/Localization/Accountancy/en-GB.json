@@ -6,6 +6,8 @@
     "LongWelcomeMessage": "Welcome to the application. This is a startup project based on the ABP framework. For more information, visit abp.io.",
     "Exception:00001": "The {code} code you entered has been used before.",
     "Exception:00002": "The card you are trying to delete has transactions that have been processed. The card cannot be deleted.",
+    "Exception:00003": "The {0} field is required.",
+    "Exception:00004": "The {0} field can be up to {1} characters long.",
     "Enum:BankAccountType:1": "Demand Deposit Account",
     "Enum:BankAccountType:2": "Time Deposit Account",
     "Enum:BankAccountType:3": "Credit Account",
@@ -24,6 +26,14 @@
     "Enum:DocumentStatu:2": "Payable",
     "Enum:DocumentStatu:3": "Endorsed",
     "Enum:DocumentStatu:4": "Collected",
-    "Enum:DocumentStatu:5": "Paid"
+    "Enum:DocumentStatu:5": "Paid",
+    "Code": "Code",
+    "Name": "Name",
+    "BankAccountType": "Bank Account Type",
+    "BankDepartment": "Bank Department",
+    "AccountId": "Account Number",
+    "Iban": "Iban",
+    "Department": "Department",
+    "Description": "Description"
   }
 }

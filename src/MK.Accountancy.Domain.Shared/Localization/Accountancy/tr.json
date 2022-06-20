@@ -6,6 +6,8 @@
     "LongWelcomeMessage": "Uygulamaya hoşgeldiniz. Bu, ABP framework'ü üzerine bina edilmiş bir başlangıç projesidir. Daha fazla bilgi için abp.io adresini ziyaret edebilirsiniz.",
     "Exception:00001": "Girmiş olduğunuz {code} kodu daha önce kullanılmıştır.",
     "Exception:00002": "Silmeye çalıştığınız kartın işlem görmüş hareketleri var. Kart silinemez.",
+    "Exception:00003": "{0} alanı zorunludur.",
+    "Exception:00004": "{0} alanı maksimum {1} karakter uzunluğunda olabilir.",
     "Enum:BankAccountType:1": "Vadesiz Mevduat Hesabı",
     "Enum:BankAccountType:2": "Vadeli Mevduat Hesabı",
     "Enum:BankAccountType:3": "Kredi Hesabı",
@@ -24,6 +26,14 @@
     "Enum:DocumentStatu:2": "Ödenecek",
     "Enum:DocumentStatu:3": "Ciro Edildi",
     "Enum:DocumentStatu:4": "Tahsil Edildi",
-    "Enum:DocumentStatu:5": "Ödendi"
+    "Enum:DocumentStatu:5": "Ödendi",
+    "Code": "Kod",
+    "Name": "Ad",
+    "BankAccountType": "Banka Hesap Tipi",
+    "BankDepartment": "Banka Şubesi",
+    "AccountId": "Hesap Numarası",
+    "Iban": "Iban",
+    "Department": "Şube",
+    "Description": "Açıklama"
   }
 }

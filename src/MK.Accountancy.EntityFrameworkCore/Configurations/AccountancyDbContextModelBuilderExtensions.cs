@@ -49,7 +49,7 @@ namespace MK.Accountancy.Configurations
 
                 b.Property(x => x.Description)
                 .HasColumnType(SqlDbType.VarChar.ToString())
-                .HasMaxLength(EntityConst.MacDescriptionLength);
+                .HasMaxLength(EntityConst.MaxDescriptionLength);
 
                 b.Property(x => x.Active)
                 .HasColumnType(SqlDbType.Bit.ToString());
@@ -97,7 +97,7 @@ namespace MK.Accountancy.Configurations
 
                 b.Property(x => x.Description)
                 .HasColumnType(SqlDbType.VarChar.ToString())
-                .HasMaxLength(EntityConst.MacDescriptionLength);
+                .HasMaxLength(EntityConst.MaxDescriptionLength);
 
                 b.Property(x => x.Active)
                 .HasColumnType(SqlDbType.Bit.ToString());
@@ -169,7 +169,7 @@ namespace MK.Accountancy.Configurations
 
                 b.Property(x => x.Description)
                 .HasColumnType(SqlDbType.VarChar.ToString())
-                .HasMaxLength(EntityConst.MacDescriptionLength);
+                .HasMaxLength(EntityConst.MaxDescriptionLength);
 
                 b.Property(x => x.Active)
                 .HasColumnType(SqlDbType.Bit.ToString());
@@ -224,7 +224,7 @@ namespace MK.Accountancy.Configurations
 
                 b.Property(x => x.Description)
                 .HasColumnType(SqlDbType.VarChar.ToString())
-                .HasMaxLength(EntityConst.MacDescriptionLength);
+                .HasMaxLength(EntityConst.MaxDescriptionLength);
 
                 b.Property(x => x.Active)
                 .HasColumnType(SqlDbType.Bit.ToString());
@@ -287,7 +287,7 @@ namespace MK.Accountancy.Configurations
 
                 b.Property(x => x.Description)
                 .HasColumnType(SqlDbType.VarChar.ToString())
-                .HasMaxLength(EntityConst.MacDescriptionLength);
+                .HasMaxLength(EntityConst.MaxDescriptionLength);
 
                 b.Property(x => x.Active)
                 .HasColumnType(SqlDbType.Bit.ToString());
@@ -338,7 +338,7 @@ namespace MK.Accountancy.Configurations
 
                 b.Property(x => x.Description)
                 .HasColumnType(SqlDbType.VarChar.ToString())
-                .HasMaxLength(EntityConst.MacDescriptionLength);
+                .HasMaxLength(EntityConst.MaxDescriptionLength);
 
                 b.Property(x => x.Active)
                 .HasColumnType(SqlDbType.Bit.ToString());
@@ -383,7 +383,7 @@ namespace MK.Accountancy.Configurations
 
                 b.Property(x => x.Description)
                 .HasColumnType(SqlDbType.VarChar.ToString())
-                .HasMaxLength(EntityConst.MacDescriptionLength);
+                .HasMaxLength(EntityConst.MaxDescriptionLength);
 
                 b.Property(x => x.Active)
                 .HasColumnType(SqlDbType.Bit.ToString());
@@ -464,7 +464,7 @@ namespace MK.Accountancy.Configurations
 
                 b.Property(x => x.Description)
                 .HasColumnType(SqlDbType.VarChar.ToString())
-                .HasMaxLength(EntityConst.MacDescriptionLength);
+                .HasMaxLength(EntityConst.MaxDescriptionLength);
 
                 b.Property(x => x.Active)
                 .HasColumnType(SqlDbType.Bit.ToString());
@@ -565,7 +565,7 @@ namespace MK.Accountancy.Configurations
 
                 b.Property(x => x.Description)
                 .HasColumnType(SqlDbType.VarChar.ToString())
-                .HasMaxLength(EntityConst.MacDescriptionLength);
+                .HasMaxLength(EntityConst.MaxDescriptionLength);
 
                 #endregion
 
@@ -689,7 +689,7 @@ namespace MK.Accountancy.Configurations
 
                 b.Property(x => x.Description)
                 .HasColumnType(SqlDbType.VarChar.ToString())
-                .HasMaxLength(EntityConst.MacDescriptionLength);
+                .HasMaxLength(EntityConst.MaxDescriptionLength);
 
                 b.Property(x => x.Active)
                 .HasColumnType(SqlDbType.Bit.ToString());
@@ -748,7 +748,7 @@ namespace MK.Accountancy.Configurations
 
                 b.Property(x => x.Description)
                 .HasColumnType(SqlDbType.VarChar.ToString())
-                .HasMaxLength(EntityConst.MacDescriptionLength);
+                .HasMaxLength(EntityConst.MaxDescriptionLength);
 
                 b.Property(x => x.Active)
                 .HasColumnType(SqlDbType.Bit.ToString());
@@ -841,7 +841,7 @@ namespace MK.Accountancy.Configurations
 
                 b.Property(x => x.Description)
                 .HasColumnType(SqlDbType.VarChar.ToString())
-                .HasMaxLength(EntityConst.MacDescriptionLength);
+                .HasMaxLength(EntityConst.MaxDescriptionLength);
 
                 b.Property(x => x.Active)
                 .HasColumnType(SqlDbType.Bit.ToString());
@@ -948,7 +948,7 @@ namespace MK.Accountancy.Configurations
 
                 b.Property(x => x.Description)
                 .HasColumnType(SqlDbType.VarChar.ToString())
-                .HasMaxLength(EntityConst.MacDescriptionLength);
+                .HasMaxLength(EntityConst.MaxDescriptionLength);
 
                 #endregion
 
@@ -1003,7 +1003,7 @@ namespace MK.Accountancy.Configurations
 
                 b.Property(x => x.Description)
                 .HasColumnType(SqlDbType.VarChar.ToString())
-                .HasMaxLength(EntityConst.MacDescriptionLength);
+                .HasMaxLength(EntityConst.MaxDescriptionLength);
 
                 b.Property(x => x.Name)
                 .IsRequired()
@@ -1078,7 +1078,7 @@ namespace MK.Accountancy.Configurations
 
                 b.Property(x => x.Description)
                 .HasColumnType(SqlDbType.VarChar.ToString())
-                .HasMaxLength(EntityConst.MacDescriptionLength);
+                .HasMaxLength(EntityConst.MaxDescriptionLength);
 
                 b.Property(x => x.Active)
                 .HasColumnType(SqlDbType.Bit.ToString());
@@ -1134,7 +1134,7 @@ namespace MK.Accountancy.Configurations
 
                 b.Property(x => x.Description)
                 .HasColumnType(SqlDbType.VarChar.ToString())
-                .HasMaxLength(EntityConst.MacDescriptionLength);
+                .HasMaxLength(EntityConst.MaxDescriptionLength);
 
                 b.Property(x => x.Active)
                 .HasColumnType(SqlDbType.Bit.ToString());
@@ -1182,7 +1182,7 @@ namespace MK.Accountancy.Configurations
 
                 b.Property(x => x.Description)
                 .HasColumnType(SqlDbType.VarChar.ToString())
-                .HasMaxLength(EntityConst.MacDescriptionLength);
+                .HasMaxLength(EntityConst.MaxDescriptionLength);
 
                 b.Property(x => x.Active)
                 .HasColumnType(SqlDbType.Bit.ToString());
