@@ -34,6 +34,7 @@
     "AccountId": "Account Number",
     "Iban": "Iban",
     "Department": "Department",
-    "Description": "Description"
+    "Description": "Description",
+    "Bank": "Bank"
   }
 }

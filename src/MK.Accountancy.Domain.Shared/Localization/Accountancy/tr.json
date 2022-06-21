@@ -34,6 +34,7 @@
     "AccountId": "Hesap Numarası",
     "Iban": "Iban",
     "Department": "Şube",
-    "Description": "Açıklama"
+    "Description": "Açıklama",
+    "Bank": "Banka"
   }
 }
