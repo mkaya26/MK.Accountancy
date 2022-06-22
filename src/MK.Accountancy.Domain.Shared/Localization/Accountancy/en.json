@@ -35,6 +35,8 @@
     "Iban": "Iban",
     "Department": "Department",
     "Description": "Description",
-    "Bank": "Bank"
+    "Bank": "Bank",
+    "TaxOffice": "Tax Office",
+    "TaxNumber": "Tax Number"
   }
 }

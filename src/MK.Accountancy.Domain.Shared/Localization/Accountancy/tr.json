@@ -35,6 +35,8 @@
     "Iban": "Iban",
     "Department": "Şube",
     "Description": "Açıklama",
-    "Bank": "Banka"
+    "Bank": "Banka",
+    "TaxOffice": "Vergi Dairesi",
+    "TaxNumber": "Vergi Numarası"
   }
 }
