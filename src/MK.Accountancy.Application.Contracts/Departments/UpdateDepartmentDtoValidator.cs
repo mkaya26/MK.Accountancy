@@ -5,10 +5,11 @@ using MK.Accountancy.Localization;
 
 namespace MK.Accountancy.Departments
 {
-    public class CreateDepartmentDtoValidator : AbstractValidator<CreateDepartmentDto>
+    public class UpdateDepartmentDtoValidator : AbstractValidator<UpdateDepartmentDto>
     {
-        public CreateDepartmentDtoValidator(IStringLocalizer<AccountancyResource> localizer)
+        public UpdateDepartmentDtoValidator(IStringLocalizer<AccountancyResource> localizer)
         {
+
             RuleFor(x => x.Code)
                 .NotEmpty()
                 .WithMessage(localizer[AccountancyDomainErrorCodes.Required, localizer["Code"]])
