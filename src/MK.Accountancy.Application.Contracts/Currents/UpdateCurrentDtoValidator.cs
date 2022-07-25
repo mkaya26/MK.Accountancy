@@ -32,6 +32,14 @@ namespace MK.Accountancy.Currents
             RuleFor(x => x.TaxNumber)
                 .MaximumLength(CurrentConst.MaxTaxNumberLength)
                 .WithMessage(localizer[AccountancyDomainErrorCodes.MaxLength, localizer["TaxNumber"], CurrentConst.MaxTaxNumberLength]);
+            //
+            RuleFor(x => x.Telephone)
+                .MaximumLength(EntityConst.MaxTelephoneLength)
+                .WithMessage(localizer[AccountancyDomainErrorCodes.MaxLength, localizer["Telephone"], EntityConst.MaxTelephoneLength]);
+            //
+            RuleFor(x => x.Address)
+                .MaximumLength(EntityConst.MaxAddressLength)
+                .WithMessage(localizer[AccountancyDomainErrorCodes.MaxLength, localizer["Address"], EntityConst.MaxAddressLength]);
         }
     }
 }

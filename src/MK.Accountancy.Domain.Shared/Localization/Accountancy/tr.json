@@ -37,6 +37,8 @@
     "Description": "Açıklama",
     "Bank": "Banka",
     "TaxOffice": "Vergi Dairesi",
-    "TaxNumber": "Vergi Numarası"
+    "TaxNumber": "Vergi Numarası",
+    "Telephone": "Telefon",
+    "Address": "Adres"
   }
 }

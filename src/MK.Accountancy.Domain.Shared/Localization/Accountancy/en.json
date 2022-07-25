@@ -37,6 +37,8 @@
     "Description": "Description",
     "Bank": "Bank",
     "TaxOffice": "Tax Office",
-    "TaxNumber": "Tax Number"
+    "TaxNumber": "Tax Number",
+    "Telephone": "Telephone",
+    "Address": "Address"
   }
 }
