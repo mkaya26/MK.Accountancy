@@ -8,6 +8,7 @@
     "Exception:00002": "The card you are trying to delete has transactions that have been processed. The card cannot be deleted.",
     "Exception:00003": "The {0} field is required.",
     "Exception:00004": "The {0} field can be up to {1} characters long.",
+    "Exception:00005": "The {0} field value must be greater than {1} or {2}.",
     "Enum:BankAccountType:1": "Demand Deposit Account",
     "Enum:BankAccountType:2": "Time Deposit Account",
     "Enum:BankAccountType:3": "Credit Account",
@@ -39,6 +40,11 @@
     "TaxOffice": "Tax Office",
     "TaxNumber": "Tax Number",
     "Telephone": "Telephone",
-    "Address": "Address"
+    "Address": "Address",
+    "ValueAddedTaxRate": "Tax Rate",
+    "ToZero": "To Zero",
+    "ThanZero": "Than Zero",
+    "UnitPrice": "Unit Price",
+    "Unit": "Unit"
   }
 }
