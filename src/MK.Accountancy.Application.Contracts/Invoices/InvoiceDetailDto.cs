@@ -3,7 +3,7 @@ using Volo.Abp.Application.Dtos;
 
 namespace MK.Accountancy.Invoices
 {
-    public class InvoiceDetailDto : EntityDto<Guid>
+    public class InvoiceDetailDto : EntityDto<Guid?>
     {
         public InvoiceDetailType? InvoiceDetailType { get; set; }
         public string InvoiceDetailName { get; set; }

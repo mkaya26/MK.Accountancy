@@ -8,7 +8,7 @@ namespace MK.Accountancy.Invoices
     {
         public string InvoiceNumber { get; set; }
         public DateTime InvoiceDate { get; set; }
-        public Guid CurrentId { get; set; }
+        public Guid? CurrentId { get; set; }
         public decimal? GrandTotal { get; set; }
         public decimal? DiscountTotal { get; set; }
         public decimal? SubTotal { get; set; }

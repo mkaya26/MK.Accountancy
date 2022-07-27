@@ -47,6 +47,26 @@
     "UnitPrice": "Birim Fiyat",
     "Unit": "Birim",
     "SpecialCodeType": "Özel Kod Tipi",
-    "CardType": "Kart Tipi"
+    "CardType": "Kart Tipi",
+    "InvoiceType": "Fatura Tipi",
+    "InvoiceNumber": "Fatura No",
+    "GrandTotal": "Genel Toplam",
+    "DiscountTotal": "İskonto",
+    "SubTotal": "Ara Toplam",
+    "TaxAmount": "Kdv Toplam",
+    "Netamount": "Kdv Hariç Tutar",
+    "MovementNumber": "Hareket No",
+    "Current": "Cari",
+    "InvoiceDetailType": "Fatura Detay Tipi",
+    "Stock": "Stok",
+    "Service": "Hizmet",
+    "Expense": "Masraf",
+    "Store": "Depo",
+    "Quantity": "Miktar",
+    "GrossAmount": "Brüt Toplam",
+    "DiscountAmount": "İskonto Toplam",
+    "TaxRate": "Kdv Oranı",
+    "TaxTotal": "Kdv Toplam",
+    "NetTotal": "Net Toplam"
   }
 }

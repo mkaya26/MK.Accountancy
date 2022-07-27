@@ -47,6 +47,27 @@
     "UnitPrice": "Unit Price",
     "Unit": "Unit",
     "SpecialCodeType": "Special Code Type",
-    "CardType": "Card Type"
+    "CardType": "Card Type",
+    "InvoiceType": "Invoice Type",
+    "InvoiceNumber": "Invoice Number",
+    "GrandTotal": "Grand Total",
+    "DiscountTotal": "Discount Total",
+    "SubTotal": "Sub Total",
+    "TaxAmount": "Tax Amount",
+    "Netamount": "Netamount",
+    "MovementNumber": "Movement Number",
+    "Current": "Current",
+    "InvoiceDetailType": "Invoice Detail Type",
+    "Stock": "Stock",
+    "Service": "Service",
+    "Expense": "Expense",
+    "Store": "Store",
+    "Quantity": "Quantity",
+    "GrossAmount": "Gross Amount",
+    "DiscountAmount": "Discount Amount",
+    "TaxRate": "Tax Rate",
+    "TaxTotal": "Tax Total",
+    "NetTotal": "Net Total",
+    "Date": "Date"
   }
 }
