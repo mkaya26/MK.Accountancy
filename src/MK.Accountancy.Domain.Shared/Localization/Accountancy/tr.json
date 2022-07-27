@@ -45,6 +45,8 @@
     "ToZero": "Sıfıra",
     "ThanZero": "Sıfırdan",
     "UnitPrice": "Birim Fiyat",
-    "Unit": "Birim"
+    "Unit": "Birim",
+    "SpecialCodeType": "Özel Kod Tipi",
+    "CardType": "Kart Tipi"
   }
 }

@@ -45,6 +45,8 @@
     "ToZero": "To Zero",
     "ThanZero": "Than Zero",
     "UnitPrice": "Unit Price",
-    "Unit": "Unit"
+    "Unit": "Unit",
+    "SpecialCodeType": "Special Code Type",
+    "CardType": "Card Type"
   }
 }
