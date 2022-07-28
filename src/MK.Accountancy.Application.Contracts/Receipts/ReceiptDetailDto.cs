@@ -3,7 +3,7 @@ using Volo.Abp.Application.Dtos;
 
 namespace MK.Accountancy.Receipts
 {
-    public class ReceiptDetailDto : EntityDto<Guid>
+    public class ReceiptDetailDto : EntityDto<Guid?>
     {
         public PaymentType? PaymentType { get; set; }
         public string TrackingNumber { get; set; }

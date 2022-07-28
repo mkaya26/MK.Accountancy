@@ -11,7 +11,7 @@ namespace MK.Accountancy.Invoices
         {
             RuleFor(x => x.Id)
                 .Must(x => x.HasValue && x.Value != Guid.Empty)
-                .WithMessage(localizer[AccountancyDomainErrorCodes.Required, localizer["Current"]]);
+                .WithMessage(localizer[AccountancyDomainErrorCodes.Required, localizer["Id"]]);
             //
             RuleFor(x => x.InvoiceDetailType)
                 .IsInEnum()

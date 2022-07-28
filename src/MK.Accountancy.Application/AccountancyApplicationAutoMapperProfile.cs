@@ -184,6 +184,7 @@ public class AccountancyApplicationAutoMapperProfile : Profile
             .ForMember(x => x.SpecialCodeTwoName, y => y.MapFrom(z => z.SpecialCodeTwo.Name));
         CreateMap<CreateReceiptDto, Receipt>();
         CreateMap<UpdateReceiptDto, Receipt>()
+            .ForMember(x => x.ReceiptType, y => y.Ignore())
             .ForMember(x => x.ReceiptDetails, y => y.Ignore());
         //
         CreateMap<ReceiptDetail, SelectReceiptDetailDto>()
