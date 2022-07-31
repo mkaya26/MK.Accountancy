@@ -35,9 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MK.Accountancy.DbMigrator",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MK.Accountancy.Blazor", "src\MK.Accountancy.Blazor\MK.Accountancy.Blazor.csproj", "{16F0BF4E-7D73-4278-8D9A-7CDE37105C6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Example", "Template.Example\Template.Example.csproj", "{EF82BCA5-2A32-4446-9FC7-22381FB5A92F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.Example", "Template.Example\Template.Example.csproj", "{EF82BCA5-2A32-4446-9FC7-22381FB5A92F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MK.Blazor.Core", "src\MK.Blazor.Core\MK.Blazor.Core.csproj", "{8A656369-B7B5-49B1-962D-DE37295DEFD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MK.Blazor.Core", "src\MK.Blazor.Core\MK.Blazor.Core.csproj", "{8A656369-B7B5-49B1-962D-DE37295DEFD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

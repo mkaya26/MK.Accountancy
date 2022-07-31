@@ -136,6 +136,7 @@ public class AccountancyBlazorModule : AbpModule
                     //You can remove the following line if you don't use Blazor CSS isolation for components
                     bundle.AddFiles("/MK.Accountancy.Blazor.styles.css");
                     bundle.AddFiles("/_content/DevExpress.Blazor/dx-blazor.bs5.css");
+                    bundle.AddFiles("/_content/MK.Blazor.Core/css/component.css");
                 }
             );
 
