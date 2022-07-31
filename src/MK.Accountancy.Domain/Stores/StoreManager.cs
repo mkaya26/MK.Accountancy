@@ -20,7 +20,7 @@ namespace MK.Accountancy.Stores
             _departmentRepository = departmentRepository;
         }
 
-        public async Task CheckCreateAsync(string code, Guid? specialCodeOneId, Guid? specialCodeTwoId,Guid departmentId)
+        public async Task CheckCreateAsync(string code, Guid? specialCodeOneId, Guid? specialCodeTwoId,Guid? departmentId)
         {
             await _departmentRepository.EntityAnyAsync(departmentId, x => x.Id == departmentId);
             await _storeRepository.CodeAnyAsync(code, x => x.Code == code && x.DepartmentId == departmentId);

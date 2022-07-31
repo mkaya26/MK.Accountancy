@@ -92,6 +92,15 @@ public class AccountancyBlazorModule : AbpModule
         ConfigureBlazorise(context);
         ConfigureRouter(context);
         ConfigureMenu(context);
+        ConfigureDevExpress(context);
+    }
+
+    private void ConfigureDevExpress(ServiceConfigurationContext context)
+    {
+        context.Services.AddDevExpressBlazor();
+        context.Services.Configure<DevExpress.Blazor.Configuration.GlobalOptions>(options => {
+            options.BootstrapVersion = DevExpress.Blazor.BootstrapVersion.v5;
+        });
     }
 
     private void ConfigureUrls(IConfiguration configuration)
@@ -121,11 +130,24 @@ public class AccountancyBlazorModule : AbpModule
                 BlazorBasicThemeBundles.Styles.Global,
                 bundle =>
                 {
+                    bundle.AddFiles("/css/blazing_berry/bootstrap.min.css");
+                    bundle.AddFiles("/css/site.css");
                     bundle.AddFiles("/blazor-global-styles.css");
                     //You can remove the following line if you don't use Blazor CSS isolation for components
                     bundle.AddFiles("/MK.Accountancy.Blazor.styles.css");
+                    bundle.AddFiles("/_content/DevExpress.Blazor/dx-blazor.bs5.css");
                 }
             );
+
+            //JavaScript
+            options.StyleBundles.Configure(
+                BlazorBasicThemeBundles.Scripts.Global,
+                bundle =>
+                {
+
+                }
+            );
+
         });
     }
 
