@@ -15,11 +15,23 @@
                    InputCssClass="@InputCssClass"
                    NullText="@NullText"
                    ReadOnly="@ReadOnly">
-
         </DxTextBox>
     </Template>
-
 </DxGridLayoutItem>
+
+<DevLabel Caption="@Caption"
+          ColumnIndex="ColumnIndex - 2"
+          CssClass="@CaptionCssClass"
+          RowIndex="RowIndex"
+          Visible="Visible && CaptionVisible">
+</DevLabel>
+
+<DevLabel Caption="@SeperateCaption"
+          ColumnIndex="ColumnIndex - 1"
+          CssClass="@CaptionCssClass"
+          RowIndex="RowIndex"
+          Visible="Visible && SeperateCaptionVisible">
+</DevLabel>
 
 @code {
     private DxTextBox _dxTextBox;
@@ -35,6 +47,14 @@
                 return;
             _value = value;
             ValueChanged.InvokeAsync(value);
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(IsFocus && Visible && firstRender)
+        {
+            await _dxTextBox.FocusAsync();
         }
     }
 }
