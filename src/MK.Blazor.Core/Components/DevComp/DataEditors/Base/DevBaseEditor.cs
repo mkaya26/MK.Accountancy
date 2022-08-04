@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace MK.Blazor.Core.Components.DevComp.DataEditors.Base
 {
-    public class DevBaseEditor : DxComponentBase
+    public abstract class DevBaseEditor : DxComponentBase
     {
         [Parameter] public string Caption { get; set; }
         [Parameter] public string CaptionCssClass { get; set; } = "caption";
