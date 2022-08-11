@@ -12,7 +12,7 @@ namespace MK.Blazor.Core.Components.DevComp.DataEditors.Base
         [Parameter] public DataEditorClearButtonDisplayMode ClearButtonDisplayMode { get; set; } = DataEditorClearButtonDisplayMode.Auto;
         [Parameter] public int ColumnIndex { get; set; }
         [Parameter] public int ColumnSpan { get; set; }
-        [Parameter] public string EditorCssClass { get; set; }
+        [Parameter] public virtual string EditorCssClass { get; set; }
         [Parameter] public bool Enabled { get; set; } = true;
         [Parameter] public string InputCssClass { get; set; }
         [Parameter] public bool IsFocus { get; set; }
