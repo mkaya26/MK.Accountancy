@@ -13,3 +13,7 @@
     text-align: right;
     padding-right: 3px !important;
 }
+
+.text-center input {
+    text-align: center;
+}
