@@ -23,7 +23,6 @@
 
   <ItemGroup>
     <Folder Include="Components\Commons\Loadings\" />
-    <Folder Include="Components\DevComp\Utilities\" />
     <Folder Include="Components\DevComp\Templates\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\js\" />
