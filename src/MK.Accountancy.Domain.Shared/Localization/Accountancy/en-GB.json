@@ -90,6 +90,19 @@
     "Endorser": "Endorser",
     "Amount": "Amount",
     "DocumentStatu": "Document Statu",
-    "BillTotal": "Bill Total"
+    "BillTotal": "Bill Total",
+    "New": "New",
+    "AddNewItem": "Add New Item",
+    "Update": "Update",
+    "UpdateSelectedItem": "Update Selected Item",
+    "Delete": "Delete",
+    "DeleteSelectedItem": "Delete Selected Item",
+    "Grouping": "Grouping",
+    "ShowGroupPanel": "Show Group Panel",
+    "Filtering": "Filtering",
+    "ShowFilterRow": "Show Filter Row",
+    "Print": "Print",
+    "ActiveCards": "Active Cards",
+    "PassiveCards": "Passive Cards"
   }
 }

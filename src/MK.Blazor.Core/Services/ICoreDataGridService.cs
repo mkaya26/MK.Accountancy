@@ -10,5 +10,6 @@ namespace MK.Blazor.Core.Services
         public bool ShowFilterRow { get; set; }
         public bool ShowGroupPanel { get; set; }
         public TDataGridItem SelectedItem { get; set; }
+        public bool SelectFirstDataRow { get; set; }
     }
 }

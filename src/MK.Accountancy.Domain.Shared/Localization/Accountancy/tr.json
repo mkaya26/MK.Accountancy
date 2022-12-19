@@ -90,6 +90,19 @@
     "Endorser": "Ciranta",
     "Amount": "Tutar",
     "DocumentStatu": "Belge Statusu",
-    "BillTotal": "Senet Toplam"
+    "BillTotal": "Senet Toplam",
+    "New": "Yeni",
+    "AddNewItem": "Yeni Kayıt Ekle",
+    "Update": "Güncelle",
+    "UpdateSelectedItem": "Seçilen Kaydı Güncelle",
+    "Delete": "Sil",
+    "DeleteSelectedItem": "Seçilen Kaydı Sil",
+    "Grouping": "Grupla",
+    "ShowGroupPanel": "Gruplama Panelini Göster",
+    "Filtering": "Filtrele",
+    "ShowFilterRow": "Filtreleme Panelini Göster",
+    "Print": "Yazdır",
+    "ActiveCards": "Aktif Kartlar",
+    "PassiveCards": "Pasif Kartlar"
   }
 }
