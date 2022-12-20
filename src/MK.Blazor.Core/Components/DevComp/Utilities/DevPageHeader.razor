@@ -14,7 +14,7 @@
 </div>
 
 @code {
-    public string CssClass { get; set; } = "bg-primary text-white";
-    public string TextAlign { get; set; } = "left";
-    public string Caption { get; set; }
+    [Parameter] public string CssClass { get; set; } = "bg-primary text-white";
+    [Parameter] public string TextAlign { get; set; } = "left";
+    [Parameter] public string Caption { get; set; }
 }
