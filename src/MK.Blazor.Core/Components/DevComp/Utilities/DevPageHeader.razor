@@ -1,0 +1,20 @@
+﻿<style>
+    .page-header{
+        padding-bottom:5px;
+        padding-top:5px;
+        padding-left:10px;
+        font-size:1rem;
+        font-weight:500;
+        text-align:@TextAlign;
+    }
+</style>
+
+<div class="page-header @CssClass">
+    @Caption
+</div>
+
+@code {
+    public string CssClass { get; set; } = "bg-primary text-white";
+    public string TextAlign { get; set; } = "left";
+    public string Caption { get; set; }
+}
