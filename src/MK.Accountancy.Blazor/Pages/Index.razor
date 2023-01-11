@@ -1,7 +1,7 @@
 ﻿@page "/"
-@using Volo.Abp.MultiTenancy
-@inherits AccountancyComponentBase
-@inject ICurrentTenant CurrentTenant
+
+@inject IStringLocalizer<AccountancyResource> L
+@inject ICurrentUser CurrentUser
 @inject AuthenticationStateProvider AuthenticationStateProvider
 <div class="container">
     <div class="p-5 text-center">
