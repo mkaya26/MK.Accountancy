@@ -10,6 +10,5 @@ namespace MK.Accountancy.Units
         public string SpecialCodeOneName { get; set; }
         public string SpecialCodeTwoName { get; set; }
         public string Description { get; set; }
-        public bool Active { get; set; }
     }
 }

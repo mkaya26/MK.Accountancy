@@ -3,6 +3,7 @@ using MK.Accountancy.Blazor.Services.Base;
 using MK.Accountancy.CommonDtos;
 using MK.Accountancy.Localization;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.AspNetCore.Components;
@@ -107,5 +108,23 @@ namespace MK.Accountancy.Blazor.Pages.Base
             return default;
         }
         #endregion
+
+        protected virtual async Task GetListDataSourceAsync()
+        {
+            BaseService.ListDataSource = (await GetListAsync(new TGetListInput
+            {
+                Active = BaseService.IsActiveCards
+            })).Items.ToList();
+            //
+            BaseService.IsLoaded = true;
+        }
+
+        protected override async Task OnParametersSetAsync()
+        {
+            await GetListDataSourceAsync();
+            BaseService.HasChanged = StateHasChanged;
+        }
+
+
     }
 }

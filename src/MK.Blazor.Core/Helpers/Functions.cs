@@ -15,5 +15,10 @@ namespace MK.Blazor.Core.Helpers
                     DisplayName = localizer[$"Enum:{typeof(TEnum).Name}:{t.To<byte>}"]
                 }).ToList();
         }
+
+        public static string[] RowHeights(params string[] rowHeights)
+        {
+            return rowHeights;
+        }
     }
 }

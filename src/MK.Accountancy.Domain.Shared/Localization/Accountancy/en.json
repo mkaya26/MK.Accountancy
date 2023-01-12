@@ -137,6 +137,10 @@
     "IdentityManagement": "Identity Management",
     "Roles": "Roles",
     "Users": "Users",
-    "Settings": "Settings"
+    "Settings": "Settings",
+    "SpecialCodeOneName": "Special Code-1",
+    "SpecialCodeTwoName": "Special Code-2",
+    "PleaseWait": "Please Wait",
+    "Loading": "Loading"
   }
 }

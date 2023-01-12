@@ -137,6 +137,10 @@
     "IdentityManagement": "Kimlik Yönetimi",
     "Roles": "Roller",
     "Users": "Kullanıcılar",
-    "Settings": "Ayarlar"
+    "Settings": "Ayarlar",
+    "SpecialCodeOneName": "Özel Kod-1",
+    "SpecialCodeTwoName": "Özel Kod-2",
+    "PleaseWait": "Lütfen Bekleyin",
+    "Loading": "Yükleniyor"
   }
 }
