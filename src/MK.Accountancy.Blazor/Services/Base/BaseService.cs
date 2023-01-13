@@ -1,10 +1,14 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using DevExpress.Blazor;
+using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 using MK.Accountancy.Localization;
 using MK.Blazor.Core.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
+using Volo.Abp.AspNetCore.Components.Messages;
 
 namespace MK.Accountancy.Blazor.Services.Base
 {
@@ -13,6 +17,8 @@ namespace MK.Accountancy.Blazor.Services.Base
         where TDataSource : class, new()
     {
         public IStringLocalizerFactory StringLocalizerFactory { get; set; }
+        public IUiMessageService MessageService { get; set; }
+
         public ComponentBase DataGrid { get; set; }
         public IList<TDataGridItem> ListDataSource { get; set; }
         public IEnumerable<TDataGridItem> SelectedItems { get; set; }
@@ -29,6 +35,40 @@ namespace MK.Accountancy.Blazor.Services.Base
         public bool EditPageVisible { get; set; }
         public Action HasChanged { get; set; }
         public ComponentBase ActiveEditComponent { get; set; }
+        public bool ShowSelectionCheckBox { get; set; }
+        public async Task ConfirmMessage(string message, Action action, string title = null)
+        {
+            var confirmed = await MessageService.Confirm(message, title);
+            if (confirmed)
+                action();
+        }
+
+        public void ShowListPage(bool firstRender)
+        {
+            if (firstRender)
+            {
+                SelectFirstDataRow = true;
+                return;
+            }
+
+            if(SelectFirstDataRow)
+            {
+                var item = ListDataSource.FirstOrDefault();
+                if(item != null && !ShowSelectionCheckBox)
+                {
+                    SetDataRowSelected(item);
+                }
+            }
+            else
+            {
+                SetDataRowSelected(SelectedItem);
+            }
+        }
+
+        public void SetDataRowSelected(TDataGridItem item)
+        {
+            ((DxDataGrid<TDataGridItem>)DataGrid).SetDataRowSelected(item, true);
+        }
 
         #region Localizer
         private IStringLocalizer _localizer;

@@ -141,6 +141,13 @@
     "SpecialCodeOneName": "Special Code-1",
     "SpecialCodeTwoName": "Special Code-2",
     "PleaseWait": "Please Wait",
-    "Loading": "Loading"
+    "Loading": "Loading",
+    "DeleteConfirmMessage": "The card you selected will be deleted. Do you confirm?",
+    "DeleteConfirmMessageTitle": "Delete Confirmation",
+    "InfoMessageTitle": "Information Message",
+    "SuccessMessageTitle": "Your transaction is successful",
+    "WarningMessageTitle": "Warning!!",
+    "ErrorMessageTitle": "Your transaction is not valid!",
+    "ConfirmationMessageTitle": "Confirm Transaction"
   }
 }

@@ -1,7 +1,9 @@
-﻿using MK.Accountancy.Abstract;
+﻿using DevExpress.Blazor.Internal;
+using MK.Accountancy.Abstract;
 using MK.Accountancy.Blazor.Services.Base;
 using MK.Accountancy.CommonDtos;
 using MK.Accountancy.Localization;
+using MK.Blazor.Core.Helpers;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -125,6 +127,29 @@ namespace MK.Accountancy.Blazor.Pages.Base
             BaseService.HasChanged = StateHasChanged;
         }
 
+        protected override void OnAfterRender(bool firstRender)
+        {
+            BaseService.ShowListPage(firstRender);
+        }
 
+        protected virtual async Task DeleteAsync()
+        {
+            BaseService.SelectFirstDataRow = false;
+            //
+            await BaseService.ConfirmMessage(L["DeleteConfirmMessage"], async () =>
+            {
+                await DeleteAsync(BaseService.SelectedItem.Id);
+                //
+                var deletedEntityIndex = BaseService.ListDataSource.FindIndex(x => x.GetEntityId() == BaseService.SelectedItem.GetEntityId());
+                await GetListDataSourceAsync();
+                //
+                BaseService.HasChanged();
+                //
+                if(BaseService.ListDataSource.Count > 0)
+                {
+                    BaseService.SelectedItem = BaseService.ListDataSource.SetSelectedItem(deletedEntityIndex);
+                }
+            }, L["DeleteConfirmMessageTitle"]);
+        }
     }
 }

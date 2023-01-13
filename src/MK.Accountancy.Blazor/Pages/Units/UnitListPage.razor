@@ -17,7 +17,7 @@
                                <DevListPageToolBar CommonService="Service"
                                                    DataGridService="Service"
                                                    ListPageService="Service"
-                                                   DeleteButtonClick="()=>{}"
+                                                   DeleteButtonClick="async ()=> await DeleteAsync()"
                                                    DeleteButtonEnabled="Service.ListDataSource.Count > 0"
                                                    DeleteButtonVisible="true"
                                                    FilterButtonVisible="true"

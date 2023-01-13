@@ -141,6 +141,13 @@
     "SpecialCodeOneName": "Özel Kod-1",
     "SpecialCodeTwoName": "Özel Kod-2",
     "PleaseWait": "Lütfen Bekleyin",
-    "Loading": "Yükleniyor"
+    "Loading": "Yükleniyor",
+    "DeleteConfirmMessage": "Seçtiğiniz kart silinecektir. Onaylıyor musunuz?",
+    "DeleteConfirmMessageTitle": "Silme Onayı",
+    "InfoMessageTitle": "Bilgi mesajı",
+    "SuccessMessageTitle": "İşlemini başarılı",
+    "WarningMessageTitle": "Dikkat !!",
+    "ErrorMessageTitle": "İşleminiz geçerli değil !",
+    "ConfirmationMessageTitle": "İşlemi onayla"
   }
 }
