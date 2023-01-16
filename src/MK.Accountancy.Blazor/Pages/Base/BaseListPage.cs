@@ -1,10 +1,11 @@
-﻿using DevExpress.Blazor.Internal;
+﻿//using DevExpress.Blazor.Internal;
 using MK.Accountancy.Abstract;
 using MK.Accountancy.Blazor.Services.Base;
 using MK.Accountancy.CommonDtos;
 using MK.Accountancy.Localization;
 using MK.Blazor.Core.Helpers;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
@@ -150,6 +151,77 @@ namespace MK.Accountancy.Blazor.Pages.Base
                     BaseService.SelectedItem = BaseService.ListDataSource.SetSelectedItem(deletedEntityIndex);
                 }
             }, L["DeleteConfirmMessageTitle"]);
+        }
+        protected virtual async Task BeforeInsertAsync()
+        {
+            BaseService.DataSource = new TGetOutputDto();
+
+            var code = typeof(TGetOutputDto).GetProperty("Code");
+            var active = typeof(TGetOutputDto).GetProperty("Active");
+
+            if (code != null)
+                code.SetValue(BaseService.DataSource, await GetCodeAsync(
+                    new TGetCodeInput { Active = BaseService.IsActiveCards }));
+
+            if (active != null)
+                active.SetValue(BaseService.DataSource, BaseService.IsActiveCards);
+
+            BaseService.ShowEditPage();
+
+        }
+
+        protected virtual async Task BeforeUpdateAsync()
+        {
+            //if (!BaseService.IsGrantedUpdate)
+            //{
+            //    BaseService.SelectFirstDataRow = false;
+            //    return;
+            //}
+
+            if (BaseService.ListDataSource.Count == 0) return;
+
+            BaseService.SelectFirstDataRow = false;
+            BaseService.DataSource = await GetAsync(BaseService.SelectedItem.Id);
+            BaseService.EditPageVisible = true;
+            await InvokeAsync(BaseService.HasChanged);
+        }
+
+        protected virtual async Task OnSubmit()
+        {
+            TGetOutputDto result;
+
+            if (BaseService.DataSource.Id == Guid.Empty)
+            {
+                var createInput = ObjectMapper.Map<TGetOutputDto, TCreateInput>(
+                    BaseService.DataSource);
+
+                result = await CreateAsync(createInput);
+            }
+            else
+            {
+                var updateInput = ObjectMapper.Map<TGetOutputDto, TUpdateInput>(
+                    BaseService.DataSource);
+
+                result = await UpdateAsync(BaseService.DataSource.Id, updateInput);
+            }
+
+            if (result == null) return;
+
+            var savedEntityIndex = BaseService.ListDataSource.FindIndex(
+                x => x.Id == BaseService.DataSource.Id);
+
+            await GetListDataSourceAsync();
+            BaseService.HideEditPage();
+
+            if (BaseService.DataSource.Id == Guid.Empty)
+                BaseService.DataSource.Id = result.Id;
+
+            if (savedEntityIndex > -1)
+                BaseService.SelectedItem = BaseService.ListDataSource.
+                    SetSelectedItem(savedEntityIndex);
+            else
+                BaseService.SelectedItem = BaseService.ListDataSource.
+                    GetEntityById(BaseService.DataSource.Id);
         }
     }
 }

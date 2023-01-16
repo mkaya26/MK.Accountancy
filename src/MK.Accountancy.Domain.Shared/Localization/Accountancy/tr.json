@@ -148,6 +148,18 @@
     "SuccessMessageTitle": "İşlemini başarılı",
     "WarningMessageTitle": "Dikkat !!",
     "ErrorMessageTitle": "İşleminiz geçerli değil !",
-    "ConfirmationMessageTitle": "İşlemi onayla"
+    "ConfirmationMessageTitle": "İşlemi onayla",
+    "Cancel": "Vazgeç",
+    "UnitCard": "Birim Kartı",
+    "Save": "Kaydet",
+    "EnterCode": "Kod Girin",
+    "Passive": "Pasif",
+    "Active": "Aktif",
+    "EnterName": "Ad Girin",
+    "SelectCard": "Kart Seçin",
+    "EnterDescription": "Açıklama Girin",
+    "CustomCodeCards": "Özel Kod Kartları",
+    "Select": "Seç",
+    "CustomCard": "Özel Kod Kartı"
   }
 }

@@ -8,5 +8,7 @@
         public string LoadingText { get; }
         public bool IsPopupListPage { get; set; }
         public bool EditPageVisible { get; set; }
+        void ShowEditPage();
+        void HideEditPage();
     }
 }

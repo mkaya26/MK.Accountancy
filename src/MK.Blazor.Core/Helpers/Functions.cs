@@ -20,5 +20,10 @@ namespace MK.Blazor.Core.Helpers
         {
             return rowHeights;
         }
+
+        public static string[] ColumnWidths(params string[] columnWidths)
+        {
+            return columnWidths;
+        }
     }
 }

@@ -12,7 +12,8 @@
                    RowHeights="@RowHeights("*")">
 
                    <ListPageContext>
-                       <DevDataGrid DataGridService="Service">
+                       <DevDataGrid DataGridService="Service"
+                     DoubleClick="async () => await BeforeUpdateAsync()">
                            <HeaderTemplate>
                                <DevListPageToolBar CommonService="Service"
                                                    DataGridService="Service"
@@ -24,9 +25,9 @@
                                                    GetListDataSource="async()=> await GetListDataSourceAsync()"
                                                    GroupButtonVisible="true"
                                                    L="L"
-                                    NewButtonClick="()=>{}"
+                                    NewButtonClick="async ()=> await BeforeInsertAsync()"
                                                    NewButtonVisible="true"
-                                    UpdateButtonClick="()=>{}"
+                                    UpdateButtonClick="async ()=> await BeforeUpdateAsync()"
                                     UpdateButtonEnabled="Service.ListDataSource.Count > 0"
                                                    UpdateButtonVisible="true">
 
@@ -51,6 +52,10 @@
                            </Columns>
                        </DevDataGrid>
                    </ListPageContext>
+    <EditPageContent>
+        <UnitEditPage OnSubmit="OnSubmit" />
+    </EditPageContent>
+                   
 </DevListPageLayout>
 
 @code {

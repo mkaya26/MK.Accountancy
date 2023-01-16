@@ -36,7 +36,7 @@ namespace MK.Accountancy.Units
 
         public virtual async Task<SelectUnitDto> GetAsync(Guid id)
         {
-            var entity = await _unitRepository.GetAsync(id, x => x.Id == id, x => x.SpecialCodeOneId, x => x.SpecialCodeTwoId);
+            var entity = await _unitRepository.GetAsync(id, x => x.Id == id, x => x.SpecialCodeOne, x => x.SpecialCodeTwo);
             return ObjectMapper.Map<Unit, SelectUnitDto>(entity);
         }
 

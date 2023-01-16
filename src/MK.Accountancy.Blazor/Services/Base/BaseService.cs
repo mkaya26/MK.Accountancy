@@ -36,6 +36,8 @@ namespace MK.Accountancy.Blazor.Services.Base
         public Action HasChanged { get; set; }
         public ComponentBase ActiveEditComponent { get; set; }
         public bool ShowSelectionCheckBox { get; set; }
+        public TDataSource DataSource { get; set; }
+
         public async Task ConfirmMessage(string message, Action action, string title = null)
         {
             var confirmed = await MessageService.Confirm(message, title);
@@ -70,6 +72,19 @@ namespace MK.Accountancy.Blazor.Services.Base
             ((DxDataGrid<TDataGridItem>)DataGrid).SetDataRowSelected(item, true);
         }
 
+        public void ShowEditPage()
+        {
+            SelectFirstDataRow = false;
+            EditPageVisible = true;
+            HasChanged();
+        }
+
+        public void HideEditPage()
+        {
+            EditPageVisible = false;
+            HasChanged();
+        }
+
         #region Localizer
         private IStringLocalizer _localizer;
         public IStringLocalizer L 
@@ -81,6 +96,8 @@ namespace MK.Accountancy.Blazor.Services.Base
                 return _localizer;
             } 
         }
+
+        
         #endregion
     }
 }

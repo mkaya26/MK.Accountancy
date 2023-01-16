@@ -148,6 +148,18 @@
     "SuccessMessageTitle": "Your transaction is successful",
     "WarningMessageTitle": "Warning!!",
     "ErrorMessageTitle": "Your transaction is not valid!",
-    "ConfirmationMessageTitle": "Confirm Transaction"
+    "ConfirmationMessageTitle": "Confirm Transaction",
+    "Cancel": "Cancel",
+    "UnitCard": "Unit Card",
+    "Save": "Save",
+    "EnterCode": "Enter Code",
+    "Passive": "Passive",
+    "Active": "Active",
+    "EnterName": "Enter Name",
+    "SelectCard": "Select Card",
+    "EnterDescription": "Enter Description",
+    "CustomCodeCards": "Custom Code Cards",
+    "Select": "Select",
+    "CustomCard": "Custom Card"
   }
 }

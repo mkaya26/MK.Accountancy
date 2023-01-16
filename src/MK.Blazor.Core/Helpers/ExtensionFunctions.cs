@@ -17,5 +17,15 @@
                 return listDataSource[nextIndex];
             return default;
         }
+        public static TEntity GetEntityById<TEntity>(this IList<TEntity> entities, Guid id)
+        {
+            var propertyInfo = typeof(TEntity).GetProperty("Id");
+
+            foreach (var entity in entities)
+                if (propertyInfo.GetValue(entity).Equals(id))
+                    return entity;
+
+            return default;
+        }
     }
 }

@@ -2,5 +2,6 @@
 {
     public interface ICoreEditPageService<TDataSource>
     {
+        public TDataSource DataSource { get; set; }
     }
 }
