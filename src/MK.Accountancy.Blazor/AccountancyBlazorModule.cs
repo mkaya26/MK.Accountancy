@@ -130,7 +130,7 @@ public class AccountancyBlazorModule : AbpModule
                 BlazorBasicThemeBundles.Styles.Global,
                 bundle =>
                 {
-                    bundle.AddFiles("/css/blazing_berry/bootstrap.min.css");
+                    bundle.AddFiles("/css/office_white/bootstrap.min.css");
                     bundle.AddFiles("/css/site.css");
                     bundle.AddFiles("/blazor-global-styles.css");
                     //You can remove the following line if you don't use Blazor CSS isolation for components

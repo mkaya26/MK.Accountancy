@@ -8,6 +8,10 @@
     <CompilerGeneratedFilesOutputPath>GeneratedFiles</CompilerGeneratedFilesOutputPath-->
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="Components\DevComp\Layouts\DevPopupListPageLayout.razor" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <SupportedPlatform Include="browser" />
@@ -24,6 +28,18 @@
   <ItemGroup>
     <Folder Include="Components\DevComp\Templates\" />
     <Folder Include="wwwroot\js\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Components\DevComp\Layouts\DevPopupListPageLayout.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Components\DevComp\Layouts\DevPopupListPageLayout.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Components\DevComp\Layouts\DevPopupListPageLayout.razor" />
   </ItemGroup>
 
 </Project>
