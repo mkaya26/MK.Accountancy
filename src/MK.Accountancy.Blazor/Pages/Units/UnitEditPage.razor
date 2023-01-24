@@ -16,10 +16,10 @@
                        RowCount="4">
             <GridLayoutItems>
                 <MK.Blazor.Core.Components.DevComp.DataEditors.DevTextEdit Caption="@L["Code"]"
-                             ColumnIndex="2"
-                             NullText="@L["EnterCode"]"
-                             RowIndex="0"
-                             @bind-Value="@Service.DataSource.Code">
+                                                                           ColumnIndex="2"
+                                                                           NullText="@L["EnterCode"]"
+                                                                           RowIndex="0"
+                                                                           @bind-Value="@Service.DataSource.Code">
                 </MK.Blazor.Core.Components.DevComp.DataEditors.DevTextEdit>
                 <DevCheckEdit ColumnIndex="6"
                               FalseCaption="@L["Passive"]"
@@ -36,21 +36,23 @@
                              RowIndex="1"
                              @bind-Value="@Service.DataSource.Name">
                 </DevTextEdit>
-                <DevButonEdit ButtonClickInvokeFunction="() => {}"
+                <DevButonEdit ButtonClickInvokeFunction="() => { SpecialCodeService.BeforeShowPopupListPage(SpecialCodeType.SpecialCodeOne,CardType.Unit,Service.DataSource.SpecialCodeOneId);}"
                               Caption="@L["SpecialCodeOneName"]"
-                               ColumnIndex="2"
-                               NullText="@L["SelectCard"]"
-                               RowIndex="2"
-                               Service="SpecialCodeService"
-                               @bind-Value="@Service.DataSource.SpecialCodeOneName">
+                              ColumnIndex="2"
+                              DeleteButtonKeydownInvokeFunction="() =>{ SpecialCodeService.ButtonEditDeleteKeyDown(Service.DataSource, nameof(Service.DataSource.SpecialCodeOneName));}"
+                              NullText="@L["SelectCard"]"
+                              RowIndex="2"
+                              Service="SpecialCodeService"
+                              @bind-Value="@Service.DataSource.SpecialCodeOneName">
                 </DevButonEdit>
-                <DevButonEdit ButtonClickInvokeFunction="() => {}"
+                <DevButonEdit ButtonClickInvokeFunction="() => { SpecialCodeService.BeforeShowPopupListPage(SpecialCodeType.SpecialCodeTwo,CardType.Unit,Service.DataSource.SpecialCodeTwoId);}"
                               Caption="@L["SpecialCodeTwoName"]"
-                               ColumnIndex="6"
-                               NullText="@L["SelectCard"]"
-                               RowIndex="2"
-                               Service="SpecialCodeService"
-                               @bind-Value="@Service.DataSource.SpecialCodeTwoName">
+                              ColumnIndex="6"
+                              DeleteButtonKeydownInvokeFunction="() => { SpecialCodeService.ButtonEditDeleteKeyDown(Service.DataSource, nameof(Service.DataSource.SpecialCodeTwoName));}"
+                              NullText="@L["SelectCard"]"
+                              RowIndex="2"
+                              Service="SpecialCodeService"
+                              @bind-Value="@Service.DataSource.SpecialCodeTwoName">
                 </DevButonEdit>
                 <DevMemoEdit Caption="@L["Description"]"
                              ColumnIndex="2"
@@ -64,3 +66,19 @@
         </DevGridLayout>
     </EditPageContent>
 </DevPopupEditPageLayout>
+
+@if (SpecialCodeService.IsPopupListPage)
+{
+    <DevPopupListPageLayout DataGridService="SpecialCodeService"
+                        CancelButtonText="@L["Cancel"]"
+                        Caption="@L["SpecialCodeCards"]"
+                        Closed="SpecialCodeService.HideListPage"
+                        SelectButtonInvokeFunction="(() => {SpecialCodeService.SelectEntity(Service.DataSource);})"
+                        SelectButtonText="@L["Select"]"
+                        Visible="true"
+                        Width="1000px">
+                        <ListPageContent>
+
+                        </ListPageContent>
+</DevPopupListPageLayout>
+}

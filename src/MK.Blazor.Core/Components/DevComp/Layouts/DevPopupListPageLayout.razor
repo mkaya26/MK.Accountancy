@@ -27,7 +27,7 @@
     </BodyContentTemplate>
 
     <FooterContentTemplate>
-        <DxButton Click="async () => SelectButtonClickAsync()"
+        <DxButton Click="async () => await SelectButtonClickAsync()"
                   Enabled="DataGridService.ShowSelectionCheckBox ? DataGridService.SelectedItems?.Count() > 0 : DataGridService.ListDataSource?.Count > 0"
                   IconCssClass="selectimage"
                   RenderStyle="SelectButtonRenderStyle"

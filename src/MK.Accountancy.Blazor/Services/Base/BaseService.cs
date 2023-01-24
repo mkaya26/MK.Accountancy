@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 using MK.Accountancy.Localization;
+using MK.Blazor.Core.Helpers;
 using MK.Blazor.Core.Services;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,7 @@ namespace MK.Accountancy.Blazor.Services.Base
         public ComponentBase ActiveEditComponent { get; set; }
         public bool ShowSelectionCheckBox { get; set; }
         public TDataSource DataSource { get; set; }
+        public Guid PopupListPageFocusedRowId { get; set; }
 
         public async Task ConfirmMessage(string message, Action action, string title = null)
         {
@@ -51,6 +53,13 @@ namespace MK.Accountancy.Blazor.Services.Base
             {
                 SelectFirstDataRow = true;
                 return;
+            }
+
+            if(PopupListPageFocusedRowId != Guid.Empty)
+            {
+                SelectFirstDataRow = false;
+                SelectedItem = ListDataSource.GetEntityById(PopupListPageFocusedRowId);
+                PopupListPageFocusedRowId = Guid.Empty;
             }
 
             if(SelectFirstDataRow)
@@ -85,6 +94,35 @@ namespace MK.Accountancy.Blazor.Services.Base
             HasChanged();
         }
 
+        public void HideListPage()
+        {
+            IsPopupListPage = false;
+            ShowSelectionCheckBox = false;
+            SelectedItems = null;
+            ((DxTextBox)ActiveEditComponent)?.FocusAsync();
+        }
+
+        public virtual void SelectEntity(IEntityDto targetEntity)
+        {
+            
+        }
+
+        public virtual void BeforeShowPopupListPage(params object[] parameters)
+        {
+            ToolbarCheckBoxVisible = false;
+            IsPopupListPage = true;
+            //
+            if(parameters.Length > 0)
+            {
+                PopupListPageFocusedRowId = parameters[0] == null ? Guid.Empty : (Guid)parameters[0];
+            }
+        }
+
+        public virtual void ButtonEditDeleteKeyDown(IEntityDto entity, string fieldName)
+        {
+
+        }
+
         #region Localizer
         private IStringLocalizer _localizer;
         public IStringLocalizer L 
@@ -96,8 +134,6 @@ namespace MK.Accountancy.Blazor.Services.Base
                 return _localizer;
             } 
         }
-
-        
         #endregion
     }
 }
