@@ -16,7 +16,7 @@ namespace MK.Accountancy.SpecialCodes
 
         public async Task CheckCreateAsync(string code, SpecialCodeType? specialCodeType, CardType? cardType)
         {
-            await _specialCodeRepository.CodeAnyAsync(code,x => x.SpecialCodeType == specialCodeType && x.CardType == cardType);
+            await _specialCodeRepository.CodeAnyAsync(code,x => x.Code == code && x.SpecialCodeType == specialCodeType && x.CardType == cardType);
         }
 
         public async Task CheckUpdateAsync(Guid id, string code, SpecialCode entity)

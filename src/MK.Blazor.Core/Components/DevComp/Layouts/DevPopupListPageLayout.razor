@@ -103,8 +103,8 @@
         });
     }
 
-    protected override Task OnAfterRenderAsync(bool firstRender)
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        return base.OnAfterRenderAsync(firstRender);
+        await InvokeAsync(StateHasChanged);
     }
 }

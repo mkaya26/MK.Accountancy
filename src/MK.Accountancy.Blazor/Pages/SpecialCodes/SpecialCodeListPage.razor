@@ -1,0 +1,61 @@
+﻿@page "/specialcodes"
+
+@inherits BaseListPage<SelectSpecialCodeDto,ListSpecialCodeDto,SpecialCodeListParameterDto,
+                       CreateSpecialCodeDto,UpdateSpecialCodeDto,SpecialCodeParameterDto>
+
+@inject SpecialCodeAppService CrudService
+@inject SpecialCodeService Service
+
+<DevListPageLayout DataGridService="Service"
+                   ListPageService="Service"
+                   Caption="@L["SpecialCodeCards"]"
+                   RowHeights="@RowHeights("*")">
+
+    <ListPageContext>
+        <DevDataGrid DataGridService="Service"
+                     DoubleClick="async () => await BeforeUpdateAsync()">
+            <HeaderTemplate>
+                <DevListPageToolBar CommonService="Service"
+                                    DataGridService="Service"
+                                    ListPageService="Service"
+                                    DeleteButtonClick="async ()=> await DeleteAsync()"
+                                    DeleteButtonEnabled="Service.ListDataSource.Count > 0"
+                                    DeleteButtonVisible="true"
+                                    FilterButtonVisible="true"
+                                    GetListDataSource="async()=> await GetListDataSourceAsync()"
+                                    GroupButtonVisible="true"
+                                    L="L"
+                                    NewButtonClick="async ()=> await BeforeInsertAsync()"
+                                    NewButtonVisible="true"
+                                    UpdateButtonClick="async ()=> await BeforeUpdateAsync()"
+                                    UpdateButtonEnabled="Service.ListDataSource.Count > 0"
+                                    UpdateButtonVisible="true">
+
+                </DevListPageToolBar>
+            </HeaderTemplate>
+            <Columns>
+                <DxDataGridColumn Caption="@L["Code"]"
+                                  Field="@nameof(ListSpecialCodeDto.Code)"
+                                  Width="150px" />
+                <DxDataGridColumn Caption="@L["Name"]"
+                                  Field="@nameof(ListSpecialCodeDto.Name)"
+                                  Width="150px" />
+                <DxDataGridColumn Caption="@L["Description"]"
+                                  Field="@nameof(ListSpecialCodeDto.Description)"
+                                  Width="*" />
+            </Columns>
+        </DevDataGrid>
+    </ListPageContext>
+    <EditPageContent>
+        <SpecialCodeEditPage OnSubmit="OnSubmit" />
+    </EditPageContent>
+
+</DevListPageLayout>
+
+@code {
+    protected override void OnInitialized()
+    {
+        BaseCrudAppService = CrudService;
+        BaseService = Service;
+    }
+}

@@ -191,7 +191,7 @@ public class AccountancyApplicationAutoMapperProfile : Profile
         //
         CreateMap<ReceiptDetail, SelectReceiptDetailDto>()
             .ForMember(x => x.ChequeBankName, y => y.MapFrom(z => z.ChequeBank.Name))
-            .ForMember(x => x.ChequeBankDepartmentName, y => y.MapFrom(z =>                         z.ChequeBankDepartment.Name))
+            .ForMember(x => x.ChequeBankDepartmentName, y => y.MapFrom(z => z.ChequeBankDepartment.Name))
             .ForMember(x => x.SafeName, y => y.MapFrom(z => z.Safe.Name))
             .ForMember(x => x.BankAccountIdName, y => y.MapFrom(z => z.BankAccount.Name));
         CreateMap<ReceiptDetailDto, ReceiptDetail>();
@@ -217,6 +217,8 @@ public class AccountancyApplicationAutoMapperProfile : Profile
         CreateMap<SpecialCode, ListSpecialCodeDto>();
         CreateMap<CreateSpecialCodeDto, SpecialCode>();
         CreateMap<UpdateSpecialCodeDto, SpecialCode>();
+        CreateMap<SelectSpecialCodeDto, CreateSpecialCodeDto>();
+        CreateMap<SelectSpecialCodeDto, UpdateSpecialCodeDto>();
         //
         CreateMap<OrganizationParameter, SelectOrganizationParameterDto>()
     .ForMember(x => x.DepartmentName, y => y.MapFrom(z => z.Department.Name))
