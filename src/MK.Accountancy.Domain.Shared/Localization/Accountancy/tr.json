@@ -162,6 +162,9 @@
     "Select": "Seç",
     "CustomCard": "Özel Kod Kartı",
     "SpecialCodeCards": "Özel Kod Kartları",
-    "SpecialCodeCard": "Özel Kod Kart"
+    "SpecialCodeCard": "Özel Kod Kart",
+    "BankDepartments": "Banka Şubeleri",
+    "BankDepartmentCard": "Banka Şube Kartı",
+    "BankDepartmentCards": "Banka Şube Kartları"
   }
 }
