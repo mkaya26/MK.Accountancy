@@ -46,17 +46,17 @@ namespace MK.Accountancy.BankAccounts
 
         public virtual async Task<string> GetCodeAsync(BankAccountCodeParameterDto input)
         {
-            return await _bankAccountRepository.GetCodeAsync(x => x.Code, x => x.BankDepartmentId == input.DepartmentId && x.Active == input.Active);
+            return await _bankAccountRepository.GetCodeAsync(x => x.Code, x => x.DepartmentId == input.DepartmentId && x.Active == input.Active);
         }
 
         public virtual async Task<PagedResultDto<ListBankAccountDto>> GetListAsync(BankAccountListParameterDto input)
         {
             var entities = await _bankAccountRepository.GetPagedListAsync         (input.SkipCount,input.MaxResultCount, 
                 x=> input.BankAccountType == null ? 
-                    x.BankDepartmentId == input.DepartmentId &&
+                    x.DepartmentId == input.DepartmentId &&
                     x.Active == input.Active :
                     x.BankAccountType == input.BankAccountType &&
-                    x.BankDepartmentId == input.DepartmentId &&
+                    x.DepartmentId == input.DepartmentId &&
                     x.Active == input.Active,
                 x => x.Code,
                 i => i.BankDepartment, 

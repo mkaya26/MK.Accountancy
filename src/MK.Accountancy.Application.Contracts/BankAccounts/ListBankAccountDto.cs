@@ -23,7 +23,6 @@ namespace MK.Accountancy.BankAccounts
         public decimal BalanceReceivable => Receivable - Debt > 0 ? Receivable - Debt : 0;
         public string DepartmentName { get; set; }
         public string Description { get; set; }
-        public bool Active { get; set; }
         public ICollection<SelectReceiptDetailDto> ReceiptDetails { get; set; }
     }
 }

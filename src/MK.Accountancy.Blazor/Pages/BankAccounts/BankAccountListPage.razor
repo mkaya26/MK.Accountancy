@@ -1,0 +1,100 @@
+﻿@page "/bankaccountcards"
+
+@inherits BaseListPage<SelectBankAccountDto,ListBankAccountDto,BankAccountListParameterDto,
+                       CreateBankAccountDto,UpdateBankAccountDto,BankAccountCodeParameterDto>
+
+@inject BankAccountAppService CrudService
+@inject BankAccountService Service
+@inject BankDepartmentService BankDepartentService
+
+<DevListPageLayout DataGridService="Service"
+                   ListPageService="Service"
+                   Caption="@L["BankAccountCards"]"
+                   RowHeights="@RowHeights("*")">
+
+    <ListPageContext>
+        <DevDataGrid DataGridService="Service"
+                     DoubleClick="async () => await BeforeUpdateAsync()"
+                     HorizontalScrollBarMode="ScrollBarMode.Visible">
+            <HeaderTemplate>
+                <DevListPageToolBar CommonService="Service"
+                                    DataGridService="Service"
+                                    ListPageService="Service"
+                                    DeleteButtonClick="async ()=> await DeleteAsync()"
+                                    DeleteButtonEnabled="Service.ListDataSource.Count > 0"
+                                    DeleteButtonVisible="true"
+                                    FilterButtonVisible="true"
+                                    GetListDataSource="async()=> await GetListDataSourceAsync()"
+                                    GroupButtonVisible="true"
+                                    L="L"
+                                    NewButtonClick="async ()=> await BeforeInsertAsync()"
+                                    NewButtonVisible="true"
+                                    UpdateButtonClick="async ()=> await BeforeUpdateAsync()"
+                                    UpdateButtonEnabled="Service.ListDataSource.Count > 0"
+                                    UpdateButtonVisible="true">
+
+                </DevListPageToolBar>
+            </HeaderTemplate>
+            <Columns>
+                <DxDataGridColumn Caption="@L["Code"]"
+                                  Field="@nameof(ListBankAccountDto.Code)"
+                                  Width="150px" />
+                <DxDataGridColumn Caption="@L["Name"]"
+                                  Field="@nameof(ListBankAccountDto.Name)"
+                                  Width="150px" />
+                <DxDataGridSpinEditColumn Caption="@L["Debt"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListBankAccountDto.Debt)"
+                                          Width="110px" />
+                <DxDataGridSpinEditColumn Caption="@L["Receivable"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListBankAccountDto.Receivable)"
+                                          Width="110px" />
+                <DxDataGridSpinEditColumn Caption="@L["DebtBalance"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListBankAccountDto.DebtBalance)"
+                                          Width="110px" />
+                <DxDataGridSpinEditColumn Caption="@L["BalanceReceivable"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListBankAccountDto.BalanceReceivable)"
+                                          Width="110px" />
+                <DxDataGridColumn Caption="@L["AccountType"]"
+                                  Field="@nameof(ListBankAccountDto.BankAccountTypeName)"
+                                  Width="150px" />
+                <DxDataGridColumn Caption="@L["Bank"]"
+                                  Field="@nameof(ListBankAccountDto.BankName)"
+                                  Width="150px" />
+                <DxDataGridColumn Caption="@L["BankDepartment"]"
+                                  Field="@nameof(ListBankAccountDto.BankDepartmentName)"
+                                  Width="150px" />
+                <DxDataGridColumn Caption="@L["AccountNumber"]"
+                                  Field="@nameof(ListBankAccountDto.AccountId)"
+                                  Width="150px" />
+                <DxDataGridColumn Caption="@L["Iban"]"
+                                  Field="@nameof(ListBankAccountDto.Iban)"
+                                  Width="150px" />
+                <DxDataGridColumn Caption="@L["SpecialCodeOneName"]"
+                                  Field="@nameof(ListBankAccountDto.SpecialCodeOneName)"
+                                  Width="150px" />
+                <DxDataGridColumn Caption="@L["SpecialCodeTwoName"]"
+                                  Field="@nameof(ListBankAccountDto.SpecialCodeTwoName)"
+                                  Width="150px" />
+                <DxDataGridColumn Caption="@L["Description"]"
+                                  Field="@nameof(ListBankAccountDto.Description)"
+                                  Width="*" />
+            </Columns>
+        </DevDataGrid>
+    </ListPageContext>
+    <EditPageContent>
+        <BankAccountEditPage OnSubmit="OnSubmit" />
+    </EditPageContent>
+
+</DevListPageLayout>
+
+@code {
+    protected override void OnInitialized()
+    {
+        BaseCrudAppService = CrudService;
+        BaseService = Service;
+    }
+}

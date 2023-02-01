@@ -40,11 +40,11 @@
     private DxComboBox<ComboboxEnumItem<TItem>, TItem> _dxComboBox;
     private string _value;
 
-    [Parameter, EditorRequired] public IEnumerable<ComboboxEnumItem<TItem>> DataSource { get; set; }
+    [Parameter] public IEnumerable<ComboboxEnumItem<TItem>> DataSource { get; set; }
     [Parameter] public string TextFieldName { get; set; }
     [Parameter] public string ValueFieldName { get; set; }
-    public Action<ComboboxEnumItem<TItem>> SelectedItemChanged { get; set; }
-    [Parameter, EditorRequired] public TItem Value { get; set; }
+    [Parameter] public Action<ComboboxEnumItem<TItem>> SelectedItemChanged { get; set; }
+    [Parameter] public TItem Value { get; set; }
 
     [Parameter] public EventCallback<TItem> ValueChanged { get; set; }
 

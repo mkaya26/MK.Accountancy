@@ -12,7 +12,7 @@ namespace MK.Blazor.Core.Helpers
                 .Select(t => new ComboboxEnumItem<TEnum>
                 {
                     Value = t,
-                    DisplayName = localizer[$"Enum:{typeof(TEnum).Name}:{t.To<byte>}"]
+                    DisplayName = localizer[$"Enum:{typeof(TEnum).Name}:{t.To<byte>()}"]
                 }).ToList();
         }
 

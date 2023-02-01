@@ -1,6 +1,8 @@
-﻿using MK.Accountancy.BankDepartments;
+﻿using MK.Accountancy.BankAccounts;
+using MK.Accountancy.BankDepartments;
 using MK.Accountancy.Blazor.Services.Base;
 using System;
+using Volo.Abp.Application.Dtos;
 using Volo.Abp.DependencyInjection;
 
 namespace MK.Accountancy.Blazor.Services
@@ -8,6 +10,14 @@ namespace MK.Accountancy.Blazor.Services
     public class BankDepartmentService : BaseService<ListBankDepartmentDto,SelectBankDepartmentDto>,IScopedDependency
     {
         public Guid BankId { get; set; }
+        public override void SelectEntity(IEntityDto targetEntity)
+        {
+            if (targetEntity is SelectBankAccountDto bankAccountDto)
+            {
+                bankAccountDto.BankDepartmentId = SelectedItem.Id;
+                bankAccountDto.BankDepartmentName = SelectedItem.Name;
+            }
+        }
         public override void BeforeShowPopupListPage(params object[] parameters)
         {
             ToolbarCheckBoxVisible = parameters.Length == 1;

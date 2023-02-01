@@ -166,6 +166,15 @@
     "BankDepartments": "Banka Şubeleri",
     "BankDepartmentCard": "Banka Şube Kartı",
     "BankDepartmentCards": "Banka Şube Kartları",
-    "DepartmentCards": "Şube Kartları"
+    "DepartmentCards": "Şube Kartları",
+    "Debt": "Borç",
+    "Receivable": "Alacak",
+    "DebtBalance": "Borç Bakiye",
+    "BalanceReceivable": "Alacak Bakiye",
+    "AccountType": "Hesap Tipi",
+    "AccountNumber": "Hesap No",
+    "BankAccountCard": "Banka Hesap Kartı",
+    "EnterAccountNumber": "Hesap No Girin",
+    "EnterIban": "Iban Girin"
   }
 }

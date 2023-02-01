@@ -1,5 +1,6 @@
 ﻿using MK.Accountancy.BankAccounts;
 using MK.Accountancy.Blazor.Services.Base;
+using MK.Blazor.Core.Models;
 using Volo.Abp.DependencyInjection;
 
 namespace MK.Accountancy.Blazor.Services
@@ -8,7 +9,9 @@ namespace MK.Accountancy.Blazor.Services
     IScopedDependency
     {
         public BankAccountType? BankAccountType { get; set; }
-
-
+        public void BankAccountTypeSelectedItemChanged(ComboboxEnumItem<BankAccountType> selectedItem)
+        {
+            DataSource.BankAccountType = selectedItem.Value;
+        }
     }
 }

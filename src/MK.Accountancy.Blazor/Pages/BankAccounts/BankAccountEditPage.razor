@@ -1,0 +1,159 @@
+﻿@inherits BaseEditPage
+@inject BankAccountService Service
+@inject SpecialCodeService SpecialCodeService
+@inject BankService BankService
+@inject BankDepartmentService BankDepartmentService
+
+<DevPopupEditPageLayout CancelButtonText="@L["Cancel"]"
+                        EditPageService="Service"
+                        Caption="@L["BankAccountCard"]"
+                        ListPageService="Service"
+                        OnSubmit="OnSubmit"
+                        SubmitButtonText="@L["Save"]"
+                        Height="400px"
+                        Width="765px">
+    <EditPageContent>
+        <DevGridLayout ColumnCount="9"
+                       ColumnWidths="@ColumnWidths("90","3","195","25","90","3","195","25","20")"
+                       RowCount="8">
+            <GridLayoutItems>
+                <DevTextEdit Caption="@L["Code"]"
+                             ColumnIndex="2"
+                             NullText="@L["EnterCode"]"
+                             RowIndex="0"
+                             @bind-Value="@Service.DataSource.Code">
+                </DevTextEdit>
+                <DevCheckEdit ColumnIndex="6"
+                              ColumnSpan="2"
+                              FalseCaption="@L["Passive"]"
+                              RowIndex="0"
+                              TrueCaption="@L["Active"]"
+                              @bind-Value="@Service.DataSource.Active">
+                </DevCheckEdit>
+                <DevTextEdit Caption="@L["Name"]"
+                             ColumnIndex="2"
+                             ColumnSpan="6"
+                             IsFocus="true"
+                             NullText="@L["EnterName"]"
+                             RowIndex="1"
+                             @bind-Value="@Service.DataSource.Name">
+                </DevTextEdit>
+                <DevComboboxEnumEdit Caption="@L["AccountType"]"
+                                     ColumnIndex="2"
+                                     DataSource="@(FillEnumToCombobox<BankAccountType>(L))"
+                                     SelectedItemChanged="Service.BankAccountTypeSelectedItemChanged"
+                                     RowIndex="2"
+                                     TextFieldName="@nameof(ComboboxEnumItem<BankAccountType>.DisplayName)"
+                                     TItem="BankAccountType"
+                                     @bind-Value="@Service.DataSource.BankAccountType"
+                                     ValueFieldName="@nameof(ComboboxEnumItem<BankAccountType>.Value)">
+                </DevComboboxEnumEdit>
+                <DevButonEdit ButtonClickInvokeFunction="() => { BankService.BeforeShowPopupListPage(Service.DataSource.BankId);}"
+                              Caption="@L["Bank"]"
+                              ColumnIndex="2"
+                              NullText="@L["SelectCard"]"
+                              RowIndex="3"
+                              Service="BankService"
+                              Value="@Service.DataSource.BankName"
+                              ValueChanged="(() => { Service.DataSource.BankDepartmentId = default; Service.DataSource.BankDepartmentName = null;})">
+                </DevButonEdit>
+                <DevButonEdit ButtonClickInvokeFunction="() => { BankDepartmentService.BeforeShowPopupListPage(Service.DataSource.BankId, Service.DataSource.BankDepartmentId);}"
+                              Caption="@L["BankDepartment"]"
+                              ColumnIndex="6"
+                              Enabled="Service.DataSource.BankId != Guid.Empty"
+                              NullText="@L["SelectCard"]"
+                              RowIndex="3"
+                              Service="BankDepartmentService"
+                              @bind-Value="@Service.DataSource.BankDepartmentName">
+                </DevButonEdit>
+                <DevTextEdit Caption="@L["AccountNumber"]"
+                             ColumnIndex="2"
+                             NullText="@L["EnterAccountNumber"]"
+                             RowIndex="4"
+                             @bind-Value="@Service.DataSource.AccountId">
+                </DevTextEdit>
+                <DevIbanNoEdit Caption="@L["Iban"]"
+                             ColumnIndex="6"
+                             ColumnSpan="2"
+                             NullText="@L["EnterIban"]"
+                             RowIndex="4"
+                             @bind-Value="@Service.DataSource.Iban">
+                </DevIbanNoEdit>
+                <DevButonEdit ButtonClickInvokeFunction="() => { SpecialCodeService.BeforeShowPopupListPage(SpecialCodeType.SpecialCodeOne,CardType.BankAccount,Service.DataSource.SpecialCodeOneId);}"
+                              Caption="@L["SpecialCodeOneName"]"
+                              ColumnIndex="2"
+                              DeleteButtonKeydownInvokeFunction="() =>{ SpecialCodeService.ButtonEditDeleteKeyDown(Service.DataSource, nameof(Service.DataSource.SpecialCodeOneName));}"
+                              NullText="@L["SelectCard"]"
+                              RowIndex="5"
+                              Service="SpecialCodeService"
+                              @bind-Value="@Service.DataSource.SpecialCodeOneName">
+                </DevButonEdit>
+                <DevButonEdit ButtonClickInvokeFunction="() => { SpecialCodeService.BeforeShowPopupListPage(SpecialCodeType.SpecialCodeTwo,CardType.BankAccount,Service.DataSource.SpecialCodeTwoId);}"
+                              Caption="@L["SpecialCodeTwoName"]"
+                              ColumnIndex="6"
+                              DeleteButtonKeydownInvokeFunction="() => { SpecialCodeService.ButtonEditDeleteKeyDown(Service.DataSource, nameof(Service.DataSource.SpecialCodeTwoName));}"
+                              NullText="@L["SelectCard"]"
+                              RowIndex="5"
+                              Service="SpecialCodeService"
+                              @bind-Value="@Service.DataSource.SpecialCodeTwoName">
+                </DevButonEdit>
+                <DevMemoEdit Caption="@L["Description"]"
+                             ColumnIndex="2"
+                             ColumnSpan="6"
+                             NullText="@L["EnterDescription"]"
+                             RowIndex="6"
+                             RowSpan="2"
+                             @bind-Value="@Service.DataSource.Description">
+                </DevMemoEdit>
+            </GridLayoutItems>
+        </DevGridLayout>
+    </EditPageContent>
+</DevPopupEditPageLayout>
+
+@if (BankService.IsPopupListPage)
+{
+    <DevPopupListPageLayout DataGridService="BankService"
+                        CancelButtonText="@L["Close"]"
+                        Caption="@L["BankCards"]"
+                        Closed="BankService.HideListPage"
+                        SelectButtonInvokeFunction="(() => {BankService.SelectEntity(Service.DataSource);})"
+                        SelectButtonText="@L["Select"]"
+                        Visible="true"
+                        Width="1000px">
+        <ListPageContent>
+            <BankListPage />
+        </ListPageContent>
+    </DevPopupListPageLayout>
+}
+
+@if (BankDepartmentService.IsPopupListPage)
+{
+    <DevPopupListPageLayout DataGridService="BankDepartmentService"
+                        CancelButtonText="@L["Close"]"
+                        Caption="@L["BankDepartmentCards"]"
+                        Closed="BankDepartmentService.HideListPage"
+                        SelectButtonInvokeFunction="(() => {BankDepartmentService.SelectEntity(Service.DataSource);})"
+                        SelectButtonText="@L["Select"]"
+                        Visible="true"
+                        Width="1000px">
+        <ListPageContent>
+            <BankDepartmentListPage />
+        </ListPageContent>
+    </DevPopupListPageLayout>
+}
+
+@if (SpecialCodeService.IsPopupListPage)
+{
+    <DevPopupListPageLayout DataGridService="SpecialCodeService"
+                        CancelButtonText="@L["Cancel"]"
+                        Caption="@L["SpecialCodeCards"]"
+                        Closed="SpecialCodeService.HideListPage"
+                        SelectButtonInvokeFunction="(() => {SpecialCodeService.SelectEntity(Service.DataSource);})"
+                        SelectButtonText="@L["Select"]"
+                        Visible="true"
+                        Width="1000px">
+        <ListPageContent>
+            <SpecialCodeListPage />
+        </ListPageContent>
+    </DevPopupListPageLayout>
+}

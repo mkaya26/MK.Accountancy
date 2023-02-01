@@ -166,6 +166,15 @@
     "BankDepartments": "Bank Departments",
     "BankDepartmentCard": "Bank Department Card",
     "BankDepartmentCards": "Bank Department Cards",
-    "DepartmentCards": "Department Cards"
+    "DepartmentCards": "Department Cards",
+    "Debt": "Debt",
+    "Receivable": "Receivable",
+    "DebtBalance": "Debt Balance",
+    "BalanceReceivable": "Balance Receivable",
+    "AccountType": "Account Type",
+    "AccountNumber": "Account Number",
+    "BankAccountCard": "Bank Account Card",
+    "EnterAccountNumber": "Enter Account Number",
+    "EnterIban": "Enter Iban"
   }
 }
