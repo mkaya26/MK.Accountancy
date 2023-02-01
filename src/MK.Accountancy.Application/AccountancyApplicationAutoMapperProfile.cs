@@ -98,6 +98,8 @@ public class AccountancyApplicationAutoMapperProfile : Profile
                                            .Sum(i => i.Quantity)));
         CreateMap<CreateStoreDto, Store>();
         CreateMap<UpdateStoreDto, Store>();
+        CreateMap<SelectStoreDto, CreateStoreDto>();
+        CreateMap<SelectStoreDto, UpdateStoreDto>();
         //
         CreateMap<Term, SelectTermDto>();
         CreateMap<Term, ListTermDto>();

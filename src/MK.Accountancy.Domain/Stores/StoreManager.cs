@@ -32,9 +32,12 @@ namespace MK.Accountancy.Stores
         public async Task CheckUpdateAsync(Guid id, string code, Store entity, Guid? specialCodeOneId, Guid? specialCodeTwoId)
         {
             await _storeRepository.CodeAnyAsync(code, x => x.Id != id && x.Code == code && x.DepartmentId == entity.DepartmentId, entity.Code != code);
-            //
-            await _specialCodeRepository.EntityAnyAsync(specialCodeOneId, SpecialCodeType.SpecialCodeOne, CardType.Story);
-            await _specialCodeRepository.EntityAnyAsync(specialCodeTwoId, SpecialCodeType.SpecialCodeTwo, CardType.Story);
+            //Web API de sorunsuz çalışıyor.
+            //Arayüzden güncelleme yapıldığında değerler
+            //aynı olmasına rağmen dbcontext hatası verdiği
+            //için kontrol kapatıldı.
+            await _specialCodeRepository.EntityAnyAsync(specialCodeOneId, SpecialCodeType.SpecialCodeOne, CardType.Story, entity.SpecialCodeOneId != specialCodeOneId);
+            await _specialCodeRepository.EntityAnyAsync(specialCodeTwoId, SpecialCodeType.SpecialCodeTwo, CardType.Story, entity.SpecialCodeTwoId != specialCodeTwoId);
         }
 
         public async Task CheckDeleteAsync(Guid id)

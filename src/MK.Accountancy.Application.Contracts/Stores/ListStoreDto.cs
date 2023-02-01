@@ -15,7 +15,6 @@ namespace MK.Accountancy.Stores
         public decimal? AmountInput { get; set; }
         public decimal? OutputAmount { get; set; }
         public decimal? TheRemainingAmount => AmountInput - OutputAmount;
-        public bool Active { get; set; }
         public ICollection<SelectInvoiceDetailDto> InvoiceDetails { get; set; }
     }
 }

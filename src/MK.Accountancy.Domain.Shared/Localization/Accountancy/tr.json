@@ -182,6 +182,11 @@
     "EnterTaxNumber": "Vergi Numarası Girin",
     "EnterTelephone": "Telefon Girin",
     "EnterAddress": "Adres Girin",
-    "CurrentCard": "Cari Kart"
+    "CurrentCard": "Cari Kart",
+    "StoreCards": "Depo Kartları",
+    "Entered": "Giren",
+    "Out": "Çıkan",
+    "Available": "Mevcut",
+    "StoreCard": "Depo Kartı"
   }
 }

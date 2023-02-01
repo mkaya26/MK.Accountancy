@@ -182,6 +182,11 @@
     "EnterTaxNumber": "Enter Tax Number",
     "EnterTelephone": "Enter Telephone",
     "EnterAddress": "Enter Address",
-    "CurrentCard": "Current Card"
+    "CurrentCard": "Current Card",
+    "StoreCards": "Store Cards",
+    "Entered": "Entered",
+    "Out": "Out",
+    "Available": "Available",
+    "StoreCard": "Store Card"
   }
 }
