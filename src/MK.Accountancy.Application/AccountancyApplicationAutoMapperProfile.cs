@@ -81,6 +81,8 @@ public class AccountancyApplicationAutoMapperProfile : Profile
             .ForMember(x => x.SpecialCodeTwoName, y => y.MapFrom(z => z.SpecialCodeTwo.Name));
         CreateMap<CreateCurrentDto, Current>();
         CreateMap<UpdateCurrentDto, Current>();
+        CreateMap<SelectCurrentDto, CreateCurrentDto>();
+        CreateMap<SelectCurrentDto, UpdateCurrentDto>();
         //
         CreateMap<Store, SelectStoreDto>()
             .ForMember(x => x.SpecialCodeOneName, y => y.MapFrom(z => z.SpecialCodeOne.Name))

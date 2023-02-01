@@ -175,6 +175,13 @@
     "AccountNumber": "Account Number",
     "BankAccountCard": "Bank Account Card",
     "EnterAccountNumber": "Enter Account Number",
-    "EnterIban": "Enter Iban"
+    "EnterIban": "Enter Iban",
+    "CurrentCards": "Current Cards",
+    "TaxDepartment": "Tax Department",
+    "EnterTaxDepartment": "Enter Tax Department",
+    "EnterTaxNumber": "Enter Tax Number",
+    "EnterTelephone": "Enter Telephone",
+    "EnterAddress": "Enter Address",
+    "CurrentCard": "Current Card"
   }
 }

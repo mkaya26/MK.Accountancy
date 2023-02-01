@@ -21,7 +21,6 @@ namespace MK.Accountancy.Currents
         public decimal DebtBalance => Debt - Receivable > 0 ? Debt - Receivable : 0;
         public decimal BalanceReceivable => Receivable - Debt > 0 ? Receivable - Debt : 0;
         public string Description { get; set; }
-        public bool Active { get; set; }
         public ICollection<SelectInvoiceDto> Invoices { get; set; }
         public ICollection<SelectReceiptDto> Receipts { get; set; }
 

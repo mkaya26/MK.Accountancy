@@ -175,6 +175,13 @@
     "AccountNumber": "Hesap No",
     "BankAccountCard": "Banka Hesap Kartı",
     "EnterAccountNumber": "Hesap No Girin",
-    "EnterIban": "Iban Girin"
+    "EnterIban": "Iban Girin",
+    "CurrentCards": "Cari Kartlar",
+    "TaxDepartment": "Vergi Dairesi",
+    "EnterTaxDepartment": "Vergi Dairesi Girin",
+    "EnterTaxNumber": "Vergi Numarası Girin",
+    "EnterTelephone": "Telefon Girin",
+    "EnterAddress": "Adres Girin",
+    "CurrentCard": "Cari Kart"
   }
 }
