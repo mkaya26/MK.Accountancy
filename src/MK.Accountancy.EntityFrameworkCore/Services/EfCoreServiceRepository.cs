@@ -16,6 +16,7 @@ namespace MK.Accountancy.Services
         public override async Task<IQueryable<Service>> WithDetailsAsync()
         {
             return (await GetQueryableAsync())
+                    .Include(x => x.Unit)
                     .Include(x => x.SpecialCodeOne)
                     .Include(x => x.SpecialCodeTwo)
                     .Include(x => x.InvoiceDetails).ThenInclude(x => x.Invoice);

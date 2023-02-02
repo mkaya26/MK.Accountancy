@@ -16,6 +16,5 @@ namespace MK.Accountancy.Services
         public string Description { get; set; }
         public decimal InService { get; set; }
         public decimal OutService { get; set; }
-        public bool Active { get; set; }
     }
 }

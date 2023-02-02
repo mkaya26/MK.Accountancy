@@ -188,6 +188,9 @@
     "Out": "Out",
     "Available": "Available",
     "StoreCard": "Store Card",
-    "PeriodCard": "Period Card"
+    "PeriodCard": "Period Card",
+    "ServiceCard": "Service Card",
+    "Barcode": "Barcode",
+    "EnterBarcode": "Enter Barcode"
   }
 }

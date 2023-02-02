@@ -188,6 +188,9 @@
     "Out": "Çıkan",
     "Available": "Mevcut",
     "StoreCard": "Depo Kartı",
-    "PeriodCard": "Dönem Kart"
+    "PeriodCard": "Dönem Kart",
+    "ServiceCard": "Hizmet Kartı",
+    "Barcode": "Barkod",
+    "EnterBarcode": "Barkod Girin"
   }
 }

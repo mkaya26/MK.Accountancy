@@ -166,6 +166,8 @@ public class AccountancyApplicationAutoMapperProfile : Profile
                                            .Sum(i => i.Quantity)));
         CreateMap<CreateServiceDto, Service>();
         CreateMap<UpdateServiceDto, Service>();
+        CreateMap<SelectServiceDto, CreateServiceDto>();
+        CreateMap<SelectServiceDto, UpdateServiceDto>();
         //
         CreateMap<Safe, SelectSafeDto>()
             .ForMember(x => x.SpecialCodeOneName, y => y.MapFrom(z => z.SpecialCodeOne.Name))
