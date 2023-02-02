@@ -36,7 +36,7 @@
                              RowIndex="1"
                              @bind-Value="@Service.DataSource.Name">
                 </DevTextEdit>
-                <DevButonEdit ButtonClickInvokeFunction="() => { SpecialCodeService.BeforeShowPopupListPage(SpecialCodeType.SpecialCodeOne,CardType.Story,Service.DataSource.SpecialCodeOneId);}"
+                <DevButonEdit ButtonClickInvokeFunction="() => { SpecialCodeService.BeforeShowPopupListPage(SpecialCodeType.SpecialCodeOne,CardType.Warehouse,Service.DataSource.SpecialCodeOneId);}"
                               Caption="@L["SpecialCodeOneName"]"
                               ColumnIndex="2"
                               DeleteButtonKeydownInvokeFunction="() =>{ SpecialCodeService.ButtonEditDeleteKeyDown(Service.DataSource, nameof(Service.DataSource.SpecialCodeOneName));}"
@@ -45,7 +45,7 @@
                               Service="SpecialCodeService"
                               @bind-Value="@Service.DataSource.SpecialCodeOneName">
                 </DevButonEdit>
-                <DevButonEdit ButtonClickInvokeFunction="() => { SpecialCodeService.BeforeShowPopupListPage(SpecialCodeType.SpecialCodeTwo,CardType.Story,Service.DataSource.SpecialCodeTwoId);}"
+                <DevButonEdit ButtonClickInvokeFunction="() => { SpecialCodeService.BeforeShowPopupListPage(SpecialCodeType.SpecialCodeTwo,CardType.Warehouse,Service.DataSource.SpecialCodeTwoId);}"
                               Caption="@L["SpecialCodeTwoName"]"
                               ColumnIndex="6"
                               DeleteButtonKeydownInvokeFunction="() => { SpecialCodeService.ButtonEditDeleteKeyDown(Service.DataSource, nameof(Service.DataSource.SpecialCodeTwoName));}"

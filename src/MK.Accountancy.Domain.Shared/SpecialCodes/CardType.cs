@@ -11,7 +11,7 @@
         Safe = 7,
         BankAccount = 8,
         BankDepartment = 9,
-        Story = 10,
+        Warehouse = 10,
         Service = 11,
         Expense = 12,
         Receipt = 13

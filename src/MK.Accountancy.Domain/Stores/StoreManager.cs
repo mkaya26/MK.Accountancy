@@ -25,8 +25,8 @@ namespace MK.Accountancy.Stores
             await _departmentRepository.EntityAnyAsync(departmentId, x => x.Id == departmentId);
             await _storeRepository.CodeAnyAsync(code, x => x.Code == code && x.DepartmentId == departmentId);
             //
-            await _specialCodeRepository.EntityAnyAsync(specialCodeOneId, SpecialCodeType.SpecialCodeOne, CardType.Story);
-            await _specialCodeRepository.EntityAnyAsync(specialCodeTwoId, SpecialCodeType.SpecialCodeTwo, CardType.Story);
+            await _specialCodeRepository.EntityAnyAsync(specialCodeOneId, SpecialCodeType.SpecialCodeOne, CardType.Warehouse);
+            await _specialCodeRepository.EntityAnyAsync(specialCodeTwoId, SpecialCodeType.SpecialCodeTwo, CardType.Warehouse);
         }
 
         public async Task CheckUpdateAsync(Guid id, string code, Store entity, Guid? specialCodeOneId, Guid? specialCodeTwoId)
@@ -36,8 +36,8 @@ namespace MK.Accountancy.Stores
             //Arayüzden güncelleme yapıldığında değerler
             //aynı olmasına rağmen dbcontext hatası verdiği
             //için kontrol kapatıldı.
-            await _specialCodeRepository.EntityAnyAsync(specialCodeOneId, SpecialCodeType.SpecialCodeOne, CardType.Story, entity.SpecialCodeOneId != specialCodeOneId);
-            await _specialCodeRepository.EntityAnyAsync(specialCodeTwoId, SpecialCodeType.SpecialCodeTwo, CardType.Story, entity.SpecialCodeTwoId != specialCodeTwoId);
+            await _specialCodeRepository.EntityAnyAsync(specialCodeOneId, SpecialCodeType.SpecialCodeOne, CardType.Warehouse, entity.SpecialCodeOneId != specialCodeOneId);
+            await _specialCodeRepository.EntityAnyAsync(specialCodeTwoId, SpecialCodeType.SpecialCodeTwo, CardType.Warehouse, entity.SpecialCodeTwoId != specialCodeTwoId);
         }
 
         public async Task CheckDeleteAsync(Guid id)

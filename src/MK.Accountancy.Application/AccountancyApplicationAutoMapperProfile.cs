@@ -105,6 +105,8 @@ public class AccountancyApplicationAutoMapperProfile : Profile
         CreateMap<Term, ListTermDto>();
         CreateMap<CreateTermDto, Term>();
         CreateMap<UpdateTermDto, Term>();
+        CreateMap<SelectTermDto,CreateTermDto>();
+        CreateMap<SelectTermDto,UpdateTermDto>();
         //
         CreateMap<Invoice, SelectInvoiceDto>()
             .ForMember(x => x.CurrentName, y => y.MapFrom(z => z.Current.Name))
