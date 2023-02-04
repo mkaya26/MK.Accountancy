@@ -191,6 +191,8 @@
     "PeriodCard": "Dönem Kart",
     "ServiceCard": "Hizmet Kartı",
     "Barcode": "Barkod",
-    "EnterBarcode": "Barkod Girin"
+    "EnterBarcode": "Barkod Girin",
+    "SafeCard": "Kasa Kartı",
+    "SafeCards": "Kasa kartları"
   }
 }

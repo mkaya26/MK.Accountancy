@@ -191,6 +191,8 @@
     "PeriodCard": "Period Card",
     "ServiceCard": "Service Card",
     "Barcode": "Barcode",
-    "EnterBarcode": "Enter Barcode"
+    "EnterBarcode": "Enter Barcode",
+    "SafeCard": "Safe Card",
+    "SafeCards": "Safe Cards"
   }
 }
