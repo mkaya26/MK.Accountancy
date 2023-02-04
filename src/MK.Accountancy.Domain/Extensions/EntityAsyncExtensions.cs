@@ -29,9 +29,10 @@ namespace MK.Accountancy.Extensions
         {
             if (check && id != null)
             {
-                var anyAsync = await repository.AnyAsync(x => x.Id == id && 
-                                    x.SpecialCodeType == specialCodeType && 
-                                    x.CardType == cardType);
+                var anyAsync = await repository.AnyAsync(x => 
+                              x.Id == id && 
+                              x.SpecialCodeType == specialCodeType &&
+                              x.CardType == cardType);
                 if (!anyAsync)
                     throw new EntityNotFoundException(typeof(SpecialCode), id);
             }

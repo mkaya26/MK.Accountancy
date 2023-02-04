@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Domain.Repositories;
+using Volo.Abp.Uow;
 
 namespace MK.Accountancy.Stores
 {
@@ -12,11 +13,12 @@ namespace MK.Accountancy.Stores
     {
         private readonly IStoreRepository _storeRepository;
         private readonly StoreManager _storeManager;
-
-        public StoreAppService(IStoreRepository storeRepository, StoreManager storeManager)
+        private readonly IUnitOfWorkManager _unitOfWorkManager;
+        public StoreAppService(IStoreRepository storeRepository, StoreManager storeManager, IUnitOfWorkManager unitOfWorkManager)
         {
             _storeRepository = storeRepository;
             _storeManager = storeManager;
+            _unitOfWorkManager = unitOfWorkManager;
         }
 
         public virtual async Task<SelectStoreDto> CreateAsync(CreateStoreDto input)
@@ -66,7 +68,13 @@ namespace MK.Accountancy.Stores
         public async Task<SelectStoreDto> UpdateAsync(Guid id, UpdateStoreDto input)
         {
             var entity = await _storeRepository.GetAsync(id, f => f.Id == id);
-            await _storeManager.CheckUpdateAsync(id, input.Code, entity, input.SpecialCodeOneId, input.SpecialCodeTwoId);
+            //
+            using (var uow = _unitOfWorkManager.Begin(requiresNew: true, isTransactional: true))
+            {
+                await _storeManager.CheckUpdateAsync(id, input.Code, entity, input.SpecialCodeOneId, input.SpecialCodeTwoId);
+                //
+                await uow.CompleteAsync();
+            }
             //
             var mappedEntity = ObjectMapper.Map(input, entity);
             await _storeRepository.UpdateAsync(mappedEntity);

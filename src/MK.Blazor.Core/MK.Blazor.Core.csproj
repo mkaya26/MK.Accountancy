@@ -18,8 +18,8 @@
     <PackageReference Include="DevExpress.Blazor.Reporting.Viewer" Version="21.2.3" />
     <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Components" Version="5.1.4" />
-    <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="5.1.4" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Components" Version="5.1.1" />
+    <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="5.1.1" />
   </ItemGroup>
 
   <ItemGroup>

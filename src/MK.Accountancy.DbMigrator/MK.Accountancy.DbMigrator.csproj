@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Autofac" Version="5.1.4" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="5.1.1" />
     <ProjectReference Include="..\MK.Accountancy.Application.Contracts\MK.Accountancy.Application.Contracts.csproj" />
     <ProjectReference Include="..\MK.Accountancy.EntityFrameworkCore\MK.Accountancy.EntityFrameworkCore.csproj" />
   </ItemGroup>

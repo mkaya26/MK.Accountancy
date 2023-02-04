@@ -1,8 +1,18 @@
-﻿using System;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Diagnostics;
+//using System.Threading.Tasks;
+//using Volo.Abp.Application.Dtos;
+//using Volo.Abp.Domain.Repositories;
+
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Domain.Repositories;
+using Volo.Abp.Uow;
 
 namespace MK.Accountancy.Safes
 {
@@ -10,16 +20,23 @@ namespace MK.Accountancy.Safes
     {
         private readonly ISafeRepository _safeRepository;
         private readonly SafeManager _safeManager;
+        private readonly IUnitOfWorkManager _unitOfWorkManager;
 
-        public SafeAppService(ISafeRepository safeRepository, SafeManager safeManager)
+        public SafeAppService(ISafeRepository safeRepository, SafeManager safeManager, IUnitOfWorkManager unitOfWorkManager)
         {
             _safeRepository = safeRepository;
             _safeManager = safeManager;
+            _unitOfWorkManager = unitOfWorkManager;
         }
 
         public async Task<SelectSafeDto> CreateAsync(CreateSafeDto input)
         {
-            await _safeManager.CheckCreateAsync(input.Code, input.SpecialCodeOneId, input.SpecialCodeTwoId, input.DepartmentId);
+            using (var uow = _unitOfWorkManager.Begin(requiresNew: true, isTransactional: true))
+            {
+                await _safeManager.CheckCreateAsync(input.Code, input.SpecialCodeOneId, input.SpecialCodeTwoId, input.DepartmentId);
+                //
+                await uow.CompleteAsync();
+            }
             //
             var entity = ObjectMapper.Map<CreateSafeDto, Safe>(input);
             await _safeRepository.InsertAsync(entity);
@@ -49,15 +66,20 @@ namespace MK.Accountancy.Safes
             var entites = await _safeRepository.GetPagedListAsync(
                                                     input.SkipCount,
                                                     input.MaxResultCount,
-                                                    f => f.Active == input.Active &&
-                                                         f.DepartmentId == input.DepartmentId,
+                                   f => f.Active == input.Active &&
+                                   f.DepartmentId == input.DepartmentId,
                                                     o => o.Code,
-                                                    i => i.SpecialCodeOne,
-                                                    i => i.SpecialCodeTwo);
+                                   i => i.SpecialCodeOne,
+                                   i => i.SpecialCodeTwo,
+                                   i => i.ReceiptDetails);
             //
-            var totalCount = await _safeRepository.CountAsync(
-                                                    f => f.Active == input.Active &&
-                                                         f.DepartmentId == input.DepartmentId);
+            int totalCount;
+            using (var uow = _unitOfWorkManager.Begin(requiresNew: true, isTransactional: true))
+            {
+                 totalCount = await _safeRepository.CountAsync(f => f.Active == input.Active && f.DepartmentId == input.DepartmentId);
+                //
+                await uow.CompleteAsync();
+            }
             //
             return new PagedResultDto<ListSafeDto>(totalCount, ObjectMapper.Map<List<Safe>, List<ListSafeDto>>(entites));
         }

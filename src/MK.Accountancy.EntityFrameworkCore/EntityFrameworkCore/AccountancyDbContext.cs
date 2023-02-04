@@ -78,7 +78,7 @@ public class AccountancyDbContext :
     public DbSet<Invoice> Invoices { get; set; }
     public DbSet<OrganizationParameter> OrganizationParameters { get; set; }
     public DbSet<Receipt> Receipts { get; set; }
-    public DbSet<Safe> Saves { get; set; }
+    public DbSet<Safe> Safes { get; set; }
     public DbSet<Service> Services { get; set; }
     public DbSet<SpecialCode> SpecialCodes { get; set; }
     public DbSet<Stock> Stocks { get; set; }

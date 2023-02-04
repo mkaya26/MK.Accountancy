@@ -183,6 +183,8 @@ public class AccountancyApplicationAutoMapperProfile : Profile
                                            .Sum(i => i.Price)));
         CreateMap<CreateSafeDto, Safe>();
         CreateMap<UpdateSafeDto, Safe>();
+        CreateMap<SelectSafeDto, CreateSafeDto>();
+        CreateMap<SelectSafeDto, UpdateSafeDto>();
         //
         CreateMap<Receipt, SelectReceiptDto>()
             .ForMember(x => x.CurrentCode, y => y.MapFrom(z => z.Current.Code))

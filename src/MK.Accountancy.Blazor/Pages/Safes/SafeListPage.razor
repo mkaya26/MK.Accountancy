@@ -1,0 +1,93 @@
+﻿@page "/cashcards"
+
+@inherits BaseListPage<SelectSafeDto, ListSafeDto, SafeListParameterDto, CreateSafeDto, UpdateSafeDto, SafeCodeParameterDto>
+
+@inject SafeAppService CrudService
+@inject SafeService Service
+
+<DevListPageLayout DataGridService="Service"
+                   ListPageService="Service"
+                   Caption="@L["SafeCards"]"
+                   RowHeights="@RowHeights("*")">
+    <ListPageContext>
+        <DevDataGrid DataGridService="Service"
+                     DoubleClick="async () => await BeforeUpdateAsync()">
+            <HeaderTemplate>
+                <DevListPageToolBar CommonService="Service"
+                                    DataGridService="Service"
+                                    ListPageService="Service"
+                                    DeleteButtonClick="async () => await DeleteAsync()"
+                                    DeleteButtonEnabled="Service.ListDataSource.Count > 0"
+                                    DeleteButtonVisible="true"
+                                    FilterButtonVisible="true"
+                                    GetListDataSource="async () => await GetListDataSourceAsync()"
+                                    GroupButtonVisible="true"
+                                    L="L"
+                                    NewButtonClick="async () => await BeforeInsertAsync()"
+                                    NewButtonVisible="true"
+                                    UpdateButtonClick="async () => await BeforeUpdateAsync()"
+                                    UpdateButtonEnabled="Service.ListDataSource.Count > 0"
+                                    UpdateButtonVisible="true">
+                </DevListPageToolBar>
+            </HeaderTemplate>
+
+            <Columns>
+                <DxDataGridColumn Caption="@L["Code"]"
+                                  Field="@nameof(ListSafeDto.Code)"
+                                  Width="150px"/>
+
+                <DxDataGridColumn Caption="@L["Name"]"
+                                  Field="@nameof(ListSafeDto.Name)"
+                                  Width="250px"/>
+
+                <DxDataGridSpinEditColumn Caption="@L["Debt"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListSafeDto.Debt)"
+                                          Width="110px"/>
+
+                <DxDataGridSpinEditColumn Caption="@L["Receivable"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListSafeDto.Receivable)"
+                                          Width="110px"/>
+
+                <DxDataGridSpinEditColumn Caption="@L["DebtBalance"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListSafeDto.DebtBalance)"
+                                          Width="110px"/>
+
+                <DxDataGridSpinEditColumn Caption="@L["BalanceReceivable"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListSafeDto.BalanceReceivable)"
+                                          Width="110px"/>
+
+                <DxDataGridColumn Caption="@L["SpecialCodeOneName"]"
+                                  Field="@nameof(ListSafeDto.SpecialCodeOneName)"
+                                  Width="175px"/>
+
+                <DxDataGridColumn Caption="@L["SpecialCodeTwoName"]"
+                                  Field="@nameof(ListSafeDto.SpecialCodeTwoName)"
+                                  Width="175px"/>
+
+                <DxDataGridColumn Caption="@L["Description"]"
+                                  Field="@nameof(ListSafeDto.Description)"
+                                  Width="*"/>
+            </Columns>
+
+        </DevDataGrid>
+    </ListPageContext>
+
+    <EditPageContent>
+        <SafeEditPage OnSubmit="OnSubmit"/>
+    </EditPageContent>
+
+</DevListPageLayout>
+
+@code {
+
+    protected override void OnInitialized()
+    {
+        BaseCrudAppService = CrudService;
+        BaseService = Service;
+    }
+
+}
