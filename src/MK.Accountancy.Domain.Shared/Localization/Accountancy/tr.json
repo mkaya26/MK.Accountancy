@@ -194,6 +194,8 @@
     "EnterBarcode": "Barkod Girin",
     "SafeCard": "Kasa Kartı",
     "SafeCards": "Kasa kartları",
-    "ExpenseCard": "Masraf Kartı"
+    "ExpenseCard": "Masraf Kartı",
+    "Balance": "Kalan",
+    "StockCard": "Stok Kartı"
   }
 }

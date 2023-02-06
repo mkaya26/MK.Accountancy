@@ -194,6 +194,8 @@
     "EnterBarcode": "Enter Barcode",
     "SafeCard": "Safe Card",
     "SafeCards": "Safe Cards",
-    "ExpenseCard": "Expense Card"
+    "ExpenseCard": "Expense Card",
+    "Balance": "Balance",
+    "StockCard": "Stock Card"
   }
 }

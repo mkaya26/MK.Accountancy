@@ -261,6 +261,8 @@ public class AccountancyApplicationAutoMapperProfile : Profile
                                            .Sum(i => i.Quantity)));
         CreateMap<CreateStockDto, Stock>();
         CreateMap<UpdateStockDto, Stock>();
+        CreateMap<SelectStockDto, CreateStockDto>();
+        CreateMap<SelectStockDto, UpdateStockDto>();
         //
         CreateMap<Department, SelectDepartmentDto>();
         CreateMap<Department, ListDepartmentDto>();
