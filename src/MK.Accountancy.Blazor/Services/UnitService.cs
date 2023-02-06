@@ -1,4 +1,5 @@
 ﻿using MK.Accountancy.Blazor.Services.Base;
+using MK.Accountancy.Expenses;
 using MK.Accountancy.Services;
 using MK.Accountancy.Units;
 using Volo.Abp.Application.Dtos;
@@ -10,10 +11,16 @@ namespace MK.Accountancy.Blazor.Services
     {
         public override void SelectEntity(IEntityDto targetEntity)
         {
-            if(targetEntity is SelectServiceDto serviceDto)
+            switch (targetEntity)
             {
-                serviceDto.UnitId = SelectedItem.Id;
-                serviceDto.UnitName = SelectedItem.Name;
+                case SelectServiceDto serviceDto:
+                    serviceDto.UnitId = SelectedItem.Id;
+                    serviceDto.UnitName = SelectedItem.Name;
+                    break;
+                case SelectExpenseDto expenseDto:
+                    expenseDto.UnitId = SelectedItem.Id;
+                    expenseDto.UnitName = SelectedItem.Name;
+                    break;
             }
         }
     }

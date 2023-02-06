@@ -228,6 +228,8 @@ public class AccountancyApplicationAutoMapperProfile : Profile
                                            .Sum(i => i.Quantity)));
         CreateMap<CreateExpenseDto, Expense>();
         CreateMap<UpdateExpenseDto, Expense>();
+        CreateMap<SelectExpenseDto, CreateExpenseDto>();
+        CreateMap<SelectExpenseDto, UpdateExpenseDto>();
         //
         CreateMap<SpecialCode, SelectSpecialCodeDto>();
         CreateMap<SpecialCode, ListSpecialCodeDto>();

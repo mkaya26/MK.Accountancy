@@ -1,0 +1,93 @@
+﻿@page "/expensecards"
+
+@inherits BaseListPage<SelectExpenseDto,ListExpenseDto,ExpenseListParameterDto,
+                       CreateExpenseDto,UpdateExpenseDto,CodeParameterDto>
+
+@inject ExpenseAppService CrudService
+@inject ExpenseService Service
+@inject UnitService UnitService
+
+<DevListPageLayout DataGridService="Service"
+                   ListPageService="Service"
+                   Caption="@L["ExpenseCards"]"
+                   RowHeights="@RowHeights("*")">
+
+    <ListPageContext>
+        <DevDataGrid DataGridService="Service"
+                     DoubleClick="async () => await BeforeUpdateAsync()">
+            <HeaderTemplate>
+                <DevListPageToolBar CommonService="Service"
+                                    DataGridService="Service"
+                                    ListPageService="Service"
+                                    DeleteButtonClick="async ()=> await DeleteAsync()"
+                                    DeleteButtonEnabled="Service.ListDataSource.Count > 0"
+                                    DeleteButtonVisible="true"
+                                    FilterButtonVisible="true"
+                                    GetListDataSource="async()=> await GetListDataSourceAsync()"
+                                    GroupButtonVisible="true"
+                                    L="L"
+                                    NewButtonClick="async ()=> await BeforeInsertAsync()"
+                                    NewButtonVisible="true"
+                                    UpdateButtonClick="async ()=> await BeforeUpdateAsync()"
+                                    UpdateButtonEnabled="Service.ListDataSource.Count > 0"
+                                    UpdateButtonVisible="true">
+
+                </DevListPageToolBar>
+            </HeaderTemplate>
+            <Columns>
+                <DxDataGridColumn Caption="@L["Code"]"
+                                  Field="@nameof(ListExpenseDto.Code)"
+                                  Width="150px"
+                                  FixedStyle="DataGridFixedStyle.Left" />
+                <DxDataGridColumn Caption="@L["Name"]"
+                                  Field="@nameof(ListExpenseDto.Name)"
+                                  Width="250px"
+                                  FixedStyle="DataGridFixedStyle.Left" />
+                <DxDataGridColumn Caption="@L["Unit"]"
+                                  Field="@nameof(ListExpenseDto.UnitName)"
+                                  Width="150px" />
+                <DxDataGridSpinEditColumn Caption="@L["UnitPrice"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListExpenseDto.UnitPrice)"
+                                          Width="110px">
+                </DxDataGridSpinEditColumn>
+                <DxDataGridSpinEditColumn Caption="@L["TaxRate"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListExpenseDto.TaxRate)"
+                                          Width="110px">
+                </DxDataGridSpinEditColumn>
+                 <DxDataGridSpinEditColumn Caption="@L["Entered"]"
+                                         DisplayFormat="n2"
+                                          Field="@nameof(ListExpenseDto.AmountInput)"
+                                          Width="110px">
+                </DxDataGridSpinEditColumn>
+                <DxDataGridSpinEditColumn Caption="@L["Out"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListExpenseDto.OutputAmount)"
+                                          Width="110px">
+                </DxDataGridSpinEditColumn>
+                <DxDataGridColumn Caption="@L["SpecialCodeOneName"]"
+                                  Field="@nameof(ListExpenseDto.SpecialCodeOneName)"
+                                  Width="150px" />
+                <DxDataGridColumn Caption="@L["SpecialCodeTwoName"]"
+                                  Field="@nameof(ListExpenseDto.SpecialCodeTwoName)"
+                                  Width="150px" />
+                <DxDataGridColumn Caption="@L["Description"]"
+                                  Field="@nameof(ListExpenseDto.Description)"
+                                  Width="*" />
+            </Columns>
+        </DevDataGrid>
+    </ListPageContext>
+    <EditPageContent>
+        <ExpenseEditPage OnSubmit="OnSubmit" />
+    </EditPageContent>
+
+</DevListPageLayout>
+
+@code {
+    protected override void OnInitialized()
+    {
+        BaseCrudAppService = CrudService;
+        BaseService = Service;
+    }
+}

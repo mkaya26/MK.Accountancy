@@ -12,9 +12,10 @@ namespace MK.Accountancy.Expenses
         private readonly IExpenseRepository _expenseRepository;
         private readonly ExpenseManager _expenseManager;
 
-        public ExpenseAppService(IExpenseRepository expenseRepository)
+        public ExpenseAppService(IExpenseRepository expenseRepository, ExpenseManager expenseManager)
         {
             _expenseRepository = expenseRepository;
+            _expenseManager = expenseManager;
         }
 
         public virtual async Task<SelectExpenseDto> CreateAsync(CreateExpenseDto input)

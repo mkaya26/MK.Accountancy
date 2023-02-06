@@ -193,6 +193,7 @@
     "Barcode": "Barkod",
     "EnterBarcode": "Barkod Girin",
     "SafeCard": "Kasa Kartı",
-    "SafeCards": "Kasa kartları"
+    "SafeCards": "Kasa kartları",
+    "ExpenseCard": "Masraf Kartı"
   }
 }

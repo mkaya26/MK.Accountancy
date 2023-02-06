@@ -193,6 +193,7 @@
     "Barcode": "Barcode",
     "EnterBarcode": "Enter Barcode",
     "SafeCard": "Safe Card",
-    "SafeCards": "Safe Cards"
+    "SafeCards": "Safe Cards",
+    "ExpenseCard": "Expense Card"
   }
 }
