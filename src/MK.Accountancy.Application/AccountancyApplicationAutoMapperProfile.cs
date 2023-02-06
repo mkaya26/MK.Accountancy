@@ -268,5 +268,7 @@ public class AccountancyApplicationAutoMapperProfile : Profile
         CreateMap<Department, ListDepartmentDto>();
         CreateMap<CreateDepartmentDto, Department>();
         CreateMap<UpdateDepartmentDto, Department>();
+        CreateMap<SelectDepartmentDto, CreateDepartmentDto>();
+        CreateMap<SelectDepartmentDto, UpdateDepartmentDto>();
     }
 }

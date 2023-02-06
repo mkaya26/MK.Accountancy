@@ -196,6 +196,7 @@
     "SafeCards": "Safe Cards",
     "ExpenseCard": "Expense Card",
     "Balance": "Balance",
-    "StockCard": "Stock Card"
+    "StockCard": "Stock Card",
+    "DepartmentCard": "Department Card"
   }
 }
