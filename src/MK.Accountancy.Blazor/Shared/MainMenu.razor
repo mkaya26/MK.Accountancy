@@ -1,4 +1,6 @@
 ﻿@inject IStringLocalizer<AccountancyResource> L
+@inject AppService AppService
+@inject NavigationManager NavigationManager
 
 <div class="card w-100 text-white bg-dark">
     <div class="accordion-body p-0">
@@ -115,7 +117,7 @@
                             IconCssClass="fas fa-clipboard-check">
                         <Items>
                             <DxMenuItem Text="@L["CompParameters"]"
-                                    Click="()=>{}"
+                                    Click="()=> AppService.ShowOrganizationParameterEditPage = true"
                                     IconCssClass="fas fa-clipboard-check" />
                         </Items>
                     </DxMenuItem>
@@ -170,6 +172,21 @@
     </div>
 </div>
 
+@if(AppService.ShowOrganizationParameterEditPage)
+{
+    <OrganizationParameterEditPage />
+}
+
+@if(AppService.ShowDepartmentTermEditPage)
+{
+
+}
+
 @code {
+
+    protected override void OnInitialized()
+    {
+        AppService.HasChanged = StateHasChanged;
+    }
 
 }

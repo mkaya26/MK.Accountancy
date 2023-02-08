@@ -1,4 +1,5 @@
 ﻿using MK.Accountancy.Abstract;
+using MK.Accountancy.Localization;
 using System;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
@@ -13,6 +14,10 @@ namespace MK.Accountancy.Blazor.Pages.Base
         where TCreateInput : class, IEntityDto
         where TUpdateInput : class, IEntityDto
     {
+        public BaseUpdatePage()
+        {
+            LocalizationResource = typeof(AccountancyResource);
+        }
         #region Services
         protected ICrudAppService<TGetOutputDto, TGetListOutputDto, TGetListInput, TCreateInput, TUpdateInput> BaseCrudAppService { get; set; }
         #endregion

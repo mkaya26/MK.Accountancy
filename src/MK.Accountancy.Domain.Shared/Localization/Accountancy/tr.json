@@ -197,6 +197,8 @@
     "ExpenseCard": "Masraf Kartı",
     "Balance": "Kalan",
     "StockCard": "Stok Kartı",
-    "DepartmentCard": "Şube Kartı"
+    "DepartmentCard": "Şube Kartı",
+    "TermCards": "Dönem Kartları",
+    "Term": "Dönem"
   }
 }

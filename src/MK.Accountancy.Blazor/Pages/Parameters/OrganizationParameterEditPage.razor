@@ -1,0 +1,134 @@
+﻿@inherits BaseUpdatePage<
+    SelectOrganizationParameterDto, SelectOrganizationParameterDto,
+    OrganizationParameterListParameterDto, CreateOrganizationParameterDto,
+    UpdateOrganizationParameterDto>
+
+@inject DepartmentService DeparmentService
+@inject TermService TermService
+@inject StoreService StoreService
+@inject AppService AppService
+@inject OrganizationParameterAppService CrudService
+@inject NavigationManager NavigationManager
+
+<DevPopupPageLayout ActionButtonEnabled="true"
+    ActionButtonIconCssClass="pr-2 fas fa-save"
+    ActionButtonInvokeFunction="Save"
+    ActionButtonText="@L["Save"]"
+    ActionButtonVisible="true"
+    CancelButtonText="@L["Cancel"]"
+                        Caption="@L["CompParameters"]"
+                        Closing="Closing"
+                        Height="225px"
+                        Visible="true"
+                        Width="435px">
+    <PageContent>
+        <DevGridLayout ColumnCount="3"
+                       ColumnWidths="@ColumnWidths("80","3","300")"
+                       RowCount="3">
+            <GridLayoutItems>
+                <DevButonEdit ButtonClickInvokeFunction="() => {
+                              DeparmentService.BeforeShowPopupListPage(((SelectOrganizationParameterDto)AppService.CompanyParameter).DepartmentId);}"
+                              Caption="@L["Department"]"
+                              ColumnIndex="2"
+                              IsFocus="true"
+                              NullText="@L["SelectCard"]"
+                              RowIndex="0"
+                              Service="DeparmentService"
+                              @bind-Value="@(((SelectOrganizationParameterDto)AppService.CompanyParameter).DepartmentName)">
+                </DevButonEdit>
+                <DevButonEdit ButtonClickInvokeFunction="() => {
+                              TermService.BeforeShowPopupListPage(((SelectOrganizationParameterDto)AppService.CompanyParameter).TermId);}"
+                              Caption="@L["Term"]"
+                              ColumnIndex="2"
+                              IsFocus="true"
+                              NullText="@L["SelectCard"]"
+                              RowIndex="1"
+                              Service="TermService"
+                              @bind-Value="@(((SelectOrganizationParameterDto)AppService.CompanyParameter).TermName)">
+                </DevButonEdit>
+                <DevButonEdit ButtonClickInvokeFunction="() => {
+                              StoreService.BeforeShowPopupListPage(((SelectOrganizationParameterDto)AppService.CompanyParameter).StoryId);}"
+                              Caption="@L["Store"]"
+                              ColumnIndex="2"
+                              IsFocus="true"
+                              NullText="@L["SelectCard"]"
+                              RowIndex="2"
+                              Service="StoreService"
+                              @bind-Value="@(((SelectOrganizationParameterDto)AppService.CompanyParameter).StoryName)">
+                </DevButonEdit>
+            </GridLayoutItems>
+        </DevGridLayout>
+    </PageContent>
+</DevPopupPageLayout>
+
+@if (DeparmentService.IsPopupListPage)
+{
+    <DevPopupListPageLayout DataGridService="DeparmentService"
+                        CancelButtonText="@L["Cancel"]"
+                        Caption="@L["DepartmentCards"]"
+                        Closed="DeparmentService.HideListPage"
+                        SelectButtonInvokeFunction="(() => {DeparmentService.SelectEntity(AppService.CompanyParameter);})"
+                        SelectButtonText="@L["Select"]"
+                        Visible="true"
+                        Width="1000px">
+        <ListPageContent>
+            <DepartmentListPage />
+        </ListPageContent>
+    </DevPopupListPageLayout>
+}
+
+@if (TermService.IsPopupListPage)
+{
+    <DevPopupListPageLayout DataGridService="TermService"
+                        CancelButtonText="@L["Cancel"]"
+                        Caption="@L["TermCards"]"
+                        Closed="TermService.HideListPage"
+                        SelectButtonInvokeFunction="(() => {TermService.SelectEntity(AppService.CompanyParameter);})"
+                        SelectButtonText="@L["Select"]"
+                        Visible="true"
+                        Width="1000px">
+        <ListPageContent>
+            <TermListPage />
+        </ListPageContent>
+    </DevPopupListPageLayout>
+}
+
+@if (StoreService.IsPopupListPage)
+{
+    <DevPopupListPageLayout DataGridService="StoreService"
+                        CancelButtonText="@L["Cancel"]"
+                        Caption="@L["StoreCards"]"
+                        Closed="StoreService.HideListPage"
+                        SelectButtonInvokeFunction="(() => {StoreService.SelectEntity(AppService.CompanyParameter);})"
+                        SelectButtonText="@L["Select"]"
+                        Visible="true"
+                        Width="1000px">
+        <ListPageContent>
+            <StoreListPage />
+        </ListPageContent>
+    </DevPopupListPageLayout>
+}
+
+@code {
+
+    private async Task Save()
+    {
+        await UpdateAsync(CurrentUser.Id.Value, new UpdateOrganizationParameterDto
+            {
+                DepartmentId = ((SelectOrganizationParameterDto)AppService.CompanyParameter).DepartmentId,
+                TermId = ((SelectOrganizationParameterDto)AppService.CompanyParameter).TermId,
+                StoryId = ((SelectOrganizationParameterDto)AppService.CompanyParameter).StoryId
+            });
+    }
+
+    private void Closing(PopupClosingEventArgs args)
+    {
+        AppService.ShowOrganizationParameterEditPage = false;
+        AppService.HasChanged();
+    }
+
+    protected override void OnInitialized()
+    {
+        BaseCrudAppService = CrudService;
+    }
+}

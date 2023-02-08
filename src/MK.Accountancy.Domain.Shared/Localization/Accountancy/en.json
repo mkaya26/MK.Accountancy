@@ -197,6 +197,8 @@
     "ExpenseCard": "Expense Card",
     "Balance": "Balance",
     "StockCard": "Stock Card",
-    "DepartmentCard": "Department Card"
+    "DepartmentCard": "Department Card",
+    "TermCards": "Term Cards",
+    "Term": "Term"
   }
 }
