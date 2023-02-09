@@ -155,16 +155,14 @@
                     </Items>
                 </DxMenuItem>
 
-                <DxMenuItem Click="()=>{}"
+                <DxMenuItem Click="()=> AppService.ShowDepartmentTermEditPage = true"
                             Position="ItemPosition.End"
                             BeginGroup="true">
                     <TextTemplate>
                         <i class="far fa-building pe-2" />
-
-                        <i class="ps-3 fas fa-minus pe-3" />
-
+                        @(((SelectOrganizationParameterDto)AppService.CompanyParameter).DepartmentName)
                         <i class="fas fa-calendar-alt pe-2" />
-           
+                        @(((SelectOrganizationParameterDto)AppService.CompanyParameter).TermName)
                     </TextTemplate>
                 </DxMenuItem>
                 </Items>
@@ -179,13 +177,18 @@
 
 @if(AppService.ShowDepartmentTermEditPage)
 {
-
+    <DepartmentTermSelectEditPage />
 }
 
 @code {
 
     protected override void OnInitialized()
     {
+        var url = NavigationManager.Uri.RemovePreFix(NavigationManager.BaseUri).EnsureStartsWith('/');
+        if(url != "/")
+        {
+            NavigationManager.NavigateTo("/", true);
+        }
         AppService.HasChanged = StateHasChanged;
     }
 

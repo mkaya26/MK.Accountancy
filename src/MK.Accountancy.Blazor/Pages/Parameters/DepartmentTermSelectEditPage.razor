@@ -1,0 +1,142 @@
+﻿@inherits BaseUpdatePage<
+    SelectOrganizationParameterDto, SelectOrganizationParameterDto,
+    OrganizationParameterListParameterDto, CreateOrganizationParameterDto,
+    UpdateOrganizationParameterDto>
+
+@inject DepartmentService DeparmentService
+@inject TermService TermService
+@inject AppService AppService
+@inject OrganizationParameterAppService CrudService
+@inject NavigationManager NavigationManager
+
+<DevPopupPageLayout ActionButtonEnabled="true"
+                    ActionButtonText="@L["Continue"]"
+                    ActionButtonVisible="true"
+                    CancelButtonVisible="false"
+                    Caption="@L["DepartmentAndTermSelect"]"
+                    Closing="ClosingAsync"
+                    CloseOnEscape="false"
+                    Height="225px"
+                    ShowCloseButton="false"
+                    Visible="true"
+                    Width="435px">
+    <PageContent>
+        <DevGridLayout ColumnCount="3"
+                       ColumnWidths="@ColumnWidths("80","3","300")"
+                       RowCount="2">
+            <GridLayoutItems>
+                <DevButonEdit ButtonClickInvokeFunction="() => {
+                              DeparmentService.BeforeShowPopupListPage(((SelectOrganizationParameterDto)AppService.CompanyParameter).DepartmentId);}"
+                              Caption="@L["Department"]"
+                              ColumnIndex="2"
+                              IsFocus="true"
+                              NullText="@L["SelectCard"]"
+                              RowIndex="0"
+                              Service="DeparmentService"
+                              @bind-Value="@(((SelectOrganizationParameterDto)AppService.CompanyParameter).DepartmentName)">
+                </DevButonEdit>
+                <DevButonEdit ButtonClickInvokeFunction="() => {
+                              TermService.BeforeShowPopupListPage(((SelectOrganizationParameterDto)AppService.CompanyParameter).TermId);}"
+                              Caption="@L["Term"]"
+                              ColumnIndex="2"
+                              IsFocus="true"
+                              NullText="@L["SelectCard"]"
+                              RowIndex="1"
+                              Service="TermService"
+                              @bind-Value="@(((SelectOrganizationParameterDto)AppService.CompanyParameter).TermName)">
+                </DevButonEdit>
+            </GridLayoutItems>
+        </DevGridLayout>
+    </PageContent>
+</DevPopupPageLayout>
+
+@if (DeparmentService.IsPopupListPage)
+{
+    <DevPopupListPageLayout DataGridService="DeparmentService"
+                        CancelButtonText="@L["Cancel"]"
+                        Caption="@L["DepartmentCards"]"
+                        Closed="DeparmentService.HideListPage"
+                        SelectButtonInvokeFunction="(() => {DeparmentService.SelectEntity(AppService.CompanyParameter);})"
+                        SelectButtonText="@L["Select"]"
+                        Visible="true"
+                        Width="1000px">
+        <ListPageContent>
+            <DepartmentListPage />
+        </ListPageContent>
+    </DevPopupListPageLayout>
+}
+
+@if (TermService.IsPopupListPage)
+{
+    <DevPopupListPageLayout DataGridService="TermService"
+                        CancelButtonText="@L["Cancel"]"
+                        Caption="@L["TermCards"]"
+                        Closed="TermService.HideListPage"
+                        SelectButtonInvokeFunction="(() => {TermService.SelectEntity(AppService.CompanyParameter);})"
+                        SelectButtonText="@L["Select"]"
+                        Visible="true"
+                        Width="1000px">
+        <ListPageContent>
+            <TermListPage />
+        </ListPageContent>
+    </DevPopupListPageLayout>
+}
+
+@code {
+
+    private async Task ClosingAsync(PopupClosingEventArgs args)
+    {
+        if(!await CrudService.UserAnyAsync(CurrentUser.Id.Value))
+        {
+            if (((SelectOrganizationParameterDto)AppService.CompanyParameter).DepartmentId == Guid.Empty ||
+            ((SelectOrganizationParameterDto)AppService.CompanyParameter).TermId == Guid.Empty)
+            {
+                args.Cancel = true;
+            }
+            else
+            {
+                var newEntity = await CreateAsync(new CreateOrganizationParameterDto
+                    {
+                        UserId = CurrentUser.Id.Value,
+                        DepartmentId = ((SelectOrganizationParameterDto)AppService.CompanyParameter).DepartmentId,
+                        TermId = ((SelectOrganizationParameterDto)AppService.CompanyParameter).TermId
+                    });
+                if (newEntity != null)
+                {
+                    ((SelectOrganizationParameterDto)AppService.CompanyParameter).Id = newEntity.Id;
+                    NavigationManager.NavigateTo("/", true);
+                }
+            }
+        }
+        else
+        {
+            if (_currentCompanyParameter.DepartmentId != ((SelectOrganizationParameterDto)AppService.CompanyParameter).DepartmentId ||
+            _currentCompanyParameter.TermId != ((SelectOrganizationParameterDto)AppService.CompanyParameter).TermId)
+            {
+                await UpdateAsync(CurrentUser.Id.Value, new UpdateOrganizationParameterDto
+                    {
+                        DepartmentId = ((SelectOrganizationParameterDto)AppService.CompanyParameter).DepartmentId,
+                        TermId = ((SelectOrganizationParameterDto)AppService.CompanyParameter).TermId,
+                        StoryId = ((SelectOrganizationParameterDto)AppService.CompanyParameter).StoryId
+                    });
+                NavigationManager.NavigateTo("/", true);
+            }
+        }
+        //
+        AppService.ShowDepartmentTermEditPage = false;
+        AppService.HasChanged();
+    }
+
+    SelectOrganizationParameterDto _currentCompanyParameter;
+
+    protected override void OnInitialized()
+    {
+        BaseCrudAppService = CrudService;
+        //
+        _currentCompanyParameter = new SelectOrganizationParameterDto
+        {
+                DepartmentId = ((SelectOrganizationParameterDto)AppService.CompanyParameter).DepartmentId,
+                TermId = ((SelectOrganizationParameterDto)AppService.CompanyParameter).TermId
+        };
+    }
+}
