@@ -199,6 +199,15 @@
     "StockCard": "Stok Kartı",
     "DepartmentCard": "Şube Kartı",
     "TermCards": "Dönem Kartları",
-    "Term": "Dönem"
+    "Term": "Dönem",
+    "PurchaseInvoiceCards": "Alış Faturası Kartları",
+    "DateFormat": "dd.MM.yyyy",
+    "CurrentName": "Cari Adı",
+    "Totals": "Toplamlar : ",
+    "InvoiceCard": "Fatura Kartı",
+    "EnterInvoiceNumber": "Fatura Numarası Girin",
+    "EnterDate": "Fatura Tarihi Girin",
+    "Continue": "Devam",
+    "BranchAndPeriodSelect": "Şube ve Dönem Seçimi"
   }
 }

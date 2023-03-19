@@ -123,6 +123,8 @@ public class AccountancyApplicationAutoMapperProfile : Profile
         CreateMap<CreateInvoiceDto, Invoice>();
         CreateMap<UpdateInvoiceDto, Invoice>()
             .ForMember(x => x.InvoiceDetails, y => y.Ignore());
+        CreateMap<SelectInvoiceDto, CreateInvoiceDto>();
+        CreateMap<SelectInvoiceDto, UpdateInvoiceDto>();
         //
         CreateMap<InvoiceDetail, SelectInvoiceDetailDto>()
             .ForMember(x => x.StockCode, y => y.MapFrom(z => z.Stock.Code))

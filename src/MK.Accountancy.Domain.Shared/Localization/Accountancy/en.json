@@ -199,6 +199,15 @@
     "StockCard": "Stock Card",
     "DepartmentCard": "Department Card",
     "TermCards": "Term Cards",
-    "Term": "Term"
+    "Term": "Term",
+    "PurchaseInvoiceCards": "Purchase Invoice Cards",
+    "DateFormat": "dd.MM.yyyy",
+    "CurrentName": "Current Name",
+    "Totals": "Totals : ",
+    "InvoiceCard": "Invoice Card",
+    "EnterInvoiceNumber": "Enter Invoice Number",
+    "EnterDate": "Enter Date",
+    "Continue": "Continue",
+    "BranchAndPeriodSelect": "Branch And Period Select"
   }
 }

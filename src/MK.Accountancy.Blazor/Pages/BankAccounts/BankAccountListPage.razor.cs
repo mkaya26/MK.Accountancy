@@ -14,7 +14,7 @@ namespace MK.Accountancy.Blazor.Pages.BankAccounts
             Service.ListDataSource = (await GetListAsync(new BankAccountListParameterDto
             {
                 BankAccountType = Service.BankAccountType,
-                DepartmentId = ((SelectOrganizationParameterDto)AppService.CompanyParameter).DepartmentId,
+                DepartmentId = AppService.CompanyParameter.DepartmentId,
                 Active = Service.IsActiveCards
             })).Items.ToList();
             //
