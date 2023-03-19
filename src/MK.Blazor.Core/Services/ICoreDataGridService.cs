@@ -15,5 +15,6 @@ namespace MK.Blazor.Core.Services
         public bool ShowSelectionCheckBox { get; set; }
         void ShowListPage(bool firstRender);
         void SetDataRowSelected(TDataGridItem item);
+        void SetDataRowSelected(bool first);
     }
 }

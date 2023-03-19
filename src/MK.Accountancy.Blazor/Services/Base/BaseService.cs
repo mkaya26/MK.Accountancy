@@ -123,6 +123,13 @@ namespace MK.Accountancy.Blazor.Services.Base
 
         }
 
+        public void SetDataRowSelected(bool first)
+        {
+            ((DxDataGrid<TDataGridItem>)DataGrid).SetDataRowSelected(
+                first ? ListDataSource.FirstOrDefault() :
+                ListDataSource.LastOrDefault(), true);
+        }
+
         #region Localizer
         private IStringLocalizer _localizer;
         public IStringLocalizer L 
