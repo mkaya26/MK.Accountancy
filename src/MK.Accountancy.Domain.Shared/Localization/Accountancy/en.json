@@ -208,6 +208,7 @@
     "EnterInvoiceNumber": "Enter Invoice Number",
     "EnterDate": "Enter Date",
     "Continue": "Continue",
-    "BranchAndPeriodSelect": "Branch And Period Select"
+    "BranchAndPeriodSelect": "Branch And Period Select",
+    "SalesInvoiceCards": "Sales Invoice Cards"
   }
 }

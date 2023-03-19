@@ -208,6 +208,7 @@
     "EnterInvoiceNumber": "Fatura Numarası Girin",
     "EnterDate": "Fatura Tarihi Girin",
     "Continue": "Devam",
-    "BranchAndPeriodSelect": "Şube ve Dönem Seçimi"
+    "BranchAndPeriodSelect": "Şube ve Dönem Seçimi",
+    "SalesInvoiceCards": "Satış Faturası Kartları"
   }
 }
