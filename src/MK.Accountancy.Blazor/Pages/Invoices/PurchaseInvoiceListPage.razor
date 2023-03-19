@@ -1,0 +1,119 @@
+﻿@page "/purchaseinvoicecards"
+
+@inherits BaseListPage<SelectInvoiceDto,ListInvoiceDto,InvoiceListParameterDto,
+                       CreateInvoiceDto,UpdateInvoiceDto,InvoiceNumberParameterDto>
+
+@inject InvoiceAppService CrudService
+@inject InvoiceService Service
+
+<DevListPageLayout DataGridService="Service"
+                   ListPageService="Service"
+                   Caption="@L["PurchaseInvoiceCards"]"
+                   RowHeights="@RowHeights("*")">
+
+    <ListPageContext>
+        <DevDataGrid DataGridService="Service"
+                     DoubleClick="async () => await BeforeUpdateAsync()">
+            <HeaderTemplate>
+                <DevListPageToolBar CommonService="Service"
+                                    DataGridService="Service"
+                                    ListPageService="Service"
+                                    DeleteButtonClick="async ()=> await DeleteAsync()"
+                                    DeleteButtonEnabled="Service.ListDataSource.Count > 0"
+                                    DeleteButtonVisible="true"
+                                    FilterButtonVisible="true"
+                                    GetListDataSource="async()=> await GetListDataSourceAsync()"
+                                    GroupButtonVisible="true"
+                                    L="L"
+                                    NewButtonClick="async ()=> await BeforeInsertAsync()"
+                                    NewButtonVisible="true"
+                                    UpdateButtonClick="async ()=> await BeforeUpdateAsync()"
+                                    UpdateButtonEnabled="Service.ListDataSource.Count > 0"
+                                    UpdateButtonVisible="true">
+
+                </DevListPageToolBar>
+            </HeaderTemplate>
+            <Columns>
+                <DxDataGridColumn Caption="@L["InvoiceNumber"]"
+                                  Field="@nameof(ListInvoiceDto.InvoiceNumber)"
+                                  Width="150px" />
+                <DxDataGridDateEditColumn Caption="@L["Date"]"
+                                  DisplayFormat="@L["DateFormat"]"
+                                  Field="@nameof(ListInvoiceDto.InvoiceDate)"
+                                  TextAlignment="DataGridTextAlign.Center"
+                                  Width="80px" />
+                <DxDataGridColumn Caption="@L["CurrentName"]"
+                                  Field="@nameof(ListInvoiceDto.CurrentName)"
+                                  Width="300px" />
+                <DxDataGridSpinEditColumn Caption="@L["MovementNumber"]"
+                                  DisplayFormat="n0"
+                                  Field="@nameof(ListInvoiceDto.MovementNumber)"
+                                  Width="100px" />
+                <DxDataGridSpinEditColumn Caption="@L["SubTotal"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListInvoiceDto.SubTotal)"
+                                          Width="115px" />
+                <DxDataGridSpinEditColumn Caption="@L["TaxAmount"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListInvoiceDto.TaxAmount)"
+                                          Width="115px" />
+                <DxDataGridSpinEditColumn Caption="@L["Netamount"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListInvoiceDto.Netamount)"
+                                          Width="115px" />
+                <DxDataGridSpinEditColumn Caption="@L["DiscountTotal"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListInvoiceDto.DiscountTotal)"
+                                          Width="115px" />
+                <DxDataGridSpinEditColumn Caption="@L["GrandTotal"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListInvoiceDto.GrandTotal)"
+                                          Width="115px" />
+                <DxDataGridColumn Caption="@L["SpecialCodeOneName"]"
+                                  Field="@nameof(ListInvoiceDto.SpecialCodeOneName)"
+                                  Width="150px" />
+                <DxDataGridColumn Caption="@L["SpecialCodeTwoName"]"
+                                  Field="@nameof(ListInvoiceDto.SpecialCodeTwoName)"
+                                  Width="150px" />
+                <DxDataGridColumn Caption="@L["Description"]"
+                                  Field="@nameof(ListInvoiceDto.Description)"
+                                  Width="*" />
+            </Columns>
+            <TotalSummary>
+                <DxDataGridSummaryItem DisplayFormat="@L["Totals"]" 
+                                       Field="@nameof(ListInvoiceDto.CurrentName)"
+                                       SummaryType="SummaryItemType.Count" />
+                <DxDataGridSummaryItem DisplayFormat="n0"
+                                       Field="@nameof(ListInvoiceDto.MovementNumber)"
+                                       SummaryType="SummaryItemType.Sum" />
+                <DxDataGridSummaryItem DisplayFormat="n2"
+                                       Field="@nameof(ListInvoiceDto.GrandTotal)"
+                                       SummaryType="SummaryItemType.Sum" />
+                <DxDataGridSummaryItem DisplayFormat="n2"
+                                       Field="@nameof(ListInvoiceDto.DiscountTotal)"
+                                       SummaryType="SummaryItemType.Sum" />
+                <DxDataGridSummaryItem DisplayFormat="n2"
+                                       Field="@nameof(ListInvoiceDto.Netamount)"
+                                       SummaryType="SummaryItemType.Sum" />
+                <DxDataGridSummaryItem DisplayFormat="n2"
+                                       Field="@nameof(ListInvoiceDto.TaxAmount)"
+                                       SummaryType="SummaryItemType.Sum" />
+                <DxDataGridSummaryItem DisplayFormat="n2"
+                                       Field="@nameof(ListInvoiceDto.SubTotal)"
+                                       SummaryType="SummaryItemType.Sum" />
+            </TotalSummary>
+        </DevDataGrid>
+    </ListPageContext>
+    <EditPageContent>
+        <PurchaseInvoiceEditPage OnSubmit="OnSubmit" />
+    </EditPageContent>
+
+</DevListPageLayout>
+
+@code {
+    protected override void OnInitialized()
+    {
+        BaseCrudAppService = CrudService;
+        BaseService = Service;
+    }
+}
