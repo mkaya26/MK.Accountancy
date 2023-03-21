@@ -24,14 +24,14 @@ namespace MK.Accountancy.Invoices
         public string StoreCode { get; set; }
         public string StoreName { get; set; }
         public string UnitName { get; set; }
-        public decimal? Quantity { get; set; }
-        public decimal? UnitPrice { get; set; }
-        public decimal? GrossAmount { get; set; }
-        public decimal? DiscountAmount { get; set; }
-        public int? TaxRate { get; set; }
-        public decimal? SubTotal { get; set; }
-        public decimal? TaxTotal { get; set; }
-        public decimal? NetTotal { get; set; }
+        public decimal Quantity { get; set; }
+        public decimal UnitPrice { get; set; }
+        public decimal GrossAmount { get; set; }
+        public decimal DiscountAmount { get; set; }
+        public int TaxRate { get; set; }
+        public decimal SubTotal { get; set; }
+        public decimal TaxTotal { get; set; }
+        public decimal NetTotal { get; set; }
         public string Description { get; set; }
         //public SelectInvoiceDto InvoiceDto { get; set; }
     }

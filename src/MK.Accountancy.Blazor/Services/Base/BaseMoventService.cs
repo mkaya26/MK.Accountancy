@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 using MK.Accountancy.Localization;
+using MK.Accountancy.Migrations;
+using MK.Blazor.Core.Helpers;
 using MK.Blazor.Core.Services;
 using System;
 using System.Collections.Generic;
@@ -51,9 +53,11 @@ namespace MK.Accountancy.Blazor.Services.Base
             throw new NotImplementedException();
         }
 
-        public Task ConfirmMessage(string message, Action action, string title = null)
+        public async Task ConfirmMessage(string message, Action action, string title = null)
         {
-            throw new NotImplementedException();
+            var confirmed = await MessageService.Confirm(message, title);
+            if (confirmed)
+                action();
         }
 
         public void HideEditPage()
@@ -73,7 +77,7 @@ namespace MK.Accountancy.Blazor.Services.Base
 
         public void SetDataRowSelected(TDataGridItem item)
         {
-
+            ((DxDataGrid<TDataGridItem>)DataGrid).SetDataRowSelected(item, true);
         }
 
         public void SetDataRowSelected(bool first)
@@ -91,6 +95,46 @@ namespace MK.Accountancy.Blazor.Services.Base
         public void ShowListPage(bool firstRender)
         {
             throw new NotImplementedException();
+        }
+
+        public void FillTable<TItem>(ICoreMoventService<TItem> moventService, Action hasChanged)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual void GetTotal()
+        {
+
+        }
+
+        public void BeforeUpdate()
+        {
+            DataSource = SelectedItem;
+            EditPageVisible = true;
+        }
+
+        public virtual void BeforeInsert()
+        {
+
+        }
+
+        public virtual async Task DeleteAsync()
+        {
+            await ConfirmMessage(L["DeleteConfirmMessage"], async () =>
+            {
+                var deletedEntityIndex = ListDataSource.FindIndex(x => x.GetEntityId() == SelectedItem.GetEntityId());
+                //
+                ListDataSource.Remove(SelectedItem);
+                //
+                await ((DxDataGrid<TDataGridItem>)DataGrid).Refresh();
+                //
+                SelectedItem = ListDataSource.SetSelectedItem(deletedEntityIndex);
+                SetDataRowSelected(SelectedItem);
+                GetTotal();
+                //
+                HasChanged();
+                //
+            }, L["DeleteConfirmMessageTitle"]);
         }
 
         #region Localizer

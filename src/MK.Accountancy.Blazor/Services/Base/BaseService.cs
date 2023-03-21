@@ -130,6 +130,10 @@ namespace MK.Accountancy.Blazor.Services.Base
                 ListDataSource.LastOrDefault(), true);
         }
 
+        public virtual void FillTable<TItem>(ICoreMoventService<TItem> moventService, Action hasChanged)
+        {
+        }
+
         #region Localizer
         private IStringLocalizer _localizer;
         public IStringLocalizer L 

@@ -209,6 +209,11 @@
     "EnterDate": "Enter Date",
     "Continue": "Continue",
     "BranchAndPeriodSelect": "Branch And Period Select",
-    "SalesInvoiceCards": "Sales Invoice Cards"
+    "SalesInvoiceCards": "Sales Invoice Cards",
+    "InvoiceRows": "Invoice Rows",
+    "RowTypeName": "Row Type Name",
+    "Warehouse": "Warehouse",
+    "InvoiceSubtotals": "Invoice Subtotals",
+    "GrossTotal": "Gross Total"
   }
 }

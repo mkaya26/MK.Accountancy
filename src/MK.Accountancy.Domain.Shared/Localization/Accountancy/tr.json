@@ -209,6 +209,11 @@
     "EnterDate": "Fatura Tarihi Girin",
     "Continue": "Devam",
     "BranchAndPeriodSelect": "Şube ve Dönem Seçimi",
-    "SalesInvoiceCards": "Satış Faturası Kartları"
+    "SalesInvoiceCards": "Satış Faturası Kartları",
+    "InvoiceRows": "Fatura Hareketleri",
+    "RowTypeName": "Kayıt Tipi Adı",
+    "Warehouse": "Depo",
+    "InvoiceSubtotals": "Fatura Alt Toplamları",
+    "GrossTotal": "Brüt Tutar"
   }
 }

@@ -93,14 +93,14 @@
     public SizeMode ToolbarItemSizeMode { get; set; } = SizeMode.Small;
     [Parameter] public IStringLocalizer L { get; set; }
     [Parameter] public EventCallback ToolbarNewButtonClick { get; set; }
-    [Parameter] public bool ToolbarNewButtonEnabled { get; set; }
-    [Parameter] public bool ToolbarNewButtonVisible { get; set; }
+    [Parameter] public bool ToolbarNewButtonEnabled { get; set; } = true;
+    [Parameter] public bool ToolbarNewButtonVisible { get; set; } = true;
     [Parameter] public EventCallback ToolbarNewDropDownButton1Click { get; set; }
     [Parameter] public EventCallback ToolbarNewDropDownButton2Click { get; set; }
     [Parameter] public bool ToolbarNewDropDownButtonVisible { get; set; }
     [Parameter] public EventCallback ToolbarUpdateButtonClick { get; set; }
     [Parameter] public bool ToolbarUpdateButtonEnabled { get; set; }
-    [Parameter] public bool ToolbarUpdateButtonVisible { get; set; }
+    [Parameter] public bool ToolbarUpdateButtonVisible { get; set; } = true;
 
     private void SingleSelectedDataRowChanged(TDataGridItem item)
     {
