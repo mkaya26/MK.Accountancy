@@ -1,6 +1,8 @@
 ﻿using MK.Accountancy.Blazor.Helpers;
 using MK.Accountancy.Blazor.Services.Base;
 using MK.Accountancy.Invoices;
+using MK.Blazor.Core.Models;
+using System;
 using System.Linq;
 using Volo.Abp.DependencyInjection;
 
@@ -49,6 +51,51 @@ namespace MK.Accountancy.Blazor.Services
             {
                 MessageService.Error(result.Errors.CreateValidationErrorMessage(L));
             }
+        }
+
+        public void InvoiceMoventTypeSelectedItemChanged(ComboboxEnumItem<InvoiceDetailType> selectedItem,Action hasChenaged)
+        {
+            TempDataSource.InvoiceDetailType = selectedItem.Value;
+            hasChenaged();
+            //
+            TempDataSource.StockId = null;
+            TempDataSource.StockName = null;
+            TempDataSource.StockCode = null;
+            //
+            TempDataSource.ServiceId = null;
+            TempDataSource.ServiceName = null;
+            TempDataSource.ServiceCode = null;
+            //
+            TempDataSource.ExpenceId = null;
+            TempDataSource.ExpenceName = null;
+            TempDataSource.ExpenceCode = null;
+            //
+            TempDataSource.UnitPrice = 0;
+            TempDataSource.TaxRate = 0;
+            //
+            if(TempDataSource.InvoiceDetailType == InvoiceDetailType.Stock)
+            {
+                TempDataSource.StoreId = AppService.CompanyParameter.StoryId;
+                TempDataSource.StoreName = AppService.CompanyParameter.StoryName;
+            }
+            else
+            {
+                TempDataSource.StoreId = null;
+                TempDataSource.StoreName = null;
+            }
+        }
+
+        public override void Calc(object value, string propertyName)
+        {
+            TempDataSource.GetType().GetProperty(propertyName).SetValue(TempDataSource, value);
+            //
+            TempDataSource.GrossAmount = TempDataSource.Quantity * TempDataSource.UnitPrice;
+            TempDataSource.DiscountAmount = TempDataSource.DiscountAmount > TempDataSource.GrossAmount ?
+                TempDataSource.GrossAmount :
+                TempDataSource.DiscountAmount;
+            TempDataSource.SubTotal = (TempDataSource.Quantity * TempDataSource.UnitPrice) - TempDataSource.DiscountAmount;
+            TempDataSource.TaxTotal = TempDataSource.SubTotal * TempDataSource.TaxRate / 100;
+            TempDataSource.NetTotal = TempDataSource.SubTotal + TempDataSource.TaxTotal;
         }
     }
 }

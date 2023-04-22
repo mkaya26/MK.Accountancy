@@ -161,6 +161,8 @@ namespace MK.Accountancy.Blazor.Services.Base
             GetTotal();
         }
 
+        public virtual void Calc(object value, string propertyName) { }
+
         #region Localizer
         private IStringLocalizer _localizer;
         public IStringLocalizer L

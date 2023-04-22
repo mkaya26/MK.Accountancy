@@ -7,63 +7,167 @@
 @inject ServiceService ServiceService
 @inject StoreService StoreService
 
-<DevPopupMoventEditPageLayout   CancelButtonText="@L["Cancel"]"
-                                Caption="@L["InvoiceRow"]"
-                                Closed="Service.HideEditPage"
-                                Height="400px"
-                                OnSubmit="OnSubmit"
-                                Service="Service"
-                                SubmitButtonText="@L["Save"]"
-                                Width="860px">
+<DevPopupMoventEditPageLayout CancelButtonText="@L["Cancel"]"
+                              Caption="@L["InvoiceRow"]"
+                              Closed="Service.HideEditPage"
+                              Height="400px"
+                              OnSubmit="Service.OnSubmit"
+                              Service="Service"
+                              SubmitButtonText="@L["Save"]"
+                              Width="860px">
     <EditPageContent>
-        <DevGridLayout ColumnCount="7"
-                       ColumnWidths="@ColumnWidths("80","3","170","50","80","3","170")"
-                       RowCount="4">
+        <DevGridLayout ColumnCount="11"
+                       ColumnWidths="@ColumnWidths("85","3","120","25","90","3","120","25","100","3","120")"
+                       RowCount="7">
             <GridLayoutItems>
-                <DevTextEdit Caption="@L["Code"]"
-                             ColumnIndex="2"
-                             NullText="@L["EnterCode"]"
-                             RowIndex="0"
-                             @bind-Value="@Service.DataSource.Code">
-                </DevTextEdit>
-                <DevCheckEdit ColumnIndex="6"
-                              FalseCaption="@L["Passive"]"
+
+                <DevComboboxEnumEdit Caption="@L["RowType"]"
+                                     ColumnIndex="2"
+                                     DataSource="@(FillEnumToCombobox<InvoiceDetailType>(L))"
+                                     SelectedItemChanged="(e)=>Service.InvoiceMoventTypeSelectedItemChanged(e,StateHasChanged)"
+                                     RowIndex="0"
+                                     TextFieldName="@nameof(ComboboxEnumItem<InvoiceDetailType>.DisplayName)"
+                                     TItem="InvoiceDetailType"
+                                     @bind-Value="@Service.TempDataSource.InvoiceDetailType"
+                                     ValueFieldName="@nameof(ComboboxEnumItem<InvoiceDetailType>.Value)">
+                </DevComboboxEnumEdit>
+                <DevButonEdit ButtonClickInvokeFunction="() => {
+                                StoreService.BeforeShowPopupListPage(Service.TempDataSource.StoreId);}"
+                              Caption="@L["Warehouse"]"
+                              ColumnIndex="6"
+                              ColumnSpan="3"
+                              NullText="@L["SelectCard"]"
                               RowIndex="0"
-                              TrueCaption="@L["Active"]"
-                              SeperateCaptionVisible="false"
-                              @bind-Value="@Service.DataSource.Active">
-                </DevCheckEdit>
-                <DevTextEdit Caption="@L["Name"]"
+                              Service="StoreService"
+                              @bind-Value="@Service.TempDataSource.StoreName"
+                              Visible="Service.TempDataSource.InvoiceDetailType == InvoiceDetailType.Stock">
+                </DevButonEdit>
+                <DevButonEdit ButtonClickInvokeFunction="() => {
+                                StockService.BeforeShowPopupListPage(Service.TempDataSource.StockId);}"
+                              Caption="@L["StockCode"]"
+                              ColumnIndex="2"
+                              ColumnSpan="4"
+                              IsFocus="Service.TempDataSource.InvoiceDetailType == InvoiceDetailType.Stock"
+                              NullText="@L["SelectCard"]"
+                              RowIndex="1"
+                              Service="StockService"
+                              Value="@Service.TempDataSource.StockCode"
+                              ValueChanged="()=>Service.TempDataSource.ItemCode = Service.TempDataSource.StockCode"
+                              Visible="Service.TempDataSource.InvoiceDetailType == InvoiceDetailType.Stock">
+                </DevButonEdit>
+                <DevButonEdit ButtonClickInvokeFunction="() => {
+                                ServiceService.BeforeShowPopupListPage(Service.TempDataSource.ServiceId);}"
+                              Caption="@L["ServiceCode"]"
+                              ColumnIndex="2"
+                              ColumnSpan="4"
+                              IsFocus="Service.TempDataSource.InvoiceDetailType == InvoiceDetailType.Service"
+                              NullText="@L["SelectCard"]"
+                              RowIndex="1"
+                              Service="ServiceService"
+                              Value="@Service.TempDataSource.ServiceCode"
+                              ValueChanged="()=>Service.TempDataSource.ItemCode = Service.TempDataSource.ServiceCode"
+                              Visible="Service.TempDataSource.InvoiceDetailType == InvoiceDetailType.Service">
+                </DevButonEdit>
+                <DevButonEdit ButtonClickInvokeFunction="() => {
+                                ExpenseService.BeforeShowPopupListPage(Service.TempDataSource.ExpenceId);}"
+                              Caption="@L["ExpenseCode"]"
+                              ColumnIndex="2"
+                              ColumnSpan="4"
+                              IsFocus="Service.TempDataSource.InvoiceDetailType == InvoiceDetailType.Expense"
+                              NullText="@L["SelectCard"]"
+                              RowIndex="1"
+                              Service="ExpenseService"
+                              Value="@Service.TempDataSource.ExpenceCode"
+                              ValueChanged="()=>Service.TempDataSource.ItemCode = Service.TempDataSource.ExpenceCode"
+                              Visible="Service.TempDataSource.InvoiceDetailType == InvoiceDetailType.Expense">
+                </DevButonEdit>
+                <DevTextEdit Caption="@L["StockName"]"
                              ColumnIndex="2"
                              ColumnSpan="5"
-                             IsFocus="true"
-                             NullText="@L["EnterName"]"
-                             RowIndex="1"
-                             @bind-Value="@Service.DataSource.Name">
+                             Enabled="false"
+                             RowIndex="2"
+                             Value="@Service.TempDataSource.StockName"
+                             ValueChanged="()=>Service.TempDataSource.ItemName = Service.TempDataSource.StockName"
+                             Visible="Service.TempDataSource.InvoiceDetailType == InvoiceDetailType.Stock">
                 </DevTextEdit>
-                <DevButonEdit ButtonClickInvokeFunction="() => { SpecialCodeService.BeforeShowPopupListPage(SpecialCodeType.SpecialCodeOne,CardType.Unit,Service.DataSource.SpecialCodeOneId);}"
-                              Caption="@L["SpecialCodeOneName"]"
-                              ColumnIndex="2"
-                              DeleteButtonKeydownInvokeFunction="() =>{ SpecialCodeService.ButtonEditDeleteKeyDown(Service.DataSource, nameof(Service.DataSource.SpecialCodeOneName));}"
-                              NullText="@L["SelectCard"]"
-                              RowIndex="2"
-                              Service="SpecialCodeService"
-                              @bind-Value="@Service.DataSource.SpecialCodeOneName">
-                </DevButonEdit>
-                <DevButonEdit ButtonClickInvokeFunction="() => { SpecialCodeService.BeforeShowPopupListPage(SpecialCodeType.SpecialCodeTwo,CardType.Unit,Service.DataSource.SpecialCodeTwoId);}"
-                              Caption="@L["SpecialCodeTwoName"]"
-                              ColumnIndex="6"
-                              DeleteButtonKeydownInvokeFunction="() => { SpecialCodeService.ButtonEditDeleteKeyDown(Service.DataSource, nameof(Service.DataSource.SpecialCodeTwoName));}"
-                              NullText="@L["SelectCard"]"
-                              RowIndex="2"
-                              Service="SpecialCodeService"
-                              @bind-Value="@Service.DataSource.SpecialCodeTwoName">
-                </DevButonEdit>
+                <DevTextEdit Caption="@L["ServiceName"]"
+                             ColumnIndex="2"
+                             ColumnSpan="5"
+                             Enabled="false"
+                             RowIndex="2"
+                             Value="@Service.TempDataSource.ServiceName"
+                             ValueChanged="()=>Service.TempDataSource.ItemName = Service.TempDataSource.ServiceName"
+                             Visible="Service.TempDataSource.InvoiceDetailType == InvoiceDetailType.Service">
+                </DevTextEdit>
+                <DevTextEdit Caption="@L["ExpenseName"]"
+                             ColumnIndex="2"
+                             ColumnSpan="5"
+                             Enabled="false"
+                             RowIndex="2"
+                             Value="@Service.TempDataSource.ExpenceName"
+                             ValueChanged="()=>Service.TempDataSource.ItemName = Service.TempDataSource.ExpenceName"
+                             Visible="Service.TempDataSource.InvoiceDetailType == InvoiceDetailType.Expense">
+                </DevTextEdit>
+                <DevTextEdit Caption="@L["Unit"]"
+                             ColumnIndex="10"
+                             Enabled="false"
+                             RowIndex="2"
+                             @bind-Value="@Service.TempDataSource.UnitName">
+                </DevTextEdit>
+                <DevCurrencyEdit Caption="@L["Quantity"]"
+                                 ColumnIndex="2"
+                                 RowIndex="3"
+                                 Value="@Service.TempDataSource.Quantity"
+                                 ValueChanged="(e)=>Service.Calc(e,nameof(Service.TempDataSource.Quantity))"
+                                 >
+                </DevCurrencyEdit>
+                <DevCurrencyEdit Caption="@L["UnitPrice"]"
+                                 ColumnIndex="6"
+                                 RowIndex="3"
+                                 Value="@Service.TempDataSource.UnitPrice"
+                                 ValueChanged="(e)=>Service.Calc(e,nameof(Service.TempDataSource.UnitPrice))">
+                </DevCurrencyEdit>
+                <DevSpinEdit Caption="@L["ValueAddedTaxRate"]"
+                                 ColumnIndex="2"
+                                 RowIndex="4"
+                                 Value="@Service.TempDataSource.TaxRate"
+                                 ValueChanged="(e)=>Service.Calc(e,nameof(Service.TempDataSource.TaxRate))">
+                </DevSpinEdit>
+                <DevCurrencyEdit Caption="@L["GrossAmount"]"
+                                 ColumnIndex="10"
+                                 Enabled="false"
+                                 RowIndex="3"
+                                 @bind-Value="@Service.TempDataSource.GrossAmount">
+                </DevCurrencyEdit>
+                <DevCurrencyEdit Caption="@L["DiscountAmount"]"
+                                 ColumnIndex="6"
+                                 RowIndex="4"
+                                 Value="@Service.TempDataSource.DiscountAmount"
+                                 ValueChanged="(e)=>Service.Calc(e,nameof(Service.TempDataSource.DiscountAmount))">
+                </DevCurrencyEdit>
+                <DevCurrencyEdit Caption="@L["ExcludesValueAddedTaxAmount"]"
+                                 ColumnIndex="10"
+                                 Enabled="false"
+                                 RowIndex="4"
+                                 @bind-Value="@Service.TempDataSource.SubTotal">
+                </DevCurrencyEdit>
+                <DevCurrencyEdit Caption="@L["ValueAddedTaxAmount"]"
+                                 ColumnIndex="10"
+                                 Enabled="false"
+                                 RowIndex="5"
+                                 @bind-Value="@Service.TempDataSource.TaxTotal">
+                </DevCurrencyEdit>
+                <DevCurrencyEdit Caption="@L["TotalAmount"]"
+                                 ColumnIndex="10"
+                                 Enabled="false"
+                                 RowIndex="6"
+                                 @bind-Value="@Service.TempDataSource.NetTotal">
+                </DevCurrencyEdit>
                 <DevMemoEdit Caption="@L["Description"]"
                              ColumnIndex="2"
                              ColumnSpan="5"
                              NullText="@L["EnterDescription"]"
-                             RowIndex="3"
+                             RowIndex="5"
                              RowSpan="2"
                              @bind-Value="@Service.DataSource.Description">
                 </DevMemoEdit>
@@ -71,19 +175,3 @@
         </DevGridLayout>
     </EditPageContent>
 </DevPopupMoventEditPageLayout>
-
-@if (SpecialCodeService.IsPopupListPage)
-{
-    <DevPopupListPageLayout DataGridService="SpecialCodeService"
-                        CancelButtonText="@L["Cancel"]"
-                        Caption="@L["SpecialCodeCards"]"
-                        Closed="SpecialCodeService.HideListPage"
-                        SelectButtonInvokeFunction="(() => {SpecialCodeService.SelectEntity(Service.DataSource);})"
-                        SelectButtonText="@L["Select"]"
-                        Visible="true"
-                        Width="1000px">
-        <ListPageContent>
-            <SpecialCodeListPage />
-        </ListPageContent>
-    </DevPopupListPageLayout>
-}

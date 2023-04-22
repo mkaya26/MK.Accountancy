@@ -9,5 +9,6 @@
         Task DeleteAsync();
         void OnSubmit();
         void InsertOrUpdate();
+        void Calc(object value, string propertyName);
     }
 }
