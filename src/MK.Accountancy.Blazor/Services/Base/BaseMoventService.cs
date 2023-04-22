@@ -32,6 +32,7 @@ namespace MK.Accountancy.Blazor.Services.Base
         public TDataGridItem DataSource { get; set; }
         public bool ToolbarCheckBoxVisible { get; set; }
         public bool IsActiveCards { get; set; }
+        public TDataGridItem TempDataSource { get; set; }
 
         public string LoadingCaption => throw new NotImplementedException();
 
@@ -62,7 +63,8 @@ namespace MK.Accountancy.Blazor.Services.Base
 
         public void HideEditPage()
         {
-            throw new NotImplementedException();
+            EditPageVisible = false;
+            HasChanged();
         }
 
         public void HideListPage()
@@ -135,6 +137,28 @@ namespace MK.Accountancy.Blazor.Services.Base
                 HasChanged();
                 //
             }, L["DeleteConfirmMessageTitle"]);
+        }
+
+        public virtual void OnSubmit() { }
+
+        public virtual void InsertOrUpdate() 
+        {
+            if(((IEntityDto<Guid>)DataSource).Id == Guid.Empty)
+            {
+                ((IEntityDto<Guid>)DataSource).Id = GuidGenerator.Create();
+                ListDataSource.Add(DataSource);
+            }
+            else
+            {
+                var itemIndex = ListDataSource.FindIndex(x => ((IEntityDto<Guid>)x).Id == ((IEntityDto<Guid>)SelectedItem).Id);
+                //
+                ListDataSource[itemIndex] = DataSource;
+            }
+            //
+            EditPageVisible = false;
+            SetDataRowSelected(DataSource);
+            //
+            GetTotal();
         }
 
         #region Localizer

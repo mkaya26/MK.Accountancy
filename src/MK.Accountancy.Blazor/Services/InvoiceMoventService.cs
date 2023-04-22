@@ -1,4 +1,5 @@
-﻿using MK.Accountancy.Blazor.Services.Base;
+﻿using MK.Accountancy.Blazor.Helpers;
+using MK.Accountancy.Blazor.Services.Base;
 using MK.Accountancy.Invoices;
 using System.Linq;
 using Volo.Abp.DependencyInjection;
@@ -29,6 +30,25 @@ namespace MK.Accountancy.Blazor.Services
             };
             //
             EditPageVisible = true;
+        }
+
+        public override void OnSubmit()
+        {
+            var validator = new SelectInvoiceDetailDtoValidator(L);
+            var result = validator.Validate(TempDataSource);
+            //
+            if(result.IsValid)
+            {
+                DataSource = TempDataSource;
+                DataSource.InvoiceDetailTypeName = L[$"Enum:InvoiceDetailType:{(byte)DataSource.InvoiceDetailType}"];
+                //
+                InsertOrUpdate();
+                HasChanged();
+            }
+            else
+            {
+                MessageService.Error(result.Errors.CreateValidationErrorMessage(L));
+            }
         }
     }
 }
