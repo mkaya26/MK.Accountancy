@@ -65,7 +65,7 @@
     "Store": "Depo",
     "Quantity": "Miktar",
     "GrossAmount": "Brüt Toplam",
-    "DiscountAmount": "İskonto Toplam",
+    "DiscountAmount": "İndirim Tutar",
     "TaxRate": "Kdv Oranı",
     "TaxTotal": "Kdv Toplam",
     "NetTotal": "Net Toplam",
@@ -214,6 +214,19 @@
     "RowTypeName": "Kayıt Tipi Adı",
     "Warehouse": "Depo",
     "InvoiceSubtotals": "Fatura Alt Toplamları",
-    "GrossTotal": "Brüt Tutar"
+    "GrossTotal": "Brüt Tutar",
+    "InvoiceRow": "Fatura Hareketi",
+    "RowType": "Hareket Turu",
+    "StockCode": "Stok Kodu",
+    "ServiceCode": "Hizmet Kodu",
+    "ExpenseCode": "Masraf Kodu",
+    "StockName": "Stok Adı",
+    "ServiceName": "Hizmet Adı",
+    "ExpenseName": "Masraf Adı",
+    "ExcludesValueAddedTaxAmount": "KDV Hariç Tutar",
+    "ValueAddedTaxAmount": "KDV Tutarı",
+    "TotalAmount": "Toplam Tutar",
+    "ValidationErrorMessageBoxTitle": "Aşağıdaki hatalar doğrulama sırasında tespit edilmiştir.",
+    "ExpenceCards": "Masraf Kartları"
   }
 }

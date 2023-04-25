@@ -151,6 +151,8 @@ public class AccountancyApplicationAutoMapperProfile : Profile
                             z.Expense != null ? z.Expense.Name :
                             null));
         CreateMap<InvoiceDetailDto, InvoiceDetail>();
+        CreateMap<SelectInvoiceDetailDto, InvoiceDetailDto>();
+        CreateMap<SelectInvoiceDetailDto, SelectInvoiceDetailDto>();
         //
         CreateMap<Service, SelectServiceDto>()
             .ForMember(x => x.SpecialCodeOneName, y => y.MapFrom(z => z.SpecialCodeOne.Name))

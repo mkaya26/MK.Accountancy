@@ -75,6 +75,7 @@
                 </DevMemoEdit>
                 <DevMoventDataGrid ColumnIndex="0"
                                    ColumnSpan="11"
+                                   DataSource="InvoiceMoventService.ListDataSource.ToList()"
                                    DoubleClick="InvoiceMoventService.BeforeUpdate"
                                    L="L"
                                    RowIndex="4"
@@ -216,6 +217,11 @@
         </DevGridLayout>
     </EditPageContent>
 </DevPopupEditPageLayout>
+
+@if (InvoiceMoventService.EditPageVisible)
+{
+    <InvoiceMoventEditPage/>
+}
 
 @if (SpecialCodeService.IsPopupListPage)
 {

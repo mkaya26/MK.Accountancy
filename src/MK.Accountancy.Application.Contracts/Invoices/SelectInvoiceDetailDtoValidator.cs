@@ -18,12 +18,12 @@ namespace MK.Accountancy.Invoices
                 .When(x => x.InvoiceDetailType == InvoiceDetailType.Service)
                 .WithMessage(localizer[AccountancyDomainErrorCodes.Required, localizer["Service"]]);
             //
-            RuleFor(x => x.ExpenceId)
+            RuleFor(x => x.ExpenseId)
                 .NotEmpty()
                 .When(x => x.InvoiceDetailType == InvoiceDetailType.Expense)
                 .WithMessage(localizer[AccountancyDomainErrorCodes.Required, localizer["Expense"]]);
             //
-            RuleFor(x => x.StoreId)
+            RuleFor(x => x.StoryId)
                 .NotEmpty()
                 .When(x => x.InvoiceDetailType == InvoiceDetailType.Stock)
                 .WithMessage(localizer[AccountancyDomainErrorCodes.Required, localizer["Warehouse"]]);

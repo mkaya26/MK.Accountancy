@@ -1,4 +1,5 @@
 ﻿using MK.Accountancy.Blazor.Services.Base;
+using MK.Accountancy.Invoices;
 using MK.Accountancy.Parameters;
 using MK.Accountancy.Stores;
 using Volo.Abp.Application.Dtos;
@@ -15,6 +16,11 @@ namespace MK.Accountancy.Blazor.Services
                 case SelectOrganizationParameterDto parameterDto:
                     parameterDto.StoryId = SelectedItem.Id;
                     parameterDto.StoryName = SelectedItem.Name;
+                    break;
+                    case SelectInvoiceDetailDto invoiceDetailDto:
+                    invoiceDetailDto.StoryId = SelectedItem.Id;
+                    invoiceDetailDto.StoreCode = SelectedItem.Code;
+                    invoiceDetailDto.StoreName = SelectedItem.Name;
                     break;
             }
         }

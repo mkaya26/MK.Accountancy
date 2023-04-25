@@ -214,6 +214,19 @@
     "RowTypeName": "Row Type Name",
     "Warehouse": "Warehouse",
     "InvoiceSubtotals": "Invoice Subtotals",
-    "GrossTotal": "Gross Total"
+    "GrossTotal": "Gross Total",
+    "InvoiceRow": "Invoice Row",
+    "RowType": "Row Type",
+    "StockCode": "Stock Code",
+    "ServiceCode": "Service Code",
+    "ExpenseCode": "Expense Code",
+    "StockName": "Stock Name",
+    "ServiceName": "Service Name",
+    "ExpenseName": "Expense Name",
+    "ExcludesValueAddedTaxAmount": "Excludes tax amount",
+    "ValueAddedTaxAmount": "Tax Amount",
+    "TotalAmount": "Total Amount",
+    "ValidationErrorMessageBoxTitle": "The following errors were detected during validation.",
+    "ExpenceCards": "Expence Cards"
   }
 }

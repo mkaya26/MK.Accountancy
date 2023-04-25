@@ -7,7 +7,7 @@
                   RowSpan="RowSpan">
     <Template>
         <DxDataGrid @ref="Service.DataGrid"
-                    Data="Service.ListDataSource"
+                    Data="DataSource"
                     AllowColumnDragDrop="AllowColumnDragDrop"
                     AllowSort="AllowSort"
                     ColumnResizeMode="ColumnResizeMode"
@@ -65,6 +65,7 @@
 @code {
 
     [Parameter] public ICoreMoventService<TDataGridItem> Service { get; set; }
+    [Parameter] public IEnumerable<TDataGridItem> DataSource { get; set; }
     [Parameter] public bool AllowColumnDragDrop { get; set; } = true;
     [Parameter] public bool AllowSort { get; set; } = true;
     [Parameter] public DataGridColumnResizeMode ColumnResizeMode { get; set; } = DataGridColumnResizeMode.Component;

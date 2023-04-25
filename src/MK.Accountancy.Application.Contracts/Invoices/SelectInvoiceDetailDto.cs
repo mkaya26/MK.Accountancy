@@ -17,10 +17,10 @@ namespace MK.Accountancy.Invoices
         public Guid? ServiceId { get; set; }
         public string ServiceCode { get; set; }
         public string ServiceName { get; set; }
-        public Guid? ExpenceId { get; set; }
+        public Guid? ExpenseId { get; set; }
         public string ExpenceCode { get; set; }
         public string ExpenceName { get; set; }
-        public Guid? StoreId { get; set; }
+        public Guid? StoryId { get; set; }
         public string StoreCode { get; set; }
         public string StoreName { get; set; }
         public string UnitName { get; set; }

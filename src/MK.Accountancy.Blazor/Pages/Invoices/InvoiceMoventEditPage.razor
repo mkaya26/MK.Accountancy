@@ -32,7 +32,7 @@
                                      ValueFieldName="@nameof(ComboboxEnumItem<InvoiceDetailType>.Value)">
                 </DevComboboxEnumEdit>
                 <DevButonEdit ButtonClickInvokeFunction="() => {
-                                StoreService.BeforeShowPopupListPage(Service.TempDataSource.StoreId);}"
+                                StoreService.BeforeShowPopupListPage(Service.TempDataSource.StoryId);}"
                               Caption="@L["Warehouse"]"
                               ColumnIndex="6"
                               ColumnSpan="3"
@@ -69,7 +69,7 @@
                               Visible="Service.TempDataSource.InvoiceDetailType == InvoiceDetailType.Service">
                 </DevButonEdit>
                 <DevButonEdit ButtonClickInvokeFunction="() => {
-                                ExpenseService.BeforeShowPopupListPage(Service.TempDataSource.ExpenceId);}"
+                                ExpenseService.BeforeShowPopupListPage(Service.TempDataSource.ExpenseId);}"
                               Caption="@L["ExpenseCode"]"
                               ColumnIndex="2"
                               ColumnSpan="4"
@@ -175,3 +175,71 @@
         </DevGridLayout>
     </EditPageContent>
 </DevPopupMoventEditPageLayout>
+
+@if (StockService.IsPopupListPage)
+{
+    <DevPopupListPageLayout DataGridService="StockService"
+                        CancelButtonText="@L["Cancel"]"
+                        Caption="@L["StockCards"]"
+                        Closed="StockService.HideListPage"
+                        SelectButtonInvokeFunction="(() => {StockService.SelectEntity(Service.TempDataSource);})"
+                        SelectButtonText="@L["Select"]"
+                        Visible="true"
+                        Width="1000px">
+        <ListPageContent>
+            <StockListPage />
+        </ListPageContent>
+    </DevPopupListPageLayout>
+}
+@if (ServiceService.IsPopupListPage)
+{
+    <DevPopupListPageLayout DataGridService="ServiceService"
+                        CancelButtonText="@L["Cancel"]"
+                        Caption="@L["ServiceCards"]"
+                        Closed="ServiceService.HideListPage"
+                        SelectButtonInvokeFunction="(() => {ServiceService.SelectEntity(Service.TempDataSource);})"
+                        SelectButtonText="@L["Select"]"
+                        Visible="true"
+                        Width="1000px">
+        <ListPageContent>
+            <ServiceListPage />
+        </ListPageContent>
+    </DevPopupListPageLayout>
+}
+@if (ExpenseService.IsPopupListPage)
+{
+    <DevPopupListPageLayout DataGridService="ExpenseService"
+                        CancelButtonText="@L["Cancel"]"
+                        Caption="@L["ExpenceCards"]"
+                        Closed="ExpenseService.HideListPage"
+                        SelectButtonInvokeFunction="(() => {ExpenseService.SelectEntity(Service.TempDataSource);})"
+                        SelectButtonText="@L["Select"]"
+                        Visible="true"
+                        Width="1000px">
+        <ListPageContent>
+            <ExpenseListPage />
+        </ListPageContent>
+    </DevPopupListPageLayout>
+}
+@if (StoreService.IsPopupListPage)
+{
+    <DevPopupListPageLayout DataGridService="StoreService"
+                        CancelButtonText="@L["Cancel"]"
+                        Caption="@L["WarehouseCards"]"
+                        Closed="StoreService.HideListPage"
+                        SelectButtonInvokeFunction="(() => {StoreService.SelectEntity(Service.TempDataSource);})"
+                        SelectButtonText="@L["Select"]"
+                        Visible="true"
+                        Width="1000px">
+        <ListPageContent>
+            <StoreListPage />
+        </ListPageContent>
+    </DevPopupListPageLayout>
+}
+
+@code{
+    protected override void OnInitialized()
+    {
+        Service.TempDataSource = ObjectMapper.Map<SelectInvoiceDetailDto,SelectInvoiceDetailDto>(Service.DataSource);
+    }
+}

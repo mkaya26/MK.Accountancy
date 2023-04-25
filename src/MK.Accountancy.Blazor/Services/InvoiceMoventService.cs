@@ -26,7 +26,7 @@ namespace MK.Accountancy.Blazor.Services
         {
             DataSource = new SelectInvoiceDetailDto
             {
-                StoreId = AppService.CompanyParameter.StoryId,
+                StoryId = AppService.CompanyParameter.StoryId,
                 StoreName = AppService.CompanyParameter.StoryName,
                 InvoiceDetailType = InvoiceDetailType.Stock
             };
@@ -66,7 +66,7 @@ namespace MK.Accountancy.Blazor.Services
             TempDataSource.ServiceName = null;
             TempDataSource.ServiceCode = null;
             //
-            TempDataSource.ExpenceId = null;
+            TempDataSource.ExpenseId = null;
             TempDataSource.ExpenceName = null;
             TempDataSource.ExpenceCode = null;
             //
@@ -75,12 +75,12 @@ namespace MK.Accountancy.Blazor.Services
             //
             if(TempDataSource.InvoiceDetailType == InvoiceDetailType.Stock)
             {
-                TempDataSource.StoreId = AppService.CompanyParameter.StoryId;
+                TempDataSource.StoryId = AppService.CompanyParameter.StoryId;
                 TempDataSource.StoreName = AppService.CompanyParameter.StoryName;
             }
             else
             {
-                TempDataSource.StoreId = null;
+                TempDataSource.StoryId = null;
                 TempDataSource.StoreName = null;
             }
         }
