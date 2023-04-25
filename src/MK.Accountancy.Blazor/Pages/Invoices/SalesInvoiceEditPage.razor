@@ -1,20 +1,21 @@
 ﻿@inherits BaseEditPage
 
 @inject InvoiceService Service
+@inject InvoiceMoventService InvoiceMoventService
 @inject CurrentService CurrentService
 @inject SpecialCodeService SpecialCodeService
 
 <DevPopupEditPageLayout CancelButtonText="@L["Cancel"]"
                         EditPageService="Service"
                         Caption="@L["InvoiceCard"]"
-                        Height="900px"
+                        Height="870px"
                         ListPageService="Service"
                         OnSubmit="OnSubmit"
                         SubmitButtonText="@L["Save"]"
-                        Width="910px">
+                        Width="870px">
     <EditPageContent>
         <DevGridLayout ColumnCount="11"
-                       ColumnWidths="@ColumnWidths("75","3","170","20","60","3","125","20","100","80")"
+                       ColumnWidths="@ColumnWidths("75","3","170","20","60","3","125","20","100","80","80")"
                        RowCount="6"
                        RowHeights="@RowHeights("28","28","28","28","*","50")">
             <GridLayoutItems>
@@ -72,10 +73,155 @@
                              RowSpan="2"
                              @bind-Value="@Service.DataSource.Description">
                 </DevMemoEdit>
+                                <DevMoventDataGrid ColumnIndex="0"
+                                   ColumnSpan="11"
+                                   DataSource="InvoiceMoventService.ListDataSource.ToList()"
+                                   DoubleClick="InvoiceMoventService.BeforeUpdate"
+                                   L="L"
+                                   RowIndex="4"
+                                   Service="InvoiceMoventService"
+                                   ToolbarCaption="@L["InvoiceRows"]"
+                                   ToolbarDeleteButtonClick="InvoiceMoventService.DeleteAsync"
+                                   ToolbarDeleteButtonEnabled="InvoiceMoventService.ListDataSource.Count > 0"
+                                   ToolbarNewButtonClick="InvoiceMoventService.BeforeInsert"
+                                   ToolbarUpdateButtonClick="InvoiceMoventService.BeforeUpdate"
+                                   ToolbarUpdateButtonEnabled="InvoiceMoventService.ListDataSource.Count > 0">
+                    <Columns>
+                        <DxDataGridColumn Caption="@L["RowTypeName"]"
+                                          Field="@nameof(SelectInvoiceDetailDto.InvoiceDetailTypeName)"
+                                          FixedStyle="DataGridFixedStyle.Left"
+                                          Width="70px" />
+                        <DxDataGridColumn Caption="@L["Code"]"
+                                          Field="@nameof(SelectInvoiceDetailDto.ItemCode)"
+                                          Width="150px" />
+                        <DxDataGridColumn Caption="@L["Name"]"
+                                          Field="@nameof(SelectInvoiceDetailDto.ItemName)"
+                                          Width="200px" />
+                        <DxDataGridColumn Caption="@L["Unit"]"
+                                          Field="@nameof(SelectInvoiceDetailDto.UnitName)"
+                                          Width="80px" />
+                        <DxDataGridColumn Caption="@L["Warehouse"]"
+                                          Field="@nameof(SelectInvoiceDetailDto.StoreName)"
+                                          Width="150px" />
+                        <DxDataGridSpinEditColumn Caption="@L["Quantity"]"
+                                                  DisplayFormat="n2"
+                                                  Field="@nameof(SelectInvoiceDetailDto.Quantity)"
+                                                  TextAlignment="DataGridTextAlign.Right"
+                                                  Width="100px" />
+                        <DxDataGridSpinEditColumn Caption="@L["UnitPrice"]"
+                                                  DisplayFormat="n2"
+                                                  Field="@nameof(SelectInvoiceDetailDto.UnitPrice)"
+                                                  TextAlignment="DataGridTextAlign.Right"
+                                                  Width="115px" />
+                        <DxDataGridSpinEditColumn Caption="@L["GrossAmount"]"
+                                                  DisplayFormat="n2"
+                                                  Field="@nameof(SelectInvoiceDetailDto.GrossAmount)"
+                                                  TextAlignment="DataGridTextAlign.Right"
+                                                  Width="115px" />
+                        <DxDataGridSpinEditColumn Caption="@L["DiscountAmount"]"
+                                                  DisplayFormat="n2"
+                                                  Field="@nameof(SelectInvoiceDetailDto.DiscountAmount)"
+                                                  TextAlignment="DataGridTextAlign.Right"
+                                                  Width="115px" />
+                        <DxDataGridSpinEditColumn Caption="@L["SubTotal"]"
+                                                  DisplayFormat="n2"
+                                                  Field="@nameof(SelectInvoiceDetailDto.SubTotal)"
+                                                  TextAlignment="DataGridTextAlign.Right"
+                                                  Width="115px" />
+                        <DxDataGridSpinEditColumn Caption="@L["TaxRate"]"
+                                                  DisplayFormat="n0"
+                                                  Field="@nameof(SelectInvoiceDetailDto.TaxRate)"
+                                                  TextAlignment="DataGridTextAlign.Right"
+                                                  Width="115px" />
+                        <DxDataGridSpinEditColumn Caption="@L["TaxTotal"]"
+                                                  DisplayFormat="n2"
+                                                  Field="@nameof(SelectInvoiceDetailDto.TaxTotal)"
+                                                  TextAlignment="DataGridTextAlign.Right"
+                                                  Width="115px" />
+                        <DxDataGridSpinEditColumn Caption="@L["NetTotal"]"
+                                                  DisplayFormat="n2"
+                                                  Field="@nameof(SelectInvoiceDetailDto.NetTotal)"
+                                                  TextAlignment="DataGridTextAlign.Right"
+                                                  Width="115px" />
+                    </Columns>
+                    <TotalSummary>
+                        <DxDataGridSummaryItem DisplayFormat="@L["Totals"]"
+                                               Field="@nameof(SelectInvoiceDetailDto.ItemName)"
+                                               SummaryType="SummaryItemType.Count" />
+                        <DxDataGridSummaryItem DisplayFormat="n0"
+                                               Field="@nameof(SelectInvoiceDetailDto.MoventNumber)"
+                                               SummaryType="SummaryItemType.Sum" />
+                        <DxDataGridSummaryItem DisplayFormat="n2"
+                                               Field="@nameof(SelectInvoiceDetailDto.GrossAmount)"
+                                               SummaryType="SummaryItemType.Sum" />
+                        <DxDataGridSummaryItem DisplayFormat="n2"
+                                               Field="@nameof(SelectInvoiceDetailDto.DiscountAmount)"
+                                               SummaryType="SummaryItemType.Sum" />
+                        <DxDataGridSummaryItem DisplayFormat="n2"
+                                               Field="@nameof(SelectInvoiceDetailDto.NetTotal)"
+                                               SummaryType="SummaryItemType.Sum" />
+                        <DxDataGridSummaryItem DisplayFormat="n2"
+                                               Field="@nameof(SelectInvoiceDetailDto.TaxTotal)"
+                                               SummaryType="SummaryItemType.Sum" />
+                        <DxDataGridSummaryItem DisplayFormat="n2"
+                                               Field="@nameof(SelectInvoiceDetailDto.SubTotal)"
+                                               SummaryType="SummaryItemType.Sum" />
+                    </TotalSummary>
+                </DevMoventDataGrid>
+                <DxGridLayoutItem Column="0"
+                                  ColumnSpan="11"
+                                  Row="5">
+                    <Template>
+                        <DevGridLayout ColumnCount="11"
+                                       ColumnWidths="@ColumnWidths("90","3","139","5","98","3","139","5","110","3","139")"
+                                       RowCount="6"
+                                       RowHeights="@RowHeights("28","10","28","28","28","10")">
+                            <GridLayoutItems>
+                                <DxGridLayoutItem Column="0"
+                                                  ColumnSpan="11"
+                                                  Row="0">
+                                    <Template>
+                                        <DevMoventPageHeader Caption="@L["InvoiceSubtotals"]"/>
+                                    </Template>
+                                </DxGridLayoutItem>
+                                <DevCurrencyEdit Caption="@L["GrossTotal"]"
+                                                 ColumnIndex="2"
+                                                 Enabled="false"
+                                                 RowIndex="2"
+                                                 @bind-Value="Service.DataSource.GrandTotal"/>
+                                <DevCurrencyEdit Caption="@L["DiscountTotal"]"
+                                                 ColumnIndex="6"
+                                                 Enabled="false"
+                                                 RowIndex="2"
+                                                 @bind-Value="Service.DataSource.DiscountTotal" />
+                                <DevCurrencyEdit Caption="@L["SubTotal"]"
+                                                 ColumnIndex="10"
+                                                 Enabled="false"
+                                                 RowIndex="2"
+                                                 @bind-Value="Service.DataSource.SubTotal" />
+                                <DevCurrencyEdit Caption="@L["TaxAmount"]"
+                                                 ColumnIndex="10"
+                                                 Enabled="false"
+                                                 RowIndex="3"
+                                                 @bind-Value="Service.DataSource.TaxAmount" />
+                                <DevCurrencyEdit Caption="@L["Netamount"]"
+                                                 ColumnIndex="10"
+                                                 Enabled="false"
+                                                 RowIndex="4"
+                                                 @bind-Value="Service.DataSource.Netamount" />
+                            </GridLayoutItems>
+                        </DevGridLayout>
+                    </Template>
+                </DxGridLayoutItem>
             </GridLayoutItems>
         </DevGridLayout>
     </EditPageContent>
 </DevPopupEditPageLayout>
+
+@if (InvoiceMoventService.EditPageVisible)
+{
+    <InvoiceMoventEditPage />
+}
 
 @if (SpecialCodeService.IsPopupListPage)
 {
@@ -107,4 +253,11 @@
             <CurrentListPage />
         </ListPageContent>
     </DevPopupListPageLayout>
+}
+
+@code {
+    protected override void OnParametersSet()
+    {
+        Service.FillTable(InvoiceMoventService, StateHasChanged);
+    }
 }
