@@ -25,7 +25,7 @@ namespace MK.Accountancy.Invoices
             await _invoiceManager.CheckCreateAsync(input.InvoiceNumber, input.CurrentId, input.SpecialCodeOneId, input.SpecialCodeTwoId, input.DepartmentId, input.TermId);
             foreach(var invoiceDetail in input.InvoiceDetails)
             {
-                await _invoiceDetailManager.CheckCreateAsync(invoiceDetail.StockId, invoiceDetail.ServiceId, invoiceDetail.ExpenseId, invoiceDetail.StoryId);
+                await _invoiceDetailManager.CheckCreateAsync(invoiceDetail.StockId, invoiceDetail.ServiceId, invoiceDetail.ExpenseId, invoiceDetail.StoreId);
             }
             //
             var entity = ObjectMapper.Map<CreateInvoiceDto, Invoice>(input);
@@ -95,7 +95,7 @@ namespace MK.Accountancy.Invoices
             //
             foreach(var item in input.InvoiceDetails)
             {
-                await _invoiceDetailManager.CheckUpdateAsync(item.StockId, item.ServiceId, item.ExpenseId, item.StoryId);
+                await _invoiceDetailManager.CheckUpdateAsync(item.StockId, item.ServiceId, item.ExpenseId, item.StoreId);
                 //
                 var invoiceDetail = entity.InvoiceDetails.FirstOrDefault(f => f.Id == item.Id);
                 //

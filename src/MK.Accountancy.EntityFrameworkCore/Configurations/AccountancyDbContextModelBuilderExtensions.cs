@@ -521,7 +521,7 @@ namespace MK.Accountancy.Configurations
                 b.Property(x => x.ServiceId)
                 .HasColumnType(SqlDbType.UniqueIdentifier.ToString());
 
-                b.Property(x => x.StoryId)
+                b.Property(x => x.StoreId)
                 .HasColumnType(SqlDbType.UniqueIdentifier.ToString());
 
                 b.Property(x => x.ExpenseId)

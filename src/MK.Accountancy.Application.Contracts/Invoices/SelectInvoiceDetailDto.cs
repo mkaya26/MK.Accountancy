@@ -20,7 +20,7 @@ namespace MK.Accountancy.Invoices
         public Guid? ExpenseId { get; set; }
         public string ExpenceCode { get; set; }
         public string ExpenceName { get; set; }
-        public Guid? StoryId { get; set; }
+        public Guid? StoreId { get; set; }
         public string StoreCode { get; set; }
         public string StoreName { get; set; }
         public string UnitName { get; set; }

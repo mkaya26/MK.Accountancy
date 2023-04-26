@@ -18,7 +18,7 @@ namespace MK.Accountancy.Blazor.Services
                     parameterDto.StoryName = SelectedItem.Name;
                     break;
                     case SelectInvoiceDetailDto invoiceDetailDto:
-                    invoiceDetailDto.StoryId = SelectedItem.Id;
+                    invoiceDetailDto.StoreId = SelectedItem.Id;
                     invoiceDetailDto.StoreCode = SelectedItem.Code;
                     invoiceDetailDto.StoreName = SelectedItem.Name;
                     break;

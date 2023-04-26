@@ -10,7 +10,7 @@ namespace MK.Accountancy.Invoices
         public Guid? StockId { get; set; }
         public Guid? ServiceId { get; set; }
         public Guid? ExpenseId { get; set; }
-        public Guid? StoryId { get; set; }
+        public Guid? StoreId { get; set; }
         public decimal? Quantity { get; set; }
         public decimal? UnitPrice { get; set; }
         public decimal? GrossAmount { get; set; }

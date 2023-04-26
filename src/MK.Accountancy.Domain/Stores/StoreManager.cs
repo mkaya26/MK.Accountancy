@@ -43,7 +43,7 @@ namespace MK.Accountancy.Stores
         public async Task CheckDeleteAsync(Guid id)
         {
             await _storeRepository.RelationalEntityAnyAsync(
-                x => x.InvoiceDetails.Any(y => y.StoryId == id));
+                x => x.InvoiceDetails.Any(y => y.StoreId == id));
         }
     }
 }

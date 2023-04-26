@@ -34,7 +34,7 @@ namespace MK.Accountancy.Invoices
                 .When(x => x.InvoiceDetailType == InvoiceDetailType.Expense)
                 .WithMessage(localizer[AccountancyDomainErrorCodes.Required, localizer["Expense"]]);
             //
-            RuleFor(x => x.StoryId)
+            RuleFor(x => x.StoreId)
                 .NotEmpty()
                 .When(x => x.InvoiceDetailType == InvoiceDetailType.Stock)
                 .WithMessage(localizer[AccountancyDomainErrorCodes.Required, localizer["Store"]]);
