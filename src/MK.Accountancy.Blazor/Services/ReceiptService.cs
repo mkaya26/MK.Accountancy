@@ -6,5 +6,6 @@ namespace MK.Accountancy.Blazor.Services
 {
     public class ReceiptService : BaseService<ListReceiptDto,SelectReceiptDto>,IScopedDependency
     {
+        public ReceiptType ReceiptType { get; set; }
     }
 }

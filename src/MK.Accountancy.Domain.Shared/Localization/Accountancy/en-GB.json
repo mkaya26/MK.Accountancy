@@ -227,6 +227,15 @@
     "ValueAddedTaxAmount": "Tax Amount",
     "TotalAmount": "Total Amount",
     "ValidationErrorMessageBoxTitle": "The following errors were detected during validation.",
-    "ExpenceCards": "Expence Cards"
+    "ExpenceCards": "Expence Cards",
+    "ReceiptCard": "Receipt Card",
+    "EnterReceiptNumber": "Enter Receipt Number",
+    "ReceiptRows": "Receipt Rows",
+    "CashAccount": "Cash Account",
+    "BankBranch": "Bank Branch",
+    "DocumentNumber": "Document Number",
+    "ReceiptSubtotals": "Receipt Subtotals",
+    "BillOfExchangeTotal": "Bill Of Exchange Total",
+    "CollectionReceiptCards": "Collection Receipt Cards"
   }
 }

@@ -109,7 +109,7 @@ namespace MK.Accountancy.Blazor.Services.Base
 
         }
 
-        public void BeforeUpdate()
+        public virtual void BeforeUpdate()
         {
             DataSource = SelectedItem;
             EditPageVisible = true;

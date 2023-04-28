@@ -1,0 +1,253 @@
+﻿@inherits BaseEditPage
+
+@inject ReceiptService Service
+@inject ReceiptMoventService ReceiptMoventService
+@inject CurrentService CurrentService
+@inject SpecialCodeService SpecialCodeService
+
+<DevPopupEditPageLayout CancelButtonText="@L["Cancel"]"
+                        EditPageService="Service"
+                        Caption="@L["ReceiptCard"]"
+                        Height="870px"
+                        ListPageService="Service"
+                        OnSubmit="OnSubmit"
+                        SubmitButtonText="@L["Save"]"
+                        Width="870px">
+    <EditPageContent>
+        <DevGridLayout ColumnCount="11"
+                       ColumnWidths="@ColumnWidths("75","3","170","20","60","3","125","20","100","80","80")"
+                       RowCount="6"
+                       RowHeights="@RowHeights("28","28","28","28","*","50")">
+            <GridLayoutItems>
+                <DevTextEdit Caption="@L["ReceiptNumber"]"
+                             ColumnIndex="2"
+                             NullText="@L["EnterReceiptNumber"]"
+                             RowIndex="0"
+                             @bind-Value="@Service.DataSource.ReceiptNumber">
+                </DevTextEdit>
+                <DevDateEdit Caption="@L["Date"]"
+                             ColumnIndex="6"
+                             NullText="@L["EnterDate"]"
+                             RowIndex="0"
+                             @bind-Value="@Service.DataSource.ReceiptDate">
+                </DevDateEdit>
+                <DevCheckEdit ColumnIndex="10"
+                              FalseCaption="@L["Passive"]"
+                              RowIndex="0"
+                              TrueCaption="@L["Active"]"
+                              @bind-Value="@Service.DataSource.Active">
+                </DevCheckEdit>
+                <DevButonEdit ButtonClickInvokeFunction="() => { CurrentService.BeforeShowPopupListPage(Service.DataSource.CurrentId);}"
+                              Caption="@L["Current"]"
+                              ColumnIndex="2"
+                              ColumnSpan="9"
+                              IsFocus="true"
+                              NullText="@L["SelectCard"]"
+                              RowIndex="1"
+                              Service="CurrentService"
+                              @bind-Value="@Service.DataSource.CurrentName">
+                </DevButonEdit>
+                <DevButonEdit ButtonClickInvokeFunction="() => { SpecialCodeService.BeforeShowPopupListPage(SpecialCodeType.SpecialCodeOne,CardType.Receipt,Service.DataSource.SpecialCodeOneId);}"
+                              Caption="@L["SpecialCodeOneName"]"
+                              ColumnIndex="2"
+                              DeleteButtonKeydownInvokeFunction="() =>{ SpecialCodeService.ButtonEditDeleteKeyDown(Service.DataSource, nameof(Service.DataSource.SpecialCodeOneName));}"
+                              NullText="@L["SelectCard"]"
+                              RowIndex="2"
+                              Service="SpecialCodeService"
+                              @bind-Value="@Service.DataSource.SpecialCodeOneName">
+                </DevButonEdit>
+                <DevButonEdit ButtonClickInvokeFunction="() => { SpecialCodeService.BeforeShowPopupListPage(SpecialCodeType.SpecialCodeTwo,CardType.Receipt,Service.DataSource.SpecialCodeTwoId);}"
+                              Caption="@L["SpecialCodeTwoName"]"
+                              ColumnIndex="2"
+                              DeleteButtonKeydownInvokeFunction="() => { SpecialCodeService.ButtonEditDeleteKeyDown(Service.DataSource, nameof(Service.DataSource.SpecialCodeTwoName));}"
+                              NullText="@L["SelectCard"]"
+                              RowIndex="3"
+                              Service="SpecialCodeService"
+                              @bind-Value="@Service.DataSource.SpecialCodeTwoName">
+                </DevButonEdit>
+                <DevMemoEdit Caption="@L["Description"]"
+                             ColumnIndex="6"
+                             ColumnSpan="5"
+                             NullText="@L["EnterDescription"]"
+                             RowIndex="2"
+                             RowSpan="2"
+                             @bind-Value="@Service.DataSource.Description">
+                </DevMemoEdit>
+                <DevMoventDataGrid ColumnIndex="0"
+                                   ColumnSpan="11"
+                                   DataSource="ReceiptMoventService.ListDataSource.ToList()"
+                                   DoubleClick="ReceiptMoventService.BeforeUpdate"
+                                   L="L"
+                                   RowIndex="4"
+                                   Service="ReceiptMoventService"
+                                   ToolbarCaption="@L["ReceiptRows"]"
+                                   ToolbarDeleteButtonClick="ReceiptMoventService.DeleteAsync"
+                                   ToolbarDeleteButtonEnabled="ReceiptMoventService.ListDataSource.Count > 0"
+                                   ToolbarNewButtonClick="ReceiptMoventService.BeforeInsert"
+                                   ToolbarUpdateButtonClick="ReceiptMoventService.BeforeUpdate"
+                                   ToolbarUpdateButtonEnabled="ReceiptMoventService.ListDataSource.Count > 0">
+                    <Columns>
+                        <DxDataGridColumn Caption="@L["PaymentType"]"
+                                          Field="@nameof(SelectReceiptDetailDto.PaymentTypeName)"
+                                          FixedStyle="DataGridFixedStyle.Left"
+                                          Width="100px" />
+                        <DxDataGridDateEditColumn Caption="@L["ExpiryDate"]"
+                                                  DisplayFormat="@L["DateFormat"]"
+                                                  Field="@nameof(SelectReceiptDetailDto.ExpiryDate)"
+                                                  TextAlignment="DataGridTextAlign.Center"
+                                                  Width="100px"
+                                                  Visible="ReceiptMoventService.SelectedItem?.PaymentType == PaymentType.Cheque || ReceiptMoventService.SelectedItem?.PaymentType == PaymentType.Bill" />
+                        <DxDataGridColumn Caption="@L["CashAccount"]"
+                                          Field="@nameof(SelectReceiptDetailDto.SafeName)"
+                                          Width="200px"
+                                          Visible="ReceiptMoventService.SelectedItem?.PaymentType == PaymentType.Cash" />
+                        <DxDataGridColumn Caption="@L["BankAccount"]"
+                                          Field="@nameof(SelectReceiptDetailDto.BankAccountIdName)"
+                                          Width="200px"
+                                          Visible="ReceiptMoventService.SelectedItem?.PaymentType == PaymentType.Bank || ReceiptMoventService.SelectedItem?.PaymentType == PaymentType.Pos" />
+                        <DxDataGridSpinEditColumn Caption="@L["Amount"]"
+                                                  DisplayFormat="n2"
+                                                  Field="@nameof(SelectReceiptDetailDto.Price)"
+                                                  TextAlignment="DataGridTextAlign.Right"
+                                                  Width="115px" />
+                        <DxDataGridColumn Caption="@L["Bank"]"
+                                          Field="@nameof(SelectReceiptDetailDto.ChequeBankName)"
+                                          Width="200px"
+                                          Visible="ReceiptMoventService.SelectedItem?.PaymentType == PaymentType.Cheque" />
+                        <DxDataGridColumn Caption="@L["BankBranch"]"
+                                          Field="@nameof(SelectReceiptDetailDto.ChequeBankDepartmentName)"
+                                          Width="200px"
+                                          Visible="ReceiptMoventService.SelectedItem?.PaymentType == PaymentType.Cheque" />
+                        <DxDataGridColumn Caption="@L["AccountNumber"]"
+                                          Field="@nameof(SelectReceiptDetailDto.ChequeAccountNumber)"
+                                          Width="150px"
+                                          Visible="ReceiptMoventService.SelectedItem?.PaymentType == PaymentType.Cheque" />
+                        <DxDataGridColumn Caption="@L["DocumentNumber"]"
+                                          Field="@nameof(SelectReceiptDetailDto.DocumentNo)"
+                                          Width="150px"
+                                          Visible="ReceiptMoventService.SelectedItem?.PaymentType == PaymentType.Cheque" />
+                        <DxDataGridColumn Caption="@L["PrincipalDebtor"]"
+                                          Field="@nameof(SelectReceiptDetailDto.PrincipalDebtor)"
+                                          Width="200px"
+                                          Visible="ReceiptMoventService.SelectedItem?.PaymentType == PaymentType.Cheque || ReceiptMoventService.SelectedItem?.PaymentType == PaymentType.Bill" />
+                        <DxDataGridColumn Caption="@L["Endorser"]"
+                                          Field="@nameof(SelectReceiptDetailDto.Endorser)"
+                                          Width="200px"
+                                          Visible="ReceiptMoventService.SelectedItem?.PaymentType == PaymentType.Cheque || ReceiptMoventService.SelectedItem?.PaymentType == PaymentType.Bill" />
+                        <DxDataGridColumn Caption="@L["TrackingNumber"]"
+                                          Field="@nameof(SelectReceiptDetailDto.TrackingNumber)"
+                                          Width="113px"
+                                          Visible="ReceiptMoventService.SelectedItem?.PaymentType == PaymentType.Cheque || ReceiptMoventService.SelectedItem?.PaymentType == PaymentType.Bill" />
+                        <DxDataGridColumn Caption="@L["Description"]"
+                                          Field="@nameof(SelectReceiptDetailDto.Description)"
+                                          Width="250px" />
+                    </Columns>
+               <TotalSummary>
+                        <DxDataGridSummaryItem DisplayFormat="@L["Totals"]"
+                                               Field="@nameof(SelectReceiptDetailDto.PaymentTypeName)"
+                                               SummaryType="SummaryItemType.Count"
+                                               Alignment="DataGridTextAlign.Center" />
+                        <DxDataGridSummaryItem DisplayFormat="n2"
+                                               Field="@nameof(SelectReceiptDetailDto.Price)"
+                                               SummaryType="SummaryItemType.Sum" />
+                    </TotalSummary>
+                </DevMoventDataGrid>
+                <DxGridLayoutItem Column="0"
+                                  ColumnSpan="11"
+                                  Row="5">
+                    <Template>
+                        <DevGridLayout ColumnCount="11"
+                                       ColumnWidths="@ColumnWidths("90","3","139","5","98","3","139","5","110","3","139")"
+                                       RowCount="6"
+                                       RowHeights="@RowHeights("28","10","28","28","28","10")">
+                            <GridLayoutItems>
+                                <DxGridLayoutItem Column="0"
+                                                  ColumnSpan="11"
+                                                  Row="0">
+                                    <Template>
+                                        <DevMoventPageHeader Caption="@L["ReceiptSubtotals"]" />
+                                    </Template>
+                                </DxGridLayoutItem>
+                                <DevCurrencyEdit Caption="@L["ChequeTotal"]"
+                                                 ColumnIndex="2"
+                                                 Enabled="false"
+                                                 RowIndex="2"
+                                                 @bind-Value="Service.DataSource.ChequeTotal" />
+                                <DevCurrencyEdit Caption="@L["BillOfExchangeTotal"]"
+                                                 ColumnIndex="6"
+                                                 Enabled="false"
+                                                 RowIndex="2"
+                                                 @bind-Value="Service.DataSource.BillTotal" />
+                                <DevCurrencyEdit Caption="@L["CashTotal"]"
+                                                 ColumnIndex="10"
+                                                 Enabled="false"
+                                                 RowIndex="2"
+                                                 @bind-Value="Service.DataSource.CashTotal" />
+                                <DevCurrencyEdit Caption="@L["BankTotal"]"
+                                                 ColumnIndex="2"
+                                                 Enabled="false"
+                                                 RowIndex="3"
+                                                 @bind-Value="Service.DataSource.BankTotal" />
+                                <DevCurrencyEdit Caption="@L["PostTotal"]"
+                                                 ColumnIndex="6"
+                                                 Enabled="false"
+                                                 RowIndex="3"
+                                                 @bind-Value="Service.DataSource.PostTotal" />
+                                <DevCurrencyEdit Caption="@L["GrandTotal"]"
+                                                 ColumnIndex="10"
+                                                 Enabled="false"
+                                                 RowIndex="3"
+                                                 Value="Service.DataSource.GrandTotal" />
+                            </GridLayoutItems>
+                        </DevGridLayout>
+                    </Template>
+                </DxGridLayoutItem>
+            </GridLayoutItems>
+        </DevGridLayout>
+    </EditPageContent>
+</DevPopupEditPageLayout>
+
+@if (ReceiptMoventService.EditPageVisible)
+{
+    <ReceiptMoventEditPage />
+}
+
+@if (SpecialCodeService.IsPopupListPage)
+{
+    <DevPopupListPageLayout DataGridService="SpecialCodeService"
+                        CancelButtonText="@L["Cancel"]"
+                        Caption="@L["SpecialCodeCards"]"
+                        Closed="SpecialCodeService.HideListPage"
+                        SelectButtonInvokeFunction="(() => {SpecialCodeService.SelectEntity(Service.DataSource);})"
+                        SelectButtonText="@L["Select"]"
+                        Visible="true"
+                        Width="1000px">
+        <ListPageContent>
+            <SpecialCodeListPage />
+        </ListPageContent>
+    </DevPopupListPageLayout>
+}
+
+@if (CurrentService.IsPopupListPage)
+{
+    <DevPopupListPageLayout DataGridService="CurrentService"
+                        CancelButtonText="@L["Cancel"]"
+                        Caption="@L["CurrentCards"]"
+                        Closed="CurrentService.HideListPage"
+                        SelectButtonInvokeFunction="(() => {CurrentService.SelectEntity(Service.DataSource);})"
+                        SelectButtonText="@L["Select"]"
+                        Visible="true"
+                        Width="1000px">
+        <ListPageContent>
+            <CurrentListPage />
+        </ListPageContent>
+    </DevPopupListPageLayout>
+}
+
+@code {
+    protected override void OnParametersSet()
+    {
+        Service.ReceiptType = ReceiptType.Collection;
+        Service.FillTable(ReceiptMoventService, StateHasChanged);
+    }
+}

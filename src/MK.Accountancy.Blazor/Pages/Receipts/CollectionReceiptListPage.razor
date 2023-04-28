@@ -1,0 +1,127 @@
+﻿@page "/collectionreceiptcards"
+
+@inherits BaseListPage<SelectReceiptDto,ListReceiptDto,ReceiptListParameterDto,
+                       CreateReceiptDto,UpdateReceiptDto,ReceiptNumberParameterDto>
+
+@inject ReceiptAppService CrudService
+@inject ReceiptService Service
+
+<DevListPageLayout DataGridService="Service"
+                   ListPageService="Service"
+                   Caption="@L["CollectionReceiptCards"]"
+                   RowHeights="@RowHeights("*")">
+
+    <ListPageContext>
+        <DevDataGrid DataGridService="Service"
+                     DoubleClick="async () => await BeforeUpdateAsync()">
+            <HeaderTemplate>
+                <DevListPageToolBar CommonService="Service"
+                                    DataGridService="Service"
+                                    ListPageService="Service"
+                                    DeleteButtonClick="async ()=> await DeleteAsync()"
+                                    DeleteButtonEnabled="Service.ListDataSource.Count > 0"
+                                    DeleteButtonVisible="true"
+                                    FilterButtonVisible="true"
+                                    GetListDataSource="async()=> await GetListDataSourceAsync()"
+                                    GroupButtonVisible="true"
+                                    L="L"
+                                    NewButtonClick="async ()=> await BeforeInsertAsync()"
+                                    NewButtonVisible="true"
+                                    UpdateButtonClick="async ()=> await BeforeUpdateAsync()"
+                                    UpdateButtonEnabled="Service.ListDataSource.Count > 0"
+                                    UpdateButtonVisible="true">
+
+                </DevListPageToolBar>
+            </HeaderTemplate>
+            <Columns>
+                <DxDataGridColumn Caption="@L["ReceiptNumber"]"
+                                  Field="@nameof(ListReceiptDto.ReceiptNumber)"
+                                  Width="150px" />
+                <DxDataGridDateEditColumn Caption="@L["Date"]"
+                                  DisplayFormat="@L["DateFormat"]"
+                                  Field="@nameof(ListReceiptDto.ReceiptDate)"
+                                  TextAlignment="DataGridTextAlign.Center"
+                                  Width="80px" />
+                <DxDataGridColumn Caption="@L["CurrentName"]"
+                                  Field="@nameof(ListReceiptDto.CurrentName)"
+                                  Width="300px" />
+                <DxDataGridSpinEditColumn Caption="@L["MovementNumber"]"
+                                  DisplayFormat="n0"
+                                  Field="@nameof(ListReceiptDto.MovementNumber)"
+                                  Width="100px" />
+                <DxDataGridSpinEditColumn Caption="@L["ChequeTotal"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListReceiptDto.ChequeTotal)"
+                                          Width="115px" />
+                <DxDataGridSpinEditColumn Caption="@L["BillOfExchangeTotal"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListReceiptDto.BillTotal)"
+                                          Width="115px" />
+                <DxDataGridSpinEditColumn Caption="@L["CashTotal"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListReceiptDto.CashTotal)"
+                                          Width="115px" />
+                <DxDataGridSpinEditColumn Caption="@L["BankTotal"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListReceiptDto.BankTotal)"
+                                          Width="115px" />
+                <DxDataGridSpinEditColumn Caption="@L["PostTotal"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListReceiptDto.PostTotal)"
+                                          Width="115px" />
+                <DxDataGridSpinEditColumn Caption="@L["GrandTotal"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListReceiptDto.GrandTotal)"
+                                          Width="115px" />
+                <DxDataGridColumn Caption="@L["SpecialCodeOneName"]"
+                                  Field="@nameof(ListReceiptDto.SpecialCodeOneName)"
+                                  Width="150px" />
+                <DxDataGridColumn Caption="@L["SpecialCodeTwoName"]"
+                                  Field="@nameof(ListReceiptDto.SpecialCodeTwoName)"
+                                  Width="150px" />
+                <DxDataGridColumn Caption="@L["Description"]"
+                                  Field="@nameof(ListReceiptDto.Description)"
+                                  Width="*" />
+            </Columns>
+            <TotalSummary>
+                <DxDataGridSummaryItem DisplayFormat="@L["Totals"]" 
+                                       Field="@nameof(ListReceiptDto.CurrentName)"
+                                       SummaryType="SummaryItemType.Count" />
+                <DxDataGridSummaryItem DisplayFormat="n0"
+                                       Field="@nameof(ListReceiptDto.MovementNumber)"
+                                       SummaryType="SummaryItemType.Sum" />
+                <DxDataGridSummaryItem DisplayFormat="n2"
+                                       Field="@nameof(ListReceiptDto.ChequeTotal)"
+                                       SummaryType="SummaryItemType.Sum" />
+                <DxDataGridSummaryItem DisplayFormat="n2"
+                                       Field="@nameof(ListReceiptDto.BillTotal)"
+                                       SummaryType="SummaryItemType.Sum" />
+                <DxDataGridSummaryItem DisplayFormat="n2"
+                                       Field="@nameof(ListReceiptDto.CashTotal)"
+                                       SummaryType="SummaryItemType.Sum" />
+                <DxDataGridSummaryItem DisplayFormat="n2"
+                                       Field="@nameof(ListReceiptDto.BankTotal)"
+                                       SummaryType="SummaryItemType.Sum" />
+                <DxDataGridSummaryItem DisplayFormat="n2"
+                                       Field="@nameof(ListReceiptDto.PostTotal)"
+                                       SummaryType="SummaryItemType.Sum" />
+                <DxDataGridSummaryItem DisplayFormat="n2"
+                                       Field="@nameof(ListReceiptDto.GrandTotal)"
+                                       SummaryType="SummaryItemType.Sum" />
+            </TotalSummary>
+        </DevDataGrid>
+    </ListPageContext>
+    <EditPageContent>
+        <CollectionReceiptEditPage OnSubmit="OnSubmit" />
+    </EditPageContent>
+
+</DevListPageLayout>
+
+@code {
+    protected override void OnInitialized()
+    {
+        Service.ReceiptType = ReceiptType.Collection;
+        BaseCrudAppService = CrudService;
+        BaseService = Service;
+    }
+}

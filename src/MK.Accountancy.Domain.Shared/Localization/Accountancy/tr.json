@@ -227,6 +227,15 @@
     "ValueAddedTaxAmount": "KDV Tutarı",
     "TotalAmount": "Toplam Tutar",
     "ValidationErrorMessageBoxTitle": "Aşağıdaki hatalar doğrulama sırasında tespit edilmiştir.",
-    "ExpenceCards": "Masraf Kartları"
+    "ExpenceCards": "Masraf Kartları",
+    "ReceiptCard": "Makbuz Kartı",
+    "EnterReceiptNumber": "Makbuz No Girin",
+    "ReceiptRows": "Makbuz Hareketleri",
+    "CashAccount": "Kasa Hesabı",
+    "BankBranch": "Banka Şube",
+    "DocumentNumber": "Belge No",
+    "ReceiptSubtotals": "Makbuz Alt Toplamları",
+    "BillOfExchangeTotal": "Senet Toplamı",
+    "CollectionReceiptCards": "Tahsilat Makbuzu Kartları"
   }
 }
