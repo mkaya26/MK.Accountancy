@@ -80,7 +80,7 @@
     "BankTotal": "Banka Toplam",
     "Id": "Id",
     "PaymentType": "Ödeme Tipi",
-    "TrackingNumber": "Takip Numarası",
+    "TrackingNumber": "Takip No",
     "ChequeBank": "Çek Banka",
     "ChequeBankDepartment": "Çek Banka Şubesi",
     "ChequeAccountNumber": "Çek Banka Hesap Numarası",
