@@ -242,6 +242,7 @@
     "EnterDocumentNumber": "Belge No Girin",
     "EnterPrincipalDebtor": "Asıl Borçlu Girin",
     "EnterEndorser": "Ciranta Girin",
-    "Cash": "Nakit"
+    "Cash": "Nakit",
+    "BankBranchCards": "Banka Şube Kartları"
   }
 }

@@ -242,6 +242,7 @@
     "EnterDocumentNumber": "Enter Document Number",
     "EnterPrincipalDebtor": "Enter Principal Debtor",
     "EnterEndorser": "Enter Endorser",
-    "Cash": "Cash"
+    "Cash": "Cash",
+    "BankBranchCards": "Bank Branch Cards"
   }
 }
