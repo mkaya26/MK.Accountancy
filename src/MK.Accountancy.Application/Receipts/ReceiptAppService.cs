@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Domain.Repositories;
+using Volo.Abp.Uow;
 
 namespace MK.Accountancy.Receipts
 {
@@ -12,12 +13,14 @@ namespace MK.Accountancy.Receipts
         private readonly IReceiptRepository _receiptRepository;
         private readonly ReceiptManager _receiptManager;
         private readonly ReceiptDetailManager _receiptDetailManager;
+        private readonly IUnitOfWorkManager _unitOfWorkManager;
 
-        public ReceiptAppService(IReceiptRepository receiptRepository, ReceiptManager receiptManager, ReceiptDetailManager receiptDetailManager)
+        public ReceiptAppService(IReceiptRepository receiptRepository, ReceiptManager receiptManager, ReceiptDetailManager receiptDetailManager, IUnitOfWorkManager unitOfWorkManager)
         {
             _receiptRepository = receiptRepository;
             _receiptManager = receiptManager;
             _receiptDetailManager = receiptDetailManager;
+            _unitOfWorkManager = unitOfWorkManager;
         }
 
         public virtual async Task<SelectReceiptDto> CreateAsync(CreateReceiptDto input)
@@ -87,34 +90,40 @@ namespace MK.Accountancy.Receipts
 
         public async Task<SelectReceiptDto> UpdateAsync(Guid id, UpdateReceiptDto input)
         {
-            var entity = await _receiptRepository.GetAsync(id, f => f.Id == id, i => i.ReceiptDetails);
-            //
-            await _receiptManager.CheckUpdateAsync(id, input.ReceiptNumber, entity, input.SpecialCodeOneId, input.SpecialCodeTwoId, input.CurrentId, input.SafeId, input.BankAccountId);
-            //
-            foreach(var itemDetail in input.ReceiptDetails)
+            using (var uow = _unitOfWorkManager.Begin(requiresNew: true, isTransactional: true))
             {
-                await _receiptDetailManager.CheckUpdateAsync(itemDetail.ChequeBankId, itemDetail.ChequeBankDepartmentId, itemDetail.SafeId, itemDetail.BankAccountId);
+                var entity = await _receiptRepository.GetAsync(id, f => f.Id == id, i => i.ReceiptDetails);
+            //
+
+                await _receiptManager.CheckUpdateAsync(id, input.ReceiptNumber, entity, input.SpecialCodeOneId, input.SpecialCodeTwoId, input.CurrentId, input.SafeId, input.BankAccountId);
                 //
-                var receiptDetail = entity.ReceiptDetails.FirstOrDefault(x => x.Id == itemDetail.Id);
-                //
-                if(receiptDetail == null)
+                foreach (var itemDetail in input.ReceiptDetails)
                 {
-                    entity.ReceiptDetails.Add(ObjectMapper.Map<ReceiptDetailDto, ReceiptDetail>(itemDetail));
-                    continue;
+                    await _receiptDetailManager.CheckUpdateAsync(itemDetail.ChequeBankId, itemDetail.ChequeBankDepartmentId, itemDetail.SafeId, itemDetail.BankAccountId);
+                    //
+                    var receiptDetail = entity.ReceiptDetails.FirstOrDefault(x => x.Id == itemDetail.Id);
+                    //
+                    if (receiptDetail == null)
+                    {
+                        entity.ReceiptDetails.Add(ObjectMapper.Map<ReceiptDetailDto, ReceiptDetail>(itemDetail));
+                        continue;
+                    }
+                    //
+                    ObjectMapper.Map(itemDetail, receiptDetail);
                 }
                 //
-                ObjectMapper.Map(itemDetail, receiptDetail);
+                var deletedEntities = entity.ReceiptDetails.Where(f => input.ReceiptDetails.Select(x => x.Id).ToList().IndexOf(f.Id) == -1);
+                //
+                entity.ReceiptDetails.RemoveAll(deletedEntities);
+                //
+                ObjectMapper.Map(input, entity);
+                //
+                await _receiptRepository.UpdateAsync(entity);
+                //
+                await uow.CompleteAsync();
+                //
+                return ObjectMapper.Map<Receipt, SelectReceiptDto>(entity);
             }
-            //
-            var deletedEntities = entity.ReceiptDetails.Where(f => input.ReceiptDetails.Select(x => x.Id).ToList().IndexOf(f.Id) == -1);
-            //
-            entity.ReceiptDetails.RemoveAll(deletedEntities);
-            //
-            ObjectMapper.Map(input, entity);
-            //
-            await _receiptRepository.UpdateAsync(entity);
-            //
-            return ObjectMapper.Map<Receipt,SelectReceiptDto>(entity);
         }
     }
 }
