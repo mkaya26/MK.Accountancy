@@ -208,6 +208,8 @@ public class AccountancyApplicationAutoMapperProfile : Profile
         CreateMap<UpdateReceiptDto, Receipt>()
             .ForMember(x => x.ReceiptType, y => y.Ignore())
             .ForMember(x => x.ReceiptDetails, y => y.Ignore());
+        CreateMap<SelectReceiptDto, CreateReceiptDto>();
+        CreateMap<SelectReceiptDto, UpdateReceiptDto>();
         //
         CreateMap<ReceiptDetail, SelectReceiptDetailDto>()
             .ForMember(x => x.ChequeBankName, y => y.MapFrom(z => z.ChequeBank.Name))

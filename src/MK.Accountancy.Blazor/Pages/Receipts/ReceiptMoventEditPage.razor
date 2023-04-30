@@ -14,7 +14,7 @@
                               OnSubmit="Service.OnSubmit"
                               Service="Service"
                               SubmitButtonText="@L["Save"]"
-                              Width="585px">
+                              Width="565px">
     <EditPageContent>
         <DevGridLayout ColumnCount="11"
                        RowCount="2"
@@ -320,7 +320,7 @@
 {
     <DevPopupListPageLayout DataGridService="BankDepartmentService"
                         CancelButtonText="@L["Cancel"]"
-                        Caption="@L["BankBranchCards"]"
+                        Caption="@($"{L["BankBranchCards"]} ( {Service.TempDataSource.ChequeBankName} )")"
                         Closed="BankDepartmentService.HideListPage"
                         SelectButtonInvokeFunction="(() => {BankDepartmentService.SelectEntity(Service.TempDataSource);})"
                         SelectButtonText="@L["Select"]"
