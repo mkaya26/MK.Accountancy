@@ -215,6 +215,8 @@ public class AccountancyApplicationAutoMapperProfile : Profile
             .ForMember(x => x.SafeName, y => y.MapFrom(z => z.Safe.Name))
             .ForMember(x => x.BankAccountIdName, y => y.MapFrom(z => z.BankAccount.Name));
         CreateMap<ReceiptDetailDto, ReceiptDetail>();
+        CreateMap<SelectReceiptDetailDto, ReceiptDetailDto>();
+        CreateMap<SelectReceiptDetailDto, SelectReceiptDetailDto>();
         //
         CreateMap<Expense, SelectExpenseDto>()
             .ForMember(x => x.SpecialCodeOneName, y => y.MapFrom(z => z.SpecialCodeOne.Name))

@@ -74,7 +74,7 @@
     "ReceiptNumber": "Makbuz Numarası",
     "Safe": "Kasa",
     "BankAccount": "Banka Hesabı",
-    "ChequeTotal": "Öek Toplam",
+    "ChequeTotal": "Çek Toplam",
     "PostTotal": "Pos Toplam",
     "CashTotal": "Nakit Toplam",
     "BankTotal": "Banka Toplam",
@@ -236,6 +236,12 @@
     "DocumentNumber": "Belge No",
     "ReceiptSubtotals": "Makbuz Alt Toplamları",
     "BillOfExchangeTotal": "Senet Toplamı",
-    "CollectionReceiptCards": "Tahsilat Makbuzu Kartları"
+    "CollectionReceiptCards": "Tahsilat Makbuzu Kartları",
+    "ReceiptRow": "Makbuz Hareket",
+    "EnterTrackingNumber": "Takip No Girin",
+    "EnterDocumentNumber": "Belge No Girin",
+    "EnterPrincipalDebtor": "Asıl Borçlu Girin",
+    "EnterEndorser": "Ciranta Girin",
+    "Cash": "Nakit"
   }
 }

@@ -1,6 +1,7 @@
 ﻿using MK.Accountancy.BankAccounts;
 using MK.Accountancy.Banks;
 using MK.Accountancy.Blazor.Services.Base;
+using MK.Accountancy.Receipts;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.DependencyInjection;
 
@@ -10,10 +11,16 @@ namespace MK.Accountancy.Blazor.Services
     {
         public override void SelectEntity(IEntityDto targetEntity)
         {
-            if(targetEntity is SelectBankAccountDto bankAccountDto)
+            switch (targetEntity)
             {
-                bankAccountDto.BankId = SelectedItem.Id;
-                bankAccountDto.BankName = SelectedItem.Name;
+                case SelectBankAccountDto bankAccountDto:
+                    bankAccountDto.BankId = SelectedItem.Id;
+                    bankAccountDto.BankName = SelectedItem.Name;
+                    break;
+                case SelectReceiptDetailDto receiptDetailDto:
+                    receiptDetailDto.ChequeBankId = SelectedItem.Id;
+                    receiptDetailDto.ChequeBankName = SelectedItem.Name;
+                    break;
             }
         }
     }

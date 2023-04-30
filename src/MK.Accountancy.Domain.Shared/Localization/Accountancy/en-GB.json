@@ -236,6 +236,12 @@
     "DocumentNumber": "Document Number",
     "ReceiptSubtotals": "Receipt Subtotals",
     "BillOfExchangeTotal": "Bill Of Exchange Total",
-    "CollectionReceiptCards": "Collection Receipt Cards"
+    "CollectionReceiptCards": "Collection Receipt Cards",
+    "ReceiptRow": "Receipt Row",
+    "EnterTrackingNumber": "Enter Tracking Number",
+    "EnterDocumentNumber": "Enter Document Number",
+    "EnterPrincipalDebtor": "Enter Principal Debtor",
+    "EnterEndorser": "Enter Endorser",
+    "Cash": "Cash"
   }
 }

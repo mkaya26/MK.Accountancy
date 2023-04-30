@@ -50,5 +50,10 @@ namespace MK.Accountancy.Blazor.Services
             TempDataSource.BankAccountId = null;
             TempDataSource.BankAccountIdName = null;
         }
+
+        public override void OnSubmit()
+        {
+            base.OnSubmit();
+        }
     }
 }

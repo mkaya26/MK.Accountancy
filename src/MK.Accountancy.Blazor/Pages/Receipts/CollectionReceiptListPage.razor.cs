@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using MK.Accountancy.Receipts;
 using System;
+using System.Collections.Generic;
 
 namespace MK.Accountancy.Blazor.Pages.Receipts
 {
