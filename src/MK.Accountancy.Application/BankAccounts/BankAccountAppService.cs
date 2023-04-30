@@ -84,7 +84,7 @@ namespace MK.Accountancy.BankAccounts
                                      y.DocumentStatu == DocumentStatu.InPortfolio)
                     .Sum(y => y.Price);
                     x.Receivable = x.ReceiptDetails.Where(
-                                y => y.DocumentStatu == DocumentStatu.Collected)
+                                y => y.DocumentStatu == DocumentStatu.Paid)
                     .Sum(y => y.Price);
                 });
             //
