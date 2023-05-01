@@ -8,6 +8,7 @@ using MK.Accountancy.Departments;
 using MK.Accountancy.Expenses;
 using MK.Accountancy.Invoices;
 using MK.Accountancy.Parameters;
+using MK.Accountancy.PaymentDocuments;
 using MK.Accountancy.Receipts;
 using MK.Accountancy.Safes;
 using MK.Accountancy.Services;
@@ -1193,6 +1194,10 @@ namespace MK.Accountancy.Configurations
                 #region Relations
                 #endregion
             });
+        }
+        public static void ConfigureStoredProcedure(this ModelBuilder builder)
+        {
+            builder.Entity<PaymentDocument>();
         }
     }
 }

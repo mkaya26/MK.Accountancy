@@ -126,5 +126,6 @@ public class AccountancyDbContext :
         builder.ConfigureSpecialCode();
         builder.ConfigureStock();
         builder.ConfigureDepartment();
+        builder.ConfigureStoredProcedure();
     }
 }

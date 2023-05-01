@@ -7,6 +7,7 @@ using MK.Accountancy.Departments;
 using MK.Accountancy.Expenses;
 using MK.Accountancy.Invoices;
 using MK.Accountancy.Parameters;
+using MK.Accountancy.PaymentDocuments;
 using MK.Accountancy.Receipts;
 using MK.Accountancy.Safes;
 using MK.Accountancy.Services;
@@ -278,5 +279,7 @@ public class AccountancyApplicationAutoMapperProfile : Profile
         CreateMap<UpdateDepartmentDto, Department>();
         CreateMap<SelectDepartmentDto, CreateDepartmentDto>();
         CreateMap<SelectDepartmentDto, UpdateDepartmentDto>();
+        //
+        CreateMap<PaymentDocument,ListPaymentDocumentDto>();
     }
 }
