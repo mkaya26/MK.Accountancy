@@ -1,0 +1,99 @@
+﻿@page "/meansofpayment"
+
+@inherits BaseListPage<SelectReceiptDetailDto,ListPaymentDocumentDto,PaymentDocumentListParameterDto,
+                       ReceiptDetailDto,ReceiptDetailDto,ReceiptNumberParameterDto>
+
+@inject PaymentDocumentAppService CrudService
+@inject PaymentDocumentService Service
+
+<DevListPageLayout DataGridService="Service"
+                   ListPageService="Service"
+                   Caption="@L["MeansOfPayment"]"
+                   RowHeights="@RowHeights("*")">
+
+    <ListPageContext>
+        <DevDataGrid DataGridService="Service"
+                     GridSelectionColumnVisible="Service.IsPopupListPage"
+                     SelectionMode="Service.IsPopupListPage ? DevExpress.Blazor.DataGridSelectionMode.MultipleSelectedDataRows:DevExpress.Blazor.DataGridSelectionMode.SingleSelectedDataRow">
+            <HeaderTemplate>
+                <DevListPageToolBar CommonService="Service"
+                                    DataGridService="Service"
+                                    ListPageService="Service"
+                                    DeleteButtonVisible="false"
+                                    FilterButtonVisible="true"
+                                    GetListDataSource="async()=> await GetListDataSourceAsync()"
+                                    GroupButtonVisible="true"
+                                    L="L"
+                                    NewButtonVisible="false"
+                                    UpdateButtonVisible="false">
+
+                </DevListPageToolBar>
+            </HeaderTemplate>
+            <Columns>
+                <DxDataGridColumn Caption="@L["PaymentType"]"
+                                  Field="@nameof(ListPaymentDocumentDto.PaymentTypeName)"
+                                  Width="100px" />
+                <DxDataGridColumn Caption="@L["TrackingNumber"]"
+                                  Field="@nameof(ListPaymentDocumentDto.TrackingNumber)"
+                                  Width="150px" />
+                <DxDataGridDateEditColumn Caption="@L["ExpiryDate"]"
+                                  DisplayFormat="@L["DateFormat"]"
+                                          Field="@nameof(ListPaymentDocumentDto.ExpiryDate)"
+                                  TextAlignment="DataGridTextAlign.Center"
+                                  Width="100px" />
+                <DxDataGridSpinEditColumn Caption="@L["Amount"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListPaymentDocumentDto.Price)"
+                                          Width="115px" />
+                <DxDataGridColumn Caption="@L["PrincipalDebtor"]"
+                                  Field="@nameof(ListPaymentDocumentDto.PrincipalDebtor)"
+                                  Width="200px" />
+                <DxDataGridColumn Caption="@L["Endorser"]"
+                                  Field="@nameof(ListPaymentDocumentDto.Endorser)"
+                                  Width="200px" />
+                <DxDataGridColumn Caption="@L["Bank"]"
+                                  Field="@nameof(ListPaymentDocumentDto.ChequeBankName)"
+                                  Width="200px" />
+                <DxDataGridColumn Caption="@L["BankBranch"]"
+                                  Field="@nameof(ListPaymentDocumentDto.ChequeBankDepartmentName)"
+                                  Width="200px" />
+                <DxDataGridColumn Caption="@L["AccountNumber"]"
+                                  Field="@nameof(ListPaymentDocumentDto.ChequeAccountNumber)"
+                                  Width="150px" />
+                <DxDataGridColumn Caption="@L["DocumentNo"]"
+                                  Field="@nameof(ListPaymentDocumentDto.DocumentNo)"
+                                  Width="150px" />
+                <DxDataGridColumn Caption="@L["BankAccount"]"
+                                  Field="@nameof(ListPaymentDocumentDto.BankAccountName)"
+                                  Width="200px" />
+                <DxDataGridCheckBoxColumn Caption="@L["MyDocument"]"
+                                  CheckType="CheckType.Checkbox"
+                                  Field="@nameof(ListPaymentDocumentDto.MyDocument)"
+                                  Visible="Service.ReceiptService.ReceiptType != ReceiptType.Payment"
+                                  Width="100px" />
+                <DxDataGridColumn Caption="@L["DocumentStatu"]"
+                                  Field="@nameof(ListPaymentDocumentDto.DocumentStatuName)"
+                                  Width="120px" />
+                <DxDataGridColumn Caption="@L["Description"]"
+                                  Field="@nameof(ListPaymentDocumentDto.Description)"
+                                  Width="250px" />
+            </Columns>
+            <TotalSummary>
+                <DxDataGridSummaryItem DisplayFormat="@L["Totals"]" 
+                                       Field="@nameof(ListPaymentDocumentDto.TrackingNumber)"
+                                       SummaryType="SummaryItemType.Count" />
+                <DxDataGridSummaryItem DisplayFormat="n0"
+                                       Field="@nameof(ListPaymentDocumentDto.Price)"
+                                       SummaryType="SummaryItemType.Sum" />
+            </TotalSummary>
+        </DevDataGrid>
+    </ListPageContext>
+</DevListPageLayout>
+
+@code {
+    protected override void OnInitialized()
+    {
+        BaseCrudAppService = CrudService;
+        BaseService = Service;
+    }
+}

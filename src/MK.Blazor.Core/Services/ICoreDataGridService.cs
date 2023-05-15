@@ -13,6 +13,7 @@ namespace MK.Blazor.Core.Services
         public bool SelectFirstDataRow { get; set; }
         public bool IsLoaded { get; set; }
         public bool ShowSelectionCheckBox { get; set; }
+        public IList<string> ExcludeListItem { get; set; }
         void ShowListPage(bool firstRender);
         void SetDataRowSelected(TDataGridItem item);
         void SetDataRowSelected(bool first);

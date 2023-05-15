@@ -39,6 +39,7 @@ namespace MK.Accountancy.Blazor.Services.Base
         public bool ShowSelectionCheckBox { get; set; }
         public TDataSource DataSource { get; set; }
         public Guid PopupListPageFocusedRowId { get; set; }
+        public IList<string> ExcludeListItem { get; set; }
 
         public async Task ConfirmMessage(string message, Action action, string title = null)
         {

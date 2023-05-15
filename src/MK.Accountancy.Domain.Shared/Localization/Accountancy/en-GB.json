@@ -243,6 +243,7 @@
     "EnterPrincipalDebtor": "Enter Principal Debtor",
     "EnterEndorser": "Enter Endorser",
     "Cash": "Cash",
-    "BankBranchCards": "Bank Branch Cards"
+    "BankBranchCards": "Bank Branch Cards",
+    "MyDocument": "My Document"
   }
 }

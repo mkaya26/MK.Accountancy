@@ -34,6 +34,7 @@ namespace MK.Accountancy.Blazor.Services.Base
         public bool IsActiveCards { get; set; }
         public TDataGridItem TempDataSource { get; set; }
 
+        public IList<string> ExcludeListItem { get; set; }
         public string LoadingCaption => throw new NotImplementedException();
 
         public string LoadingText => throw new NotImplementedException();

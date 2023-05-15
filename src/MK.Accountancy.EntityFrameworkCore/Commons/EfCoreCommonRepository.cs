@@ -2,6 +2,7 @@
 using MK.Accountancy.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -28,8 +29,16 @@ namespace MK.Accountancy.Commons
 
         public async Task<IList<TEntity>> FromSqlRawAsync(string sql, params object[] parameters)
         {
-            var context = await GetDbContextAsync();
-            return await context.Set<TEntity>().FromSqlRaw(sql, parameters).ToListAsync();
+            try
+            {
+                var context = await GetDbContextAsync();
+                return await context.Set<TEntity>().FromSqlRaw(sql, parameters).ToListAsync();
+            }
+            catch(Exception ex)
+            {
+                Trace.WriteLine(ex);
+            }
+            return default;
         }
 
         public async Task<TEntity> GetAsync(object id, Expression<Func<TEntity, bool>> predicate = null)

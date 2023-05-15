@@ -281,5 +281,6 @@ public class AccountancyApplicationAutoMapperProfile : Profile
         CreateMap<SelectDepartmentDto, UpdateDepartmentDto>();
         //
         CreateMap<PaymentDocument,ListPaymentDocumentDto>();
+        CreateMap<ListPaymentDocumentDto,SelectReceiptDetailDto>();
     }
 }

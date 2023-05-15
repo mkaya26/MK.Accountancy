@@ -1,6 +1,6 @@
 ﻿namespace MK.Accountancy.Receipts
 {
-    public enum DocumentStatu
+    public enum DocumentStatu : byte
     {
         InPortfolio = 1,
         Payable = 2,

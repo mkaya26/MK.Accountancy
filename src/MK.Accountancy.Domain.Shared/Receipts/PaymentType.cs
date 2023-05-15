@@ -1,6 +1,6 @@
 ﻿namespace MK.Accountancy.Receipts
 {
-    public enum PaymentType
+    public enum PaymentType : byte
     {
         Cheque = 1,
         Bill = 2,

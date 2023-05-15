@@ -17,9 +17,9 @@ namespace MK.Accountancy.PaymentDocuments
         }
         public async Task<PagedResultDto<ListPaymentDocumentDto>> GetListAsync(PaymentDocumentListParameterDto input)
         {
-            IList<PaymentDocument> paymentDocuments;
+            IList<PaymentDocument> paymentDocuments = new List<PaymentDocument>();
             //
-            if(input.Sql == "Sp_TransactionablePaymentDocuments")
+            if(input.Sql == "MHSB.Sp_TransactionablePaymentDocuments")
             {
                 paymentDocuments = await _repository.FromSqlRawAsync($"{input.Sql}  @DepartmentId = '{input.DepartmentId}', @TermId = '{input.TermId}', @MyDocument = {input.MyDocument}, @PaymentTypes = '{input.PaymentTypes}'");
             }
