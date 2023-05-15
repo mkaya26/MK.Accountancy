@@ -244,6 +244,10 @@
     "EnterEndorser": "Enter Endorser",
     "Cash": "Cash",
     "BankBranchCards": "Bank Branch Cards",
-    "MyDocument": "My Document"
+    "MyDocument": "My Document",
+    "PaymentReceiptCards": "Payment Receipt Cards",
+    "NewDocument": "New Document",
+    "Endorsement": "Endorsement",
+    "ChooseTransactionType": "Choose Transaction Type"
   }
 }

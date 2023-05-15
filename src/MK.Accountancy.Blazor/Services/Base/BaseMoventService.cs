@@ -164,6 +164,10 @@ namespace MK.Accountancy.Blazor.Services.Base
 
         public virtual void Calc(object value, string propertyName) { }
 
+        public virtual void AddSelectedItems()
+        {
+        }
+
         #region Localizer
         private IStringLocalizer _localizer;
         public IStringLocalizer L

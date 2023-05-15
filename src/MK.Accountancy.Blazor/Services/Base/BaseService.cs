@@ -10,6 +10,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.AspNetCore.Components.Messages;
+using Volo.Abp.Guids;
+using Volo.Abp.ObjectMapping;
 
 namespace MK.Accountancy.Blazor.Services.Base
 {
@@ -19,7 +21,8 @@ namespace MK.Accountancy.Blazor.Services.Base
     {
         public IStringLocalizerFactory StringLocalizerFactory { get; set; }
         public IUiMessageService MessageService { get; set; }
-
+        public IGuidGenerator GuidGenerator { get; set; }
+        public IObjectMapper ObjectMapper { get; set; }
         public ComponentBase DataGrid { get; set; }
         public IList<TDataGridItem> ListDataSource { get; set; }
         public IEnumerable<TDataGridItem> SelectedItems { get; set; }
@@ -132,6 +135,10 @@ namespace MK.Accountancy.Blazor.Services.Base
         }
 
         public virtual void FillTable<TItem>(ICoreMoventService<TItem> moventService, Action hasChanged)
+        {
+        }
+
+        public virtual void AddSelectedItems()
         {
         }
 

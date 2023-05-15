@@ -244,6 +244,10 @@
     "EnterEndorser": "Ciranta Girin",
     "Cash": "Nakit",
     "BankBranchCards": "Banka Şube Kartları",
-    "MyDocument": "Kendi Belgemiz"
+    "MyDocument": "Kendi Belgemiz",
+    "PaymentReceiptCards": "Ödeme Makbuzu Kartları",
+    "NewDocument": "Yeni Belge",
+    "Endorsement": "Ciro Etme",
+    "ChooseTransactionType": "İşlem Türünü Seç"
   }
 }
