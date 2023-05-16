@@ -10,10 +10,16 @@ namespace MK.Accountancy.Blazor.Services
     {
         public override void SelectEntity(IEntityDto targetEntity)
         {
-            if(targetEntity is SelectReceiptDetailDto receiptDetailDto)
+            switch (targetEntity)
             {
-                receiptDetailDto.SafeId = SelectedItem.Id;
-                receiptDetailDto.SafeName = SelectedItem.Name;
+                case SelectReceiptDetailDto receiptDetailDto:
+                    receiptDetailDto.SafeId = SelectedItem.Id;
+                    receiptDetailDto.SafeName = SelectedItem.Name;
+                    break;
+                case SelectReceiptDto receiptDto:
+                    receiptDto.SafeId = SelectedItem.Id;
+                    receiptDto.SafeName = SelectedItem.Name;
+                    break;
             }
         }
     }

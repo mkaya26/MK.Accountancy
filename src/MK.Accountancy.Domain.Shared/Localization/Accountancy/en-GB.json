@@ -248,6 +248,7 @@
     "PaymentReceiptCards": "Payment Receipt Cards",
     "NewDocument": "New Document",
     "Endorsement": "Endorsement",
-    "ChooseTransactionType": "Choose Transaction Type"
+    "ChooseTransactionType": "Choose Transaction Type",
+    "CashTransactionReceiptCards": "Cash Transaction Receipt Cards"
   }
 }

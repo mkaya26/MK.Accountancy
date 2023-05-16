@@ -248,6 +248,8 @@
     "PaymentReceiptCards": "Ödeme Makbuzu Kartları",
     "NewDocument": "Yeni Belge",
     "Endorsement": "Ciro Etme",
-    "ChooseTransactionType": "İşlem Türünü Seç"
+    "ChooseTransactionType": "İşlem Türünü Seç",
+    "CashTransactionReceiptCards": "Kasa İşlem Makbuz Kartları"
+
   }
 }
