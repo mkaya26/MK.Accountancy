@@ -99,11 +99,6 @@ namespace MK.Accountancy.Receipts
                 .When(y => y.PaymentType == PaymentType.Cash)
                 .WithMessage(localizer[AccountancyDomainErrorCodes.Required, localizer["Safe"]]);
             //
-            RuleFor(x => x.SafeId)
-                .Empty()
-                .When(y => y.PaymentType != PaymentType.Cash)
-                .WithMessage(localizer[AccountancyDomainErrorCodes.IsNull, localizer["Safe"]]);
-            //
             RuleFor(x => x.BankAccountId)
                 .NotEmpty()
                 .When(y => y.PaymentType == PaymentType.Bank || y.PaymentType == PaymentType.Pos)
