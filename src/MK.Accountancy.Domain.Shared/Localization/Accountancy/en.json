@@ -249,6 +249,8 @@
     "NewDocument": "New Document",
     "Endorsement": "Endorsement",
     "ChooseTransactionType": "Choose Transaction Type",
-    "CashTransactionReceiptCards": "Cash Transaction Receipt Cards"
+    "CashTransactionReceiptCards": "Cash Transaction Receipt Cards",
+    "BankTransactionReceiptCards": "Bank Transaction Receipt Cards",
+    "PosTotal": "Pos Total"
   }
 }

@@ -18,10 +18,16 @@ namespace MK.Accountancy.Blazor.Services
 
         public override void SelectEntity(IEntityDto targetEntity)
         {
-            if (targetEntity is SelectReceiptDetailDto receiptDetailDto)
+            switch (targetEntity)
             {
-                receiptDetailDto.BankAccountId = SelectedItem.Id;
-                receiptDetailDto.BankAccountIdName = SelectedItem.Name;
+                case SelectReceiptDetailDto receiptDetailDto:
+                    receiptDetailDto.BankAccountId = SelectedItem.Id;
+                    receiptDetailDto.BankAccountIdName = SelectedItem.Name;
+                    break;
+                case SelectReceiptDto receiptDto:
+                    receiptDto.BankAccountId = SelectedItem.Id;
+                    receiptDto.BankAccountName = SelectedItem.Name;
+                    break;
             }
         }
     }

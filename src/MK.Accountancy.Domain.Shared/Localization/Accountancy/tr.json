@@ -249,7 +249,9 @@
     "NewDocument": "Yeni Belge",
     "Endorsement": "Ciro Etme",
     "ChooseTransactionType": "İşlem Türünü Seç",
-    "CashTransactionReceiptCards": "Kasa İşlem Makbuz Kartları"
+    "CashTransactionReceiptCards": "Kasa İşlem Makbuz Kartları",
+    "BankTransactionReceiptCards": "Banka İşlem Makbuz Kartları",
+    "PosTotal": "Pos Toplam"
 
   }
 }
