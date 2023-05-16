@@ -4,16 +4,15 @@
 
 namespace MK.Accountancy.Migrations
 {
-    public partial class Sp_TransactionablePaymentDocuments : Migration
+    public partial class Sp_AllTransactionablePaymentDocumentsUpdate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            var sqlProc = @"IF OBJECT_ID('MHSB.Sp_TransactionablePaymentDocuments', 'P') IS NOT NULL
-    DROP PROCEDURE MHSB.Sp_TransactionablePaymentDocuments
+            var sqlProc = @"IF OBJECT_ID('MHSB.Sp_AllTransactionablePaymentDocuments', 'P') IS NOT NULL
+    DROP PROCEDURE MHSB.Sp_AllTransactionablePaymentDocuments
 GO
-CREATE  PROCEDURE [MHSB].[Sp_TransactionablePaymentDocuments] @DepartmentId uniqueidentifier,
+CREATE PROCEDURE [MHSB].[Sp_AllTransactionablePaymentDocuments] @DepartmentId uniqueidentifier,
                                                                       @TermId uniqueidentifier,
-                                                                      @MyDocument bit,
                                                                       @PaymentTypes Varchar(100)
 AS
 BEGIN
@@ -73,7 +72,6 @@ GROUP BY
 HAVING (COUNT(ReceiptDetails.TrackingNumber) = 1)
    AND Receipt.DepartmentId = ''' + CONVERT(varchar(MAX), @DepartmentId) + '''
    AND Receipt.TermId = ''' + CONVERT(varchar(MAX), @TermId) + '''
-   AND ReceiptDetails.MyDocument = ' + CONVERT(varchar, @MyDocument) + '
    AND ReceiptDetails.PaymentType IN (' + @PaymentTypes + ')
    AND ReceiptDetails.IsDeleted = 0
 ORDER BY ReceiptDetails.ExpiryDate'
@@ -86,7 +84,7 @@ END
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            var sqlProc = "DROP PROC MHSB.Sp_TransactionablePaymentDocuments";
+            var sqlProc = "DROP PROC MHSB.Sp_AllTransactionablePaymentDocuments";
             migrationBuilder.Sql(sqlProc);
         }
     }

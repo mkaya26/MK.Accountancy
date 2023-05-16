@@ -23,7 +23,7 @@ BEGIN
     SET @SQL = 'SELECT MAX(ReceiptDetails.Id)           AS Id,
        MAX(ReceiptDetails.ReceiptId)     AS ReceiptId,
        MAX(ReceiptDetails.BankAccountId) AS BankAccountId,
-       MAX(BankAccount.Name)              AS Name,
+       MAX(BankAccount.Name)              AS BankAccountName,
        ReceiptDetails.ChequeBankId,
        Bank.Name                        AS ChequeBankName,
        ReceiptDetails.ChequeBankDepartmentId,

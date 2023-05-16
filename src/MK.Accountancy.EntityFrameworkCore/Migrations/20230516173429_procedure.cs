@@ -4,7 +4,7 @@
 
 namespace MK.Accountancy.Migrations
 {
-    public partial class Sp_TransactionablePaymentDocuments : Migration
+    public partial class procedure : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
