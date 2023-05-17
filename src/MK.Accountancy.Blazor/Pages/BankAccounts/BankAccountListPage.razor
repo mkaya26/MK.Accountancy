@@ -6,6 +6,7 @@
 @inject BankAccountAppService CrudService
 @inject BankAccountService Service
 @inject BankDepartmentService BankDepartentService
+@inject PaymentDocumentMoventService PaymentDocumentMoventService
 
 <DevListPageLayout DataGridService="Service"
                    ListPageService="Service"
@@ -31,7 +32,13 @@
                                     NewButtonVisible="true"
                                     UpdateButtonClick="async ()=> await BeforeUpdateAsync()"
                                     UpdateButtonEnabled="Service.ListDataSource.Count > 0"
-                                    UpdateButtonVisible="true">
+                                    UpdateButtonVisible="true"
+                                    ReserveButtonBeginGroup="true"
+                                    ReserveButtonClick="()=>PaymentDocumentMoventService.BeforeShowPopupListPage(PaymentType.Bank, Service.SelectedItem.Id)"
+                                    ReserveButtonEnabled="Service.ListDataSource.Count > 0"
+                                    ReserveButtonText="@L["CardTransactions"]"
+                                    ReserveButtonTooltip="@L["ShowTransactionsForThisCard"]"
+                                    ReserveButtonVisible="true">
 
                 </DevListPageToolBar>
             </HeaderTemplate>
@@ -90,6 +97,22 @@
     </EditPageContent>
 
 </DevListPageLayout>
+
+@if (PaymentDocumentMoventService.IsPopupListPage)
+{
+    Service.SelectFirstDataRow = false;
+    <DevPopupListPageLayout DataGridService="Service"
+                        CancelButtonText="@L["Close"]"
+                        Caption="@($"{L["BankAccountCardTransactions"]} ({Service.SelectedItem.Code} / {Service.SelectedItem.Name})")"
+                        Closed="PaymentDocumentMoventService.HideListPage"
+                        SelectButtonVisible="false"
+                        Visible="true"
+                        Width="1100px">
+        <ListPageContent>
+            <BankAccountMoventListPage />
+        </ListPageContent>
+    </DevPopupListPageLayout>
+}
 
 @code {
     protected override void OnInitialized()

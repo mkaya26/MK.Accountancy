@@ -29,6 +29,10 @@
     "Enum:DocumentStatu:3": "Endorsed",
     "Enum:DocumentStatu:4": "Collected",
     "Enum:DocumentStatu:5": "Paid",
+    "Enum:ReceiptType:1": "Collection",
+    "Enum:ReceiptType:2": "Payment",
+    "Enum:ReceiptType:3": "Safe Operation",
+    "Enum:ReceiptType:4": "Bank Operation",
     "Code": "Code",
     "Name": "Name",
     "BankAccountType": "Bank Account Type",
@@ -251,6 +255,10 @@
     "ChooseTransactionType": "Choose Transaction Type",
     "CashTransactionReceiptCards": "Cash Transaction Receipt Cards",
     "BankTransactionReceiptCards": "Bank Transaction Receipt Cards",
-    "PosTotal": "Pos Total"
+    "PosTotal": "Pos Total",
+    "CardTransactions": "Card Transaction",
+    "ShowTransactionsForThisCard": "Show Transactions For This Card",
+    "BankAccountCardTransactions": "Bank Account Card Transaction",
+    "BankAccountTransaction": "Bank Account Transaction"
   }
 }

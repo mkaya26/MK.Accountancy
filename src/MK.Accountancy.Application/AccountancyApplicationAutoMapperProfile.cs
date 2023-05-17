@@ -220,6 +220,11 @@ public class AccountancyApplicationAutoMapperProfile : Profile
         CreateMap<ReceiptDetailDto, ReceiptDetail>();
         CreateMap<SelectReceiptDetailDto, ReceiptDetailDto>();
         CreateMap<SelectReceiptDetailDto, SelectReceiptDetailDto>();
+        CreateMap<ReceiptDetail, ListPaymentDocumentMoventDto>()
+            .ForMember(x => x.ReceiptNumber, y => y.MapFrom(z => z.Receipt.ReceiptNumber))
+            .ForMember(x => x.Date, y => y.MapFrom(z => z.Receipt.ReceiptDate))
+            .ForMember(x => x.ReceiptType, y => y.MapFrom(z => z.Receipt.ReceiptType))
+            .ForMember(x => x.Description, y => y.MapFrom(z => string.IsNullOrEmpty(z.Receipt.Description) ? z.Description : z.Receipt.Description));
         //
         CreateMap<Expense, SelectExpenseDto>()
             .ForMember(x => x.SpecialCodeOneName, y => y.MapFrom(z => z.SpecialCodeOne.Name))

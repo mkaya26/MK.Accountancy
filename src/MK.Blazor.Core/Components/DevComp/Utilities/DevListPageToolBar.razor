@@ -80,7 +80,7 @@
     [Parameter] public EventCallback DeleteButtonClick { get; set; }
     [Parameter] public EventCallback PrintButtonClick { get; set; }
     [Parameter] public EventCallback ReserveButtonClick { get; set; }
-    [Parameter, EditorRequired] public EventCallback<Task> GetListDataSource { get; set; }
+    [Parameter] public EventCallback<Task> GetListDataSource { get; set; }
 
     [Parameter] public bool NewButtonEnabled { get; set; } = true;
     [Parameter] public bool UpdateButtonEnabled { get; set; }

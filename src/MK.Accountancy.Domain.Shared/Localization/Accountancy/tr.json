@@ -29,6 +29,10 @@
     "Enum:DocumentStatu:3": "Ciro Edildi",
     "Enum:DocumentStatu:4": "Tahsil Edildi",
     "Enum:DocumentStatu:5": "Ödendi",
+    "Enum:ReceiptType:1": "Tahsilat",
+    "Enum:ReceiptType:2": "Ödeme",
+    "Enum:ReceiptType:3": "Kasa İşlem",
+    "Enum:ReceiptType:4": "Banka İşlem",
     "Code": "Kod",
     "Name": "Ad",
     "BankAccountType": "Banka Hesap Tipi",
@@ -251,7 +255,10 @@
     "ChooseTransactionType": "İşlem Türünü Seç",
     "CashTransactionReceiptCards": "Kasa İşlem Makbuz Kartları",
     "BankTransactionReceiptCards": "Banka İşlem Makbuz Kartları",
-    "PosTotal": "Pos Toplam"
-
+    "PosTotal": "Pos Toplam",
+    "CardTransactions": "Kart Hareketleri",
+    "ShowTransactionsForThisCard": "Bu Kartın Hareketlerini Göster",
+    "BankAccountCardTransactions": "Banka Hesap Kartı Hareketleri",
+    "BankAccountTransaction": "Banka Hesap Hareketleri",
   }
 }
