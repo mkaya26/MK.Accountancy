@@ -260,5 +260,7 @@
     "ShowTransactionsForThisCard": "Bu Kartın Hareketlerini Göster",
     "BankAccountCardTransactions": "Banka Hesap Kartı Hareketleri",
     "BankAccountTransaction": "Banka Hesap Hareketleri",
+    "SafeCardTransactions": "Kasa Kartı Hareketleri",
+    "SafeTransaction": "Kasa Hareketleri"
   }
 }

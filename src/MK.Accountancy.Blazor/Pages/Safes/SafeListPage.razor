@@ -4,6 +4,7 @@
 
 @inject SafeAppService CrudService
 @inject SafeService Service
+@inject PaymentDocumentMoventService PaymentDocumentMoventService
 
 <DevListPageLayout DataGridService="Service"
                    ListPageService="Service"
@@ -27,7 +28,13 @@
                                     NewButtonVisible="true"
                                     UpdateButtonClick="async () => await BeforeUpdateAsync()"
                                     UpdateButtonEnabled="Service.ListDataSource.Count > 0"
-                                    UpdateButtonVisible="true">
+                                    UpdateButtonVisible="true"
+                                    ReserveButtonBeginGroup="true"
+                                    ReserveButtonClick="()=>PaymentDocumentMoventService.BeforeShowPopupListPage(PaymentType.Cash, Service.SelectedItem.Id)"
+                                    ReserveButtonEnabled="Service.ListDataSource.Count > 0"
+                                    ReserveButtonText="@L["CardTransactions"]"
+                                    ReserveButtonTooltip="@L["ShowTransactionsForThisCard"]"
+                                    ReserveButtonVisible="true">
                 </DevListPageToolBar>
             </HeaderTemplate>
 
@@ -81,6 +88,22 @@
     </EditPageContent>
 
 </DevListPageLayout>
+
+@if (PaymentDocumentMoventService.IsPopupListPage)
+{
+    Service.SelectFirstDataRow = false;
+    <DevPopupListPageLayout DataGridService="Service"
+                        CancelButtonText="@L["Close"]"
+                        Caption="@($"{L["SafeCardTransactions"]} ({Service.SelectedItem.Code} / {Service.SelectedItem.Name})")"
+                        Closed="PaymentDocumentMoventService.HideListPage"
+                        SelectButtonVisible="false"
+                        Visible="true"
+                        Width="1100px">
+        <ListPageContent>
+            <SafeMoventListPage />
+        </ListPageContent>
+    </DevPopupListPageLayout>
+}
 
 @code {
 

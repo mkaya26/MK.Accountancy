@@ -259,6 +259,8 @@
     "CardTransactions": "Card Transaction",
     "ShowTransactionsForThisCard": "Show Transactions For This Card",
     "BankAccountCardTransactions": "Bank Account Card Transaction",
-    "BankAccountTransaction": "Bank Account Transaction"
+    "BankAccountTransaction": "Bank Account Transaction",
+    "SafeCardTransactions": "Safe Card Transaction",
+    "SafeTransaction": "Safe Transaction"
   }
 }

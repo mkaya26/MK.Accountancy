@@ -1,21 +1,20 @@
-﻿using System;
+﻿using MK.Accountancy.PaymentDocuments;
+using MK.Accountancy.Receipts;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using MK.Accountancy.Receipts;
-using MK.Accountancy.PaymentDocuments;
+using System;
 using Volo.Abp.Application.Dtos;
-using Volo.Abp.Domain.Repositories;
-using System.Diagnostics;
 using Volo.Abp.Uow;
+using Volo.Abp.Domain.Repositories;
 
-namespace MK.Accountancy.BankAccounts
+namespace MK.Accountancy.Safes
 {
-    public class BankAccountMoventAppService : AccountancyAppService, IBankAccountMoventAppService
+    public class SafeMoventAppService : AccountancyAppService, ISafeMoventAppService
     {
         private readonly IReceiptDetailRepository _receiptDetailRepository;
         private readonly IUnitOfWorkManager _unitOfWorkManager;
 
-        public BankAccountMoventAppService(IReceiptDetailRepository receiptDetailRepository, IUnitOfWorkManager unitOfWorkManager)
+        public SafeMoventAppService(IReceiptDetailRepository receiptDetailRepository, IUnitOfWorkManager unitOfWorkManager)
         {
             _receiptDetailRepository = receiptDetailRepository;
             _unitOfWorkManager = unitOfWorkManager;
@@ -27,7 +26,7 @@ namespace MK.Accountancy.BankAccounts
                 var movents = await _receiptDetailRepository.GetPagedListAsync(
                 input.SkipCount,
                 input.MaxResultCount,
-                x => x.BankAccountId == input.EntityId &&
+                x => x.SafeId == input.EntityId &&
                 x.Receipt.DepartmentId == input.DepartmentId &&
                 x.Receipt.TermId == input.TermId &&
                 x.Receipt.Active,
@@ -35,7 +34,7 @@ namespace MK.Accountancy.BankAccounts
                 i => i.Receipt);
                 //
                 var totalCount = await _receiptDetailRepository.CountAsync(
-                    x => x.BankAccountId == input.EntityId &&
+                    x => x.SafeId == input.EntityId &&
                     x.Receipt.DepartmentId == input.DepartmentId &&
                     x.Receipt.TermId == input.TermId &&
                     x.Receipt.Active);

@@ -1,0 +1,72 @@
+﻿@inherits BaseListPage<SelectReceiptDetailDto,ListPaymentDocumentMoventDto,ReceiptDetailListParameterDto,
+                       ReceiptDetailDto,ReceiptDetailDto,ReceiptNumberParameterDto>
+
+@inject SafeMoventAppService CrudService
+@inject PaymentDocumentMoventService Service
+
+<DevListPageLayout DataGridService="Service"
+                   ListPageService="Service"
+                   Caption="@L["SafeTransactions"]"
+                   RowHeights="@RowHeights("*")">
+
+    <ListPageContext>
+        <DevDataGrid DataGridService="Service"
+                     HorizontalScrollBarMode="ScrollBarMode.Visible">
+            <HeaderTemplate>
+                <DevListPageToolBar CommonService="Service"
+                                    DataGridService="Service"
+                                    ListPageService="Service"
+                                    DeleteButtonVisible="false"
+                                    FilterButtonVisible="true"
+                                    GroupButtonVisible="true"
+                                    L="L"
+                                    NewButtonVisible="false"
+                                    UpdateButtonVisible="false">
+                </DevListPageToolBar>
+            </HeaderTemplate>
+            <Columns>
+                <DxDataGridColumn Caption="@L["ReceiptType"]"
+                                  Field="@nameof(ListPaymentDocumentMoventDto.ReceiptTypeName)"
+                                  Width="160px" />
+                <DxDataGridColumn Caption="@L["ReceiptNumber"]"
+                                  Field="@nameof(ListPaymentDocumentMoventDto.ReceiptNumber)"
+                                  TextAlignment="DataGridTextAlign.Center"
+                                  Width="140px" />
+                <DxDataGridDateEditColumn Caption="@L["Date"]"
+                                          DisplayFormat="@L["DateFormat"]"
+                                          Field="@nameof(ListPaymentDocumentMoventDto.Date)"
+                                          TextAlignment="DataGridTextAlign.Center"
+                                          Width="80px" />
+                <DxDataGridColumn Caption="@L["PaymentType"]"
+                                  Field="@nameof(ListPaymentDocumentMoventDto.PaymentTypeName)"
+                                  Width="120px" />
+                <DxDataGridColumn Caption="@L["TrackingNumber"]"
+                                  Field="@nameof(ListPaymentDocumentMoventDto.TrackingNumber)"
+                                  Width="150px"
+                                  TextAlignment="DataGridTextAlign.Center" />
+                <DxDataGridColumn Caption="@L["DocumentNo"]"
+                                  Field="@nameof(ListPaymentDocumentMoventDto.DocumentNo)"
+                                  Width="120px" />
+                <DxDataGridSpinEditColumn Caption="@L["Amount"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListPaymentDocumentMoventDto.Price)"
+                                          Width="110px" />
+                <DxDataGridColumn Caption="@L["DocumentStatu"]"
+                                  Field="@nameof(ListPaymentDocumentMoventDto.DocumentStatuName)"
+                                  Width="120px" />
+                <DxDataGridColumn Caption="@L["Description"]"
+                                  Field="@nameof(ListPaymentDocumentMoventDto.Description)"
+                                  Width="300px" />
+            </Columns>
+        </DevDataGrid>
+    </ListPageContext>
+</DevListPageLayout>
+
+@code {
+    protected override void OnInitialized()
+    {
+        Service.ToolbarCheckBoxVisible = false;
+        BaseCrudAppService = CrudService;
+        BaseService = Service;
+    }
+}
