@@ -269,6 +269,7 @@
     "Receipt": "Receipt",
     "Invoice": "Invoice",
     "DocumentType": "Document Type",
-    "MoventType": "Movent Type"
+    "MoventType": "Movent Type",
+    "StoreTransactions": "Store Transactions"
   }
 }

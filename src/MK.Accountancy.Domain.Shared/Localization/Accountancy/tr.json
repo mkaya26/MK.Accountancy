@@ -269,6 +269,7 @@
     "Receipt": "Makbuz",
     "Invoice": "Fatura",
     "DocumentType": "Belge Türü",
-    "MoventType": "Hareket Türü"
+    "MoventType": "Hareket Türü",
+    "StoreTransactions": "Store Transactions"
   }
 }
