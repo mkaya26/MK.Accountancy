@@ -33,6 +33,8 @@
     "Enum:ReceiptType:2": "Ödeme",
     "Enum:ReceiptType:3": "Kasa İşlem",
     "Enum:ReceiptType:4": "Banka İşlem",
+    "Enum:InvoiceType:1": "Alış Faturası",
+    "Enum:InvoiceType:2": "Satış Faturası",
     "Code": "Kod",
     "Name": "Ad",
     "BankAccountType": "Banka Hesap Tipi",
@@ -261,6 +263,12 @@
     "BankAccountCardTransactions": "Banka Hesap Kartı Hareketleri",
     "BankAccountTransaction": "Banka Hesap Hareketleri",
     "SafeCardTransactions": "Kasa Kartı Hareketleri",
-    "SafeTransaction": "Kasa Hareketleri"
+    "SafeTransaction": "Kasa Hareketleri",
+    "CurrentCardTransactions": "Cari Kart Hareketleri",
+    "CurrentTransaction": "Cari Hareketleri",
+    "Receipt": "Makbuz",
+    "Invoice": "Fatura",
+    "DocumentType": "Belge Türü",
+    "MoventType": "Hareket Türü"
   }
 }

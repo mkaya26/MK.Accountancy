@@ -154,6 +154,13 @@ public class AccountancyApplicationAutoMapperProfile : Profile
         CreateMap<InvoiceDetailDto, InvoiceDetail>();
         CreateMap<SelectInvoiceDetailDto, InvoiceDetailDto>();
         CreateMap<SelectInvoiceDetailDto, SelectInvoiceDetailDto>();
+        CreateMap<InvoiceDetail, ListCurrentMoventDto>()
+            .ForMember(x => x.CurrentId, y => y.MapFrom(z => z.Invoice.CurrentId))
+            .ForMember(x => x.MoventDate, y => y.MapFrom(z => z.Invoice.InvoiceDate))
+            .ForMember(x => x.DocumentNumber, y => y.MapFrom(z => z.Invoice.InvoiceNumber))
+            .ForMember(x => x.InvoiceType, y => y.MapFrom(z => z.Invoice.InvoiceType))
+            .ForMember(x => x.Price, y => y.MapFrom(z => z.Invoice.Netamount))
+            .ForMember(x => x.Description, y => y.MapFrom(z => string.IsNullOrEmpty(z.Invoice.Description) ? z.Description : z.Invoice.Description));
         //
         CreateMap<Service, SelectServiceDto>()
             .ForMember(x => x.SpecialCodeOneName, y => y.MapFrom(z => z.SpecialCodeOne.Name))
@@ -223,6 +230,12 @@ public class AccountancyApplicationAutoMapperProfile : Profile
         CreateMap<ReceiptDetail, ListPaymentDocumentMoventDto>()
             .ForMember(x => x.ReceiptNumber, y => y.MapFrom(z => z.Receipt.ReceiptNumber))
             .ForMember(x => x.Date, y => y.MapFrom(z => z.Receipt.ReceiptDate))
+            .ForMember(x => x.ReceiptType, y => y.MapFrom(z => z.Receipt.ReceiptType))
+            .ForMember(x => x.Description, y => y.MapFrom(z => string.IsNullOrEmpty(z.Receipt.Description) ? z.Description : z.Receipt.Description));
+        CreateMap<ReceiptDetail, ListCurrentMoventDto>()
+            .ForMember(x => x.CurrentId, y => y.MapFrom(z => z.Receipt.CurrentId))
+            .ForMember(x => x.MoventDate, y => y.MapFrom(z => z.Receipt.ReceiptDate))
+            .ForMember(x => x.DocumentNumber, y => y.MapFrom(z => z.Receipt.ReceiptNumber))
             .ForMember(x => x.ReceiptType, y => y.MapFrom(z => z.Receipt.ReceiptType))
             .ForMember(x => x.Description, y => y.MapFrom(z => string.IsNullOrEmpty(z.Receipt.Description) ? z.Description : z.Receipt.Description));
         //

@@ -5,6 +5,7 @@
 
 @inject CurrentAppService CrudService
 @inject CurrentService Service
+@inject CurrentMoventService CurrentMoventService
 
 <DevListPageLayout DataGridService="Service"
                    ListPageService="Service"
@@ -30,7 +31,13 @@
                                     NewButtonVisible="true"
                                     UpdateButtonClick="async ()=> await BeforeUpdateAsync()"
                                     UpdateButtonEnabled="Service.ListDataSource.Count > 0"
-                                    UpdateButtonVisible="true">
+                                    UpdateButtonVisible="true"
+                                    ReserveButtonBeginGroup="true"
+                                    ReserveButtonClick="()=>CurrentMoventService.BeforeShowPopupListPage(Service.SelectedItem.Id)"
+                                    ReserveButtonEnabled="Service.ListDataSource.Count > 0"
+                                    ReserveButtonText="@L["CardTransactions"]"
+                                    ReserveButtonTooltip="@L["ShowTransactionsForThisCard"]"
+                                    ReserveButtonVisible="true">
 
                 </DevListPageToolBar>
             </HeaderTemplate>
@@ -86,6 +93,22 @@
     </EditPageContent>
 
 </DevListPageLayout>
+
+@if (CurrentMoventService.IsPopupListPage)
+{
+    Service.SelectFirstDataRow = false;
+    <DevPopupListPageLayout DataGridService="Service"
+                        CancelButtonText="@L["Close"]"
+                        Caption="@($"{L["CurrentCardTransactions"]} ({Service.SelectedItem.Code} / {Service.SelectedItem.Name})")"
+                        Closed="CurrentMoventService.HideListPage"
+                        SelectButtonVisible="false"
+                        Visible="true"
+                        Width="1100px">
+        <ListPageContent>
+            <CurrentMoventListPage />
+        </ListPageContent>
+    </DevPopupListPageLayout>
+}
 
 @code {
     protected override void OnInitialized()

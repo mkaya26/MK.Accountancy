@@ -33,6 +33,8 @@
     "Enum:ReceiptType:2": "Payment",
     "Enum:ReceiptType:3": "Safe Operation",
     "Enum:ReceiptType:4": "Bank Operation",
+    "Enum:InvoiceType:1": "Buy Invoice",
+    "Enum:InvoiceType:2": "Sell Invoice",
     "Code": "Code",
     "Name": "Name",
     "BankAccountType": "Bank Account Type",
@@ -261,6 +263,12 @@
     "BankAccountCardTransactions": "Bank Account Card Transaction",
     "BankAccountTransaction": "Bank Account Transaction",
     "SafeCardTransactions": "Safe Card Transaction",
-    "SafeTransaction": "Safe Transaction"
+    "SafeTransaction": "Safe Transaction",
+    "CurrentCardTransactions": "Current Card Transactions",
+    "CurrentTransaction": "Current Transaction",
+    "Receipt": "Receipt",
+    "Invoice": "Invoice",
+    "DocumentType": "Document Type",
+    "MoventType": "Movent Type"
   }
 }
