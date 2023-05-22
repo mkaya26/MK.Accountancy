@@ -270,6 +270,7 @@
     "Invoice": "Invoice",
     "DocumentType": "Document Type",
     "MoventType": "Movent Type",
-    "StoreTransactions": "Store Transactions"
+    "StoreTransactions": "Store Transactions",
+    "ServiceTransactions": "Service Transactions"
   }
 }

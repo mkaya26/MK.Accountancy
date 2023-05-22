@@ -1,0 +1,72 @@
+﻿@inherits BaseListPage<SelectInvoiceDetailDto,ListServiceMoventDto,ServiceMoventListParameterDto,
+                       InvoiceDetailDto,InvoiceDetailDto,InvoiceNumberParameterDto>
+
+@inject ServiceMoventAppService CrudService
+@inject ServiceMoventService Service
+
+<DevListPageLayout DataGridService="Service"
+                   ListPageService="Service"
+                   Caption="@L["ServiceTransactions"]"
+                   RowHeights="@RowHeights("*")">
+
+    <ListPageContext>
+        <DevDataGrid DataGridService="Service"
+                     HorizontalScrollBarMode="ScrollBarMode.Auto">
+            <HeaderTemplate>
+                <DevListPageToolBar CommonService="Service"
+                                    DataGridService="Service"
+                                    ListPageService="Service"
+                                    DeleteButtonVisible="false"
+                                    FilterButtonVisible="true"
+                                    GroupButtonVisible="true"
+                                    L="L"
+                                    NewButtonVisible="false"
+                                    UpdateButtonVisible="false">
+                </DevListPageToolBar>
+            </HeaderTemplate>
+            <Columns>
+                <DxDataGridDateEditColumn Caption="@L["Date"]"
+                                          DisplayFormat="@L["DateFormat"]"
+                                          Field="@nameof(ListServiceMoventDto.MoventDate)"
+                                          TextAlignment="DataGridTextAlign.Center"
+                                          Width="80px" />
+                <DxDataGridColumn Caption="@L["DocumentNo"]"
+                                  Field="@nameof(ListServiceMoventDto.DocumentNo)"
+                                  Width="160px" />
+                <DxDataGridColumn Caption="@L["DocumentType"]"
+                                  Field="@nameof(ListServiceMoventDto.DocumentType)"
+                                  Width="100px" />
+                <DxDataGridColumn Caption="@L["MoventType"]"
+                                  Field="@nameof(ListServiceMoventDto.InvoiceDetailTypeName)"
+                                  Width="100px" />
+                <DxDataGridSpinEditColumn Caption="@L["Quantity"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListServiceMoventDto.Quantity)"
+                                          Width="110px" />
+                <DxDataGridColumn Caption="@L["Unit"]"
+                                  Field="@nameof(ListServiceMoventDto.UnitName)"
+                                  Width="110px" />
+                <DxDataGridSpinEditColumn Caption="@L["UnitPrice"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListServiceMoventDto.UnitPrice)"
+                                          Width="110px" />
+                <DxDataGridSpinEditColumn Caption="@L["Amount"]"
+                                          DisplayFormat="n2"
+                                          Field="@nameof(ListServiceMoventDto.TotalPrice)"
+                                          Width="110px" />
+                <DxDataGridColumn Caption="@L["Description"]"
+                                  Field="@nameof(ListServiceMoventDto.Description)"
+                                  Width="300px" />
+            </Columns>
+        </DevDataGrid>
+    </ListPageContext>
+</DevListPageLayout>
+
+@code {
+    protected override void OnInitialized()
+    {
+        Service.ToolbarCheckBoxVisible = false;
+        BaseCrudAppService = CrudService;
+        BaseService = Service;
+    }
+}

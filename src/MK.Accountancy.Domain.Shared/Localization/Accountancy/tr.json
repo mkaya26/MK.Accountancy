@@ -270,6 +270,7 @@
     "Invoice": "Fatura",
     "DocumentType": "Belge Türü",
     "MoventType": "Hareket Türü",
-    "StoreTransactions": "Store Transactions"
+    "StoreTransactions": "Depo Hareketleri",
+    "ServiceTransactions": "Hizmet Hareketleri"
   }
 }
