@@ -6,6 +6,7 @@
 @inject ExpenseAppService CrudService
 @inject ExpenseService Service
 @inject UnitService UnitService
+@inject ExpenseMoventService ExpenseMoventService
 
 <DevListPageLayout DataGridService="Service"
                    ListPageService="Service"
@@ -30,7 +31,13 @@
                                     NewButtonVisible="true"
                                     UpdateButtonClick="async ()=> await BeforeUpdateAsync()"
                                     UpdateButtonEnabled="Service.ListDataSource.Count > 0"
-                                    UpdateButtonVisible="true">
+                                    UpdateButtonVisible="true"
+                                    ReserveButtonBeginGroup="true"
+                                    ReserveButtonClick="()=>ExpenseMoventService.BeforeShowPopupListPage(InvoiceDetailType.Expense,Service.SelectedItem.Id)"
+                                    ReserveButtonEnabled="Service.ListDataSource.Count > 0"
+                                    ReserveButtonText="@L["CardTransactions"]"
+                                    ReserveButtonTooltip="@L["ShowTransactionsForThisCard"]"
+                                    ReserveButtonVisible="true">
 
                 </DevListPageToolBar>
             </HeaderTemplate>
@@ -83,6 +90,22 @@
     </EditPageContent>
 
 </DevListPageLayout>
+
+@if (ExpenseMoventService.IsPopupListPage)
+{
+    Service.SelectFirstDataRow = false;
+    <DevPopupListPageLayout DataGridService="Service"
+                        CancelButtonText="@L["Close"]"
+                        Caption="@($"{L["ExpenseTransactions"]} ({Service.SelectedItem.Code} / {Service.SelectedItem.Name})")"
+                        Closed="ExpenseMoventService.HideListPage"
+                        SelectButtonVisible="false"
+                        Visible="true"
+                        Width="1100px">
+        <ListPageContent>
+            <ExpenseMoventListPage />
+        </ListPageContent>
+    </DevPopupListPageLayout>
+}
 
 @code {
     protected override void OnInitialized()

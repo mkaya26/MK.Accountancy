@@ -271,6 +271,8 @@
     "DocumentType": "Belge Türü",
     "MoventType": "Hareket Türü",
     "StoreTransactions": "Depo Hareketleri",
-    "ServiceTransactions": "Hizmet Hareketleri"
+    "ServiceTransactions": "Hizmet Hareketleri",
+    "ExpenseTransactions": "Masraf Hareketleri",
+    "StockTransactions": "Stok Hareketleri"
   }
 }

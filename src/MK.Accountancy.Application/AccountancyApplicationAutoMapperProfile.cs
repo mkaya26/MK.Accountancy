@@ -177,6 +177,14 @@ public class AccountancyApplicationAutoMapperProfile : Profile
             .ForMember(x => x.UnitName, y => y.MapFrom(z =>
               z.Stock.Unit.Name))
             .ForMember(x => x.Description, y => y.MapFrom(z => string.IsNullOrEmpty(z.Invoice.Description) ? z.Description : z.Invoice.Description));
+        CreateMap<InvoiceDetail, ListExpenseMoventDto>()
+            .ForMember(x => x.MoventDate, y => y.MapFrom(z => z.Invoice.InvoiceDate))
+            .ForMember(x => x.DocumentNo, y => y.MapFrom(z => z.Invoice.InvoiceNumber))
+            .ForMember(x => x.InvoiceType, y => y.MapFrom(z => z.Invoice.InvoiceType))
+            .ForMember(x => x.TotalPrice, y => y.MapFrom(z => z.Invoice.Netamount))
+            .ForMember(x => x.UnitName, y => y.MapFrom(z =>
+              z.Expense.Unit.Name))
+            .ForMember(x => x.Description, y => y.MapFrom(z => string.IsNullOrEmpty(z.Invoice.Description) ? z.Description : z.Invoice.Description));
         //
         CreateMap<Service, SelectServiceDto>()
             .ForMember(x => x.SpecialCodeOneName, y => y.MapFrom(z => z.SpecialCodeOne.Name))
