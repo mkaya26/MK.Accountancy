@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 using MK.Accountancy.Localization;
-using MK.Accountancy.Migrations;
 using MK.Blazor.Core.Helpers;
 using MK.Blazor.Core.Services;
 using System;
@@ -44,6 +43,9 @@ namespace MK.Accountancy.Blazor.Services.Base
         public Guid PopupListPageFocusedRowId { get; set; }
         public Action HasChanged { get; set; }
         public ComponentBase ActiveEditComponent { get; set; }
+        public string SelectedReportName { get; set; }
+        public string BaseReportFolder { get; set; } = nameof(Reports);
+        public string ReportFolder { get; set; }
 
         public void BeforeShowPopupListPage(params object[] parameters)
         {

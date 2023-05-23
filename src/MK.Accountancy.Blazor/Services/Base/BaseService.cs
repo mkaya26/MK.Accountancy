@@ -43,6 +43,9 @@ namespace MK.Accountancy.Blazor.Services.Base
         public TDataSource DataSource { get; set; }
         public Guid PopupListPageFocusedRowId { get; set; }
         public IList<string> ExcludeListItem { get; set; }
+        public string SelectedReportName { get; set; }
+        public string BaseReportFolder { get; set; }
+        public string ReportFolder { get; set; }
 
         public async Task ConfirmMessage(string message, Action action, string title = null)
         {

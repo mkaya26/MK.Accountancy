@@ -1,0 +1,58 @@
+﻿<DevPopupPageLayout ActionButtonEnabled="_dataSource!=null && _dataSource.Count > 0"
+                    ActionButtonInvokeFunction="SelectButtonClick"
+                    ActionButtonText="@L["Select"]"
+                    ActionButtonVisible="true"
+                    CancelButtonText="@L["Close"]"
+                    Caption="@L["SelectReport"]"
+                    Closed="Closed"
+                    Height="@Height"
+                    Visible="Visible"
+                    Width="@Width">
+    <PageContent>
+        <div style="padding-left:30px; margin-top: 35px; height: 60px">
+            <DevGridLayout ColumnCount="3"
+                           ColumnWidths="@ColumnWidths("70","3","380")"
+                           RowCount="1">
+                <GridLayoutItems>
+                    <DevComboboxEdit @ref="_comboboxEdit"
+                                     Caption="@L["ReportName"]"
+                                     ColumnIndex="2"
+                                     DataSource="_dataSource"
+                                     IsFocus="true"
+                                     RowIndex="0"
+                                     Value="_dataSource.FirstOrDefault()">
+                    </DevComboboxEdit>
+                </GridLayoutItems>
+            </DevGridLayout>
+        </div>
+    </PageContent>
+</DevPopupPageLayout>
+
+@code {
+    private DevComboboxEdit<string> _comboboxEdit;
+    private List<string> _dataSource;
+    //
+    public ICoreListPageService ListPageService { get; set; }
+    public EventCallback Closed { get; set; }
+    public string Height { get; set; }
+    public bool Visible { get; set; } = true;
+    public string Width { get; set; }
+    public IStringLocalizer L { get; set; }
+    //
+    private void SelectButtonClick()
+    {
+        ListPageService.SelectedReportName = _comboboxEdit.Value ?? null;
+    }
+    //
+    private void GetDataSource()
+    {
+        var path = $@"{ListPageService.BaseReportFolder}\{ListPageService.ReportFolder}";
+        _dataSource = Directory.GetFiles(path, "*.vsrepx").Select(Path.GetFileNameWithoutExtension).ToList();
+    }
+    //
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        GetDataSource();
+    }
+}
