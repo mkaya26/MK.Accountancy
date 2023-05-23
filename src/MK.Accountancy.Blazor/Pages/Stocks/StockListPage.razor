@@ -6,6 +6,7 @@
 @inject StockAppService CrudService
 @inject StockService Service
 @inject UnitService UnitService
+@inject StockMoventService StockMoventService
 
 <DevListPageLayout DataGridService="Service"
                    ListPageService="Service"
@@ -30,7 +31,13 @@
                                     NewButtonVisible="true"
                                     UpdateButtonClick="async ()=> await BeforeUpdateAsync()"
                                     UpdateButtonEnabled="Service.ListDataSource.Count > 0"
-                                    UpdateButtonVisible="true">
+                                    UpdateButtonVisible="true"
+                                    ReserveButtonBeginGroup="true"
+                                    ReserveButtonClick="()=>StockMoventService.BeforeShowPopupListPage(InvoiceDetailType.Stock,Service.SelectedItem.Id)"
+                                    ReserveButtonEnabled="Service.ListDataSource.Count > 0"
+                                    ReserveButtonText="@L["CardTransactions"]"
+                                    ReserveButtonTooltip="@L["ShowTransactionsForThisCard"]"
+                                    ReserveButtonVisible="true">
 
                 </DevListPageToolBar>
             </HeaderTemplate>
@@ -88,6 +95,22 @@
     </EditPageContent>
 
 </DevListPageLayout>
+
+@if (StockMoventService.IsPopupListPage)
+{
+    Service.SelectFirstDataRow = false;
+    <DevPopupListPageLayout DataGridService="Service"
+                        CancelButtonText="@L["Close"]"
+                        Caption="@($"{L["StockTransactions"]} ({Service.SelectedItem.Code} / {Service.SelectedItem.Name})")"
+                        Closed="StockMoventService.HideListPage"
+                        SelectButtonVisible="false"
+                        Visible="true"
+                        Width="1100px">
+        <ListPageContent>
+            <StockMoventListPage />
+        </ListPageContent>
+    </DevPopupListPageLayout>
+}
 
 @code {
     protected override void OnInitialized()
