@@ -32,7 +32,7 @@ namespace MK.Accountancy.Services
                     x.Invoice.Active,
                     o => o.Invoice.InvoiceDate,
                     i => i.Invoice,
-                    i => i.Stock.Unit);
+                    i => i.Service.Unit);
                 //
                 var totalCount = await _invoiceDetailRepository.CountAsync(
                     x => x.ServiceId == input.ServiceId &&
