@@ -48,10 +48,12 @@
 
   <ItemGroup>
     <None Remove="Reports\Invoices\Invoice.vsrepx" />
+    <None Remove="Reports\Receipts\CollectionReceipts\CollectionReceipt.vsrepx" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Reports\Invoices\Invoice.vsrepx" />
+    <EmbeddedResource Include="Reports\Receipts\CollectionReceipts\CollectionReceipt.vsrepx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -64,15 +66,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Reports\Receipts\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Reports\Invoices\Invoice.cs">
       <DependentUpon>Invoice.vsrepx</DependentUpon>
     </Compile>
     <Compile Update="Reports\Invoices\Invoice.Designer.cs">
       <DependentUpon>Invoice.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Receipts\CollectionReceipts\CollectionReceipt.cs">
+      <DependentUpon>CollectionReceipt.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Receipts\CollectionReceipts\CollectionReceipt.Designer.cs">
+      <DependentUpon>CollectionReceipt.vsrepx</DependentUpon>
     </Compile>
   </ItemGroup>
 
