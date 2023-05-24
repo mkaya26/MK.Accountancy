@@ -3,6 +3,7 @@ using System.IO;
 using System.Net.Http;
 using Blazorise.Bootstrap5;
 using Blazorise.Icons.FontAwesome;
+using DevExpress.Blazor.Reporting.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -20,6 +21,7 @@ using Volo.Abp.AspNetCore.Components.Server.BasicTheme;
 using Volo.Abp.AspNetCore.Components.Server.BasicTheme.Bundling;
 using Volo.Abp.AspNetCore.Components.Web.Theming.Routing;
 using Volo.Abp.AspNetCore.Mvc;
+using Volo.Abp.AspNetCore.Mvc.AntiForgery;
 using Volo.Abp.AspNetCore.Mvc.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI;
 using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap;
@@ -93,6 +95,21 @@ public class AccountancyBlazorModule : AbpModule
         ConfigureRouter(context);
         ConfigureMenu(context);
         ConfigureDevExpress(context);
+        ConfigureDevExpressReport(context);
+        ConfigureAntiForgey();
+    }
+
+    private void ConfigureAntiForgey()
+    {
+        Configure<AbpAntiForgeryOptions>(o =>
+        {
+            o.AutoValidateFilter = type => type.BaseType == typeof(DownloadExportResultControllerBase);
+        });
+    }
+
+    private void ConfigureDevExpressReport(ServiceConfigurationContext context)
+    {
+        context.Services.AddDevExpressServerSideBlazorReportViewer();
     }
 
     private void ConfigureDevExpress(ServiceConfigurationContext context)
@@ -136,6 +153,8 @@ public class AccountancyBlazorModule : AbpModule
                     //You can remove the following line if you don't use Blazor CSS isolation for components
                     bundle.AddFiles("/MK.Accountancy.Blazor.styles.css");
                     bundle.AddFiles("/_content/DevExpress.Blazor/dx-blazor.bs5.css");
+                    bundle.AddFiles("/_content/DevExpress.Blazor/dx-blazor.bs5.css");
+                    bundle.AddFiles("/_content/DevExpress.Blazor.Reporting.Viewer/css/dx-blazor-reporting-components.css");
                     bundle.AddFiles("/_content/MK.Blazor.Core/css/component.css");
                 }
             );
@@ -260,6 +279,7 @@ public class AccountancyBlazorModule : AbpModule
         var env = context.GetEnvironment();
         var app = context.GetApplicationBuilder();
 
+        app.UseDevExpressServerSideBlazorReportViewer();
         app.UseAbpRequestLocalization();
 
         if (env.IsDevelopment())

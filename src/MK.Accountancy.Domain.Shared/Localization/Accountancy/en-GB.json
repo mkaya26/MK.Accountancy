@@ -273,6 +273,10 @@
     "StoreTransactions": "Store Transactions",
     "ServiceTransactions": "Service Transactions",
     "ExpenseTransactions": "Expense Transactions",
-    "StockTransactions": "Stock Transactions"
+    "StockTransactions": "Stock Transactions",
+    "ReportName": "Report Name",
+    "SelectReport": "Select Report",
+    "ReportPreview": "Report Preview",
+    "TemplateName": "Template Name"
   }
 }

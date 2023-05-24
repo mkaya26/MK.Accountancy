@@ -223,5 +223,17 @@ namespace MK.Accountancy.Blazor.Pages.Base
                 BaseService.SelectedItem = BaseService.ListDataSource.
                     GetEntityById(BaseService.DataSource.Id);
         }
+
+        public virtual async Task PrintAsync()
+        {
+            if (BaseService.ListDataSource.Count == 0) return;
+            //
+            BaseService.SelectFirstDataRow = false;
+            //
+            BaseService.DataSource = await GetAsync(BaseService.SelectedItem.Id);
+            //
+            BaseService.ShowReportSelectBox = true;
+            await InvokeAsync(BaseService.HasChanged);
+        }
     }
 }

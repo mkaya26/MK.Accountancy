@@ -12,8 +12,9 @@ namespace MK.Blazor.Core.Services
         public bool EditPageVisible { get; set; }
         public Guid PopupListPageFocusedRowId { get; set; }
         public string SelectedReportName { get; set; }
-        public string BaseReportFolder { get; set; } = nameof(Reports);
+        public string BaseReportFolder { get; set; }
         public string ReportFolder { get; set; }
+        public bool ShowReportSelectBox { get; set; }
         void ShowEditPage();
         void HideEditPage();
         void HideListPage();

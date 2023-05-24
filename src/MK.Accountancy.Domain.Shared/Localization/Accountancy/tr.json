@@ -273,6 +273,10 @@
     "StoreTransactions": "Depo Hareketleri",
     "ServiceTransactions": "Hizmet Hareketleri",
     "ExpenseTransactions": "Masraf Hareketleri",
-    "StockTransactions": "Stok Hareketleri"
+    "StockTransactions": "Stok Hareketleri",
+    "ReportName": "Rapor Adı",
+    "SelectReport": "Rapor Seç",
+    "ReportPreview": "Rapor Ön İzleme",
+    "TemplateName": "Şablon Adı"
   }
 }

@@ -6,29 +6,29 @@
                     Width="@Width">
     <PageContent>
         <DxReportViewer @ref="_dxReportViewer"
-                        Report="Report" 
+                        Report="Report"
                         RootCssClasses="w-100 h-100"
-                        Zoom="0.65"/>
+                        Zoom="0.65" />
     </PageContent>
 </DevPopupPageLayout>
 
 @code {
     private DxReportViewer _dxReportViewer;
     //
-    public XtraReport Report { get; set; }
-    public string CancelButtonText { get; set; }
-    public string Caption { get; set; }
-    public string Height { get; set; } = "900px";
-    public string Width { get; set; } = "900px";
-    public object DataSource { get; set; }
+    [Parameter] public XtraReport Report { get; set; }
+    [Parameter] public string CancelButtonText { get; set; }
+    [Parameter] public string Caption { get; set; }
+    [Parameter] public string Height { get; set; } = "900px";
+    [Parameter] public string Width { get; set; } = "900px";
+    [Parameter] public object DataSource { get; set; }
     //
-    public EventCallback Closed { get; set; }
+    [Parameter] public EventCallback Closed { get; set; }
     //
     protected override void OnInitialized()
     {
         Report.DataSource = new ObjectDataSource
-        {
-            DataSource = DataSource
-        };
+            {
+                DataSource = DataSource
+            };
     }
 }

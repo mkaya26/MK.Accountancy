@@ -20,4 +20,10 @@
     <PackageReference Include="Volo.Abp.SettingManagement.HttpApi" Version="5.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="DevExpress.Blazor.Reporting.v21.2.Viewer">
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\DevExpress 21.2\Components\Offline Packages\devexpress.blazor.reporting.viewer\21.2.3\lib\net5.0\DevExpress.Blazor.Reporting.v21.2.Viewer.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

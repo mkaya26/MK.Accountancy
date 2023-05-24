@@ -32,12 +32,12 @@
     private DevComboboxEdit<string> _comboboxEdit;
     private List<string> _dataSource;
     //
-    public ICoreListPageService ListPageService { get; set; }
-    public EventCallback Closed { get; set; }
-    public string Height { get; set; }
-    public bool Visible { get; set; } = true;
-    public string Width { get; set; }
-    public IStringLocalizer L { get; set; }
+   [Parameter] public ICoreListPageService ListPageService { get; set; }
+   [Parameter] public EventCallback Closed { get; set; }
+   [Parameter] public string Height { get; set; }
+   [Parameter] public bool Visible { get; set; } = true;
+   [Parameter] public string Width { get; set; }
+   [Parameter] public IStringLocalizer L { get; set; }
     //
     private void SelectButtonClick()
     {
@@ -47,7 +47,8 @@
     private void GetDataSource()
     {
         var path = $@"{ListPageService.BaseReportFolder}\{ListPageService.ReportFolder}";
-        _dataSource = Directory.GetFiles(path, "*.vsrepx").Select(Path.GetFileNameWithoutExtension).ToList();
+        _dataSource = Directory.GetFiles(path, "*.vsrepx").
+            Select(Path.GetFileNameWithoutExtension).ToList();
     }
     //
     protected override void OnParametersSet()

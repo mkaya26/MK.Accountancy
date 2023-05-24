@@ -46,6 +46,7 @@ namespace MK.Accountancy.Blazor.Services.Base
         public string SelectedReportName { get; set; }
         public string BaseReportFolder { get; set; } = nameof(Reports);
         public string ReportFolder { get; set; }
+        public bool ShowReportSelectBox { get; set; }
 
         public void BeforeShowPopupListPage(params object[] parameters)
         {

@@ -126,6 +126,7 @@ public class AccountancyApplicationAutoMapperProfile : Profile
             .ForMember(x => x.InvoiceDetails, y => y.Ignore());
         CreateMap<SelectInvoiceDto, CreateInvoiceDto>();
         CreateMap<SelectInvoiceDto, UpdateInvoiceDto>();
+        CreateMap<SelectInvoiceDto, InvoiceReportDto>();
         //
         CreateMap<InvoiceDetail, SelectInvoiceDetailDto>()
             .ForMember(x => x.StockCode, y => y.MapFrom(z => z.Stock.Code))
@@ -154,6 +155,7 @@ public class AccountancyApplicationAutoMapperProfile : Profile
         CreateMap<InvoiceDetailDto, InvoiceDetail>();
         CreateMap<SelectInvoiceDetailDto, InvoiceDetailDto>();
         CreateMap<SelectInvoiceDetailDto, SelectInvoiceDetailDto>();
+        CreateMap<SelectInvoiceDetailDto, InvoiceDetailReportDto>();
         CreateMap<InvoiceDetail, ListCurrentMoventDto>()
             .ForMember(x => x.CurrentId, y => y.MapFrom(z => z.Invoice.CurrentId))
             .ForMember(x => x.MoventDate, y => y.MapFrom(z => z.Invoice.InvoiceDate))
@@ -242,6 +244,7 @@ public class AccountancyApplicationAutoMapperProfile : Profile
             .ForMember(x => x.ReceiptDetails, y => y.Ignore());
         CreateMap<SelectReceiptDto, CreateReceiptDto>();
         CreateMap<SelectReceiptDto, UpdateReceiptDto>();
+        CreateMap<SelectReceiptDto, ReceiptReportDto>();
         //
         CreateMap<ReceiptDetail, SelectReceiptDetailDto>()
             .ForMember(x => x.ChequeBankName, y => y.MapFrom(z => z.ChequeBank.Name))
@@ -251,6 +254,7 @@ public class AccountancyApplicationAutoMapperProfile : Profile
         CreateMap<ReceiptDetailDto, ReceiptDetail>();
         CreateMap<SelectReceiptDetailDto, ReceiptDetailDto>();
         CreateMap<SelectReceiptDetailDto, SelectReceiptDetailDto>();
+        CreateMap<SelectReceiptDetailDto, ReceiptDetailReportDto>();
         CreateMap<ReceiptDetail, ListPaymentDocumentMoventDto>()
             .ForMember(x => x.ReceiptNumber, y => y.MapFrom(z => z.Receipt.ReceiptNumber))
             .ForMember(x => x.Date, y => y.MapFrom(z => z.Receipt.ReceiptDate))
