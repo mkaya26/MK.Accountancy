@@ -27,6 +27,9 @@
                                     L="L"
                                     NewButtonClick="async ()=> await BeforeInsertAsync()"
                                     NewButtonVisible="true"
+                                    PrintButtonClick="async ()=> await PrintAsync()"
+                                    PrintButtonEnabled="Service.ListDataSource.Count > 0"
+                                    PrintButtonVisible="true"
                                     UpdateButtonClick="async ()=> await BeforeUpdateAsync()"
                                     UpdateButtonEnabled="Service.ListDataSource.Count > 0"
                                     UpdateButtonVisible="true">
@@ -116,6 +119,32 @@
     </EditPageContent>
 
 </DevListPageLayout>
+
+@if (Service.ShowReportSelectBox)
+{
+    Service.ReportFolder = @$"{nameof(Reports.Receipts)}\{nameof(Reports.Receipts.CollectionReceipts)}";
+                //
+    <DevReportSelectionBox Closed="()=> Service.ShowReportSelectBox = false"
+                       L="L"
+                       ListPageService="Service"
+                       Width="560px">
+    </DevReportSelectionBox>
+}
+
+@if (Service.SelectedReportName != null)
+{
+    var dataSource = ObjectMapper.Map<SelectReceiptDto, ReceiptReportDto>(Service.DataSource);
+    //
+    var report = GetReport(Assembly.GetExecutingAssembly(), Service);
+                //
+    <DevReportViewer Caption="@($"{L["ReportPreview"]} ( {L["TemplateName"]} : {Service.SelectedReportName}) ")"
+                 CancelButtonText="@L["Close"]"
+                 Closed="() => Service.SelectedReportName = null"
+                 DataSource="dataSource"
+                 Report="report">
+
+    </DevReportViewer>
+}
 
 @code {
     protected override void OnInitialized()

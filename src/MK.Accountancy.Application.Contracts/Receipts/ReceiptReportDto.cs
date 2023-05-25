@@ -21,6 +21,6 @@ namespace MK.Accountancy.Receipts
         public string DepartmentName { get; set; }
         public string Description { get; set; }
         public bool Active { get; set; }
-        public List<ReceiptDetailReportDto> ReceiptDetailReports { get; set; }
+        public List<ReceiptDetailReportDto> receiptDetails { get; set; }
     }
 }
