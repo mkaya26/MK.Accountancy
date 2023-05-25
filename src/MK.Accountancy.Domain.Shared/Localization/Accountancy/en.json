@@ -277,6 +277,8 @@
     "ReportName": "Report Name",
     "SelectReport": "Select Report",
     "ReportPreview": "Report Preview",
-    "TemplateName": "Template Name"
+    "TemplateName": "Template Name",
+    "NotAuthorized": "Not Authorized",
+    "NothingAddress": "Nothing Address"
   }
 }

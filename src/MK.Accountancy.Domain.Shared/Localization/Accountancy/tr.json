@@ -277,6 +277,8 @@
     "ReportName": "Rapor Adı",
     "SelectReport": "Rapor Seç",
     "ReportPreview": "Rapor Ön İzleme",
-    "TemplateName": "Şablon Adı"
+    "TemplateName": "Şablon Adı",
+    "NotAuthorized": "Yetkiniz Yok!",
+    "NothingAddress": "Bu Sayfa Bulunamadı."
   }
 }
