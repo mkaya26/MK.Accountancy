@@ -1,47 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<XtraReportsLayoutSerializer SerializerVersion="21.2.3.0" Ref="1" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v21.2, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="CollectionReceipt" Margins="52, 50, 48, 51" PageWidth="850" PageHeight="1100" Version="21.2" DataSource="#Ref-0" Font="Arial, 9.75pt">
+<XtraReportsLayoutSerializer SerializerVersion="21.2.3.0" Ref="1" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v21.2, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="CollectionReceipt" PageWidth="850" PageHeight="1100" Version="21.2" DataSource="#Ref-0">
   <Extensions>
     <Item1 Ref="2" Key="VSReportExtInfo" Value=".vsrepx" />
   </Extensions>
   <Bands>
-    <Item1 Ref="3" ControlType="TopMarginBand" Name="TopMargin" HeightF="48" />
-    <Item2 Ref="4" ControlType="BottomMarginBand" Name="BottomMargin" HeightF="51" />
-    <Item3 Ref="5" ControlType="DetailBand" Name="Detail" HeightF="0.5208333" />
-    <Item4 Ref="6" ControlType="ReportHeaderBand" Name="ReportHeader" HeightF="78.5625">
+    <Item1 Ref="3" ControlType="TopMarginBand" Name="TopMargin" />
+    <Item2 Ref="4" ControlType="BottomMarginBand" Name="BottomMargin" />
+    <Item3 Ref="5" ControlType="DetailBand" Name="Detail" />
+    <Item4 Ref="6" ControlType="ReportHeaderBand" Name="ReportHeader">
       <Controls>
-        <Item1 Ref="7" ControlType="XRTable" Name="table1" SizeF="747.999939,75" LocationFloat="0,0" Padding="2,2,0,0,96">
+        <Item1 Ref="7" ControlType="XRTable" Name="table1" Padding="2,2,0,0,96">
           <Rows>
-            <Item1 Ref="8" ControlType="XRTableRow" Name="tableRow1" Weight="1">
+            <Item1 Ref="8" ControlType="XRTableRow" Name="tableRow1">
               <Cells>
-                <Item1 Ref="9" ControlType="XRTableCell" Name="lblTitleReport" Weight="1" Multiline="true" Text="Collection Receipt" TextAlignment="MiddleCenter" Font="Arial, 15pt, style=Bold" BackColor="LightGray" BorderColor="Black" Borders="Bottom">
+                <Item1 Ref="9" ControlType="XRTableCell" Name="lblTitleReport" Multiline="true" TextAlignment="MiddleCenter" BackColor="LightGray" BorderColor="Black" Borders="Bottom">
                   <StylePriority Ref="10" UseFont="false" UseBackColor="false" UseBorderColor="false" UseBorders="false" UseTextAlignment="false" />
                 </Item1>
               </Cells>
             </Item1>
-            <Item2 Ref="11" ControlType="XRTableRow" Name="tableRow3" Weight="1">
+            <Item2 Ref="11" ControlType="XRTableRow" Name="tableRow3">
               <Cells>
-                <Item1 Ref="12" ControlType="XRTableCell" Name="lblReceiptNo" Weight="0.11550242300614326" Multiline="true" Text="Receipt No" TextAlignment="MiddleLeft" Font="Arial, 9.75pt, style=Bold">
+                <Item1 Ref="12" ControlType="XRTableCell" Name="lblReceiptNo" Multiline="true" TextAlignment="MiddleLeft">
                   <StylePriority Ref="13" UseFont="false" UseTextAlignment="false" />
                 </Item1>
-                <Item2 Ref="14" ControlType="XRTableCell" Name="lbl1" Weight="0.01336899524782521" Multiline="true" Text=":" TextAlignment="MiddleCenter" Font="Arial, 9.75pt, style=Bold">
+                <Item2 Ref="14" ControlType="XRTableCell" Name="lbl1" Multiline="true" TextAlignment="MiddleCenter">
                   <StylePriority Ref="15" UseFont="false" UseTextAlignment="false" />
                 </Item2>
-                <Item3 Ref="16" ControlType="XRTableCell" Name="txtReceiptNo" Weight="0.2286374666254761" Multiline="true" Text="txtReceiptNo" TextAlignment="MiddleLeft">
+                <Item3 Ref="16" ControlType="XRTableCell" Name="txtReceiptNo" Multiline="true" TextAlignment="MiddleLeft">
                   <ExpressionBindings>
                     <Item1 Ref="17" EventName="BeforePrint" PropertyName="Text" Expression="[ReceiptNumber]" />
                   </ExpressionBindings>
                   <StylePriority Ref="18" UseTextAlignment="false" />
                 </Item3>
-                <Item4 Ref="19" ControlType="XRTableCell" Name="lbl2" Weight="0.034397309096009659" Multiline="true" TextAlignment="MiddleLeft">
+                <Item4 Ref="19" ControlType="XRTableCell" Name="lbl2" Multiline="true" TextAlignment="MiddleLeft">
                   <StylePriority Ref="20" UseTextAlignment="false" />
                 </Item4>
-                <Item5 Ref="21" ControlType="XRTableCell" Name="lblCurrentCodeName" Weight="0.19568843194387769" Multiline="true" Text="Current Code / Name" TextAlignment="MiddleLeft" Font="Arial, 9.75pt, style=Bold">
+                <Item5 Ref="21" ControlType="XRTableCell" Name="lblCurrentCodeName" Multiline="true" TextAlignment="MiddleLeft">
                   <StylePriority Ref="22" UseFont="false" UseTextAlignment="false" />
                 </Item5>
-                <Item6 Ref="23" ControlType="XRTableCell" Name="lbl3" Weight="0.013368985048099054" Multiline="true" Text=":" TextAlignment="MiddleCenter" Font="Arial, 9.75pt, style=Bold">
+                <Item6 Ref="23" ControlType="XRTableCell" Name="lbl3" Multiline="true" TextAlignment="MiddleCenter">
                   <StylePriority Ref="24" UseFont="false" UseTextAlignment="false" />
                 </Item6>
-                <Item7 Ref="25" ControlType="XRTableCell" Name="tableCell5" Weight="0.399036389032569" Multiline="true" Text="tableCell5" TextAlignment="MiddleLeft">
+                <Item7 Ref="25" ControlType="XRTableCell" Name="tableCell5" Multiline="true" TextAlignment="MiddleLeft">
                   <ExpressionBindings>
                     <Item1 Ref="26" EventName="BeforePrint" PropertyName="Text" Expression="Concat([CurrentCode],' - ',[CurrentName])" />
                   </ExpressionBindings>
@@ -49,30 +49,30 @@
                 </Item7>
               </Cells>
             </Item2>
-            <Item3 Ref="28" ControlType="XRTableRow" Name="tableRow2" Weight="1">
+            <Item3 Ref="28" ControlType="XRTableRow" Name="tableRow2">
               <Cells>
-                <Item1 Ref="29" ControlType="XRTableCell" Name="lblDate" Weight="0.11550240260669097" Multiline="true" Text="Date" TextAlignment="MiddleLeft" Font="Arial, 9.75pt, style=Bold">
+                <Item1 Ref="29" ControlType="XRTableCell" Name="lblDate" Multiline="true" TextAlignment="MiddleLeft">
                   <StylePriority Ref="30" UseFont="false" UseTextAlignment="false" />
                 </Item1>
-                <Item2 Ref="31" ControlType="XRTableCell" Name="tableCell4" Weight="0.013368974848372919" Multiline="true" Text=":" TextAlignment="MiddleCenter" Font="Arial, 9.75pt, style=Bold">
+                <Item2 Ref="31" ControlType="XRTableCell" Name="tableCell4" Multiline="true" TextAlignment="MiddleCenter">
                   <StylePriority Ref="32" UseFont="false" UseTextAlignment="false" />
                 </Item2>
-                <Item3 Ref="33" ControlType="XRTableCell" Name="txtDate" Weight="0.22863734677869391" Multiline="true" Text="txtDate" TextAlignment="MiddleLeft">
+                <Item3 Ref="33" ControlType="XRTableCell" Name="txtDate" Multiline="true" TextAlignment="MiddleLeft">
                   <ExpressionBindings>
                     <Item1 Ref="34" EventName="BeforePrint" PropertyName="Text" Expression="[ReceiptDate]" />
                   </ExpressionBindings>
                   <StylePriority Ref="35" UseTextAlignment="false" />
                 </Item3>
-                <Item4 Ref="36" ControlType="XRTableCell" Name="tableCell3" Weight="0.03439746974169644" Multiline="true" TextAlignment="MiddleLeft">
+                <Item4 Ref="36" ControlType="XRTableCell" Name="tableCell3" Multiline="true" TextAlignment="MiddleLeft">
                   <StylePriority Ref="37" UseTextAlignment="false" />
                 </Item4>
-                <Item5 Ref="38" ControlType="XRTableCell" Name="lblDeparment" Weight="0.19568848294250837" Multiline="true" Text="Deparment" TextAlignment="MiddleLeft" Font="Arial, 9.75pt, style=Bold">
+                <Item5 Ref="38" ControlType="XRTableCell" Name="lblDeparment" Multiline="true" TextAlignment="MiddleLeft">
                   <StylePriority Ref="39" UseFont="false" UseTextAlignment="false" />
                 </Item5>
-                <Item6 Ref="40" ControlType="XRTableCell" Name="lbl4" Weight="0.013368944249194492" Multiline="true" Text=":" TextAlignment="MiddleCenter" Font="Arial, 9.75pt, style=Bold">
+                <Item6 Ref="40" ControlType="XRTableCell" Name="lbl4" Multiline="true" TextAlignment="MiddleCenter">
                   <StylePriority Ref="41" UseFont="false" UseTextAlignment="false" />
                 </Item6>
-                <Item7 Ref="42" ControlType="XRTableCell" Name="txtDepartment" Weight="0.39903637883284282" Multiline="true" Text="txtDepartment" TextAlignment="MiddleLeft">
+                <Item7 Ref="42" ControlType="XRTableCell" Name="txtDepartment" Multiline="true" TextAlignment="MiddleLeft">
                   <ExpressionBindings>
                     <Item1 Ref="43" EventName="BeforePrint" PropertyName="Text" Expression="[DepartmentName]" />
                   </ExpressionBindings>
@@ -86,60 +86,60 @@
     </Item4>
     <Item5 Ref="45" ControlType="DetailReportBand" Name="DetailReport" Level="0" DataMember="receiptDetails" DataSource="#Ref-0">
       <Bands>
-        <Item1 Ref="46" ControlType="DetailBand" Name="Detail1" HeightF="27.083334">
+        <Item1 Ref="46" ControlType="DetailBand" Name="Detail1">
           <Controls>
-            <Item1 Ref="47" ControlType="XRTable" Name="table3" SizeF="747.999939,25" LocationFloat="0,0" Padding="2,2,0,0,96">
+            <Item1 Ref="47" ControlType="XRTable" Name="table3" Padding="2,2,0,0,96">
               <Rows>
-                <Item1 Ref="48" ControlType="XRTableRow" Name="tableRow6" Weight="1">
+                <Item1 Ref="48" ControlType="XRTableRow" Name="tableRow6">
                   <Cells>
-                    <Item1 Ref="49" ControlType="XRTableCell" Name="tableCell1" Weight="0.47999984741210933" CanGrow="false" TextFormatString="{0:00}" Text="tableCell1" WordWrap="false">
+                    <Item1 Ref="49" ControlType="XRTableCell" Name="tableCell1" CanGrow="false" WordWrap="false">
                       <Summary Ref="50" Running="Group" />
                       <ExpressionBindings>
-                        <Item1 Ref="51" EventName="BeforePrint" PropertyName="Text" Expression="sumCount()" />
+                        <Item1 Ref="51" EventName="BeforePrint" PropertyName="Text" Expression="sumRecordNumber([Id])" />
                         <Item2 Ref="52" EventName="BeforePrint" PropertyName="Text" Expression="sumRecordNumber([Id])" />
                       </ExpressionBindings>
                     </Item1>
-                    <Item2 Ref="53" ControlType="XRTableCell" Name="tableCell2" Weight="0.699999237060547" CanGrow="false" Text="tableCell2" WordWrap="false">
+                    <Item2 Ref="53" ControlType="XRTableCell" Name="tableCell2" CanGrow="false" WordWrap="false">
                       <ExpressionBindings>
                         <Item1 Ref="54" EventName="BeforePrint" PropertyName="Text" Expression="[TrackingNumber]" />
                       </ExpressionBindings>
                     </Item2>
-                    <Item3 Ref="55" ControlType="XRTableCell" Name="tableCell6" Weight="0.33000061035156247" CanGrow="false" Text="tableCell6" WordWrap="false">
+                    <Item3 Ref="55" ControlType="XRTableCell" Name="tableCell6" CanGrow="false" WordWrap="false">
                       <ExpressionBindings>
                         <Item1 Ref="56" EventName="BeforePrint" PropertyName="Text" Expression="[PaymentTypeName]" />
                       </ExpressionBindings>
                     </Item3>
-                    <Item4 Ref="57" ControlType="XRTableCell" Name="tableCell7" Weight="0.67999969307540009" CanGrow="false" TextFormatString="{0:dd.MM.yyyy}" Text="tableCell7" WordWrap="false">
+                    <Item4 Ref="57" ControlType="XRTableCell" Name="tableCell7" CanGrow="false" WordWrap="false">
                       <ExpressionBindings>
                         <Item1 Ref="58" EventName="BeforePrint" PropertyName="Text" Expression="[ExpiryDate]" />
                       </ExpressionBindings>
                     </Item4>
-                    <Item5 Ref="59" ControlType="XRTableCell" Name="tableCell8" Weight="0.3500012062750143" CanGrow="false" TextFormatString="{0:n2}" Text="tableCell8" WordWrap="false">
+                    <Item5 Ref="59" ControlType="XRTableCell" Name="tableCell8" CanGrow="false" WordWrap="false">
                       <ExpressionBindings>
                         <Item1 Ref="60" EventName="BeforePrint" PropertyName="Text" Expression="[Price]" />
                       </ExpressionBindings>
                     </Item5>
-                    <Item6 Ref="61" ControlType="XRTableCell" Name="tableCell9" Weight="0.94999864288591374" CanGrow="false" Text="tableCell9" WordWrap="false">
+                    <Item6 Ref="61" ControlType="XRTableCell" Name="tableCell9" CanGrow="false" WordWrap="false">
                       <ExpressionBindings>
                         <Item1 Ref="62" EventName="BeforePrint" PropertyName="Text" Expression="[PrincipalDebtor]" />
                       </ExpressionBindings>
                     </Item6>
-                    <Item7 Ref="63" ControlType="XRTableCell" Name="tableCell10" Weight="0.600000191546171" CanGrow="false" Text="tableCell10" WordWrap="false">
+                    <Item7 Ref="63" ControlType="XRTableCell" Name="tableCell10" CanGrow="false" WordWrap="false">
                       <ExpressionBindings>
                         <Item1 Ref="64" EventName="BeforePrint" PropertyName="Text" Expression="[Endorser]" />
                       </ExpressionBindings>
                     </Item7>
-                    <Item8 Ref="65" ControlType="XRTableCell" Name="tableCell11" Weight="1.0000001851776137" CanGrow="false" Text="tableCell11" WordWrap="false">
+                    <Item8 Ref="65" ControlType="XRTableCell" Name="tableCell11" CanGrow="false" WordWrap="false">
                       <ExpressionBindings>
-                        <Item1 Ref="66" EventName="BeforePrint" PropertyName="Text" Expression="Concat([BankAccountName], [ChequeBankDepartmentName])" />
+                        <Item1 Ref="66" EventName="BeforePrint" PropertyName="Text" Expression="Concat([ChequeBankName],[ChequeBankDepartmentName])" />
                       </ExpressionBindings>
                     </Item8>
-                    <Item9 Ref="67" ControlType="XRTableCell" Name="tableCell12" Weight="1.0000001851776137" CanGrow="false" Text="tableCell12" WordWrap="false">
+                    <Item9 Ref="67" ControlType="XRTableCell" Name="tableCell12" CanGrow="false" WordWrap="false">
                       <ExpressionBindings>
                         <Item1 Ref="68" EventName="BeforePrint" PropertyName="Text" Expression="[DocumentNo]" />
                       </ExpressionBindings>
                     </Item9>
-                    <Item10 Ref="69" ControlType="XRTableCell" Name="tableCell13" Weight="1.3899995739536164" CanGrow="false" Text="tableCell13" WordWrap="false">
+                    <Item10 Ref="69" ControlType="XRTableCell" Name="tableCell13" CanGrow="false" WordWrap="false">
                       <ExpressionBindings>
                         <Item1 Ref="70" EventName="BeforePrint" PropertyName="Text" Expression="[ChequeAccountNumber]" />
                       </ExpressionBindings>
@@ -150,47 +150,47 @@
             </Item1>
           </Controls>
         </Item1>
-        <Item2 Ref="71" ControlType="GroupHeaderBand" Name="GroupHeader1" HeightF="51.5625">
+        <Item2 Ref="71" ControlType="GroupHeaderBand" Name="GroupHeader1">
           <Controls>
-            <Item1 Ref="72" ControlType="XRTable" Name="table2" SizeF="747.999939,50" LocationFloat="0,0" Padding="2,2,0,0,96">
+            <Item1 Ref="72" ControlType="XRTable" Name="table2" Padding="2,2,0,0,96">
               <Rows>
-                <Item1 Ref="73" ControlType="XRTableRow" Name="tableRow4" Weight="1">
+                <Item1 Ref="73" ControlType="XRTableRow" Name="tableRow4">
                   <Cells>
-                    <Item1 Ref="74" ControlType="XRTableCell" Name="lblDetailTitle" Weight="1" Multiline="true" Text="Payment Document Informations" TextAlignment="MiddleCenter" Font="Arial, 12pt, style=Bold" BackColor="LightGray" Borders="Bottom">
+                    <Item1 Ref="74" ControlType="XRTableCell" Name="lblDetailTitle" Multiline="true" TextAlignment="MiddleCenter" BackColor="LightGray" Borders="Bottom">
                       <StylePriority Ref="75" UseFont="false" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
                     </Item1>
                   </Cells>
                 </Item1>
-                <Item2 Ref="76" ControlType="XRTableRow" Name="tableRow5" Weight="1">
+                <Item2 Ref="76" ControlType="XRTableRow" Name="tableRow5">
                   <Cells>
-                    <Item1 Ref="77" ControlType="XRTableCell" Name="lblRowNo" Weight="0.064171128230875479" Multiline="true" Text="Row No" TextAlignment="MiddleCenter" Font="Arial, 8pt, style=Bold" BackColor="Gainsboro" Borders="All">
+                    <Item1 Ref="77" ControlType="XRTableCell" Name="lblRowNo" Multiline="true" TextAlignment="MiddleCenter" BackColor="Gainsboro" Borders="All">
                       <StylePriority Ref="78" UseFont="false" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
                     </Item1>
-                    <Item2 Ref="79" ControlType="XRTableCell" Name="lblTrackingNo" Weight="0.093582895336693339" Multiline="true" Text="Tracking No" TextAlignment="MiddleCenter" Font="Arial, 8pt, style=Bold" BackColor="Gainsboro" Borders="All">
+                    <Item2 Ref="79" ControlType="XRTableCell" Name="lblTrackingNo" Multiline="true" TextAlignment="MiddleCenter" BackColor="Gainsboro" Borders="All">
                       <StylePriority Ref="80" UseFont="false" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
                     </Item2>
-                    <Item3 Ref="81" ControlType="XRTableCell" Name="lblType" Weight="0.044117650658726845" Multiline="true" Text="Type" TextAlignment="MiddleCenter" Font="Arial, 8pt, style=Bold" BackColor="Gainsboro" Borders="All">
+                    <Item3 Ref="81" ControlType="XRTableCell" Name="lblType" Multiline="true" TextAlignment="MiddleCenter" BackColor="Gainsboro" Borders="All">
                       <StylePriority Ref="82" UseFont="false" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
                     </Item3>
-                    <Item4 Ref="83" ControlType="XRTableCell" Name="lblExpiryDate" Weight="0.090909098327073529" Multiline="true" Text="Expiry Date" TextAlignment="MiddleCenter" Font="Arial, 8pt, style=Bold" BackColor="Gainsboro" Borders="All">
+                    <Item4 Ref="83" ControlType="XRTableCell" Name="lblExpiryDate" Multiline="true" TextAlignment="MiddleCenter" BackColor="Gainsboro" Borders="All">
                       <StylePriority Ref="84" UseFont="false" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
                     </Item4>
-                    <Item5 Ref="85" ControlType="XRTableCell" Name="lblPrice" Weight="0.0467914476683467" Multiline="true" Text="Price" TextAlignment="MiddleCenter" Font="Arial, 8pt, style=Bold" BackColor="Gainsboro" Borders="All">
+                    <Item5 Ref="85" ControlType="XRTableCell" Name="lblPrice" Multiline="true" TextAlignment="MiddleCenter" BackColor="Gainsboro" Borders="All">
                       <StylePriority Ref="86" UseFont="false" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
                     </Item5>
-                    <Item6 Ref="87" ControlType="XRTableCell" Name="lblPrincipalDebtor" Weight="0.127005357956941" Multiline="true" Text="Principal Debtor" TextAlignment="MiddleCenter" Font="Arial, 8pt, style=Bold" BackColor="Gainsboro" Borders="All">
+                    <Item6 Ref="87" ControlType="XRTableCell" Name="lblPrincipalDebtor" Multiline="true" TextAlignment="MiddleCenter" BackColor="Gainsboro" Borders="All">
                       <StylePriority Ref="88" UseFont="false" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
                     </Item6>
-                    <Item7 Ref="89" ControlType="XRTableCell" Name="lblEndorser" Weight="0.080213905188731269" Multiline="true" Text="Endorser" TextAlignment="MiddleCenter" Font="Arial, 8pt, style=Bold" BackColor="Gainsboro" Borders="All">
+                    <Item7 Ref="89" ControlType="XRTableCell" Name="lblEndorser" Multiline="true" TextAlignment="MiddleCenter" BackColor="Gainsboro" Borders="All">
                       <StylePriority Ref="90" UseFont="false" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
                     </Item7>
-                    <Item8 Ref="91" ControlType="XRTableCell" Name="lblBankAndDeparment" Weight="0.13368985558085361" Multiline="true" Text="Bank / Deparment" TextAlignment="MiddleCenter" Font="Arial, 8pt, style=Bold" BackColor="Gainsboro" Borders="All">
+                    <Item8 Ref="91" ControlType="XRTableCell" Name="lblBankAndDeparment" Multiline="true" TextAlignment="MiddleCenter" BackColor="Gainsboro" Borders="All">
                       <StylePriority Ref="92" UseFont="false" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
                     </Item8>
-                    <Item9 Ref="93" ControlType="XRTableCell" Name="lblDocumentNo" Weight="0.13368985048099055" Multiline="true" Text="Document No" TextAlignment="MiddleCenter" Font="Arial, 8pt, style=Bold" BackColor="Gainsboro" Borders="All">
+                    <Item9 Ref="93" ControlType="XRTableCell" Name="lblDocumentNo" Multiline="true" TextAlignment="MiddleCenter" BackColor="Gainsboro" Borders="All">
                       <StylePriority Ref="94" UseFont="false" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
                     </Item9>
-                    <Item10 Ref="95" ControlType="XRTableCell" Name="lblAccountNo" Weight="0.18582881057076769" Multiline="true" Text="Account No" TextAlignment="MiddleCenter" Font="Arial, 8pt, style=Bold" BackColor="Gainsboro" Borders="All">
+                    <Item10 Ref="95" ControlType="XRTableCell" Name="lblAccountNo" Multiline="true" TextAlignment="MiddleCenter" BackColor="Gainsboro" Borders="All">
                       <StylePriority Ref="96" UseFont="false" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
                     </Item10>
                   </Cells>
@@ -201,23 +201,23 @@
         </Item2>
       </Bands>
     </Item5>
-    <Item6 Ref="97" ControlType="GroupFooterBand" Name="GroupFooter1" HeightF="25.520834">
+    <Item6 Ref="97" ControlType="GroupFooterBand" Name="GroupFooter1">
       <Controls>
-        <Item1 Ref="98" ControlType="XRTable" Name="table4" SizeF="747.999939,25" LocationFloat="0,0" Padding="2,2,0,0,96">
+        <Item1 Ref="98" ControlType="XRTable" Name="table4" Padding="2,2,0,0,96">
           <Rows>
-            <Item1 Ref="99" ControlType="XRTableRow" Name="tableRow7" Weight="1">
+            <Item1 Ref="99" ControlType="XRTableRow" Name="tableRow7">
               <Cells>
-                <Item1 Ref="100" ControlType="XRTableCell" Name="lblSums" Weight="0.8783422564617509" Multiline="true" Text="Sums" TextAlignment="MiddleCenter" Font="Arial, 9.75pt, style=Bold" BackColor="LightGray">
+                <Item1 Ref="100" ControlType="XRTableCell" Name="lblSums" Multiline="true" TextAlignment="MiddleCenter" BackColor="LightGray">
                   <StylePriority Ref="101" UseFont="false" UseBackColor="false" UseTextAlignment="false" />
                 </Item1>
-                <Item2 Ref="102" ControlType="XRTableCell" Name="tableCell15" Weight="0.14037458779846745" CanGrow="false" TextFormatString="{0:n2}" Text="tableCell15" TextAlignment="MiddleCenter" WordWrap="false" Font="Arial, 9.75pt, style=Bold" BackColor="LightGray">
+                <Item2 Ref="102" ControlType="XRTableCell" Name="tableCell15" CanGrow="false" TextAlignment="MiddleCenter" WordWrap="false" BackColor="LightGray">
                   <Summary Ref="103" Running="Report" />
                   <ExpressionBindings>
                     <Item1 Ref="104" EventName="BeforePrint" PropertyName="Text" Expression="sumSum([receiptDetails].[Price])" />
                   </ExpressionBindings>
                   <StylePriority Ref="105" UseFont="false" UseBackColor="false" UseTextAlignment="false" />
                 </Item2>
-                <Item3 Ref="106" ControlType="XRTableCell" Name="tableCell16" Weight="1.9812831557397816" Multiline="true" TextAlignment="MiddleCenter" Font="Arial, 9.75pt, style=Bold" BackColor="LightGray">
+                <Item3 Ref="106" ControlType="XRTableCell" Name="tableCell16" Multiline="true" TextAlignment="MiddleCenter" BackColor="LightGray">
                   <StylePriority Ref="107" UseFont="false" UseBackColor="false" UseTextAlignment="false" />
                 </Item3>
               </Cells>
@@ -226,20 +226,176 @@
         </Item1>
       </Controls>
     </Item6>
-    <Item7 Ref="108" ControlType="ReportFooterBand" Name="ReportFooter" HeightF="151.5625">
+    <Item7 Ref="108" ControlType="ReportFooterBand" Name="ReportFooter">
       <Controls>
-        <Item1 Ref="109" ControlType="XRPanel" Name="panel1" SizeF="263.479156,84.770874" LocationFloat="484.520844,66.791626" Borders="All">
+        <Item1 Ref="109" ControlType="XRPanel" Name="panel1" Borders="All">
           <StylePriority Ref="110" UseBorders="false" />
         </Item1>
-        <Item2 Ref="111" ControlType="XRLabel" Name="lblPersonWhoCollected" Multiline="true" Text="The person who collects" TextAlignment="MiddleCenter" SizeF="263.479156,22.9999962" LocationFloat="484.520844,43.7916451" Padding="2,2,0,0,100" Borders="All">
+        <Item2 Ref="111" ControlType="XRLabel" Name="lblPersonWhoCollected" Multiline="true" TextAlignment="MiddleCenter" Padding="2,2,0,0,100" Borders="All">
           <StylePriority Ref="112" UseBorders="false" UseTextAlignment="false" />
         </Item2>
-        <Item3 Ref="113" ControlType="XRPageInfo" Name="pageInfo1" PageInfo="DateTime" TextFormatString="{0:dd.MM.yyyy}" TextAlignment="MiddleCenter" SizeF="263.4791,22.9999981" LocationFloat="484.520844,20.7916584" Font="Arial, 9.75pt, style=Bold" Padding="2,2,0,0,100" Borders="All">
+        <Item3 Ref="113" ControlType="XRPageInfo" Name="pageInfo1" PageInfo="DateTime" TextAlignment="MiddleCenter" Padding="2,2,0,0,100" Borders="All">
           <StylePriority Ref="114" UseFont="false" UseBorders="false" UseTextAlignment="false" />
         </Item3>
       </Controls>
     </Item7>
   </Bands>
+  <LocalizationItems>
+    <Item1 Ref="115" Component="#Ref-4" Culture="Default" Path="HeightF" Data="51" />
+    <Item2 Ref="116" Component="#Ref-1" Culture="Default" Path="Font" Data="Arial, 9.75pt" />
+    <Item3 Ref="117" Component="#Ref-1" Culture="Default" Path="Margins" Data="52, 50, 48, 51" />
+    <Item4 Ref="118" Component="#Ref-5" Culture="Default" Path="HeightF" Data="0.5208333" />
+    <Item5 Ref="119" Component="#Ref-46" Culture="Default" Path="HeightF" Data="27.083334" />
+    <Item6 Ref="120" Component="#Ref-97" Culture="Default" Path="HeightF" Data="25.520834" />
+    <Item7 Ref="121" Component="#Ref-71" Culture="Default" Path="HeightF" Data="51.5625" />
+    <Item8 Ref="122" Component="#Ref-14" Culture="Default" Path="Font" Data="Arial, 9.75pt, style=Bold" />
+    <Item9 Ref="123" Component="#Ref-14" Culture="Default" Path="Text" Data=":" />
+    <Item10 Ref="124" Component="#Ref-14" Culture="Default" Path="Weight" Data="0.01336899524782521" />
+    <Item11 Ref="125" Component="#Ref-19" Culture="Default" Path="Weight" Data="0.034397309096009659" />
+    <Item12 Ref="126" Component="#Ref-23" Culture="Default" Path="Font" Data="Arial, 9.75pt, style=Bold" />
+    <Item13 Ref="127" Component="#Ref-23" Culture="Default" Path="Text" Data=":" />
+    <Item14 Ref="128" Component="#Ref-23" Culture="Default" Path="Weight" Data="0.013368985048099054" />
+    <Item15 Ref="129" Component="#Ref-40" Culture="Default" Path="Font" Data="Arial, 9.75pt, style=Bold" />
+    <Item16 Ref="130" Component="#Ref-40" Culture="Default" Path="Text" Data=":" />
+    <Item17 Ref="131" Component="#Ref-40" Culture="Default" Path="Weight" Data="0.013368944249194492" />
+    <Item18 Ref="132" Component="#Ref-95" Culture="Default" Path="Font" Data="Arial, 8pt, style=Bold" />
+    <Item19 Ref="133" Component="#Ref-95" Culture="Default" Path="Text" Data="Account No" />
+    <Item20 Ref="134" Component="#Ref-95" Culture="tr" Path="Text" Data="Hesap No" />
+    <Item21 Ref="135" Component="#Ref-95" Culture="Default" Path="Weight" Data="0.18582881057076769" />
+    <Item22 Ref="136" Component="#Ref-91" Culture="Default" Path="Font" Data="Arial, 8pt, style=Bold" />
+    <Item23 Ref="137" Component="#Ref-91" Culture="Default" Path="Text" Data="Bank / Deparment" />
+    <Item24 Ref="138" Component="#Ref-91" Culture="tr" Path="Text" Data="Banka / Şube" />
+    <Item25 Ref="139" Component="#Ref-91" Culture="Default" Path="Weight" Data="0.13368985558085361" />
+    <Item26 Ref="140" Component="#Ref-21" Culture="Default" Path="Font" Data="Arial, 9.75pt, style=Bold" />
+    <Item27 Ref="141" Component="#Ref-21" Culture="Default" Path="Text" Data="Current Code / Name" />
+    <Item28 Ref="142" Component="#Ref-21" Culture="tr" Path="Text" Data="Cari Kodu / Adı" />
+    <Item29 Ref="143" Component="#Ref-21" Culture="Default" Path="Weight" Data="0.19568843194387769" />
+    <Item30 Ref="144" Component="#Ref-29" Culture="Default" Path="Font" Data="Arial, 9.75pt, style=Bold" />
+    <Item31 Ref="145" Component="#Ref-29" Culture="Default" Path="Text" Data="Date" />
+    <Item32 Ref="146" Component="#Ref-29" Culture="tr" Path="Text" Data="Tarih" />
+    <Item33 Ref="147" Component="#Ref-29" Culture="Default" Path="Weight" Data="0.11550240260669097" />
+    <Item34 Ref="148" Component="#Ref-38" Culture="Default" Path="Font" Data="Arial, 9.75pt, style=Bold" />
+    <Item35 Ref="149" Component="#Ref-38" Culture="Default" Path="Text" Data="Deparment" />
+    <Item36 Ref="150" Component="#Ref-38" Culture="tr" Path="Text" Data="Şube" />
+    <Item37 Ref="151" Component="#Ref-38" Culture="Default" Path="Weight" Data="0.19568848294250837" />
+    <Item38 Ref="152" Component="#Ref-74" Culture="Default" Path="Font" Data="Arial, 12pt, style=Bold" />
+    <Item39 Ref="153" Component="#Ref-74" Culture="Default" Path="Text" Data="Payment Document Informations" />
+    <Item40 Ref="154" Component="#Ref-74" Culture="tr" Path="Text" Data="Ödeme Bilgileri" />
+    <Item41 Ref="155" Component="#Ref-74" Culture="Default" Path="Weight" Data="1" />
+    <Item42 Ref="156" Component="#Ref-93" Culture="Default" Path="Font" Data="Arial, 8pt, style=Bold" />
+    <Item43 Ref="157" Component="#Ref-93" Culture="Default" Path="Text" Data="Document No" />
+    <Item44 Ref="158" Component="#Ref-93" Culture="tr" Path="Text" Data="Belge No" />
+    <Item45 Ref="159" Component="#Ref-93" Culture="Default" Path="Weight" Data="0.13368985048099055" />
+    <Item46 Ref="160" Component="#Ref-89" Culture="Default" Path="Font" Data="Arial, 8pt, style=Bold" />
+    <Item47 Ref="161" Component="#Ref-89" Culture="Default" Path="Text" Data="Endorser" />
+    <Item48 Ref="162" Component="#Ref-89" Culture="tr" Path="Text" Data="Ciranta" />
+    <Item49 Ref="163" Component="#Ref-89" Culture="Default" Path="Weight" Data="0.080213905188731269" />
+    <Item50 Ref="164" Component="#Ref-83" Culture="Default" Path="Font" Data="Arial, 8pt, style=Bold" />
+    <Item51 Ref="165" Component="#Ref-83" Culture="Default" Path="Text" Data="Expiry Date" />
+    <Item52 Ref="166" Component="#Ref-83" Culture="tr" Path="Text" Data="Vade Tarihi" />
+    <Item53 Ref="167" Component="#Ref-83" Culture="Default" Path="Weight" Data="0.090909098327073529" />
+    <Item54 Ref="168" Component="#Ref-111" Culture="Default" Path="LocationFloat" Data="484.520844,43.7916451" />
+    <Item55 Ref="169" Component="#Ref-111" Culture="Default" Path="SizeF" Data="263.479156,22.9999962" />
+    <Item56 Ref="170" Component="#Ref-111" Culture="Default" Path="Text" Data="The person who collects" />
+    <Item57 Ref="171" Component="#Ref-111" Culture="tr" Path="Text" Data="Tahsil Eden Kişi ve İmzası" />
+    <Item58 Ref="172" Component="#Ref-85" Culture="Default" Path="Font" Data="Arial, 8pt, style=Bold" />
+    <Item59 Ref="173" Component="#Ref-85" Culture="Default" Path="Text" Data="Price" />
+    <Item60 Ref="174" Component="#Ref-85" Culture="tr" Path="Text" Data="Tutar" />
+    <Item61 Ref="175" Component="#Ref-85" Culture="Default" Path="Weight" Data="0.0467914476683467" />
+    <Item62 Ref="176" Component="#Ref-87" Culture="Default" Path="Font" Data="Arial, 8pt, style=Bold" />
+    <Item63 Ref="177" Component="#Ref-87" Culture="Default" Path="Text" Data="Principal Debtor" />
+    <Item64 Ref="178" Component="#Ref-87" Culture="tr" Path="Text" Data="Asil Borçlu" />
+    <Item65 Ref="179" Component="#Ref-87" Culture="Default" Path="Weight" Data="0.127005357956941" />
+    <Item66 Ref="180" Component="#Ref-12" Culture="Default" Path="Font" Data="Arial, 9.75pt, style=Bold" />
+    <Item67 Ref="181" Component="#Ref-12" Culture="Default" Path="Text" Data="Receipt No" />
+    <Item68 Ref="182" Component="#Ref-12" Culture="tr" Path="Text" Data="Makbuz No" />
+    <Item69 Ref="183" Component="#Ref-12" Culture="Default" Path="Weight" Data="0.11550242300614326" />
+    <Item70 Ref="184" Component="#Ref-77" Culture="Default" Path="Font" Data="Arial, 8pt, style=Bold" />
+    <Item71 Ref="185" Component="#Ref-77" Culture="Default" Path="Text" Data="Row No" />
+    <Item72 Ref="186" Component="#Ref-77" Culture="tr" Path="Text" Data="Sıra No" />
+    <Item73 Ref="187" Component="#Ref-77" Culture="Default" Path="Weight" Data="0.064171128230875479" />
+    <Item74 Ref="188" Component="#Ref-100" Culture="Default" Path="Font" Data="Arial, 9.75pt, style=Bold" />
+    <Item75 Ref="189" Component="#Ref-100" Culture="Default" Path="Text" Data="Sums" />
+    <Item76 Ref="190" Component="#Ref-100" Culture="tr" Path="Text" Data="Toplamlar" />
+    <Item77 Ref="191" Component="#Ref-100" Culture="Default" Path="Weight" Data="0.8783422564617509" />
+    <Item78 Ref="192" Component="#Ref-9" Culture="Default" Path="Font" Data="Arial, 15pt, style=Bold" />
+    <Item79 Ref="193" Component="#Ref-9" Culture="Default" Path="Text" Data="Collection Receipt" />
+    <Item80 Ref="194" Component="#Ref-9" Culture="tr" Path="Text" Data="Tahsilat Makbuzu" />
+    <Item81 Ref="195" Component="#Ref-9" Culture="Default" Path="Weight" Data="1" />
+    <Item82 Ref="196" Component="#Ref-79" Culture="Default" Path="Font" Data="Arial, 8pt, style=Bold" />
+    <Item83 Ref="197" Component="#Ref-79" Culture="Default" Path="Text" Data="Tracking No" />
+    <Item84 Ref="198" Component="#Ref-79" Culture="tr" Path="Text" Data="Takip No" />
+    <Item85 Ref="199" Component="#Ref-79" Culture="Default" Path="Weight" Data="0.093582895336693339" />
+    <Item86 Ref="200" Component="#Ref-81" Culture="Default" Path="Font" Data="Arial, 8pt, style=Bold" />
+    <Item87 Ref="201" Component="#Ref-81" Culture="Default" Path="Text" Data="Type" />
+    <Item88 Ref="202" Component="#Ref-81" Culture="tr" Path="Text" Data="Tip" />
+    <Item89 Ref="203" Component="#Ref-81" Culture="Default" Path="Weight" Data="0.044117650658726845" />
+    <Item90 Ref="204" Component="#Ref-113" Culture="Default" Path="Font" Data="Arial, 9.75pt, style=Bold" />
+    <Item91 Ref="205" Component="#Ref-113" Culture="Default" Path="LocationFloat" Data="484.520844,20.7916584" />
+    <Item92 Ref="206" Component="#Ref-113" Culture="Default" Path="SizeF" Data="263.4791,22.9999981" />
+    <Item93 Ref="207" Component="#Ref-113" Culture="Default" Path="TextFormatString" Data="{0:dd.MM.yyyy}" />
+    <Item94 Ref="208" Component="#Ref-109" Culture="Default" Path="LocationFloat" Data="484.520844,66.791626" />
+    <Item95 Ref="209" Component="#Ref-109" Culture="Default" Path="SizeF" Data="263.479156,84.770874" />
+    <Item96 Ref="210" Component="#Ref-108" Culture="Default" Path="HeightF" Data="151.5625" />
+    <Item97 Ref="211" Component="#Ref-6" Culture="Default" Path="HeightF" Data="78.5625" />
+    <Item98 Ref="212" Component="#Ref-7" Culture="Default" Path="LocationFloat" Data="0,0" />
+    <Item99 Ref="213" Component="#Ref-7" Culture="Default" Path="SizeF" Data="747.999939,75" />
+    <Item100 Ref="214" Component="#Ref-72" Culture="Default" Path="LocationFloat" Data="0,0" />
+    <Item101 Ref="215" Component="#Ref-72" Culture="Default" Path="SizeF" Data="747.999939,50" />
+    <Item102 Ref="216" Component="#Ref-47" Culture="Default" Path="LocationFloat" Data="0,0" />
+    <Item103 Ref="217" Component="#Ref-47" Culture="Default" Path="SizeF" Data="747.999939,25" />
+    <Item104 Ref="218" Component="#Ref-98" Culture="Default" Path="LocationFloat" Data="0,0" />
+    <Item105 Ref="219" Component="#Ref-98" Culture="Default" Path="SizeF" Data="747.999939,25" />
+    <Item106 Ref="220" Component="#Ref-49" Culture="Default" Path="Text" Data="tableCell1" />
+    <Item107 Ref="221" Component="#Ref-49" Culture="Default" Path="TextFormatString" Data="{0:00}" />
+    <Item108 Ref="222" Component="#Ref-49" Culture="Default" Path="Weight" Data="0.47999984741210933" />
+    <Item109 Ref="223" Component="#Ref-63" Culture="Default" Path="Text" Data="tableCell10" />
+    <Item110 Ref="224" Component="#Ref-63" Culture="Default" Path="Weight" Data="0.600000191546171" />
+    <Item111 Ref="225" Component="#Ref-65" Culture="Default" Path="Text" Data="tableCell11" />
+    <Item112 Ref="226" Component="#Ref-65" Culture="Default" Path="Weight" Data="1.0000001851776137" />
+    <Item113 Ref="227" Component="#Ref-67" Culture="Default" Path="Text" Data="tableCell12" />
+    <Item114 Ref="228" Component="#Ref-67" Culture="Default" Path="Weight" Data="1.0000001851776137" />
+    <Item115 Ref="229" Component="#Ref-69" Culture="Default" Path="Text" Data="tableCell13" />
+    <Item116 Ref="230" Component="#Ref-69" Culture="Default" Path="Weight" Data="1.3899995739536164" />
+    <Item117 Ref="231" Component="#Ref-102" Culture="Default" Path="Font" Data="Arial, 9.75pt, style=Bold" />
+    <Item118 Ref="232" Component="#Ref-102" Culture="Default" Path="Text" Data="tableCell15" />
+    <Item119 Ref="233" Component="#Ref-102" Culture="Default" Path="TextFormatString" Data="{0:n2}" />
+    <Item120 Ref="234" Component="#Ref-102" Culture="Default" Path="Weight" Data="0.14037458779846745" />
+    <Item121 Ref="235" Component="#Ref-106" Culture="Default" Path="Font" Data="Arial, 9.75pt, style=Bold" />
+    <Item122 Ref="236" Component="#Ref-106" Culture="Default" Path="Weight" Data="1.9812831557397816" />
+    <Item123 Ref="237" Component="#Ref-53" Culture="Default" Path="Text" Data="tableCell2" />
+    <Item124 Ref="238" Component="#Ref-53" Culture="Default" Path="Weight" Data="0.699999237060547" />
+    <Item125 Ref="239" Component="#Ref-36" Culture="Default" Path="Weight" Data="0.03439746974169644" />
+    <Item126 Ref="240" Component="#Ref-31" Culture="Default" Path="Font" Data="Arial, 9.75pt, style=Bold" />
+    <Item127 Ref="241" Component="#Ref-31" Culture="Default" Path="Text" Data=":" />
+    <Item128 Ref="242" Component="#Ref-31" Culture="Default" Path="Weight" Data="0.013368974848372919" />
+    <Item129 Ref="243" Component="#Ref-25" Culture="Default" Path="Text" Data="tableCell5" />
+    <Item130 Ref="244" Component="#Ref-25" Culture="Default" Path="Weight" Data="0.399036389032569" />
+    <Item131 Ref="245" Component="#Ref-55" Culture="Default" Path="Text" Data="tableCell6" />
+    <Item132 Ref="246" Component="#Ref-55" Culture="Default" Path="Weight" Data="0.33000061035156247" />
+    <Item133 Ref="247" Component="#Ref-57" Culture="Default" Path="Text" Data="tableCell7" />
+    <Item134 Ref="248" Component="#Ref-57" Culture="Default" Path="TextFormatString" Data="{0:dd.MM.yyyy}" />
+    <Item135 Ref="249" Component="#Ref-57" Culture="Default" Path="Weight" Data="0.67999969307540009" />
+    <Item136 Ref="250" Component="#Ref-59" Culture="Default" Path="Text" Data="tableCell8" />
+    <Item137 Ref="251" Component="#Ref-59" Culture="Default" Path="TextFormatString" Data="{0:n2}" />
+    <Item138 Ref="252" Component="#Ref-59" Culture="Default" Path="Weight" Data="0.3500012062750143" />
+    <Item139 Ref="253" Component="#Ref-61" Culture="Default" Path="Text" Data="tableCell9" />
+    <Item140 Ref="254" Component="#Ref-61" Culture="Default" Path="Weight" Data="0.94999864288591374" />
+    <Item141 Ref="255" Component="#Ref-8" Culture="Default" Path="Weight" Data="1" />
+    <Item142 Ref="256" Component="#Ref-28" Culture="Default" Path="Weight" Data="1" />
+    <Item143 Ref="257" Component="#Ref-11" Culture="Default" Path="Weight" Data="1" />
+    <Item144 Ref="258" Component="#Ref-73" Culture="Default" Path="Weight" Data="1" />
+    <Item145 Ref="259" Component="#Ref-76" Culture="Default" Path="Weight" Data="1" />
+    <Item146 Ref="260" Component="#Ref-48" Culture="Default" Path="Weight" Data="1" />
+    <Item147 Ref="261" Component="#Ref-99" Culture="Default" Path="Weight" Data="1" />
+    <Item148 Ref="262" Component="#Ref-3" Culture="Default" Path="HeightF" Data="48" />
+    <Item149 Ref="263" Component="#Ref-33" Culture="Default" Path="Text" Data="txtDate" />
+    <Item150 Ref="264" Component="#Ref-33" Culture="Default" Path="Weight" Data="0.22863734677869391" />
+    <Item151 Ref="265" Component="#Ref-42" Culture="Default" Path="Text" Data="txtDepartment" />
+    <Item152 Ref="266" Component="#Ref-42" Culture="Default" Path="Weight" Data="0.39903637883284282" />
+    <Item153 Ref="267" Component="#Ref-16" Culture="Default" Path="Text" Data="txtReceiptNo" />
+    <Item154 Ref="268" Component="#Ref-16" Culture="Default" Path="Weight" Data="0.2286374666254761" />
+  </LocalizationItems>
   <ComponentStorage>
     <Item1 Ref="0" ObjectType="DevExpress.DataAccess.ObjectBinding.ObjectDataSource,DevExpress.DataAccess.v21.2" Name="ObjectDataSource" Base64="PE9iamVjdERhdGFTb3VyY2UgTmFtZT0iT2JqZWN0RGF0YVNvdXJjZSIgLz4=" />
   </ComponentStorage>
