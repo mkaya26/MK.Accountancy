@@ -279,6 +279,9 @@
     "ReportPreview": "Rapor Ön İzleme",
     "TemplateName": "Şablon Adı",
     "NotAuthorized": "Yetkiniz Yok!",
-    "NothingAddress": "Bu Sayfa Bulunamadı."
+    "NothingAddress": "Bu Sayfa Bulunamadı.",
+    "ManageProfile": "Profilinizi Yönetin",
+    "Logout": "Çıkış",
+    "Login": "Giriş"
   }
 }

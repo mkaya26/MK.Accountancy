@@ -279,6 +279,9 @@
     "ReportPreview": "Report Preview",
     "TemplateName": "Template Name",
     "NotAuthorized": "Not Authorized",
-    "NothingAddress": "Nothing Address"
+    "NothingAddress": "Nothing Address",
+    "ManageProfile": "Manage Profile",
+    "Logout": "Logout",
+    "Login": "Login"
   }
 }

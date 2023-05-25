@@ -2,7 +2,7 @@
 @inject IStringLocalizer<AccountancyResource> L
 @inject NavigationManager NavigationManager
 
-<CircleLoadingChildContent>
+<CircleLoadingChildContent Caption="@L["Loading"]" Text="@L["PleaseWait"]">
     <CascadingAuthenticationState>
         <Router AppAssembly="RouterOptions.Value.AppAssembly"
                 AdditionalAssemblies="RouterOptions.Value.AdditionalAssemblies">
