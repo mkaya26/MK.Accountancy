@@ -133,6 +133,7 @@
     "Permission:Department.Transaction": "Hareketler",
     "Permission:Department.Print": "Yazdırma",
     "Permission:Management": "Yönetim",
+    "Permission:Setting": "Ayar",
     "Code": "Kod",
     "Name": "Ad",
     "BankAccountType": "Banka Hesap Tipi",

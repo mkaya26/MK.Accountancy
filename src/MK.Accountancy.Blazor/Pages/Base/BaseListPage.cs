@@ -124,7 +124,7 @@ namespace MK.Accountancy.Blazor.Pages.Base
             var listDataSource = (await GetListAsync(new TGetListInput
             {
                 Active = BaseService.IsActiveCards
-            })).Items.ToList();
+            }))?.Items.ToList();
             //
             BaseService.IsLoaded = true;
             //

@@ -170,4 +170,9 @@ public static class AccountancyPermissions
     {
         public const string Default = $"{GroupName}.{nameof(Management)}";
     }
+    //
+    public static class Setting
+    {
+        public const string Default = $"{GroupName}.{nameof(Setting)}";
+    }
 }

@@ -104,6 +104,8 @@ public class AccountancyPermissionDefinitionProvider : PermissionDefinitionProvi
         paymentDocument.AddChild(AccountancyPermissions.Department.Delete, L($"{localizePrefix}:{nameof(AccountancyPermissions.Department)}{AccountancyPermissions.DeleteConst}"));
         //
         var management = mainGroup.AddPermission(AccountancyPermissions.Management.Default, L($"{localizePrefix}:{nameof(AccountancyPermissions.Management)}"));
+        //
+        var setting = mainGroup.AddPermission(AccountancyPermissions.Setting.Default, L($"{localizePrefix}:{nameof(AccountancyPermissions.Setting)}"));
     }
 
     private static LocalizableString L(string name)

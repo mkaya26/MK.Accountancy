@@ -133,6 +133,7 @@
     "Permission:Department.Transaction": "Transaction",
     "Permission:Department.Print": "Print",
     "Permission:Management": "Management",
+    "Permission:Setting": "Setting",
     "Code": "Code",
     "Name": "Name",
     "BankAccountType": "Bank Account Type",
