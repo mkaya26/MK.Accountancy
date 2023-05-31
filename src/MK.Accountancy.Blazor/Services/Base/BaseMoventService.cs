@@ -48,6 +48,13 @@ namespace MK.Accountancy.Blazor.Services.Base
         public string ReportFolder { get; set; }
         public bool ShowReportSelectBox { get; set; }
 
+        public bool IsGrantedDefault { get; set; }
+        public bool IsGrantedCreate { get; set; }
+        public bool IsGrantedUpdate { get; set; }
+        public bool IsGrantedDelete { get; set; }
+        public bool IsGrantedPrint { get; set; }
+        public bool IsGrantedReserve { get; set; }
+
         public void BeforeShowPopupListPage(params object[] parameters)
         {
             throw new NotImplementedException();

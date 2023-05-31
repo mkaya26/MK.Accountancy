@@ -12,15 +12,18 @@ namespace MK.Accountancy.Blazor.Pages.Invoices
         public AppService AppService { get; set; }
         protected override async Task GetListDataSourceAsync()
         {
-            Service.ListDataSource = (await GetListAsync(new InvoiceListParameterDto
+            var listDataSource = (await GetListAsync(new InvoiceListParameterDto
             {
                 InvoiceType = InvoiceType.Sell,
                 DepartmentId = AppService.CompanyParameter.DepartmentId,
                 TermId = AppService.CompanyParameter.TermId,
                 Active = Service.IsActiveCards
-            })).Items.ToList();
+            }))?.Items.ToList();
             //
             Service.IsLoaded = true;
+            //
+            if (listDataSource != null)
+                Service.ListDataSource = listDataSource;
         }
 
         protected override async Task BeforeInsertAsync()

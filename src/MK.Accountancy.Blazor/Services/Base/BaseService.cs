@@ -47,6 +47,7 @@ namespace MK.Accountancy.Blazor.Services.Base
         public string BaseReportFolder { get; set; } = nameof(Reports);
         public string ReportFolder { get; set; } 
         public bool ShowReportSelectBox { get; set; }
+        public bool IsGrantedDefault { get; set; }
         public bool IsGrantedCreate { get; set; }
         public bool IsGrantedUpdate { get; set; }
         public bool IsGrantedDelete { get; set; }

@@ -8,13 +8,16 @@ namespace MK.Accountancy.Blazor.Pages.BankDepartments
     {
         protected override async Task GetListDataSourceAsync()
         {
-            Service.ListDataSource = (await GetListAsync(new BankDepartmentListParameterDto
+            var listDataSource = (await GetListAsync(new BankDepartmentListParameterDto
             {
                 BankId = Service.BankId,
                 Active = Service.IsActiveCards
-            })).Items.ToList();
+            }))?.Items.ToList();
             //
             Service.IsLoaded = true;
+            //
+            if (listDataSource != null)
+                Service.ListDataSource = listDataSource;
         }
 
         protected override async Task BeforeInsertAsync()

@@ -1,4 +1,5 @@
-﻿using MK.Accountancy.Abstract;
+﻿using Microsoft.AspNetCore.Authorization;
+using MK.Accountancy.Abstract;
 using MK.Accountancy.Blazor.Services.Base;
 using MK.Accountancy.CommonDtos;
 using MK.Accountancy.Localization;
@@ -25,6 +26,7 @@ namespace MK.Accountancy.Blazor.Pages.Base
             LocalizationResource = typeof(AccountancyResource);
         }
 
+        public string DefaultPolicy { get; set; }
         public string CreatePolicy { get; set; }
         public string UpdatePolicy { get; set; }
         public string DeletePolicy { get; set; }
@@ -119,16 +121,32 @@ namespace MK.Accountancy.Blazor.Pages.Base
 
         protected virtual async Task GetListDataSourceAsync()
         {
-            BaseService.ListDataSource = (await GetListAsync(new TGetListInput
+            var listDataSource = (await GetListAsync(new TGetListInput
             {
                 Active = BaseService.IsActiveCards
             })).Items.ToList();
             //
             BaseService.IsLoaded = true;
+            //
+            if (listDataSource != null)
+                BaseService.ListDataSource = listDataSource;
         }
 
         protected override async Task OnParametersSetAsync()
         {
+            if (DefaultPolicy != null)
+                BaseService.IsGrantedDefault = await AuthorizationService.IsGrantedAsync(DefaultPolicy);
+            if (CreatePolicy != null)
+                BaseService.IsGrantedCreate = await AuthorizationService.IsGrantedAsync(CreatePolicy);
+            if (UpdatePolicy != null)
+                BaseService.IsGrantedUpdate = await AuthorizationService.IsGrantedAsync(UpdatePolicy);
+            if (DeletePolicy != null)
+                BaseService.IsGrantedDelete = await AuthorizationService.IsGrantedAsync(DeletePolicy);
+            if (PrintPolicy != null)
+                BaseService.IsGrantedPrint = await AuthorizationService.IsGrantedAsync(PrintPolicy);
+            if (ReservePolicy != null)
+                BaseService.IsGrantedReserve = await AuthorizationService.IsGrantedAsync(ReservePolicy);
+            //
             await GetListDataSourceAsync();
             BaseService.HasChanged = StateHasChanged;
         }
@@ -177,12 +195,12 @@ namespace MK.Accountancy.Blazor.Pages.Base
 
         protected virtual async Task BeforeUpdateAsync()
         {
-            //if (!BaseService.IsGrantedUpdate)
-            //{
-            //    BaseService.SelectFirstDataRow = false;
-            //    return;
-            //}
-
+            if (!BaseService.IsGrantedUpdate)
+            {
+                BaseService.SelectFirstDataRow = false;
+                return;
+            }
+            //
             if (BaseService.ListDataSource.Count == 0) return;
 
             BaseService.SelectFirstDataRow = false;

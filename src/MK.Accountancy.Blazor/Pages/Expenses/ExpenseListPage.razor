@@ -113,5 +113,11 @@
     {
         BaseCrudAppService = CrudService;
         BaseService = Service;
+        //
+        DefaultPolicy = AccountancyPermissions.Expense.Default;
+        CreatePolicy = AccountancyPermissions.Expense.Create;
+        UpdatePolicy = AccountancyPermissions.Expense.Update;
+        DeletePolicy = AccountancyPermissions.Expense.Delete;
+        ReservePolicy = AccountancyPermissions.Expense.Transaction;
     }
 }

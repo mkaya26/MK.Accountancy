@@ -11,14 +11,17 @@ namespace MK.Accountancy.Blazor.Pages.BankAccounts
         public AppService AppService { get; set; }
         protected override async Task GetListDataSourceAsync()
         {
-            Service.ListDataSource = (await GetListAsync(new BankAccountListParameterDto
+            var listDataSource = (await GetListAsync(new BankAccountListParameterDto
             {
                 BankAccountType = Service.BankAccountType,
                 DepartmentId = AppService.CompanyParameter.DepartmentId,
                 Active = Service.IsActiveCards
-            })).Items.ToList();
+            }))?.Items.ToList();
             //
             Service.IsLoaded = true;
+            //
+            if (listDataSource != null)
+                Service.ListDataSource = listDataSource;
         }
 
         protected override async Task BeforeInsertAsync()

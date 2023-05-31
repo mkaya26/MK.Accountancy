@@ -19,14 +19,17 @@ namespace MK.Accountancy.Blazor.Pages.PaymentDocuments
                 Service.MyDocument = false;
             }
             //
-            Service.ListDataSource = (await GetListAsync(new PaymentDocumentListParameterDto
+            var listDataSource = (await GetListAsync(new PaymentDocumentListParameterDto
             {
                 Sql = Service.ReceiptService.ReceiptType == ReceiptType.BankOperation || Service.ReceiptService.ReceiptType == ReceiptType.SafeOperation ? "MHSB.Sp_AllTransactionablePaymentDocuments" : Service.ReceiptService.ReceiptType == ReceiptType.Payment ? "MHSB.Sp_TransactionablePaymentDocuments" : "MHSB.Sp_PaymentDocuments",
                 DepartmentId = AppService.CompanyParameter.DepartmentId,
                 TermId = AppService.CompanyParameter.TermId,
                 MyDocument = Service.MyDocument,
                 PaymentTypes = Service.PaymentTypes
-            })).Items.ToList();
+            }))?.Items.ToList();
+            //
+            if (listDataSource != null)
+                Service.ListDataSource = listDataSource;
             //
             Service.ExcludeListItem.ForEach(x =>
             {

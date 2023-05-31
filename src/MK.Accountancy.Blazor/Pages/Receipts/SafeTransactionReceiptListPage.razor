@@ -103,5 +103,10 @@
         Service.ReceiptType = ReceiptType.SafeOperation;
         BaseCrudAppService = CrudService;
         BaseService = Service;
+        //
+        DefaultPolicy = AccountancyPermissions.Receipt.Default;
+        CreatePolicy = AccountancyPermissions.Receipt.Create;
+        UpdatePolicy = AccountancyPermissions.Receipt.Update;
+        DeletePolicy = AccountancyPermissions.Receipt.Delete;
     }
 }

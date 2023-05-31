@@ -58,5 +58,10 @@
     {
         BaseCrudAppService = CrudService;
         BaseService = Service;
+        //
+        DefaultPolicy = AccountancyPermissions.SpecialCode.Default;
+        CreatePolicy = AccountancyPermissions.SpecialCode.Create;
+        UpdatePolicy = AccountancyPermissions.SpecialCode.Update;
+        DeletePolicy = AccountancyPermissions.SpecialCode.Delete;
     }
 }

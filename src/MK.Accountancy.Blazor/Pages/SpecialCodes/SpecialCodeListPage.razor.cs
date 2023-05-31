@@ -8,14 +8,17 @@ namespace MK.Accountancy.Blazor.Pages.SpecialCodes
     {
         protected override async Task GetListDataSourceAsync()
         {
-            Service.ListDataSource = (await GetListAsync(new SpecialCodeListParameterDto
+            var listDataSource = (await GetListAsync(new SpecialCodeListParameterDto
             {
                 SpecialCodeType = Service.SpecialCodeType,
                 CardType = Service.CardType,
                 Active = Service.IsActiveCards
-            })).Items.ToList();
+            }))?.Items.ToList();
             //
             Service.IsLoaded = true;
+            //
+            if (listDataSource != null)
+                Service.ListDataSource = listDataSource;
         }
 
         protected override async Task BeforeInsertAsync()

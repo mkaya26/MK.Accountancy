@@ -120,5 +120,11 @@
     {
         BaseCrudAppService = CrudService;
         BaseService = Service;
+        //
+        DefaultPolicy = AccountancyPermissions.BankAccount.Default;
+        CreatePolicy = AccountancyPermissions.BankAccount.Create;
+        UpdatePolicy = AccountancyPermissions.BankAccount.Update;
+        DeletePolicy = AccountancyPermissions.BankAccount.Delete;
+        ReservePolicy = AccountancyPermissions.BankAccount.Transaction;
     }
 }

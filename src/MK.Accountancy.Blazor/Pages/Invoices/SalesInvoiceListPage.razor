@@ -145,5 +145,11 @@
     {
         BaseCrudAppService = CrudService;
         BaseService = Service;
+        //
+        DefaultPolicy = AccountancyPermissions.Invoice.Default;
+        CreatePolicy = AccountancyPermissions.Invoice.Create;
+        UpdatePolicy = AccountancyPermissions.Invoice.Update;
+        DeletePolicy = AccountancyPermissions.Invoice.Delete;
+        PrintPolicy = AccountancyPermissions.Invoice.Print;
     }
 }
