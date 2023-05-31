@@ -15,6 +15,11 @@ namespace MK.Blazor.Core.Services
         public string BaseReportFolder { get; set; }
         public string ReportFolder { get; set; }
         public bool ShowReportSelectBox { get; set; }
+        public bool IsGrantedCreate { get; set; }
+        public bool IsGrantedUpdate { get; set; }
+        public bool IsGrantedDelete { get; set; }
+        public bool IsGrantedPrint { get; set; }
+        public bool IsGrantedReserve { get; set; }
         void ShowEditPage();
         void HideEditPage();
         void HideListPage();

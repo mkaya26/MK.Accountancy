@@ -1,4 +1,5 @@
 ﻿@page "/departmentcards"
+@attribute [Authorize(AccountancyPermissions.Department.Default)]
 
 @inherits BaseListPage<SelectDepartmentDto,ListDepartmentDto,DepartmentListParameterDto,
                        CreateDepartmentDto,UpdateDepartmentDto,CodeParameterDto>

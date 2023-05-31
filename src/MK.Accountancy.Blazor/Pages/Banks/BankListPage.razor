@@ -1,4 +1,5 @@
 ﻿@page "/bankcards"
+@attribute [Authorize(AccountancyPermissions.Bank_.Default)]
 
 @inherits BaseListPage<SelectBankDto,BankListDto,BankListParameterDto,
                        CreateBankDto,UpdateBankDto,CodeParameterDto>

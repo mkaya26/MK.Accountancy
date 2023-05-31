@@ -1,4 +1,5 @@
 ﻿@page "/currentcards"
+@attribute [Authorize(AccountancyPermissions.Current.Default)]
 
 @inherits BaseListPage<SelectCurrentDto,ListCurrentDto,CurrentListParameterDto,
                        CreateCurrentDto,UpdateCurrentDto,CodeParameterDto>

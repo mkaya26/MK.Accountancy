@@ -1,5 +1,7 @@
-﻿using MK.Accountancy.CommonDtos;
+﻿using Microsoft.AspNetCore.Authorization;
+using MK.Accountancy.CommonDtos;
 using MK.Accountancy.Invoices;
+using MK.Accountancy.Permissions;
 using MK.Accountancy.Receipts;
 using System;
 using System.Collections.Generic;
@@ -10,6 +12,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace MK.Accountancy.Currents
 {
+    [Authorize(AccountancyPermissions.Current.Default)]
     public class CurrentAppService : AccountancyAppService, ICurrentAppService
     {
         private readonly ICurrentRepository _currentRepository;
@@ -20,7 +23,7 @@ namespace MK.Accountancy.Currents
             _currentRepository = currentRepository;
             _currentManager = currentManager;
         }
-
+        [Authorize(AccountancyPermissions.Current.Create)]
         public virtual async Task<SelectCurrentDto> CreateAsync(CreateCurrentDto input)
         {
             await _currentManager.CheckCreateAsync(input.Code, input.SpecialCodeOneId, input.SpecialCodeTwoId);
@@ -29,7 +32,7 @@ namespace MK.Accountancy.Currents
             await _currentRepository.InsertAsync(entity);
             return ObjectMapper.Map<Current, SelectCurrentDto>(entity);
         }
-
+        [Authorize(AccountancyPermissions.Current.Delete)]
         public virtual async Task DeleteAsync(Guid id)
         {
             await _currentManager.CheckDeleteAsync(id);
@@ -81,7 +84,7 @@ namespace MK.Accountancy.Currents
             //
             return new PagedResultDto<ListCurrentDto>(totalCount, mappedDtos);
         }
-
+        [Authorize(AccountancyPermissions.Current.Update)]
         public virtual async Task<SelectCurrentDto> UpdateAsync(Guid id, UpdateCurrentDto input)
         {
             var entity = await _currentRepository.GetAsync(id, f => f.Id == id);

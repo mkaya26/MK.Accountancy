@@ -1,4 +1,5 @@
 ﻿@page "/termcards"
+@attribute [Authorize(AccountancyPermissions.Term.Default)]
 
 @inherits BaseListPage<SelectTermDto,ListTermDto,TermListParameterDto,
                        CreateTermDto,UpdateTermDto,CodeParameterDto>

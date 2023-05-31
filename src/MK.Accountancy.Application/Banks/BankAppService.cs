@@ -1,4 +1,6 @@
-﻿using MK.Accountancy.CommonDtos;
+﻿using Microsoft.AspNetCore.Authorization;
+using MK.Accountancy.CommonDtos;
+using MK.Accountancy.Permissions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,6 +9,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace MK.Accountancy.Banks
 {
+    [Authorize(AccountancyPermissions.Bank_.Default)]
     public class BankAppService : AccountancyAppService, IBankAppService
     {
         private readonly IBankRepository _bankRepository;
@@ -17,7 +20,7 @@ namespace MK.Accountancy.Banks
             _bankRepository = bankRepository;
             _bankManager = bankManager;
         }
-
+        [Authorize(AccountancyPermissions.Bank_.Create)]
         public virtual async Task<SelectBankDto> CreateAsync(CreateBankDto input)
         {
             await _bankManager.CheckCreateAsync(input.Code, input.SpecialCodeOneId, input.SpecialCodeTwoId);
@@ -26,7 +29,7 @@ namespace MK.Accountancy.Banks
             await _bankRepository.InsertAsync(entity);
             return ObjectMapper.Map<Bank, SelectBankDto>(entity);
         }
-
+        [Authorize(AccountancyPermissions.Bank_.Delete)]
         public virtual async Task DeleteAsync(Guid id)
         {
             await _bankManager.CheckDeleteAsync(id);
@@ -52,7 +55,7 @@ namespace MK.Accountancy.Banks
             //
             return new PagedResultDto<BankListDto>(totalCount, ObjectMapper.Map<List<Bank>, List<BankListDto>>(entities));
         }
-
+        [Authorize(AccountancyPermissions.Bank_.Update)]
         public virtual async Task<SelectBankDto> UpdateAsync(Guid id, UpdateBankDto input)
         {
             var entity = await _bankRepository.GetAsync(id, x => x.Id == id);

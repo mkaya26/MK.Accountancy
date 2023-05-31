@@ -1,4 +1,5 @@
 ﻿@page "/unitcards"
+@attribute [Authorize(AccountancyPermissions.Unit.Default)]
 
 @inherits BaseListPage<SelectUnitDto,ListUnitDto,UnitListParameterDto,
                        CreateUnitDto,UpdateUnitDto,CodeParameterDto>

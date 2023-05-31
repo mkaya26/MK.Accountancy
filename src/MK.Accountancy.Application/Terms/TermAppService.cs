@@ -1,4 +1,6 @@
-﻿using MK.Accountancy.CommonDtos;
+﻿using Microsoft.AspNetCore.Authorization;
+using MK.Accountancy.CommonDtos;
+using MK.Accountancy.Permissions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,6 +9,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace MK.Accountancy.Terms
 {
+    [Authorize(AccountancyPermissions.Term.Default)]
     public class TermAppService : AccountancyAppService, ITermAppService
     {
         private readonly ITermRepository _termRepository;
@@ -17,7 +20,7 @@ namespace MK.Accountancy.Terms
             _termRepository = termRepository;
             _termManager = termManager;
         }
-
+        [Authorize(AccountancyPermissions.Term.Create)]
         public virtual async Task<SelectTermDto> CreateAsync(CreateTermDto input)
         {
             await _termManager.CheckCreateAsync(input.Code);
@@ -26,7 +29,7 @@ namespace MK.Accountancy.Terms
             await _termRepository.InsertAsync(entity);
             return ObjectMapper.Map<Term, SelectTermDto>(entity);
         }
-
+        [Authorize(AccountancyPermissions.Term.Delete)]
         public virtual async Task DeleteAsync(Guid id)
         {
             await _termManager.CheckDeleteAsync(id);
@@ -59,7 +62,7 @@ namespace MK.Accountancy.Terms
             //
             return new PagedResultDto<ListTermDto>(totalCount, mappedEntities);
         }
-
+        [Authorize(AccountancyPermissions.Term.Update)]
         public virtual async Task<SelectTermDto> UpdateAsync(Guid id, UpdateTermDto input)
         {
             var entity = await _termRepository.GetAsync(id, f => f.Id == id);

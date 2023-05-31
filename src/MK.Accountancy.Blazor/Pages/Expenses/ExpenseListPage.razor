@@ -1,4 +1,5 @@
 ﻿@page "/expensecards"
+@attribute [Authorize(AccountancyPermissions.Expense.Default)]
 
 @inherits BaseListPage<SelectExpenseDto,ListExpenseDto,ExpenseListParameterDto,
                        CreateExpenseDto,UpdateExpenseDto,CodeParameterDto>

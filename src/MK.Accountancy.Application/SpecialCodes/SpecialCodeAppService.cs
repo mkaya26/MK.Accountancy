@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Authorization;
+using MK.Accountancy.Permissions;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
@@ -6,6 +8,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace MK.Accountancy.SpecialCodes
 {
+    [Authorize(AccountancyPermissions.SpecialCode.Default)]
     public class SpecialCodeAppService : AccountancyAppService, ISpecialCodeAppService
     {
         private readonly ISpecialCodeRepository _specialCodeRepository;
@@ -16,7 +19,7 @@ namespace MK.Accountancy.SpecialCodes
             _specialCodeRepository = specialCodeRepository;
             _specialCodeManager = specialCodeManager;
         }
-
+        [Authorize(AccountancyPermissions.SpecialCode.Create)]
         public virtual async Task<SelectSpecialCodeDto> CreateAsync(CreateSpecialCodeDto input)
         {
             await _specialCodeManager.CheckCreateAsync(input.Code, input.SpecialCodeType, input.CardType);
@@ -25,7 +28,7 @@ namespace MK.Accountancy.SpecialCodes
             await _specialCodeRepository.InsertAsync(entity);
             return ObjectMapper.Map<SpecialCode, SelectSpecialCodeDto>(entity);
         }
-
+        [Authorize(AccountancyPermissions.SpecialCode.Delete)]
         public virtual async Task DeleteAsync(Guid id)
         {
             await _specialCodeManager.CheckDeleteAsync(id);
@@ -62,7 +65,7 @@ namespace MK.Accountancy.SpecialCodes
                 totalCount,
                 ObjectMapper.Map<List<SpecialCode>,List<ListSpecialCodeDto>>(entities));
         }
-
+        [Authorize(AccountancyPermissions.SpecialCode.Update)]
         public virtual async Task<SelectSpecialCodeDto> UpdateAsync(Guid id, UpdateSpecialCodeDto input)
         {
             var entity = await _specialCodeRepository.GetAsync(id, x => x.Id == id);

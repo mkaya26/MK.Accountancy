@@ -1,5 +1,4 @@
-﻿//using DevExpress.Blazor.Internal;
-using MK.Accountancy.Abstract;
+﻿using MK.Accountancy.Abstract;
 using MK.Accountancy.Blazor.Services.Base;
 using MK.Accountancy.CommonDtos;
 using MK.Accountancy.Localization;
@@ -25,6 +24,12 @@ namespace MK.Accountancy.Blazor.Pages.Base
         {
             LocalizationResource = typeof(AccountancyResource);
         }
+
+        public string CreatePolicy { get; set; }
+        public string UpdatePolicy { get; set; }
+        public string DeletePolicy { get; set; }
+        public string PrintPolicy { get; set; }
+        public string ReservePolicy { get; set; }
 
         #region Services
         protected ICrudAppService<TGetOutputDto, TGetListOutputDto, TGetListInput, TCreateInput, TUpdateInput, TGetCodeInput> BaseCrudAppService { get; set; }

@@ -1,4 +1,5 @@
 ﻿@page "/storecards"
+@attribute [Authorize(AccountancyPermissions.Store.Default)]
 
 @inherits BaseListPage<SelectStoreDto,ListStoreDto,StoreListParameterDto,
                        CreateStoreDto,UpdateStoreDto,StoreCodeParameterDto>

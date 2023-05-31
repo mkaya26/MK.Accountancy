@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Authorization;
+using MK.Accountancy.Permissions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,6 +9,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace MK.Accountancy.Invoices
 {
+    [Authorize(AccountancyPermissions.Invoice.Default)]
     public class InvoiceAppService : AccountancyAppService, IInvoiceAppService
     {
         private readonly IInvoiceRepository _invoiceRepository;
@@ -19,7 +22,7 @@ namespace MK.Accountancy.Invoices
             _invoiceManager = invoiceManager;
             _invoiceDetailManager = invoiceDetailManager;
         }
-
+        [Authorize(AccountancyPermissions.Invoice.Create)]
         public virtual async Task<SelectInvoiceDto> CreateAsync(CreateInvoiceDto input)
         {
             await _invoiceManager.CheckCreateAsync(input.InvoiceNumber, input.CurrentId, input.SpecialCodeOneId, input.SpecialCodeTwoId, input.DepartmentId, input.TermId);
@@ -34,7 +37,7 @@ namespace MK.Accountancy.Invoices
             //
             return ObjectMapper.Map<Invoice,SelectInvoiceDto>(entity);
         }
-
+        [Authorize(AccountancyPermissions.Invoice.Delete)]
         public virtual async Task DeleteAsync(Guid id)
         {
             var entity = await _invoiceRepository.GetAsync(id, f => f.Id == id, i => i.InvoiceDetails);
@@ -86,7 +89,7 @@ namespace MK.Accountancy.Invoices
             //
             return new PagedResultDto<ListInvoiceDto>(totalCount, ObjectMapper.Map<List<Invoice>, List<ListInvoiceDto>>(entities));
         }
-
+        [Authorize(AccountancyPermissions.Invoice.Update)]
         public virtual async Task<SelectInvoiceDto> UpdateAsync(Guid id, UpdateInvoiceDto input)
         {
             var entity = await _invoiceRepository.GetAsync(id, x => x.Id == id, i => i.InvoiceDetails);

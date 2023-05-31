@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Authorization;
+using MK.Accountancy.Permissions;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
@@ -6,6 +8,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace MK.Accountancy.BankDepartments
 {
+    [Authorize(AccountancyPermissions.BankDepartment.Default)]
     public class BankDepartmentAppService : AccountancyAppService, IBankDepartmentAppService
     {
         private readonly IBankDepartmentRepository _bankDepartmentRepository;
@@ -16,7 +19,7 @@ namespace MK.Accountancy.BankDepartments
             _bankDepartmentRepository = bankDepartmentRepository;
             _bankDepartmentManager = bankDepartmentManager;
         }
-
+        [Authorize(AccountancyPermissions.BankDepartment.Create)]
         public virtual async Task<SelectBankDepartmentDto> CreateAsync(CreateBankDepartmentDto input)
         {
             await _bankDepartmentManager.CheckCreateAsync(input.Code, input.BankId, input.SpecialCodeOneId, input.SpecialCodeTwoId);
@@ -25,7 +28,7 @@ namespace MK.Accountancy.BankDepartments
             await _bankDepartmentRepository.InsertAsync(entity);
             return ObjectMapper.Map<BankDepartment, SelectBankDepartmentDto>(entity);
         }
-
+        [Authorize(AccountancyPermissions.BankDepartment.Delete)]
         public virtual async Task DeleteAsync(Guid id)
         {
             await _bankDepartmentManager.CheckDeleteAsync(id);
@@ -52,7 +55,7 @@ namespace MK.Accountancy.BankDepartments
             //
             return new PagedResultDto<ListBankDepartmentDto>(totalCount, ObjectMapper.Map<List<BankDepartment>, List<ListBankDepartmentDto>>(entities));
         }
-
+        [Authorize(AccountancyPermissions.BankDepartment.Update)]
         public virtual async Task<SelectBankDepartmentDto> UpdateAsync(Guid id, UpdateBankDepartmentDto input)
         {
             var entity = await _bankDepartmentRepository.GetAsync(id, x => x.Id == id);

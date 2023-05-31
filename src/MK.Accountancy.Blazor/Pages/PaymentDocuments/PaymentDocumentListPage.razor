@@ -1,4 +1,5 @@
 ﻿@page "/meansofpayment"
+@attribute [Authorize(AccountancyPermissions.PaymentDocument.Default)]
 
 @inherits BaseListPage<SelectReceiptDetailDto,ListPaymentDocumentDto,PaymentDocumentListParameterDto,
                        ReceiptDetailDto,ReceiptDetailDto,ReceiptNumberParameterDto>

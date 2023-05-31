@@ -1,4 +1,5 @@
 ﻿@page "/specialcodes"
+@attribute [Authorize(AccountancyPermissions.SpecialCode.Default)]
 
 @inherits BaseListPage<SelectSpecialCodeDto,ListSpecialCodeDto,SpecialCodeListParameterDto,
                        CreateSpecialCodeDto,UpdateSpecialCodeDto,SpecialCodeParameterDto>

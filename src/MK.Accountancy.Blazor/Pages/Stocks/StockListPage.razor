@@ -1,4 +1,5 @@
 ﻿@page "/stockcards"
+@attribute [Authorize(AccountancyPermissions.Stock.Default)]
 
 @inherits BaseListPage<SelectStockDto,ListStockDto,StockListParameterDto,
                        CreateStockDto,UpdateStockDto,CodeParameterDto>

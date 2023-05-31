@@ -1,4 +1,6 @@
-﻿using MK.Accountancy.CommonDtos;
+﻿using Microsoft.AspNetCore.Authorization;
+using MK.Accountancy.CommonDtos;
+using MK.Accountancy.Permissions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,6 +9,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace MK.Accountancy.Units
 {
+    [Authorize(AccountancyPermissions.Unit.Default)]
     public class UnitAppService : AccountancyAppService, IUnitAppService
     {
         private readonly IUnitRepository _unitRepository;
@@ -17,7 +20,7 @@ namespace MK.Accountancy.Units
             _unitRepository = unitRepository;
             _unitManager = unitManager;
         }
-
+        [Authorize(AccountancyPermissions.Unit.Create)]
         public virtual async Task<SelectUnitDto> CreateAsync(CreateUnitDto input)
         {
             await _unitManager.CheckCreateAsync(input.Code, input.SpecialCodeOneId, input.SpecialCodeTwoId);
@@ -26,7 +29,7 @@ namespace MK.Accountancy.Units
             await _unitRepository.InsertAsync(entity);
             return ObjectMapper.Map<Unit,SelectUnitDto>(entity);
         }
-
+        [Authorize(AccountancyPermissions.Unit.Delete)]
         public virtual async Task DeleteAsync(Guid id)
         {
             await _unitManager.CheckDeleteAsync(id);
@@ -60,7 +63,7 @@ namespace MK.Accountancy.Units
                            totalCount,
                            ObjectMapper.Map<List<Unit>, List<ListUnitDto>>(entities));
         }
-
+        [Authorize(AccountancyPermissions.Unit.Update)]
         public virtual async Task<SelectUnitDto> UpdateAsync(Guid id, UpdateUnitDto input)
         {
             var entity = await _unitRepository.GetAsync(id, x => x.Id == id);

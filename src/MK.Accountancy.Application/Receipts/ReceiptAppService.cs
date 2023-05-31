@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Authorization;
+using MK.Accountancy.Permissions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,6 +10,7 @@ using Volo.Abp.Uow;
 
 namespace MK.Accountancy.Receipts
 {
+    [Authorize(AccountancyPermissions.Receipt.Default)]
     public class ReceiptAppService : AccountancyAppService, IReceiptAppService
     {
         private readonly IReceiptRepository _receiptRepository;
@@ -22,7 +25,7 @@ namespace MK.Accountancy.Receipts
             _receiptDetailManager = receiptDetailManager;
             _unitOfWorkManager = unitOfWorkManager;
         }
-
+        [Authorize(AccountancyPermissions.Receipt.Create)]
         public virtual async Task<SelectReceiptDto> CreateAsync(CreateReceiptDto input)
         {
             await _receiptManager.CheckCreateAsync(input.ReceiptNumber, input.ReceiptType, input.CurrentId, input.SpecialCodeOneId, input.SpecialCodeTwoId, input.DepartmentId, input.TermId, input.SafeId, input.BankAccountId);
@@ -36,7 +39,7 @@ namespace MK.Accountancy.Receipts
             await _receiptRepository.InsertAsync(entity);
             return ObjectMapper.Map<Receipt, SelectReceiptDto>(entity);
         }
-
+        [Authorize(AccountancyPermissions.Receipt.Delete)]
         public virtual async Task DeleteAsync(Guid id)
         {
             var entity = await _receiptRepository.GetAsync(id, f => f.Id == id, i => i.ReceiptDetails);
@@ -87,7 +90,7 @@ namespace MK.Accountancy.Receipts
             //
             return new PagedResultDto<ListReceiptDto>(totalCount, ObjectMapper.Map<List<Receipt>, List<ListReceiptDto>>(entities));
         }
-
+        [Authorize(AccountancyPermissions.Receipt.Update)]
         public async Task<SelectReceiptDto> UpdateAsync(Guid id, UpdateReceiptDto input)
         {
             using (var uow = _unitOfWorkManager.Begin(requiresNew: true, isTransactional: true))

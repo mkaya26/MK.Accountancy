@@ -1,4 +1,5 @@
 ﻿@page "/cashcards"
+@attribute [Authorize(AccountancyPermissions.Safe.Default)]
 
 @inherits BaseListPage<SelectSafeDto, ListSafeDto, SafeListParameterDto, CreateSafeDto, UpdateSafeDto, SafeCodeParameterDto>
 

@@ -1,4 +1,6 @@
-﻿using MK.Accountancy.CommonDtos;
+﻿using Microsoft.AspNetCore.Authorization;
+using MK.Accountancy.CommonDtos;
+using MK.Accountancy.Permissions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,6 +9,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace MK.Accountancy.Departments
 {
+    [Authorize(AccountancyPermissions.Department.Default)]
     public class DepartmentAppService : AccountancyAppService, IDepartmentAppService
     {
         private readonly IDepartmentRepository _departmentRepository;
@@ -17,7 +20,7 @@ namespace MK.Accountancy.Departments
             _departmentRepository = departmentRepository;
             _departmentManager = departmentManager;
         }
-
+        [Authorize(AccountancyPermissions.Department.Create)]
         public virtual async Task<SelectDepartmentDto> CreateAsync(CreateDepartmentDto input)
         {
             await _departmentManager.CheckCreateAsync(input.Code);
@@ -26,7 +29,7 @@ namespace MK.Accountancy.Departments
             await _departmentRepository.InsertAsync(entity);
             return ObjectMapper.Map<Department, SelectDepartmentDto>(entity);
         }
-
+        [Authorize(AccountancyPermissions.Department.Delete)]
         public virtual async Task DeleteAsync(Guid id)
         {
             await _departmentManager.CheckDeleteAsync(id);
@@ -58,7 +61,7 @@ namespace MK.Accountancy.Departments
                 totalCount,
                 ObjectMapper.Map<List<Department>, List<ListDepartmentDto>>(entities));
         }
-
+        [Authorize(AccountancyPermissions.Department.Update)]
         public virtual async Task<SelectDepartmentDto> UpdateAsync(Guid id, UpdateDepartmentDto input)
         {
             var entity = await _departmentRepository.GetAsync(id, f => f.Id == id);

@@ -1,4 +1,6 @@
-﻿using MK.Accountancy.Receipts;
+﻿using Microsoft.AspNetCore.Authorization;
+using MK.Accountancy.Permissions;
+using MK.Accountancy.Receipts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +9,7 @@ using Volo.Abp.Application.Dtos;
 
 namespace MK.Accountancy.PaymentDocuments
 {
+    [Authorize(AccountancyPermissions.PaymentDocument.Default)]
     public class PaymentDocumentAppService : AccountancyAppService, IPaymentDocumentAppService
     {
         private readonly IPaymentDocumentRepository _repository;

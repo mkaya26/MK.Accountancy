@@ -1,14 +1,7 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Diagnostics;
-//using System.Threading.Tasks;
-//using Volo.Abp.Application.Dtos;
-//using Volo.Abp.Domain.Repositories;
-
+﻿using Microsoft.AspNetCore.Authorization;
+using MK.Accountancy.Permissions;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Domain.Repositories;
@@ -16,6 +9,7 @@ using Volo.Abp.Uow;
 
 namespace MK.Accountancy.Safes
 {
+    [Authorize(AccountancyPermissions.Safe.Default)]
     public class SafeAppService : AccountancyAppService, ISafeAppService
     {
         private readonly ISafeRepository _safeRepository;
@@ -28,7 +22,7 @@ namespace MK.Accountancy.Safes
             _safeManager = safeManager;
             _unitOfWorkManager = unitOfWorkManager;
         }
-
+        [Authorize(AccountancyPermissions.Safe.Create)]
         public async Task<SelectSafeDto> CreateAsync(CreateSafeDto input)
         {
             using (var uow = _unitOfWorkManager.Begin(requiresNew: true, isTransactional: true))
@@ -42,7 +36,7 @@ namespace MK.Accountancy.Safes
             await _safeRepository.InsertAsync(entity);
             return ObjectMapper.Map<Safe, SelectSafeDto>(entity);
         }
-
+        [Authorize(AccountancyPermissions.Safe.Delete)]
         public virtual async Task DeleteAsync(Guid id)
         {
             await _safeManager.CheckDeleteAsync(id);
@@ -83,7 +77,7 @@ namespace MK.Accountancy.Safes
             //
             return new PagedResultDto<ListSafeDto>(totalCount, ObjectMapper.Map<List<Safe>, List<ListSafeDto>>(entites));
         }
-
+        [Authorize(AccountancyPermissions.Safe.Update)]
         public virtual async Task<SelectSafeDto> UpdateAsync(Guid id, UpdateSafeDto input)
         {
             var entity = await _safeRepository.GetAsync(id, f => f.Id == id);

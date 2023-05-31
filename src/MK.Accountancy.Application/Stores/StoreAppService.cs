@@ -1,7 +1,7 @@
-﻿using MK.Accountancy.Invoices;
+﻿using Microsoft.AspNetCore.Authorization;
+using MK.Accountancy.Permissions;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Domain.Repositories;
@@ -9,6 +9,7 @@ using Volo.Abp.Uow;
 
 namespace MK.Accountancy.Stores
 {
+    [Authorize(AccountancyPermissions.Store.Default)]
     public class StoreAppService : AccountancyAppService, IStoreAppService
     {
         private readonly IStoreRepository _storeRepository;
@@ -20,7 +21,7 @@ namespace MK.Accountancy.Stores
             _storeManager = storeManager;
             _unitOfWorkManager = unitOfWorkManager;
         }
-
+        [Authorize(AccountancyPermissions.Store.Create)]
         public virtual async Task<SelectStoreDto> CreateAsync(CreateStoreDto input)
         {
             await _storeManager.CheckCreateAsync(input.Code, input.SpecialCodeOneId, input.SpecialCodeTwoId, input.DepartmentId);
@@ -29,7 +30,7 @@ namespace MK.Accountancy.Stores
             await _storeRepository.InsertAsync(entity);
             return ObjectMapper.Map<Store,SelectStoreDto>(entity);
         }
-
+        [Authorize(AccountancyPermissions.Store.Delete)]
         public virtual async Task DeleteAsync(Guid id)
         {
             await _storeManager.CheckDeleteAsync(id);
@@ -64,7 +65,7 @@ namespace MK.Accountancy.Stores
             //
             return new PagedResultDto<ListStoreDto>(totalCount, mappedEntityDtos);
         }
-
+        [Authorize(AccountancyPermissions.Store.Update)]
         public async Task<SelectStoreDto> UpdateAsync(Guid id, UpdateStoreDto input)
         {
             var entity = await _storeRepository.GetAsync(id, f => f.Id == id);

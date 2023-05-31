@@ -1,4 +1,6 @@
-﻿using MK.Accountancy.CommonDtos;
+﻿using Microsoft.AspNetCore.Authorization;
+using MK.Accountancy.CommonDtos;
+using MK.Accountancy.Permissions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,6 +9,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace MK.Accountancy.Services
 {
+    [Authorize(AccountancyPermissions.Service.Default)]
     public class ServiceAppService : AccountancyAppService, IServiceAppService
     {
         private readonly IServiceRepository _serviceRepository;
@@ -17,7 +20,7 @@ namespace MK.Accountancy.Services
             _serviceRepository = serviceRepository;
             _serviceManager = serviceManager;
         }
-
+        [Authorize(AccountancyPermissions.Service.Create)]
         public virtual async Task<SelectServiceDto> CreateAsync(CreateServiceDto input)
         {
             await _serviceManager.CheckCreateAsync(input.Code, input.SpecialCodeOneId, input.SpecialCodeTwoId, input.UnitId);
@@ -26,7 +29,7 @@ namespace MK.Accountancy.Services
             await _serviceRepository.InsertAsync(entity);
             return ObjectMapper.Map<Service, SelectServiceDto>(entity);
         }
-
+        [Authorize(AccountancyPermissions.Service.Delete)]
         public virtual async Task DeleteAsync(Guid id)
         {
             await _serviceManager.CheckDeleteAsync(id);
@@ -56,7 +59,7 @@ namespace MK.Accountancy.Services
             //
             return new PagedResultDto<ListServiceDto>(totalCount, ObjectMapper.Map<List<Service>, List<ListServiceDto>>(entities));
         }
-
+        [Authorize(AccountancyPermissions.Service.Update)]
         public virtual async Task<SelectServiceDto> UpdateAsync(Guid id, UpdateServiceDto input)
         {
             var entity = await _serviceRepository.GetAsync(id, f => f.Id == id);

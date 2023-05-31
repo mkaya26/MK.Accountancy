@@ -1,4 +1,6 @@
-﻿using MK.Accountancy.CommonDtos;
+﻿using Microsoft.AspNetCore.Authorization;
+using MK.Accountancy.CommonDtos;
+using MK.Accountancy.Permissions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,6 +9,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace MK.Accountancy.Stocks
 {
+    [Authorize(AccountancyPermissions.Stock.Default)]
     public class StockAppService : AccountancyAppService, IStockAppService
     {
         private readonly IStockRepository _stockRepository;
@@ -17,7 +20,7 @@ namespace MK.Accountancy.Stocks
             _stockRepository = stockRepository;
             _stockManager = stockManager;
         }
-
+        [Authorize(AccountancyPermissions.Stock.Create)]
         public virtual async Task<SelectStockDto> CreateAsync(CreateStockDto input)
         {
             await _stockManager.CheckCreateAsync(input.Code, input.SpecialCodeOneId, input.SpecialCodeTwoId, input.UnitId);
@@ -26,7 +29,7 @@ namespace MK.Accountancy.Stocks
             await _stockRepository.InsertAsync(entity);
             return ObjectMapper.Map<Stock, SelectStockDto>(entity);
         }
-
+        [Authorize(AccountancyPermissions.Stock.Delete)]
         public virtual async Task DeleteAsync(Guid id)
         {
             await _stockManager.CheckDeleteAsync(id);
@@ -53,7 +56,7 @@ namespace MK.Accountancy.Stocks
             //
             return new PagedResultDto<ListStockDto>(totalCount, ObjectMapper.Map<List<Stock>, List<ListStockDto>>(entities));
         }
-
+        [Authorize(AccountancyPermissions.Stock.Update)]
         public virtual async Task<SelectStockDto> UpdateAsync(Guid id, UpdateStockDto input)
         {
             var entity = await _stockRepository.GetAsync(id, x => x.Id == id);

@@ -1,4 +1,5 @@
 ﻿@page "/purchaseinvoicecards"
+@attribute [Authorize(AccountancyPermissions.Invoice.Default)]
 
 @inherits BaseListPage<SelectInvoiceDto,ListInvoiceDto,InvoiceListParameterDto,
                        CreateInvoiceDto,UpdateInvoiceDto,InvoiceNumberParameterDto>

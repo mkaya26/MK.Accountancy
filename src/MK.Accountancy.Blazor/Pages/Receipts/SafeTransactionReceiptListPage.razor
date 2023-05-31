@@ -1,4 +1,5 @@
 ﻿@page "/cashtransactionreceiptcards"
+@attribute [Authorize(AccountancyPermissions.Receipt.Default)]
 
 @inherits BaseListPage<SelectReceiptDto,ListReceiptDto,ReceiptListParameterDto,
                        CreateReceiptDto,UpdateReceiptDto,ReceiptNumberParameterDto>

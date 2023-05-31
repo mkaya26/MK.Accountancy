@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 
 namespace MK.Accountancy.Parameters
 {
+    [Authorize]
     public class OrganizationParameterAppService : AccountancyAppService, IOrganizationParameterAppService
     {
         private readonly IOrganizationParameterRepository _organizationParameterRepository;

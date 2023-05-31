@@ -1,4 +1,5 @@
 ﻿@page "/servicecards"
+@attribute [Authorize(AccountancyPermissions.Service.Default)]
 
 @inherits BaseListPage<SelectServiceDto,ListServiceDto,ServiceListParameterDto,
                        CreateServiceDto,UpdateServiceDto,CodeParameterDto>
