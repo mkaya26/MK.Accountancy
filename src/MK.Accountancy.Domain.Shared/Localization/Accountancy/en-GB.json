@@ -381,6 +381,7 @@
     "NothingAddress": "Nothing Address",
     "ManageProfile": "Manage Profile",
     "Logout": "Logout",
-    "Login": "Login"
+    "Login": "Login",
+    "DepartmentAndTermSelect": "Department And Term Select"
   }
 }

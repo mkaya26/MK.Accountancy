@@ -3,3 +3,47 @@
 @inject IStringLocalizer<AccountancyResource> L
 @inject ICurrentUser CurrentUser
 @inject AuthenticationStateProvider AuthenticationStateProvider
+@inject AppService AppService
+@inject OrganizationParameterAppService CompanyParameterAppService
+
+<AuthorizeView>
+    <Authorized>
+        @if (isShowCompanyParameter)
+        {
+            <DepartmentTermSelectEditPage />
+        }
+        else
+        {
+            AppService.HasChanged();
+        }
+    </Authorized>
+    <NotAuthorized>
+
+    </NotAuthorized>
+</AuthorizeView>
+
+@code{
+    private bool isShowCompanyParameter;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if(CurrentUser.Id == null)
+        {
+            return;
+        }
+        //
+        if(AppService.CompanyParameter.Id == Guid.Empty)
+        {
+            var compoanyParameter = await CompanyParameterAppService.GetAsync(CurrentUser.Id.Value);
+            //
+            if (compoanyParameter != null)
+            {
+                AppService.CompanyParameter = compoanyParameter;
+            }
+            else
+            {
+                isShowCompanyParameter = true;
+            }
+        }
+    }
+}

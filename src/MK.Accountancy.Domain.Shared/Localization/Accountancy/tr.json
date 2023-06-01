@@ -381,6 +381,7 @@
     "NothingAddress": "Bu Sayfa Bulunamadı.",
     "ManageProfile": "Profilinizi Yönetin",
     "Logout": "Çıkış",
-    "Login": "Giriş"
+    "Login": "Giriş",
+    "DepartmentAndTermSelect": "Şube ve Dönem Seçimi"
   }
 }
