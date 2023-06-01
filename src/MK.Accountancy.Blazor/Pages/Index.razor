@@ -16,9 +16,72 @@
         {
             AppService.HasChanged();
         }
+        <h4 class="pt-4 pb-4" style="text-align:center;font-weight:bold;font-family:Roboto Condensed, Arial, Helvetica, sans-serif">@L["FinancialStatusSummary"]</h4>
+
     </Authorized>
     <NotAuthorized>
+        <div id="container">
+            <div class="text">
+                <h4>@L["IndexPage_1"]</h4>
+                <h4>@L["IndexPage_2"]</h4>
+                <h6 class="pt-2">@L["IndexPage_3"]</h6>
 
+                <a class="btn btn-primary" href="/account/login">
+                    <i class="fa fa-sign-in-alt pr-2"></i> @L["Login"]
+                </a>
+
+                <div class="card mt-4 mb-5">
+                    <div class="card-body">
+                        <div class="row text-center justify-content-md-center">
+                            <div class="col-lg-4">
+                                <div class="p-4">
+                                    <h5 class="mb-3"><i class="fa fa-clone text-secondary d-block my-3 fa-2x"></i>@L["Cards"]</h5>
+                                    <p>@L["IndexPage_4"]</p>
+                                    <a href="/account/login" class="btn btn-link px-1">@L["MoreInformation"] <i class="fas fa-chevron-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 border-left">
+                                <div class="p-4">
+                                    <h5 class="mb-3"><i class="fas fa-file-invoice text-secondary d-block my-3 fa-2x"></i> @L["Invoices"]</h5>
+                                    <p>@L["IndexPage_5"]</p>
+                                    <a href="/account/login" class="btn btn-link px-1">@L["MoreInformation"] <i class="fas fa-chevron-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 border-left">
+                                <div class="p-4">
+                                    <h5 class="mb-3"><i class="fas fa-receipt text-secondary d-block my-3 fa-2x"></i> @L["Receipts"]</h5>
+                                    <p>@L["IndexPage_6"]</p>
+                                    <a href="/account/login" class="btn btn-link px-1">@L["MoreInformation"] <i class="fas fa-chevron-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row text-center mt-lg-3 justify-content-md-center">
+                            <div class="col-lg-4">
+                                <div class="p-4">
+                                    <h5 class="mb-3"><i class="fa fa-money-check text-secondary d-block my-3 fa-2x"></i>@L["PaymentTypes"]</h5>
+                                    <p>@L["IndexPage_7"]</p>
+                                    <a href="/account/login" class="btn btn-link px-1">@L["MoreInformation"] <i class="fas fa-chevron-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 border-left">
+                                <div class="p-4">
+                                    <h5 class="mb-3"><i class="fas fa-poll text-secondary d-block my-3 fa-2x"></i>@L["Reports"]</h5>
+                                    <p>@L["IndexPage_8"]</p>
+                                    <a href="/account/login" class="btn btn-link px-1">@L["MoreInformation"] <i class="fas fa-chevron-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 border-left">
+                                <div class="p-4">
+                                    <h5 class="mb-3"><i class="fas fa-wrench text-secondary d-block my-3 fa-2x"></i>@L["Authorization"]</h5>
+                                    <p>@L["IndexPage_9"]</p>
+                                    <a href="/account/login" class="btn btn-link px-1">@L["MoreInformation"] <i class="fas fa-chevron-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </NotAuthorized>
 </AuthorizeView>
 

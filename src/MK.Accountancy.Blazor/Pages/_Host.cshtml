@@ -25,10 +25,10 @@
 </head>
 <body class="abp-application-layout bg-light @rtl">
     <environment include="Staging,Production">
-        <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
+        <component type="typeof(App)" render-mode="ServerPrerendered" />
     </environment>
     <environment include="Development">
-        <component type="typeof(HeadOutlet)" render-mode="Server" />
+        <component type="typeof(App)" render-mode="Server" />
     </environment>
 
     <div id="blazor-error-ui">

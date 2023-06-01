@@ -2,7 +2,15 @@
   "culture": "en",
   "texts": {
     "Menu:Home": "Home",
-    "Welcome": "Welcome",
+    "IndexPage_1": "Merhaba.",
+    "IndexPage_2": "Ön Muhasebe eğitim setine hoş geldiniz.",
+    "IndexPage_3": "Bu sayfa bu projenin tanıtım sayfasıdır. Projenin tanıtımıyla ilgili tüm içerik bu sayfada gösterilecektir.",
+    "IndexPage_4": "Birim, Banka, Banka Şube, Banka Hesap, Cari, Kasa, Depo, Stok, Hizmet, Masraf... vb. ayrı ayrı kartlar oluşturabilme imkanı.",
+    "IndexPage_5": "Hem alış hem de satış faturalarını ayrı ayrı girilebilme imkanı. Satış faturalarının baskı önizleme yapılarak çıktısının alınabilme imkanı.",
+    "IndexPage_6": "Ödeme belgeleriyle ilgili tüm işlemlerin türüne göre ayrı ayrı makbuzlarda takip edilebilme imkanı. Tahsilat Makbuzu, Ödeme Makbuzu... vb.",
+    "IndexPage_7": "Hem kendi hem de müşterilerden alınan ödeme belgelerinin ayrı ayrı takip edilebilme imkanı. (Çek, Senet, Nakit, Havale, Pos vb.)",
+    "IndexPage_8": "Sınırsız sayıda rapor oluşturup kullanabilme imkanı.",
+    "IndexPage_9": "Rol bazlı ve kullanıcı bazlı yetkilendirme sistemi.",
     "LongWelcomeMessage": "Welcome to the application. This is a startup project based on the ABP framework. For more information, visit abp.io.",
     "Exception:00001": "The {code} code you entered has been used before.",
     "Exception:00002": "The card you are trying to delete has transactions that have been processed. The card cannot be deleted.",
@@ -382,6 +390,16 @@
     "ManageProfile": "Manage Profile",
     "Logout": "Logout",
     "Login": "Login",
-    "DepartmentAndTermSelect": "Department And Term Select"
+    "DepartmentAndTermSelect": "Department And Term Select",
+    "FinancialStatusSummary": "FİNANSAL DURUM ÖZETİ",
+    "CashStatusChart": "Kasa Durum Grafiği",
+    "BankStatusChart": "Banka Durum Grafiği",
+    "PaymentTypesDistributionChart": "Ödeme Belgeleri Dağılım Grafiği",
+    "LastTenTransactionsTradedInTheCashier": "Kasada İşlem Gören Son On Hareket",
+    "LastTenTransactionsTradedInTheBank": "Bankada İşlem Gören Son On Hareket",
+    "OverdueReceivables": "Ödemesi Geciken Alacaklar",
+    "MoreInformation": "Detaylı bilgi",
+    "Reports": "Raporlar",
+    "Authorization": "Yetkilendirme"
   }
 }
