@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using MK.Accountancy.Reports;
 
 @inject IStringLocalizer<AccountancyResource> L
 @inject ICurrentUser CurrentUser
@@ -17,7 +18,183 @@
             AppService.HasChanged();
         }
         <h4 class="pt-4 pb-4" style="text-align:center;font-weight:bold;font-family:Roboto Condensed, Arial, Helvetica, sans-serif">@L["FinancialStatusSummary"]</h4>
-
+        <DevGridLayout ColumnCount="5"
+                       ColumnWidths="@ColumnWidths("*","10px","*","10px","*")"
+                       RowCount="3"
+                       RowHeights="@RowHeights("*","10px","*")">
+            <GridLayoutItems>
+                <DxGridLayoutItem Column="0"
+                                  Row="0">
+                    <Template>
+                        <div class="card">
+                            <DxChart Data="SafeStatu">
+                                <DxChartTitle Text="@L["CashStatusChart"]" />
+                                <DxChartLegend HorizontalAlignment="HorizontalAlignment.Right"
+                                               Orientation="DevExpress.Blazor.Orientation.Vertical"
+                                               Position="RelativePosition.Outside"
+                                               VerticalAlignment="VerticalEdge.Top" />
+                                <DxChartPieSeries ArgumentField="@((FinancialStatusDto x) => x.Description)"
+                                                  ValueField="@((FinancialStatusDto x)=> x.Description)">
+                                                  <DxChartSeriesLabel Format="ChartElementFormat.Decimal(2)" 
+                                                  Visible="true"/>
+                                </DxChartPieSeries>
+                            </DxChart>
+                        </div>
+                    </Template>
+                </DxGridLayoutItem>
+                <DxGridLayoutItem Column="2"
+                                  Row="0">
+                    <Template>
+                        <div class="card">
+                            <DxChart Data="BankStatu">
+                                <DxChartTitle Text="@L["BankStatusChart"]" />
+                                <DxChartLegend HorizontalAlignment="HorizontalAlignment.Right"
+                                               Orientation="DevExpress.Blazor.Orientation.Vertical"
+                                               Position="RelativePosition.Outside"
+                                               VerticalAlignment="VerticalEdge.Top" />
+                                <DxChartPieSeries ArgumentField="@((FinancialStatusDto x) => x.Description)"
+                                                  ValueField="@((FinancialStatusDto x)=> x.Description)">
+                                    <DxChartSeriesLabel Format="ChartElementFormat.Decimal(2)"
+                                                        Visible="true" />
+                                </DxChartPieSeries>
+                            </DxChart>
+                        </div>
+                    </Template>
+                </DxGridLayoutItem>
+                <DxGridLayoutItem Column="4"
+                                  Row="0">
+                    <Template>
+                        <div class="card">
+                            <DxChart Data="PaymentDocumentsDistribution">
+                                <DxChartTitle Text="@L["PaymentDocumentsDistributionChart"]" />
+                                <DxChartLegend HorizontalAlignment="HorizontalAlignment.Right"
+                                               Orientation="DevExpress.Blazor.Orientation.Vertical"
+                                               Position="RelativePosition.Outside"
+                                               VerticalAlignment="VerticalEdge.Top" />
+                                <DxChartPieSeries ArgumentField="@((FinancialStatusDto x) => x.Description)"
+                                                  ValueField="@((FinancialStatusDto x)=> x.Description)">
+                                    <DxChartSeriesLabel Format="ChartElementFormat.Decimal(2)"
+                                                        Visible="true" />
+                                </DxChartPieSeries>
+                            </DxChart>
+                        </div>
+                    </Template>
+                </DxGridLayoutItem>
+                <DxGridLayoutItem Column="0"
+                                  Row="2">
+                    <Template>
+                        <div class="card">
+                            <DevPageHeader Caption="@L["LastTenTransactionsTradedInTheCashier"]"
+                                           CssClass="bg-danger text-white"
+                                           TextAlign="Center" />
+                            <DxDataGrid @ref="SafeGrid"
+                                        AllowSort="false"
+                                        AllowColumnDragDrop="false"
+                                        Data="SafeLastTenActs"
+                                        DataNavigationMode="DataGridNavigationMode.ShowAllDataRows"
+                                        HorizontalScrollBarMode="ScrollBarMode.Visible"
+                                        VerticalScrollableHeight="295">
+                                <Column>
+                                    <DxDataGridDateEditColumn Caption="@L["Date"]"
+                                                              DisplayFormat="@L["DateFormat"]"
+                                                              Field="@nameof(FinanceMoventDto.Date)"
+                                                              TextAlignment="DataGridTextAlign.Center"
+                                                              Width="80px" />
+                                    <DxDataGridColumn Caption="@L["ReceiptNo"]"
+                                                      Field="@nameof(FinanceMoventDto.ReceiptNo)"
+                                                      Width="120px" />
+                                    <DxDataGridSpinEditColumn Caption="@L["Debt"]"
+                                                              DisplayFormat="@L["n2"]"
+                                                              Field="@nameof(FinanceMoventDto.Debt)"
+                                                              Width="100px" />
+                                    <DxDataGridSpinEditColumn Caption="@L["Receivable"]"
+                                                              DisplayFormat="@L["n2"]"
+                                                              Field="@nameof(FinanceMoventDto.Receivable)"
+                                                              Width="100px" />
+                                    <DxDataGridColumn Caption="@L["Description"]"
+                                                      Field="@nameof(FinanceMoventDto.Description)"
+                                                      Width="300px" />
+                                </Column>
+                            </DxDataGrid>
+                        </div>
+                    </Template>
+                </DxGridLayoutItem>
+                <DxGridLayoutItem Column="2"
+                                  Row="2">
+                    <Template>
+                        <div class="card">
+                            <DevPageHeader Caption="@L["LastTenTransactionsTradedInTheBank"]"
+                                           CssClass="bg-danger text-white"
+                                           TextAlign="Center" />
+                            <DxDataGrid @ref="BankGrid"
+                                        AllowSort="false"
+                                        AllowColumnDragDrop="false"
+                                        Data="BankLastTenActs"
+                                        DataNavigationMode="DataGridNavigationMode.ShowAllDataRows"
+                                        HorizontalScrollBarMode="ScrollBarMode.Visible"
+                                        VerticalScrollableHeight="295">
+                                <Column>
+                                    <DxDataGridDateEditColumn Caption="@L["Date"]"
+                                                              DisplayFormat="@L["DateFormat"]"
+                                                              Field="@nameof(FinanceMoventDto.Date)"
+                                                              TextAlignment="DataGridTextAlign.Center"
+                                                              Width="80px" />
+                                    <DxDataGridColumn Caption="@L["ReceiptNo"]"
+                                                      Field="@nameof(FinanceMoventDto.ReceiptNo)"
+                                                      Width="120px" />
+                                    <DxDataGridSpinEditColumn Caption="@L["Debt"]"
+                                                              DisplayFormat="@L["n2"]"
+                                                              Field="@nameof(FinanceMoventDto.Debt)"
+                                                              Width="100px" />
+                                    <DxDataGridSpinEditColumn Caption="@L["Receivable"]"
+                                                              DisplayFormat="@L["n2"]"
+                                                              Field="@nameof(FinanceMoventDto.Receivable)"
+                                                              Width="100px" />
+                                    <DxDataGridColumn Caption="@L["Description"]"
+                                                      Field="@nameof(FinanceMoventDto.Description)"
+                                                      Width="300px" />
+                                </Column>
+                            </DxDataGrid>
+                        </div>
+                    </Template>
+                </DxGridLayoutItem>
+                <DxGridLayoutItem Column="4"
+                                  Row="2">
+                    <Template>
+                        <div class="card">
+                            <DevPageHeader Caption="@L["OverdueReceivables"]"
+                                           CssClass="bg-danger text-white"
+                                           TextAlign="Center" />
+                            <DxDataGrid @ref="OverdueReceivablesGrid"
+                                        AllowSort="false"
+                                        AllowColumnDragDrop="false"
+                                        Data="OverdueReceivables"
+                                        DataNavigationMode="DataGridNavigationMode.ShowAllDataRows"
+                                        HorizontalScrollBarMode="ScrollBarMode.Visible"
+                                        VerticalScrollableHeight="295">
+                                <Column>
+                                    <DxDataGridColumn Caption="@L["PaymentType"]"
+                                                      Field="@nameof(PaymentDocumentDto.PaymentType)"
+                                                      Width="110px" />
+                                    <DxDataGridDateEditColumn Caption="@L["Date"]"
+                                                              DisplayFormat="@L["ExpiryDate"]"
+                                                              Field="@nameof(PaymentDocumentDto.ExpiryDate)"
+                                                              TextAlignment="DataGridTextAlign.Center"
+                                                              Width="80px" />
+                                    <DxDataGridSpinEditColumn Caption="@L["Amount"]"
+                                                              DisplayFormat="@L["n2"]"
+                                                              Field="@nameof(PaymentDocumentDto.Price)"
+                                                              Width="100px" />
+                                    <DxDataGridColumn Caption="@L["Description"]"
+                                                      Field="@nameof(PaymentDocumentDto.Description)"
+                                                      Width="300px" />
+                                </Column>
+                            </DxDataGrid>
+                        </div>
+                    </Template>
+                </DxGridLayoutItem>
+            </GridLayoutItems>
+        </DevGridLayout>
     </Authorized>
     <NotAuthorized>
         <div id="container">
@@ -85,17 +262,28 @@
     </NotAuthorized>
 </AuthorizeView>
 
-@code{
+@code {
     private bool isShowCompanyParameter;
+    private DxDataGrid<FinanceMoventDto> SafeGrid;
+    private DxDataGrid<FinanceMoventDto> BankGrid;
+    private DxDataGrid<PaymentDocumentDto> OverdueReceivablesGrid;
+
+    private IList<FinanceMoventDto> SafeLastTenActs;
+    private IList<FinanceMoventDto> BankLastTenActs;
+    private IList<PaymentDocumentDto> OverdueReceivables;
+
+    private IList<FinancialStatusDto> SafeStatu;
+    private IList<FinancialStatusDto> BankStatu;
+    private IList<FinancialStatusDto> PaymentDocumentsDistribution;
 
     protected override async Task OnParametersSetAsync()
     {
-        if(CurrentUser.Id == null)
+        if (CurrentUser.Id == null)
         {
             return;
         }
         //
-        if(AppService.CompanyParameter.Id == Guid.Empty)
+        if (AppService.CompanyParameter.Id == Guid.Empty)
         {
             var compoanyParameter = await CompanyParameterAppService.GetAsync(CurrentUser.Id.Value);
             //
