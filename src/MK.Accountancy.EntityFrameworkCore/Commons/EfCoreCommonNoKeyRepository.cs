@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MK.Accountancy.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Volo.Abp.Domain.Entities;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
@@ -23,7 +24,7 @@ namespace MK.Accountancy.Commons
         public async Task<TEntity> FromSqlRawSingleAsync(string sql, params object[] parameters)
         {
             var dbSet = await GetDbSetAsync();
-            return await dbSet.FromSqlRaw(sql, parameters).FirstOrDefaultAsync();
+            return (await dbSet.FromSqlRaw(sql, parameters).ToListAsync()).FirstOrDefault();
         }
     }
 }

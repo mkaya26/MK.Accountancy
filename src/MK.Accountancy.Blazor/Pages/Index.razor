@@ -6,6 +6,7 @@
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject AppService AppService
 @inject OrganizationParameterAppService CompanyParameterAppService
+@inject FinancialStatuAppService FinancialStatuAppService
 
 <AuthorizeView>
     <Authorized>
@@ -34,7 +35,7 @@
                                                Position="RelativePosition.Outside"
                                                VerticalAlignment="VerticalEdge.Top" />
                                 <DxChartPieSeries ArgumentField="@((FinancialStatusDto x) => x.Description)"
-                                                  ValueField="@((FinancialStatusDto x)=> x.Description)">
+                                                  ValueField="@((FinancialStatusDto x)=> x.Price)">
                                                   <DxChartSeriesLabel Format="ChartElementFormat.Decimal(2)" 
                                                   Visible="true"/>
                                 </DxChartPieSeries>
@@ -53,7 +54,7 @@
                                                Position="RelativePosition.Outside"
                                                VerticalAlignment="VerticalEdge.Top" />
                                 <DxChartPieSeries ArgumentField="@((FinancialStatusDto x) => x.Description)"
-                                                  ValueField="@((FinancialStatusDto x)=> x.Description)">
+                                                  ValueField="@((FinancialStatusDto x)=> x.Price)">
                                     <DxChartSeriesLabel Format="ChartElementFormat.Decimal(2)"
                                                         Visible="true" />
                                 </DxChartPieSeries>
@@ -72,7 +73,7 @@
                                                Position="RelativePosition.Outside"
                                                VerticalAlignment="VerticalEdge.Top" />
                                 <DxChartPieSeries ArgumentField="@((FinancialStatusDto x) => x.Description)"
-                                                  ValueField="@((FinancialStatusDto x)=> x.Description)">
+                                                  ValueField="@((FinancialStatusDto x)=> x.Price)">
                                     <DxChartSeriesLabel Format="ChartElementFormat.Decimal(2)"
                                                         Visible="true" />
                                 </DxChartPieSeries>
@@ -174,10 +175,10 @@
                                         VerticalScrollableHeight="295">
                                 <Column>
                                     <DxDataGridColumn Caption="@L["PaymentType"]"
-                                                      Field="@nameof(PaymentDocumentDto.PaymentType)"
+                                                      Field="@nameof(PaymentDocumentDto.PaymentTypeName)"
                                                       Width="110px" />
                                     <DxDataGridDateEditColumn Caption="@L["Date"]"
-                                                              DisplayFormat="@L["ExpiryDate"]"
+                                                              DisplayFormat="@L["DateFormat"]"
                                                               Field="@nameof(PaymentDocumentDto.ExpiryDate)"
                                                               TextAlignment="DataGridTextAlign.Center"
                                                               Width="80px" />
@@ -290,11 +291,71 @@
             if (compoanyParameter != null)
             {
                 AppService.CompanyParameter = compoanyParameter;
+                await Reports();
             }
             else
             {
                 isShowCompanyParameter = true;
             }
         }
+        else
+        {
+            await Reports();
+        }
+    }
+
+    private async Task Reports()
+    {
+        SafeLastTenActs = await FinancialStatuAppService.SafeLastTenMovesListAsync(
+            new ReceiptDetailListParameterDto
+                {
+                    DepartmentId = AppService.CompanyParameter.DepartmentId,
+                    TermId = AppService.CompanyParameter.TermId
+                }
+        );
+        //
+        BankLastTenActs = await FinancialStatuAppService.BankLastTenMovesListAsync(
+            new ReceiptDetailListParameterDto
+                {
+                    DepartmentId = AppService.CompanyParameter.DepartmentId,
+                    TermId = AppService.CompanyParameter.TermId
+                }
+        );
+        //
+        SafeStatu = await FinancialStatuAppService.SafeStatuListAsync(
+            new ReceiptDetailListParameterDto
+                {
+                    DepartmentId = AppService.CompanyParameter.DepartmentId,
+                    TermId = AppService.CompanyParameter.TermId
+                }
+        );
+        //
+        BankStatu = await FinancialStatuAppService.BankStatuListAsync(
+            new ReceiptDetailListParameterDto
+                {
+                    DepartmentId = AppService.CompanyParameter.DepartmentId,
+                    TermId = AppService.CompanyParameter.TermId
+                }
+        );
+        //
+        PaymentDocumentsDistribution = await FinancialStatuAppService.DistributionoPaymentDocumentListAsync(
+            new ReceiptDetailListParameterDto
+                {
+                    DepartmentId = AppService.CompanyParameter.DepartmentId,
+                    TermId = AppService.CompanyParameter.TermId
+                }
+        );
+        //
+        OverdueReceivables = await FinancialStatuAppService.OverdueReceivablesListAsync(
+            new ReceiptDetailListParameterDto
+                {
+                    DepartmentId = AppService.CompanyParameter.DepartmentId,
+                    TermId = AppService.CompanyParameter.TermId
+                }
+        );
+        //
+        SafeGrid.SetDataRowSelected(SafeLastTenActs.FirstOrDefault(), true);
+        BankGrid.SetDataRowSelected(BankLastTenActs.FirstOrDefault(), true);
+        OverdueReceivablesGrid.SetDataRowSelected(OverdueReceivables.FirstOrDefault(), true);
     }
 }

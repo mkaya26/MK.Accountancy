@@ -10,6 +10,7 @@ using MK.Accountancy.Invoices;
 using MK.Accountancy.Parameters;
 using MK.Accountancy.PaymentDocuments;
 using MK.Accountancy.Receipts;
+using MK.Accountancy.Reports;
 using MK.Accountancy.Safes;
 using MK.Accountancy.Services;
 using MK.Accountancy.SpecialCodes;
@@ -1198,6 +1199,8 @@ namespace MK.Accountancy.Configurations
         public static void ConfigureStoredProcedure(this ModelBuilder builder)
         {
             builder.Entity<PaymentDocument>();
+            builder.Entity<IncomeExpenseBalance>().HasNoKey();
+            builder.Entity<PaymentDocumentsDistribution>().HasNoKey();
         }
     }
 }

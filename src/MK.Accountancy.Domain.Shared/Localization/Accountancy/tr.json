@@ -2,9 +2,9 @@
   "culture": "tr",
   "texts": {
     "Menu:Home": "Ana sayfa",
-    "IndexPage_1": "Merhaba.",
-    "IndexPage_2": "Ön Muhasebe eğitim setine hoş geldiniz.",
-    "IndexPage_3": "Bu sayfa bu projenin tanıtım sayfasıdır. Projenin tanıtımıyla ilgili tüm içerik bu sayfada gösterilecektir.",
+    "IndexPage_1": "Merhaba",
+    "IndexPage_2": "MK Ön Muhasebe Sistemine Hoş Geldiniz.",
+    "IndexPage_3": "İşletmenizin finansal operasyonunu yönetmenizi sağlayacak tüm özellikler MK ön muhasebe programında",
     "IndexPage_4": "Birim, Banka, Banka Şube, Banka Hesap, Cari, Kasa, Depo, Stok, Hizmet, Masraf... vb. ayrı ayrı kartlar oluşturabilme imkanı.",
     "IndexPage_5": "Hem alış hem de satış faturalarını ayrı ayrı girilebilme imkanı. Satış faturalarının baskı önizleme yapılarak çıktısının alınabilme imkanı.",
     "IndexPage_6": "Ödeme belgeleriyle ilgili tüm işlemlerin türüne göre ayrı ayrı makbuzlarda takip edilebilme imkanı. Tahsilat Makbuzu, Ödeme Makbuzu... vb.",
@@ -400,6 +400,10 @@
     "OverdueReceivables": "Ödemesi Geciken Alacaklar",
     "MoreInformation": "Detaylı bilgi",
     "Reports": "Raporlar",
-    "Authorization": "Yetkilendirme"
+    "Authorization": "Yetkilendirme",
+    "PaymentDocumentsDistributionChart": "Ödeme Belgeleri Dağılımı",
+    "Income": "Gelir",
+    "ReceiptNo": "Makbuz No",
+    "PaymentTypes": "Ödeme Tipleri"
   }
 }
