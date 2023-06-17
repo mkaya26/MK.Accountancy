@@ -404,6 +404,7 @@
     "PaymentDocumentsDistributionChart": "Payment Documents Distribution",
     "Income": "Income",
     "ReceiptNo": "Receipt No",
-    "PaymentTypes": "Payment Types"
+    "PaymentTypes": "Payment Types",
+    "BankCard": "Bank Card"
   }
 }

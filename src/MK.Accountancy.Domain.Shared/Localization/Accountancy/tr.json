@@ -404,6 +404,7 @@
     "PaymentDocumentsDistributionChart": "Ödeme Belgeleri Dağılımı",
     "Income": "Gelir",
     "ReceiptNo": "Makbuz No",
-    "PaymentTypes": "Ödeme Tipleri"
+    "PaymentTypes": "Ödeme Tipleri",
+    "BankCard": "Banka Kartı"
   }
 }
