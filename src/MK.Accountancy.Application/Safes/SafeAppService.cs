@@ -52,7 +52,7 @@ namespace MK.Accountancy.Safes
 
         public virtual async Task<string> GetCodeAsync(SafeCodeParameterDto input)
         {
-            return await _safeRepository.GetCodeAsync(p => p.Code, f => f.Active == input.Active && f.DepartmentId == input.DepartmentId);
+            return await _safeRepository.GetCodeAsync(p => p.Code, f =>  f.DepartmentId == input.DepartmentId);
         }
 
         public async Task<PagedResultDto<ListSafeDto>> GetListAsync(SafeListParameterDto input)
