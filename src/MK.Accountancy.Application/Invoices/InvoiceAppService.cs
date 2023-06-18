@@ -61,10 +61,9 @@ namespace MK.Accountancy.Invoices
         public async Task<string> GetCodeAsync(InvoiceNumberParameterDto input)
         {
             return await _invoiceRepository.GetCodeAsync(s => s.InvoiceNumber,
-                                                       f => f.InvoiceType == input.InvoiceType &&
-                                                            f.DepartmentId == input.DepartmentId &&
-                                                            f.TermId == input.TermId &&
-                                                            f.Active == input.Active);
+                                    f => f.InvoiceType == input.InvoiceType &&
+                                         f.DepartmentId == input.DepartmentId &&
+                                         f.TermId == input.TermId);
         }
 
         public virtual async Task<PagedResultDto<ListInvoiceDto>> GetListAsync(InvoiceListParameterDto input)
