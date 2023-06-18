@@ -1,8 +1,13 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Localization;
+using MK.Accountancy.Localization;
 using MK.Accountancy.Permissions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Volo.Abp;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Uow;
@@ -15,27 +20,34 @@ namespace MK.Accountancy.Safes
         private readonly ISafeRepository _safeRepository;
         private readonly SafeManager _safeManager;
         private readonly IUnitOfWorkManager _unitOfWorkManager;
-
-        public SafeAppService(ISafeRepository safeRepository, SafeManager safeManager, IUnitOfWorkManager unitOfWorkManager)
+        private readonly IStringLocalizer<AccountancyResource> _localizer;
+        public SafeAppService(ISafeRepository safeRepository, SafeManager safeManager, IUnitOfWorkManager unitOfWorkManager, IStringLocalizer<AccountancyResource> localizer)
         {
             _safeRepository = safeRepository;
             _safeManager = safeManager;
             _unitOfWorkManager = unitOfWorkManager;
+            _localizer = localizer;
         }
         [Authorize(AccountancyPermissions.Safe.Create)]
         public async Task<SelectSafeDto> CreateAsync(CreateSafeDto input)
         {
-            using (var uow = _unitOfWorkManager.Begin(requiresNew: true, isTransactional: true))
+            var validator = new CreateSafeDtoValidator(_localizer);
+            var validationResult = await validator.ValidateAsync(input);
+            //
+            if (!validationResult.IsValid)
             {
-                await _safeManager.CheckCreateAsync(input.Code, input.SpecialCodeOneId, input.SpecialCodeTwoId, input.DepartmentId);
-                //
-                await uow.CompleteAsync();
+                string validationMessage = string.Join("\n", validationResult.Errors.Select(e => e.ErrorMessage));
+                throw new UserFriendlyException(validationMessage);
             }
+            //
+            await _safeManager.CheckCreateAsync(input.Code, input.SpecialCodeOneId, input.SpecialCodeTwoId, input.DepartmentId);
             //
             var entity = ObjectMapper.Map<CreateSafeDto, Safe>(input);
             await _safeRepository.InsertAsync(entity);
+            //
             return ObjectMapper.Map<Safe, SelectSafeDto>(entity);
         }
+
         [Authorize(AccountancyPermissions.Safe.Delete)]
         public virtual async Task DeleteAsync(Guid id)
         {

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using MK.Accountancy.Abstract;
 using MK.Accountancy.Blazor.Services.Base;
 using MK.Accountancy.CommonDtos;
@@ -71,6 +72,10 @@ namespace MK.Accountancy.Blazor.Pages.Base
             try
             {
                 return await BaseCrudAppService.CreateAsync(input);
+            }
+            catch (ValidationException ex)
+            {
+                await HandleErrorAsync(ex);
             }
             catch (Exception ex)
             {
