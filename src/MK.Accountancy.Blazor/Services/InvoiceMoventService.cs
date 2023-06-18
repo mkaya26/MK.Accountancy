@@ -14,7 +14,8 @@ namespace MK.Accountancy.Blazor.Services
         public AppService AppService { get; set; }
         public override void GetTotal()
         {
-            InvoiceService.DataSource.GrandTotal = ListDataSource.Sum(x => x.GrossAmount);
+            //InvoiceService.DataSource.GrandTotal = ListDataSource.Sum(x => x.GrossAmount);
+            InvoiceService.DataSource.GrandTotal = ListDataSource.Sum(x => x.NetTotal);
             InvoiceService.DataSource.DiscountTotal = ListDataSource.Sum(x => x.DiscountAmount);
             InvoiceService.DataSource.Netamount = ListDataSource.Sum(x => x.NetTotal);
             InvoiceService.DataSource.TaxAmount = ListDataSource.Sum(x => x.TaxTotal);
