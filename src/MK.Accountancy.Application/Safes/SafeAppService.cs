@@ -39,13 +39,18 @@ namespace MK.Accountancy.Safes
                 string validationMessage = string.Join("\n", validationResult.Errors.Select(e => e.ErrorMessage));
                 throw new UserFriendlyException(validationMessage);
             }
-            //
-            await _safeManager.CheckCreateAsync(input.Code, input.SpecialCodeOneId, input.SpecialCodeTwoId, input.DepartmentId);
-            //
-            var entity = ObjectMapper.Map<CreateSafeDto, Safe>(input);
-            await _safeRepository.InsertAsync(entity);
-            //
-            return ObjectMapper.Map<Safe, SelectSafeDto>(entity);
+            using (var uow = _unitOfWorkManager.Begin(requiresNew: true, isTransactional: true))
+            {
+                //
+                await _safeManager.CheckCreateAsync(input.Code, input.SpecialCodeOneId, input.SpecialCodeTwoId, input.DepartmentId);
+                //
+                var entity = ObjectMapper.Map<CreateSafeDto, Safe>(input);
+                await _safeRepository.InsertAsync(entity);
+                //
+                await uow.CompleteAsync();
+                //
+                return ObjectMapper.Map<Safe, SelectSafeDto>(entity);
+            }
         }
 
         [Authorize(AccountancyPermissions.Safe.Delete)]
