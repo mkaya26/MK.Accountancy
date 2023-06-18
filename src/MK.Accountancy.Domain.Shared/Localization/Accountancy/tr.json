@@ -405,6 +405,7 @@
     "Income": "Gelir",
     "ReceiptNo": "Makbuz No",
     "PaymentTypes": "Ödeme Tipleri",
-    "BankCard": "Banka Kartı"
+    "BankCard": "Banka Kartı",
+    "TermCard": "Dönem Kartı"
   }
 }

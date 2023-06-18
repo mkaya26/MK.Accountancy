@@ -405,6 +405,7 @@
     "Income": "Income",
     "ReceiptNo": "Receipt No",
     "PaymentTypes": "Payment Types",
-    "BankCard": "Bank Card"
+    "BankCard": "Bank Card",
+    "TermCard": "Term Card"
   }
 }
