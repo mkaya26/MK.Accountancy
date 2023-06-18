@@ -45,7 +45,7 @@ namespace MK.Accountancy.Terms
 
         public virtual async Task<string> GetCodeAsync(CodeParameterDto input)
         {
-            return await _termRepository.GetCodeAsync(p => p.Code, f => f.Active);
+            return await _termRepository.GetCodeAsync(p => p.Code);
         }
 
         public virtual async Task<PagedResultDto<ListTermDto>> GetListAsync(TermListParameterDto input)
