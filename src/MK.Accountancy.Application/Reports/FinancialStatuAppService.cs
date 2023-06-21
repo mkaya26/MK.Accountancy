@@ -112,7 +112,7 @@ namespace MK.Accountancy.Reports
 
         public virtual async Task<IList<FinancialStatusDto>> BankStatuListAsync(ReceiptDetailListParameterDto input)
         {
-            var safeStatu = await _incomeExpenseBalanceRepository
+            var bankStatu = await _incomeExpenseBalanceRepository
     .FromSqlRawSingleAsync($"MHSB.BankStatu @DepartmentId='{input.DepartmentId}', @TermId='{input.TermId}'");
             //
             var list = new List<FinancialStatusDto>
@@ -120,17 +120,17 @@ namespace MK.Accountancy.Reports
                 new FinancialStatusDto
                 {
                     Description = L["Income"],
-                    Price = safeStatu.Income
+                    Price = bankStatu.Income
                 },
                 new FinancialStatusDto
                 {
                     Description = L["Expense"],
-                    Price = safeStatu.Expense
+                    Price = bankStatu.Expense
                 },
                 new FinancialStatusDto
                 {
                     Description = L["Balance"],
-                    Price = safeStatu.Balance
+                    Price = bankStatu.Balance
                 }
             };
             //

@@ -1,0 +1,84 @@
+﻿@inherits BaseUpdatePage<SelectCompanyDto, SelectCompanyDto,ListCompanyDto,
+                        CreateCompanyDto,UpdateCompanyDto>
+
+@inject CompanyService Service
+@inject AppService AppService
+@inject CompanyAppService CrudService
+@inject NavigationManager NavigationManager
+
+<DevPopupPageLayout ActionButtonEnabled="true"
+                    ActionButtonText="@L["Save"]"
+                    ActionButtonVisible="true"
+                    ActionButtonInvokeFunction="Save"
+                    CancelButtonVisible="false"
+                    Caption="@L["Company"]"
+                    Closing="ClosingAsync"
+                    CloseOnEscape="false"
+                    Height="300px"
+                    ShowCloseButton="false"
+                    Visible="true"
+                    Width="900px">
+    <PageContent>
+        <DevGridLayout ColumnCount="6"
+                       ColumnWidths="@ColumnWidths("80","3","300","120","3","300")"
+                       RowCount="10">
+            <GridLayoutItems>
+                <DevTextEdit Caption="@L["Name"]"
+                             ColumnIndex="2"
+                             IsFocus="true"
+                             NullText="@L["EnterName"]"
+                             RowIndex="0"
+                @bind-Value="@AppService.Company.Name">
+                </DevTextEdit>
+                <DevTelephoneEdit Caption="@L["Telephone"]"
+                                  ColumnIndex="2"
+                                  NullText="@L["EnterTelephone"]"
+                                  RowIndex="1"
+                @bind-Value="@AppService.Company.Name">
+                </DevTelephoneEdit>
+                <DevTextEdit Caption="@L["Email"]"
+                             ColumnIndex="2"
+                             NullText="@L["EnterEmail"]"
+                             RowIndex="2"
+                @bind-Value="@AppService.Company.Email">
+                </DevTextEdit>
+                <DevTextEdit Caption="@L["WebAddress"]"
+                             ColumnIndex="2"
+                             NullText="@L["EnterWebAddress"]"
+                             RowIndex="3"
+                @bind-Value="@AppService.Company.WebAddress">
+                </DevTextEdit>
+                <DevTextEdit Caption="@L["Address"]"
+                             ColumnIndex="2"
+                             NullText="@L["EnterAddress"]"
+                             RowIndex="4"
+                @bind-Value="@AppService.Company.Address">
+                </DevTextEdit>
+                <DevTextEdit Caption="@L["Bank"]"
+                             ColumnIndex="5"
+                             NullText="@L["EnterBank"]"
+                             RowIndex="0"
+                @bind-Value="@AppService.Company.Bank">
+                </DevTextEdit>
+                <DevTextEdit Caption="@L["BankDepartment"]"
+                             ColumnIndex="5"
+                             NullText="@L["EnterBankDepartment"]"
+                             RowIndex="1"
+                @bind-Value="@AppService.Company.BankDepartment">
+                </DevTextEdit>
+                <DevTextEdit Caption="@L["BankAccountNumber"]"
+                             ColumnIndex="5"
+                             NullText="@L["EnterBankAccountNumber"]"
+                             RowIndex="2"
+                @bind-Value="@AppService.Company.BankAccountNumber">
+                </DevTextEdit>
+                <DevIbanNoEdit Caption="@L["Iban"]"
+                               ColumnIndex="5"
+                               NullText="@L["EnterIban"]"
+                               RowIndex="3"
+                @bind-Value="@AppService.Company.BankIbanNumber">
+                </DevIbanNoEdit>
+            </GridLayoutItems>
+        </DevGridLayout>
+    </PageContent>
+</DevPopupPageLayout>

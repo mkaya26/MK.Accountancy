@@ -8,5 +8,6 @@ namespace MK.Blazor.Core.Services
         public Action HasChanged { get; set; }
         public bool ShowOrganizationParameterEditPage { get; set; }
         public bool ShowDepartmentTermEditPage { get; set; }
+        public bool ShowCompanyEditPage { get; set; }
     }
 }

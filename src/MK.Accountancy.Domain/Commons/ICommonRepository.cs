@@ -7,6 +7,7 @@ namespace MK.Accountancy.Commons
     public interface ICommonRepository<TEntity> : IRepository<TEntity,Guid>
         where TEntity : class, IEntity<Guid>
     {
+        Task<TEntity> GetAsync();
         Task<TEntity> GetAsync(object id, Expression<Func<TEntity, bool>> predicate = null);
         Task<TEntity> GetAsync(object id, Expression<Func<TEntity, bool>> predicate = null, params Expression<Func<TEntity, object>>[] includes);
         Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate = null, params Expression<Func<TEntity, object>>[] includes);

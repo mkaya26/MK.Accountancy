@@ -2,6 +2,7 @@
 using MK.Accountancy.BankAccounts;
 using MK.Accountancy.BankDepartments;
 using MK.Accountancy.Banks;
+using MK.Accountancy.Companies;
 using MK.Accountancy.Currents;
 using MK.Accountancy.Departments;
 using MK.Accountancy.Expenses;
@@ -318,6 +319,13 @@ public class AccountancyApplicationAutoMapperProfile : Profile
         CreateMap<UpdateStockDto, Stock>();
         CreateMap<SelectStockDto, CreateStockDto>();
         CreateMap<SelectStockDto, UpdateStockDto>();
+        //
+        CreateMap<Company, SelectCompanyDto>();
+        CreateMap<Company, ListCompanyDto>();
+        CreateMap<CreateCompanyDto, Company>();
+        CreateMap<UpdateCompanyDto, Company>();
+        CreateMap<SelectCompanyDto, CreateCompanyDto>();
+        CreateMap<SelectCompanyDto, UpdateCompanyDto>();
         //
         CreateMap<Department, SelectDepartmentDto>();
         CreateMap<Department, ListDepartmentDto>();

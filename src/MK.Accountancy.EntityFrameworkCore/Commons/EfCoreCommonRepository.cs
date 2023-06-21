@@ -88,6 +88,17 @@ namespace MK.Accountancy.Commons
             return await queryable.FirstOrDefaultAsync();
         }
 
+        public async Task<TEntity> GetAsync()
+        {
+            var queryable = await WithDetailsAsync();
+            //
+            TEntity entity;
+            //
+            entity = await queryable.FirstOrDefaultAsync();
+            //
+            return entity;
+        }
+
         public async Task<string> GetCodeAsync(Expression<Func<TEntity, string>> propertySelector, Expression<Func<TEntity, bool>> predicate = null)
         {
             static string CreateNewCode(string code)

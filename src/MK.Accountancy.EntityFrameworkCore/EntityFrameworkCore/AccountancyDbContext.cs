@@ -127,5 +127,6 @@ public class AccountancyDbContext :
         builder.ConfigureStock();
         builder.ConfigureDepartment();
         builder.ConfigureStoredProcedure();
+        builder.ConfigureCompany();
     }
 }

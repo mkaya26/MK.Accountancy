@@ -154,6 +154,9 @@
                                     <DxMenuItem Text="@L["CompParameters"]"
                                     Click="()=> AppService.ShowOrganizationParameterEditPage = true"
                                     IconCssClass="fas fa-clipboard-check" />
+                                    <DxMenuItem Text="@L["Companies"]"
+                                                Click="() => AppService.ShowCompanyEditPage = true"
+                                                IconCssClass="fas fa-cog" />
                                 </Items>
                             </DxMenuItem>
                         }
@@ -228,6 +231,11 @@
 @if (AppService.ShowDepartmentTermEditPage)
 {
     <DepartmentTermSelectEditPage />
+}
+
+@if (AppService.ShowCompanyEditPage)
+{
+    <CompanyEditPage />
 }
 
 @code {

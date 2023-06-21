@@ -201,8 +201,8 @@ public class AccountancyBlazorModule : AbpModule
     {
         Configure<AbpLocalizationOptions>(options =>
         {
-            options.Languages.Add(new LanguageInfo("en", "en", "English", "/images/england_48x48.png"));
-            options.Languages.Add(new LanguageInfo("tr", "tr", "Türkçe", "/images/turkey_48x48.png"));
+            options.Languages.Add(new LanguageInfo("en", "en", "English", "/Images/england_48x48.png"));
+            options.Languages.Add(new LanguageInfo("tr", "tr", "Türkçe", "/Images/turkey_48x48.png"));
             //
             //options.Languages.Add(new LanguageInfo("ar", "ar", "العربية"));
             //options.Languages.Add(new LanguageInfo("cs", "cs", "Čeština"));

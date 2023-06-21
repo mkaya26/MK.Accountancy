@@ -47,8 +47,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Images\england_48x48.png" />
+    <None Remove="Images\turkey_48x48.png" />
     <None Remove="Reports\Invoices\Invoice.vsrepx" />
     <None Remove="Reports\Receipts\CollectionReceipts\CollectionReceipt.vsrepx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\england_48x48.png">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\turkey_48x48.png">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

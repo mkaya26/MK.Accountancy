@@ -2,6 +2,7 @@
 using MK.Accountancy.BankAccounts;
 using MK.Accountancy.BankDepartments;
 using MK.Accountancy.Banks;
+using MK.Accountancy.Companies;
 using MK.Accountancy.Consts;
 using MK.Accountancy.Currents;
 using MK.Accountancy.Departments;
@@ -621,7 +622,6 @@ namespace MK.Accountancy.Configurations
                 b.Property(x => x.TermId)
                 .IsRequired()
                 .HasColumnType(SqlDbType.UniqueIdentifier.ToString());
-
                 #endregion
 
                 #region Indexs
@@ -1201,6 +1201,64 @@ namespace MK.Accountancy.Configurations
             builder.Entity<PaymentDocument>();
             builder.Entity<IncomeExpenseBalance>().HasNoKey();
             builder.Entity<PaymentDocumentsDistribution>().HasNoKey();
+        }
+
+        public static void ConfigureCompany(this ModelBuilder builder)
+        {
+            builder.Entity<Company>(b =>
+            {
+                b.ToTable(AccountancyConsts.DbTablePrefix + "Companies", AccountancyConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+                                           //
+                #region Properties
+
+                b.Property(x => x.Name)
+                .IsRequired()
+                .HasColumnType(SqlDbType.VarChar.ToString())
+                .HasMaxLength(EntityConst.MaxNameLength);
+
+                b.Property(x => x.Telephone)
+                .HasColumnType(SqlDbType.VarChar.ToString())
+                .HasMaxLength(EntityConst.MaxTelephoneLength);
+
+                b.Property(x => x.Address)
+                .HasColumnType(SqlDbType.VarChar.ToString())
+                .HasMaxLength(EntityConst.MaxAddressLength);
+
+                b.Property(x => x.Email)
+                .HasColumnType(SqlDbType.VarChar.ToString())
+                .HasMaxLength(EntityConst.MaxEmailLength);
+
+                b.Property(x => x.WebAddress)
+                .HasColumnType(SqlDbType.VarChar.ToString())
+                .HasMaxLength(EntityConst.MaxWebAddressLength);
+
+                b.Property(x => x.Bank)
+                .HasColumnType(SqlDbType.VarChar.ToString())
+                .HasMaxLength(EntityConst.MaxNameLength);
+
+                b.Property(x => x.BankDepartment)
+                .HasColumnType(SqlDbType.VarChar.ToString())
+                .HasMaxLength(EntityConst.MaxNameLength);
+
+                b.Property(x => x.BankAccountNumber)
+                .HasColumnType(SqlDbType.VarChar.ToString())
+                .HasMaxLength(BankAccountConst.MaxAccountNumberLength);
+
+                b.Property(x => x.BankIbanNumber)
+                .HasColumnType(SqlDbType.VarChar.ToString())
+                .HasMaxLength(BankAccountConst.MaxIbanNumberLength);
+
+                b.Property(x => x.LogoUrl)
+                .HasColumnType(SqlDbType.VarChar.ToString())
+                .HasMaxLength(EntityConst.MaxWebAddressLength);
+
+                #endregion
+                #region Indexs
+                #endregion
+                #region Relations
+                #endregion
+            });
         }
     }
 }
