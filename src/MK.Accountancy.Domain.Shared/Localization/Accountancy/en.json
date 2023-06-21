@@ -406,6 +406,15 @@
     "ReceiptNo": "Receipt No",
     "PaymentTypes": "Payment Types",
     "BankCard": "Bank Card",
-    "TermCard": "Term Card"
+    "TermCard": "Term Card",
+    "Company": "Company",
+    "Email": "Email",
+    "WebAddress": "Web Address",
+    "EnterWebAddress": "Enter Web Address",
+    "EnterBank": "Enter Bank",
+    "BankAccountNumber": "Account Number",
+    "EnterBankAccountNumber": "Enter Bank Account Number",
+    "SelectLogo": "Select Logo",
+    "EnterEmail": "Enter Email"
   }
 }

@@ -17,10 +17,10 @@
                     Height="300px"
                     ShowCloseButton="false"
                     Visible="true"
-                    Width="900px">
+                    Width="1000px">
     <PageContent>
-        <DevGridLayout ColumnCount="6"
-                       ColumnWidths="@ColumnWidths("80","3","300","120","3","300")"
+        <DevGridLayout ColumnCount="8"
+                       ColumnWidths="@ColumnWidths("80","3","300","120","3","300","3","100")"
                        RowCount="10">
             <GridLayoutItems>
                 <DevTextEdit Caption="@L["Name"]"
@@ -34,7 +34,7 @@
                                   ColumnIndex="2"
                                   NullText="@L["EnterTelephone"]"
                                   RowIndex="1"
-                @bind-Value="@AppService.Company.Name">
+                @bind-Value="@AppService.Company.Telephone">
                 </DevTelephoneEdit>
                 <DevTextEdit Caption="@L["Email"]"
                              ColumnIndex="2"
@@ -78,6 +78,42 @@
                                RowIndex="3"
                 @bind-Value="@AppService.Company.BankIbanNumber">
                 </DevIbanNoEdit>
+                <DxGridLayoutItem Column="7"
+                                  Row="0">
+                    <Template>
+                        <DevGridLayout ColumnCount="1"
+                                       ColumnWidths="@ColumnWidths("100")"
+                                       RowCount="2"
+                                       RowHeights="@RowHeights("150","25")">
+                            <GridLayoutItems>
+                                <DxGridLayoutItem Column="0"
+                                                  Row="0">
+                                    <Template>
+                                        <div style="max-width: 90px; max-height: 140px;">
+                                            <img src="@AppService.Company.LogoUrl" style="max-width: 90px; max-height: 140px;" />
+                                        </div>
+                                    </Template>
+                                </DxGridLayoutItem>
+                                <DxGridLayoutItem Column="0"
+                                                  Row="1">
+                                    <Template>
+                                        <DxUpload Name="myFile"
+                                                  MaxFileSize="4000000"
+                                                  SelectButtonText="@L["SelectLogo"]"
+                                                  AcceptedFileTypes="@(new List<string> { ".jpg", ".jpeg", ".gif", ".png" })"
+                                                  AllowedFileExtensions="@(new List<string> { ".jpg", ".jpeg", ".gif", ".png" })"
+                                                  ShowFileList="false"
+                                                  UploadUrl="@GetUploadUrl("api/Upload/Upload/")"
+                                                  SelectedFilesChanged="@SelectedFilesChanged"             
+                                                  FileUploaded="@FileUploaded"
+                                                  CssClass="@(SelectedFilesCount > 0 ? "w-100" : string.Empty)">
+                                        </DxUpload>
+                                    </Template>
+                                </DxGridLayoutItem>
+                            </GridLayoutItems>
+                        </DevGridLayout>
+                    </Template>
+                </DxGridLayoutItem>
             </GridLayoutItems>
         </DevGridLayout>
     </PageContent>

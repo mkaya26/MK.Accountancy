@@ -406,6 +406,15 @@
     "ReceiptNo": "Makbuz No",
     "PaymentTypes": "Ödeme Tipleri",
     "BankCard": "Banka Kartı",
-    "TermCard": "Dönem Kartı"
+    "TermCard": "Dönem Kartı",
+    "Company": "Şirket",
+    "Email": "Email",
+    "WebAddress": "Web Sitesi",
+    "EnterWebAddress": "Web Sitesi Girin",
+    "EnterBank": "Banka Girin",
+    "BankAccountNumber": "Hesap No",
+    "EnterBankAccountNumber": "Banka Hesap No Girin",
+    "SelectLogo": "Logo Seçin",
+    "EnterEmail": "Email Girin"
   }
 }

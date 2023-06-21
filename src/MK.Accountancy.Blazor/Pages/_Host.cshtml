@@ -22,6 +22,12 @@
     <base href="~/" />
     <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered"/>
     <abp-style-bundle name="@BlazorBasicThemeBundles.Styles.Global" />
+    <script>
+        window.reRenderElement = function (element) {
+            element.offsetHeight;
+            return;
+        }
+    </script>
 </head>
 <body class="abp-application-layout bg-light @rtl">
     <environment include="Staging,Production">
