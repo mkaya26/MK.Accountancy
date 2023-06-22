@@ -292,6 +292,9 @@
             if (compoanyParameter != null)
             {
                 AppService.CompanyParameter = compoanyParameter;
+                //
+                AppService.Company = await CompanyAppService.GetAsync();
+                //
                 await Reports();
             }
             else

@@ -39,6 +39,7 @@ namespace MK.Accountancy.Blazor.Reports.Invoices {
             this.lblCurrentTelephone = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("lblCurrentTelephone");
             this.tableCell11 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell11");
             this.panel1 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRPanel>("panel1");
+            this.pcLogo = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRPictureBox>("pcLogo");
             this.lblInvoiceType = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRLabel>("lblInvoiceType");
             this.table1 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTable>("table1");
             this.pcTaxOfficeLogo = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRPictureBox>("pcTaxOfficeLogo");
@@ -47,7 +48,6 @@ namespace MK.Accountancy.Blazor.Reports.Invoices {
             this.lblCompanyTelephone = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRLabel>("lblCompanyTelephone");
             this.lblCompanyAddress = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRLabel>("lblCompanyAddress");
             this.lblCompanyName = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRLabel>("lblCompanyName");
-            this.pcCompanyLogo = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRPictureBox>("pcCompanyLogo");
             this.tableRow1 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableRow>("tableRow1");
             this.tableRow2 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableRow>("tableRow2");
             this.tableRow3 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableRow>("tableRow3");
@@ -156,6 +156,7 @@ namespace MK.Accountancy.Blazor.Reports.Invoices {
         private DevExpress.XtraReports.UI.XRTableCell lblCurrentTelephone;
         private DevExpress.XtraReports.UI.XRTableCell tableCell11;
         private DevExpress.XtraReports.UI.XRPanel panel1;
+        private DevExpress.XtraReports.UI.XRPictureBox pcLogo;
         private DevExpress.XtraReports.UI.XRLabel lblInvoiceType;
         private DevExpress.XtraReports.UI.XRTable table1;
         private DevExpress.XtraReports.UI.XRPictureBox pcTaxOfficeLogo;
@@ -164,7 +165,6 @@ namespace MK.Accountancy.Blazor.Reports.Invoices {
         private DevExpress.XtraReports.UI.XRLabel lblCompanyTelephone;
         private DevExpress.XtraReports.UI.XRLabel lblCompanyAddress;
         private DevExpress.XtraReports.UI.XRLabel lblCompanyName;
-        private DevExpress.XtraReports.UI.XRPictureBox pcCompanyLogo;
         private DevExpress.XtraReports.UI.XRTableRow tableRow1;
         private DevExpress.XtraReports.UI.XRTableRow tableRow2;
         private DevExpress.XtraReports.UI.XRTableRow tableRow3;

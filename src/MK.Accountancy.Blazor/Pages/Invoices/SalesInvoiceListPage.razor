@@ -127,7 +127,9 @@
 
 @if (Service.SelectedReportName != null)
 {
-    var dataSource = ObjectMapper.Map<SelectInvoiceDto, InvoiceReportDto>(Service.DataSource);
+    var invoiceRepot = ObjectMapper.Map<SelectInvoiceDto, InvoiceReportDto>(Service.DataSource);
+    invoiceRepot.CompanyDto = AppService.Company;
+    var dataSource = invoiceRepot;
     //
     var report = GetReport(Assembly.GetExecutingAssembly(), Service);
     //

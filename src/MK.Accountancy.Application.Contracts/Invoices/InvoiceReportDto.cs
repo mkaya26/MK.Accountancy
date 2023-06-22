@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MK.Accountancy.Companies;
+using System;
 using System.Collections.Generic;
 using Volo.Abp.Application.Dtos;
 
@@ -20,6 +21,7 @@ namespace MK.Accountancy.Invoices
         public decimal Netamount { get; set; }
         public int MovementNumber { get; set; }
         public string Description { get; set; }
+        public SelectCompanyDto CompanyDto { get; set; }
         public List<InvoiceDetailReportDto> InvoiceDetails { get; set; }
     }
 }
