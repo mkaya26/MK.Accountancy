@@ -34,6 +34,10 @@ namespace MK.Accountancy.Blazor.Pages.Companies
             if(!string.IsNullOrEmpty(imgKey))
             {
                 AppService.Company.LogoUrl = "/Files/" + imgKey + ".png";
+                //
+                string baseUrl = NavigationManager.BaseUri;
+                //
+                AppService.Company.FullLogoUrl = baseUrl + "Files/" + imgKey + ".png";
             }
             if (AppService.Company.Id != Guid.Empty)
             {

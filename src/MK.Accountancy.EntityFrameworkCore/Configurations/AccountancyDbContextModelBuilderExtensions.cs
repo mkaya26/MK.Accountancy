@@ -1253,6 +1253,10 @@ namespace MK.Accountancy.Configurations
                 .HasColumnType(SqlDbType.VarChar.ToString())
                 .HasMaxLength(EntityConst.MaxWebAddressLength);
 
+                b.Property(x => x.FullLogoUrl)
+                .HasColumnType(SqlDbType.VarChar.ToString())
+                .HasMaxLength(EntityConst.MaxWebAddressLength);
+
                 #endregion
                 #region Indexs
                 #endregion

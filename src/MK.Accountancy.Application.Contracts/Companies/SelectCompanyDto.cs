@@ -15,5 +15,6 @@ namespace MK.Accountancy.Companies
         public string BankAccountNumber { get; set; }
         public string BankIbanNumber { get; set; }
         public string LogoUrl { get; set; }
+        public string FullLogoUrl { get; set; }
     }
 }
