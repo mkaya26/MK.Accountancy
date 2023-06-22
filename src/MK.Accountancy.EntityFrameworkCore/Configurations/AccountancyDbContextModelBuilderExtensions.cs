@@ -977,7 +977,7 @@ namespace MK.Accountancy.Configurations
 
                 b.HasOne(x => x.Receipt)
                 .WithMany(x => x.ReceiptDetails)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Cascade);
                 #endregion
             });
         }
