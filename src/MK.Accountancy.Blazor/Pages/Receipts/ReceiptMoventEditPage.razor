@@ -24,7 +24,7 @@
                                   Row="0">
                     <Template>
                         <DevGridLayout ColumnCount="3"
-                                       ColumnWidths="@ColumnWidths("90","3","120")">
+                                       ColumnWidths="@ColumnWidths("120","3","120")">
                             <GridLayoutItems>
                                 <DevComboboxEnumEdit Caption="@L["PaymentType"]"
                                                      ColumnIndex="2"
@@ -45,7 +45,7 @@
                                   Visible="Service.TempDataSource.PaymentType == PaymentType.Cheque">
                     <Template>
                         <DevGridLayout ColumnCount="7"
-                                       ColumnWidths="@ColumnWidths("90","3","120","25","90","3","120")"
+                                       ColumnWidths="@ColumnWidths("120","3","120","25","90","3","120")"
                                        RowCount="11">
                             <GridLayoutItems>
                                 <DevTextEdit Caption="@L["TrackingNumber"]"
@@ -133,7 +133,7 @@
                                   Visible="Service.TempDataSource.PaymentType == PaymentType.Bill">
                     <Template>
                         <DevGridLayout ColumnCount="7"
-                                       ColumnWidths="@ColumnWidths("90","3","120","25","90","3","120")"
+                                       ColumnWidths="@ColumnWidths("120","3","120","25","90","3","120")"
                                        RowCount="7">
                             <GridLayoutItems>
                                 <DevTextEdit Caption="@L["TrackingNumber"]"
@@ -186,7 +186,7 @@
                                   Visible="Service.TempDataSource.PaymentType == PaymentType.Cash">
                     <Template>
                         <DevGridLayout ColumnCount="7"
-                                       ColumnWidths="@ColumnWidths("90","3","120","25","90","3","120")"
+                                       ColumnWidths="@ColumnWidths("120","3","120","25","90","3","120")"
                                        RowCount="4">
                             <GridLayoutItems>
                                 <DevButonEdit ButtonClickInvokeFunction="() => {
@@ -222,7 +222,7 @@
                                   Visible="Service.TempDataSource.PaymentType == PaymentType.Bank">
                     <Template>
                         <DevGridLayout ColumnCount="7"
-                                       ColumnWidths="@ColumnWidths("90","3","120","25","90","3","120")"
+                                       ColumnWidths="@ColumnWidths("120","3","120","25","90","3","120")"
                                        RowCount="4">
                             <GridLayoutItems>
                                 <DevButonEdit ButtonClickInvokeFunction="() => { BankAccountService.BankAccountType = BankAccountType.CurrentDepositAccount;
@@ -258,7 +258,7 @@
                                   Visible="Service.TempDataSource.PaymentType == PaymentType.Pos">
                     <Template>
                         <DevGridLayout ColumnCount="7"
-                                       ColumnWidths="@ColumnWidths("90","3","120","25","90","3","120")"
+                                       ColumnWidths="@ColumnWidths("120","3","120","25","90","3","120")"
                                        RowCount="5">
                             <GridLayoutItems>
                                 <DevTextEdit Caption="@L["TrackingNumber"]"
