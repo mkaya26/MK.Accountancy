@@ -63,7 +63,7 @@ namespace MK.Accountancy.Receipts
 
         public virtual async Task<string> GetCodeAsync(ReceiptNumberParameterDto input)
         {
-            return await _receiptRepository.GetCodeAsync(p => p.ReceiptNumber, f => f.ReceiptType == input.ReceiptType && f.DepartmentId == input.DepartmentId && f.TermId == input.TermId && f.Active == input.Active);
+            return await _receiptRepository.GetCodeAsync(p => p.ReceiptNumber, f => f.ReceiptType == input.ReceiptType && f.DepartmentId == input.DepartmentId && f.TermId == input.TermId);
         }
 
         public virtual async Task<PagedResultDto<ListReceiptDto>> GetListAsync(ReceiptListParameterDto input)

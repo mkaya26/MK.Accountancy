@@ -293,7 +293,12 @@
             {
                 AppService.CompanyParameter = compoanyParameter;
                 //
-                AppService.Company = await CompanyAppService.GetAsync();
+                var company = await CompanyAppService.GetAsync();
+                //
+                if(company != null)
+                {
+                    AppService.Company = company;
+                }
                 //
                 await Reports();
             }
